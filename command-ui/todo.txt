@@ -1,0 +1,16 @@
+- add the run button
+- choice ui
+- add page type
+- undo redo does no work
+- "new commandpart" short labels & icons
+- remove group label and add labelPart
+- allow group multiplicity=many
+- use the photomatic command runner
+- working console
+- live example command in the editor, maybe usage text
+- remove nullable checkboxes
+- use env path 
+- change theme
+- make player themable
+- distribution feature
+- add page model

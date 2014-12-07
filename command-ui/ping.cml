@@ -1,0 +1,42 @@
+<xy.command.model.CommandLine>
+  <title>ping localhost</title>
+  <executablePath>ping</executablePath>
+  <parts>
+    <xy.command.model.FixedArgument>
+      <title>-n</title>
+      <value>-n</value>
+    </xy.command.model.FixedArgument>
+    <xy.command.model.InputArgument>
+      <title>number of pings</title>
+    </xy.command.model.InputArgument>
+    <xy.command.model.Choice>
+      <title>host</title>
+      <options>
+        <entry>
+          <string>google</string>
+          <xy.command.model.ArgumentGroup>
+            <layout>COLUMN</layout>
+            <cardinality>ONE</cardinality>
+            <parts>
+              <xy.command.model.FixedArgument>
+                <value>www.google.com</value>
+              </xy.command.model.FixedArgument>
+            </parts>
+          </xy.command.model.ArgumentGroup>
+        </entry>
+        <entry>
+          <string>custom</string>
+          <xy.command.model.ArgumentGroup>
+            <layout>COLUMN</layout>
+            <cardinality>ONE</cardinality>
+            <parts>
+              <xy.command.model.InputArgument>
+                <title>address</title>
+              </xy.command.model.InputArgument>
+            </parts>
+          </xy.command.model.ArgumentGroup>
+        </entry>
+      </options>
+    </xy.command.model.Choice>
+  </parts>
+</xy.command.model.CommandLine>
