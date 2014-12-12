@@ -1,12 +1,11 @@
 package xy.command.model.instance;
 
 import xy.command.model.DirectoryArgument;
-import xy.command.ui.CommandLinePlayer;
 
 public class DirectoryArgumentInstance extends FileArgumentInstance {
 
-	public DirectoryArgumentInstance(CommandLinePlayer player, DirectoryArgument model) {
-		super(player, model);
+	public DirectoryArgumentInstance(DirectoryArgument model) {
+		super(model);
 		this.value = "<path to the directory>";
 	}
 

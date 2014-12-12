@@ -4,14 +4,13 @@ import java.util.Collections;
 import java.util.List;
 
 import xy.command.model.OptionalPart;
-import xy.command.ui.CommandLinePlayer;
 
 public class OptionalPartInstance extends ArgumentGroupInstance {
 
 	public boolean value;
 
-	public OptionalPartInstance(CommandLinePlayer player, OptionalPart model) {
-		super(player, model);
+	public OptionalPartInstance(OptionalPart model) {
+		super(model);
 		this.value = model.defaultValue;
 	}
 

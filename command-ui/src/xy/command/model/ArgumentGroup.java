@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import xy.command.model.instance.ArgumentGroupInstance;
-import xy.command.ui.CommandLinePlayer;
 
 public class ArgumentGroup extends AbstractCommandLinePart {
 
@@ -22,8 +21,8 @@ public class ArgumentGroup extends AbstractCommandLinePart {
 	}
 
 	@Override
-	public ArgumentGroupInstance createInstance(CommandLinePlayer player) {
-		return new ArgumentGroupInstance(player, this);
+	public ArgumentGroupInstance createInstance() {
+		return new ArgumentGroupInstance(this);
 	}
 
 	

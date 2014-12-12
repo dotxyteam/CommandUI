@@ -3,19 +3,19 @@ package xy.command.model.instance;
 import java.util.ArrayList;
 import java.util.List;
 
-import xy.command.model.AbstractCommandLinePart;
+import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
-import xy.command.ui.CommandLinePlayer;
+import xy.command.ui.util.CommandUIUtils;
 
 public class CommandLineInstance {
 
-	public List<AbstractCommandLinePartInstance> partInstances = new ArrayList<AbstractCommandLinePartInstance>();
+	public List<ArgumentPageInstance> pageInstances = new ArrayList<ArgumentPageInstance>();
 	protected CommandLine model;
 	
-	public CommandLineInstance(CommandLinePlayer player, CommandLine model) {
+	public CommandLineInstance(CommandLine model) {
 		this.model = model;
-		for (AbstractCommandLinePart part : model.parts) {
-			partInstances.add(part.createInstance(player));
+		for (ArgumentPage page : model.pages) {
+			pageInstances.add(page.createInstance());
 		}
 	}
 
@@ -26,18 +26,10 @@ public class CommandLineInstance {
 	public String getCommandlineString(){
 		List<String> args = new ArrayList<String>();
 		args.add(model.executablePath);
-		for (AbstractCommandLinePartInstance part : partInstances) {
+		for (ArgumentPageInstance part : pageInstances) {
 			args.addAll(part.listArgumentValues());
 		}
-		return formatArgumentList(args);
-	}
-
-	protected String formatArgumentList(List<String> argList) {
-		StringBuilder result = new StringBuilder();
-		for (String arg : argList) {
-			result.append(" " + arg);
-		}
-		return result.toString();
+		return CommandUIUtils.formatArgumentList(args);
 	}
 
 }

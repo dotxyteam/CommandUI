@@ -1,7 +1,6 @@
 package xy.command.model;
 
 import xy.command.model.instance.OptionalPartInstance;
-import xy.command.ui.CommandLinePlayer;
 
 public class OptionalPart extends ArgumentGroup {
 
@@ -9,8 +8,8 @@ public class OptionalPart extends ArgumentGroup {
 	public boolean defaultValue = false;
 
 	@Override
-	public OptionalPartInstance createInstance(CommandLinePlayer player) {
-		return new OptionalPartInstance(player, this);
+	public OptionalPartInstance createInstance() {
+		return new OptionalPartInstance(this);
 	}
 
 }

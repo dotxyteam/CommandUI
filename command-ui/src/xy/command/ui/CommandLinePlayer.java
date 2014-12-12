@@ -18,6 +18,7 @@ import javax.swing.SwingUtilities;
 
 import xy.command.model.AbstractCommandLinePart;
 import xy.command.model.ArgumentGroup;
+import xy.command.model.ArgumentPage;
 import xy.command.model.Choice;
 import xy.command.model.CommandLine;
 import xy.command.model.ArgumentGroup.Cardinality;
@@ -27,6 +28,7 @@ import xy.command.model.InputArgument;
 import xy.command.model.OptionalPart;
 import xy.command.model.instance.AbstractCommandLinePartInstance;
 import xy.command.model.instance.ArgumentGroupInstance;
+import xy.command.model.instance.ArgumentPageInstance;
 import xy.command.model.instance.ChoiceInstance;
 import xy.command.model.instance.CommandLineInstance;
 import xy.command.model.instance.FileArgumentInstance;
@@ -56,19 +58,23 @@ public class CommandLinePlayer extends ReflectionUI {
 		CommandLine commandLine = new CommandLine();
 		commandLine.load(new File("example.cml"));
 		CommandLinePlayer player = new CommandLinePlayer();
-		player.openObjectFrame(commandLine.createInstance(player),
-				commandLine.title, null);
+		player.openObjectFrame(commandLine.createInstance(), commandLine.title,
+				null);
 	}
 
 	@Override
 	public ITypeInfoSource getTypeInfoSource(final Object object) {
 		if (object instanceof CommandLineInstance) {
 			final CommandLine model = ((CommandLineInstance) object).getModel();
-			return new CommandLinePartsAsTypeInfoSource(this, model);
+			return new CommandLineAsTypeInfoSource(this, model);
+		} else if (object instanceof ArgumentPage) {
+			final ArgumentPage model = ((ArgumentPageInstance) object)
+					.getModel();
+			return new ArgumentPageAsTypeInfoSource(this, model);
 		} else if (object instanceof ArgumentGroupInstance) {
 			final ArgumentGroup model = ((ArgumentGroupInstance) object)
 					.getModel();
-			return new ArgumentGroupPartsAsTypeInfoSource(this, model);
+			return new ArgumentGroupAsTypeInfoSource(this, model);
 		} else {
 			return super.getTypeInfoSource(object);
 		}
@@ -187,6 +193,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			public ITypeInfo getType() {
 				return groupFieldInfo.getType();
 			}
+
+			@Override
+			public String getCategoryCaption() {
+				return typeInfoSource.getCategoryCaption();
+			}
 		};
 	}
 
@@ -233,6 +244,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			public ITypeInfo getType() {
 				return new DefaultTextualTypeInfo(typeInfoSource.getPlayer(),
 						String.class);
+			}
+
+			@Override
+			public String getCategoryCaption() {
+				return typeInfoSource.getCategoryCaption();
 			}
 		};
 	}
@@ -295,6 +311,11 @@ public class CommandLinePlayer extends ReflectionUI {
 
 				};
 			}
+
+			@Override
+			public String getCategoryCaption() {
+				return typeInfoSource.getCategoryCaption();
+			}
 		};
 	}
 
@@ -350,6 +371,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
+			public String getCategoryCaption() {
+				return typeInfoSource.getCategoryCaption();
+			}
+
+			@Override
 			public ITypeInfo getType() {
 				return new DefaultTypeInfo(typeInfoSource.getPlayer(),
 						ArgumentGroupInstance.class) {
@@ -367,7 +393,7 @@ public class CommandLinePlayer extends ReflectionUI {
 						for (final Map.Entry<String, ArgumentGroup> optionEntry : part.options
 								.entrySet()) {
 							ArgumentGroup group = optionEntry.getValue();
-							ITypeInfoSource subTypeSource = new CommandLinePlayer.ArgumentGroupPartsAsTypeInfoSource(
+							ITypeInfoSource subTypeSource = new CommandLinePlayer.ArgumentGroupAsTypeInfoSource(
 									typeInfoSource.getPlayer(), group);
 							ITypeInfo subType = typeInfoSource.getPlayer()
 									.getTypeInfo(subTypeSource);
@@ -394,7 +420,7 @@ public class CommandLinePlayer extends ReflectionUI {
 							protected String getEnumerationValueCaption(
 									ITypeInfo actualFieldValueType) {
 								PartsAsTypeInfo type = (PartsAsTypeInfo) actualFieldValueType;
-								ArgumentGroupPartsAsTypeInfoSource typeSource = (ArgumentGroupPartsAsTypeInfoSource) type
+								ArgumentGroupAsTypeInfoSource typeSource = (ArgumentGroupAsTypeInfoSource) type
 										.getTypeInfoSource();
 								ArgumentGroup model = typeSource.getModel();
 								String optionKey = ReflectionUIUtils
@@ -453,12 +479,16 @@ public class CommandLinePlayer extends ReflectionUI {
 				if (part.cardinality == Cardinality.ONE) {
 					return typeInfoSource.getPlayer().getTypeInfo(
 							typeInfoSource.getPlayer().getTypeInfoSource(
-									part.createInstance(typeInfoSource
-											.getPlayer())));
+									part.createInstance()));
 				} else {
 					return new OccurrenceListTypeInfo(
 							typeInfoSource.getPlayer(), part);
 				}
+			}
+
+			@Override
+			public String getCategoryCaption() {
+				return typeInfoSource.getCategoryCaption();
 			}
 		};
 	}
@@ -476,6 +506,8 @@ public class CommandLinePlayer extends ReflectionUI {
 	public static interface IPartsAsTypeInfoSource extends ITypeInfoSource {
 
 		List<AbstractCommandLinePart> getTypeData();
+
+		String getCategoryCaption();
 
 		String getName();
 
@@ -585,13 +617,12 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 	}
 
-	public static class CommandLinePartsAsTypeInfoSource implements
+	public static class CommandLineAsTypeInfoSource implements
 			IPartsAsTypeInfoSource {
-
 		private CommandLine model;
 		private CommandLinePlayer player;
 
-		public CommandLinePartsAsTypeInfoSource(CommandLinePlayer player,
+		public CommandLineAsTypeInfoSource(CommandLinePlayer player,
 				CommandLine model) {
 			this.player = player;
 			this.model = model;
@@ -608,14 +639,14 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		@Override
 		public List<AbstractCommandLinePartInstance> getValueData(Object object) {
-			final CommandLineInstance instance = (CommandLineInstance) object;
+			final ArgumentPageInstance instance = (ArgumentPageInstance) object;
 			return instance.partInstances;
 		}
 
 		@Override
 		public void setValueData(Object object,
 				List<AbstractCommandLinePartInstance> data) {
-			final CommandLineInstance instance = (CommandLineInstance) object;
+			final ArgumentPageInstance instance = (ArgumentPageInstance) object;
 			instance.partInstances = data;
 		}
 
@@ -636,18 +667,84 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		@Override
 		public Object instanciate() {
-			return new CommandLineInstance(player, model);
+			return new ArgumentPageInstance(model);
+		}
+
+		@Override
+		public String getCategoryCaption() {
+			return model.title;
 		}
 
 	}
 
-	public static class ArgumentGroupPartsAsTypeInfoSource implements
+	public static class ArgumentPageAsTypeInfoSource implements
+			IPartsAsTypeInfoSource {
+
+		private ArgumentPage model;
+		private CommandLinePlayer player;
+
+		public ArgumentPageAsTypeInfoSource(CommandLinePlayer player,
+				ArgumentPage model) {
+			this.player = player;
+			this.model = model;
+		}
+
+		public ArgumentPage getModel() {
+			return model;
+		}
+
+		@Override
+		public List<AbstractCommandLinePart> getTypeData() {
+			return model.parts;
+		}
+
+		@Override
+		public List<AbstractCommandLinePartInstance> getValueData(Object object) {
+			final ArgumentPageInstance instance = (ArgumentPageInstance) object;
+			return instance.partInstances;
+		}
+
+		@Override
+		public void setValueData(Object object,
+				List<AbstractCommandLinePartInstance> data) {
+			final ArgumentPageInstance instance = (ArgumentPageInstance) object;
+			instance.partInstances = data;
+		}
+
+		@Override
+		public String getName() {
+			return model.toString();
+		}
+
+		@Override
+		public String getCaption() {
+			return model.toString();
+		}
+
+		@Override
+		public CommandLinePlayer getPlayer() {
+			return player;
+		}
+
+		@Override
+		public Object instanciate() {
+			return new ArgumentPageInstance(model);
+		}
+
+		@Override
+		public String getCategoryCaption() {
+			return model.title;
+		}
+
+	}
+
+	public static class ArgumentGroupAsTypeInfoSource implements
 			IPartsAsTypeInfoSource {
 
 		private CommandLinePlayer player;
 		private ArgumentGroup model;
 
-		public ArgumentGroupPartsAsTypeInfoSource(CommandLinePlayer player,
+		public ArgumentGroupAsTypeInfoSource(CommandLinePlayer player,
 				ArgumentGroup model) {
 			this.player = player;
 			this.model = model;
@@ -693,7 +790,12 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		@Override
 		public Object instanciate() {
-			return new ArgumentGroupInstance(player, model);
+			return new ArgumentGroupInstance(model);
+		}
+
+		@Override
+		public String getCategoryCaption() {
+			return null;
 		}
 
 	}
@@ -758,7 +860,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			List<ArgumentGroupInstance> result = new ArrayList<ArgumentGroupInstance>();
 			for (List<AbstractCommandLinePartInstance> partInstances : instance.multiPartInstances) {
 				ArgumentGroupInstance occurence = new ArgumentGroupInstance(
-						player, group);
+						group);
 				occurence.multiPartInstances = Collections
 						.singletonList(partInstances);
 				result.add(occurence);
@@ -773,8 +875,7 @@ public class CommandLinePlayer extends ReflectionUI {
 				ArgumentGroupInstance occurence = (ArgumentGroupInstance) item;
 				multiPartInstances.add(occurence.multiPartInstances.get(0));
 			}
-			ArgumentGroupInstance instance = new ArgumentGroupInstance(player,
-					group);
+			ArgumentGroupInstance instance = new ArgumentGroupInstance(group);
 			instance.multiPartInstances = multiPartInstances;
 			return instance;
 		}
@@ -787,7 +888,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		@Override
 		public ITypeInfo getItemType() {
 			return player.getTypeInfo(player.getTypeInfoSource(group
-					.createInstance(player)));
+					.createInstance()));
 		}
 
 		@Override

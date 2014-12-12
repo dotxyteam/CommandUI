@@ -6,13 +6,12 @@ import java.util.List;
 import xy.command.model.AbstractCommandLinePart;
 import xy.command.model.ArgumentGroup;
 import xy.command.model.ArgumentGroup.Cardinality;
-import xy.command.ui.CommandLinePlayer;
 
 public class ArgumentGroupInstance extends AbstractCommandLinePartInstance {
 
 	public List<List<AbstractCommandLinePartInstance>> multiPartInstances;
-	public ArgumentGroupInstance(CommandLinePlayer player, ArgumentGroup model) {
-		super(player, model);
+	public ArgumentGroupInstance(ArgumentGroup model) {
+		super(model);
 		multiPartInstances = new ArrayList<List<AbstractCommandLinePartInstance>>();
 		if (model.cardinality == Cardinality.ONE) {
 			multiPartInstances.add(newPartInstances());
@@ -30,7 +29,7 @@ public class ArgumentGroupInstance extends AbstractCommandLinePartInstance {
 	protected List<AbstractCommandLinePartInstance> newPartInstances() {
 		List<AbstractCommandLinePartInstance> result = new ArrayList<AbstractCommandLinePartInstance>();
 		for (AbstractCommandLinePart part : getModel().parts) {
-			result.add(part.createInstance(player));
+			result.add(part.createInstance());
 		}
 		return result;
 	}

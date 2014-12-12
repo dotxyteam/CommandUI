@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -237,6 +238,14 @@ public class CommandUIUtils {
 
 	public static void relieveCPU() {
 		sleep(100);
+	}
+
+	public static String formatArgumentList(List<String> argList) {
+		StringBuilder result = new StringBuilder();
+		for (String arg : argList) {
+			result.append(" " + arg);
+		}
+		return result.toString();
 	}
 
 

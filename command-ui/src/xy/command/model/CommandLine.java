@@ -16,11 +16,11 @@ public class CommandLine {
 	public String title;
 	public String executablePath;
 	public String executionDir;
-	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
+	public List<ArgumentPage> pages = new ArrayList<ArgumentPage>();
 	
 	
-	public CommandLineInstance createInstance(CommandLinePlayer player) {
-		return new CommandLineInstance(player, this);
+	public CommandLineInstance createInstance() {
+		return new CommandLineInstance(this);
 	}
 	
 	
@@ -30,7 +30,7 @@ public class CommandLine {
 		title = loaded.title;
 		executablePath = loaded.executablePath;
 		executionDir = loaded.executionDir;
-		parts = loaded.parts;
+		pages = loaded.pages;
 	}
 	
 	public void save(File file) throws IOException {
@@ -43,7 +43,7 @@ public class CommandLine {
 	
 	public void test(){
 		CommandLinePlayer player = new CommandLinePlayer();
-		player.openObjectFrame(createInstance(player), title, null);
+		player.openObjectFrame(createInstance(), title, null);
 	}
 
 		

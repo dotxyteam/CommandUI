@@ -4,14 +4,13 @@ import java.util.Collections;
 import java.util.List;
 
 import xy.command.model.FileArgument;
-import xy.command.ui.CommandLinePlayer;
 
 public class FileArgumentInstance extends AbstractCommandLinePartInstance {
 
 	public String value = "<path to the file>";
 	
-	public FileArgumentInstance(CommandLinePlayer player, FileArgument model) {
-		super(player, model);
+	public FileArgumentInstance(FileArgument model) {
+		super(model);
 	}
 	
 	

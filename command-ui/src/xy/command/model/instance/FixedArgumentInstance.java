@@ -4,12 +4,11 @@ import java.util.Collections;
 import java.util.List;
 
 import xy.command.model.FixedArgument;
-import xy.command.ui.CommandLinePlayer;
 
 public class FixedArgumentInstance extends AbstractCommandLinePartInstance {
 
-	public FixedArgumentInstance(CommandLinePlayer player, FixedArgument model) {
-		super(player, model);
+	public FixedArgumentInstance(FixedArgument model) {
+		super(model);
 	}
 
 	public FixedArgument getModel() {
