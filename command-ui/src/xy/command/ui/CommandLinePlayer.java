@@ -28,7 +28,6 @@ import xy.command.model.InputArgument;
 import xy.command.model.OptionalPart;
 import xy.command.model.instance.AbstractCommandLinePartInstance;
 import xy.command.model.instance.ArgumentGroupInstance;
-import xy.command.model.instance.ArgumentPageInstance;
 import xy.command.model.instance.ChoiceInstance;
 import xy.command.model.instance.CommandLineInstance;
 import xy.command.model.instance.FileArgumentInstance;
@@ -67,10 +66,6 @@ public class CommandLinePlayer extends ReflectionUI {
 		if (object instanceof CommandLineInstance) {
 			final CommandLine model = ((CommandLineInstance) object).getModel();
 			return new CommandLineAsTypeInfoSource(this, model);
-		} else if (object instanceof ArgumentPage) {
-			final ArgumentPage model = ((ArgumentPageInstance) object)
-					.getModel();
-			return new ArgumentPageAsTypeInfoSource(this, model);
 		} else if (object instanceof ArgumentGroupInstance) {
 			final ArgumentGroup model = ((ArgumentGroupInstance) object)
 					.getModel();
@@ -634,20 +629,24 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		@Override
 		public List<AbstractCommandLinePart> getTypeData() {
-			return model.parts;
+			List<AbstractCommandLinePart> result = new ArrayList<AbstractCommandLinePart>();
+			for (ArgumentPage page : model.pages) {
+				result.addAll(page.parts);
+			}
+			return result;
 		}
 
 		@Override
 		public List<AbstractCommandLinePartInstance> getValueData(Object object) {
-			final ArgumentPageInstance instance = (ArgumentPageInstance) object;
+			final CommandLineInstance instance = (CommandLineInstance) object;
 			return instance.partInstances;
 		}
 
 		@Override
 		public void setValueData(Object object,
 				List<AbstractCommandLinePartInstance> data) {
-			final ArgumentPageInstance instance = (ArgumentPageInstance) object;
-			instance.partInstances = data;
+			final CommandLineInstance instance = (CommandLineInstance) object;
+			instance.partInstances = data;		
 		}
 
 		@Override
@@ -667,76 +666,16 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		@Override
 		public Object instanciate() {
-			return new ArgumentPageInstance(model);
+			return new CommandLineInstance(model);
 		}
 
 		@Override
 		public String getCategoryCaption() {
-			return model.title;
+			return null;
 		}
 
 	}
 
-	public static class ArgumentPageAsTypeInfoSource implements
-			IPartsAsTypeInfoSource {
-
-		private ArgumentPage model;
-		private CommandLinePlayer player;
-
-		public ArgumentPageAsTypeInfoSource(CommandLinePlayer player,
-				ArgumentPage model) {
-			this.player = player;
-			this.model = model;
-		}
-
-		public ArgumentPage getModel() {
-			return model;
-		}
-
-		@Override
-		public List<AbstractCommandLinePart> getTypeData() {
-			return model.parts;
-		}
-
-		@Override
-		public List<AbstractCommandLinePartInstance> getValueData(Object object) {
-			final ArgumentPageInstance instance = (ArgumentPageInstance) object;
-			return instance.partInstances;
-		}
-
-		@Override
-		public void setValueData(Object object,
-				List<AbstractCommandLinePartInstance> data) {
-			final ArgumentPageInstance instance = (ArgumentPageInstance) object;
-			instance.partInstances = data;
-		}
-
-		@Override
-		public String getName() {
-			return model.toString();
-		}
-
-		@Override
-		public String getCaption() {
-			return model.toString();
-		}
-
-		@Override
-		public CommandLinePlayer getPlayer() {
-			return player;
-		}
-
-		@Override
-		public Object instanciate() {
-			return new ArgumentPageInstance(model);
-		}
-
-		@Override
-		public String getCategoryCaption() {
-			return model.title;
-		}
-
-	}
 
 	public static class ArgumentGroupAsTypeInfoSource implements
 			IPartsAsTypeInfoSource {
