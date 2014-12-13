@@ -19,13 +19,13 @@ import xy.command.model.FixedArgument;
 import xy.command.model.InputArgument;
 import xy.command.model.OptionalPart;
 import xy.reflect.ui.ReflectionUI;
-import xy.reflect.ui.info.field.FieldInfoDelagator;
+import xy.reflect.ui.info.field.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.ITypeInfoSource;
 import xy.reflect.ui.info.type.JavaTypeInfoSource;
-import xy.reflect.ui.info.type.SimpleTypeInfoDelegator;
+import xy.reflect.ui.info.type.SimpleTypeInfoProxy;
 import xy.reflect.ui.info.type.StandardListTypeInfo;
 import xy.reflect.ui.info.type.StandardMapListTypeInfo;
 import xy.reflect.ui.util.ReflectionUIUtils;
@@ -72,7 +72,7 @@ public class CommandLineEditor extends ReflectionUI {
 			if (classTypeSource.getJavaType().equals(
 					AbstractCommandLinePart.class)) {
 
-				return new SimpleTypeInfoDelegator(
+				return new SimpleTypeInfoProxy(
 						super.getTypeInfo(typeSource)) {
 
 					@Override
@@ -106,7 +106,7 @@ public class CommandLineEditor extends ReflectionUI {
 							.getPackage(), CommandLine.class.getPackage())
 					&& (classTypeSource.getJavaType().getEnclosingClass() == null)) {
 
-				return new SimpleTypeInfoDelegator(
+				return new SimpleTypeInfoProxy(
 						super.getTypeInfo(typeSource)) {
 
 					@Override
@@ -128,7 +128,7 @@ public class CommandLineEditor extends ReflectionUI {
 							IFieldInfo optionsField = ReflectionUIUtils
 									.findInfoByName(result, "options");
 							result.remove(optionsField);
-							result.add(new FieldInfoDelagator(optionsField) {
+							result.add(new FieldInfoProxy(optionsField) {
 
 								@Override
 								public ITypeInfo getType() {
@@ -148,7 +148,7 @@ public class CommandLineEditor extends ReflectionUI {
 															.getFields()) {
 														if (field.getName()
 																.equals("key")) {
-															field = new FieldInfoDelagator(
+															field = new FieldInfoProxy(
 																	field) {
 
 																@Override
@@ -160,7 +160,7 @@ public class CommandLineEditor extends ReflectionUI {
 														} else if (field
 																.getName()
 																.equals("value")) {
-															field = new FieldInfoDelagator(
+															field = new FieldInfoProxy(
 																	field) {
 
 																@Override

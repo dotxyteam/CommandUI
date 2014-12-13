@@ -2,6 +2,9 @@
   <title>the command</title>
   <executablePath>c:\path\run.exe</executablePath>
   <executionDir>c:\path</executionDir>
+  <pages>
+  <xy.command.model.ArgumentPage>
+  <title></title>
   <parts>
     <xy.command.model.InputArgument>
       <title>the input</title>
@@ -77,4 +80,6 @@
       </options>
     </xy.command.model.Choice>
   </parts>
+  </xy.command.model.ArgumentPage>
+  </pages>
 </xy.command.model.CommandLine>
