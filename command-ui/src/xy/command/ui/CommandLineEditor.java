@@ -25,6 +25,7 @@ import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.type.DefaultListStructuralInfo;
 import xy.reflect.ui.info.type.IListTypeInfo;
+import xy.reflect.ui.info.type.IMapEntryTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.ITypeInfoSource;
 import xy.reflect.ui.info.type.JavaTypeInfoSource;
@@ -240,8 +241,60 @@ public class CommandLineEditor extends ReflectionUI {
 													getItemType()) {
 
 												@Override
-												public boolean isTabular() {
+												protected boolean isTabular() {
 													return false;
+												}
+
+												@Override
+												public int getColumnCount() {
+													return 2;
+												}
+
+												@Override
+												public String getColumnCaption(
+														int columnIndex) {
+													if (columnIndex == 0) {
+														return "Type";
+													} else if (columnIndex == 1) {
+														return "Title";
+													} else {
+														throw new AssertionError();
+													}
+												}
+
+												@Override
+												public String getCellValue(
+														IItemPosition itemPosition,
+														int columnIndex) {
+													Object item = itemPosition
+															.getItem();
+													ITypeInfo type = getTypeInfo(getTypeInfoSource(item));
+													if (columnIndex == 0) {
+														if (type instanceof IMapEntryTypeInfo) {
+															Object key = ((IMapEntryTypeInfo) type)
+																	.getKeyField()
+																	.getValue(
+																			item);
+															return (key == null) ? ""
+																	: toInfoString(key);
+														} else {
+															return type
+																	.getCaption();
+														}
+													} else if (columnIndex == 1) {
+														IFieldInfo titleField = ReflectionUIUtils
+																.findInfoByName(
+																		type.getFields(),
+																		"title");
+														if (titleField == null) {
+															return "";
+														} else {
+															return (String) titleField
+																	.getValue(item);
+														}
+													} else {
+														throw new AssertionError();
+													}
 												}
 
 											};
