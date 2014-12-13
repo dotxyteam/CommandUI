@@ -9,4 +9,5 @@ public class ArgumentPage {
 	public String title;
 	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
 	
+	
 }

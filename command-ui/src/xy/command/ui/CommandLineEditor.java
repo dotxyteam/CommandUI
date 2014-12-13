@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 
 import xy.command.model.AbstractCommandLinePart;
 import xy.command.model.ArgumentGroup;
+import xy.command.model.ArgumentPage;
 import xy.command.model.Choice;
 import xy.command.model.CommandLine;
 import xy.command.model.DirectoryArgument;
@@ -22,9 +23,12 @@ import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.field.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
+import xy.reflect.ui.info.type.DefaultListStructuralInfo;
+import xy.reflect.ui.info.type.IListTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.ITypeInfoSource;
 import xy.reflect.ui.info.type.JavaTypeInfoSource;
+import xy.reflect.ui.info.type.ListTypeInfoProxy;
 import xy.reflect.ui.info.type.SimpleTypeInfoProxy;
 import xy.reflect.ui.info.type.StandardListTypeInfo;
 import xy.reflect.ui.info.type.StandardMapListTypeInfo;
@@ -66,14 +70,26 @@ public class CommandLineEditor extends ReflectionUI {
 	}
 
 	@Override
+	public String toInfoString(Object object) {
+		if (object instanceof ArgumentPage) {
+			String title = ((ArgumentPage) object).title;
+			return ((title == null) ? "" : title);
+		} else if (object instanceof AbstractCommandLinePart) {
+			String title = ((AbstractCommandLinePart) object).title;
+			return ((title == null) ? "" : title);
+		} else {
+			return super.toInfoString(object);
+		}
+	}
+
+	@Override
 	public ITypeInfo getTypeInfo(ITypeInfoSource typeSource) {
 		if (typeSource instanceof JavaTypeInfoSource) {
 			final JavaTypeInfoSource classTypeSource = (JavaTypeInfoSource) typeSource;
 			if (classTypeSource.getJavaType().equals(
 					AbstractCommandLinePart.class)) {
 
-				return new SimpleTypeInfoProxy(
-						super.getTypeInfo(typeSource)) {
+				return new SimpleTypeInfoProxy(super.getTypeInfo(typeSource)) {
 
 					@Override
 					public String getCaption() {
@@ -106,8 +122,7 @@ public class CommandLineEditor extends ReflectionUI {
 							.getPackage(), CommandLine.class.getPackage())
 					&& (classTypeSource.getJavaType().getEnclosingClass() == null)) {
 
-				return new SimpleTypeInfoProxy(
-						super.getTypeInfo(typeSource)) {
+				return new SimpleTypeInfoProxy(super.getTypeInfo(typeSource)) {
 
 					@Override
 					public List<IMethodInfo> getMethods() {
@@ -115,8 +130,6 @@ public class CommandLineEditor extends ReflectionUI {
 								super.getMethods());
 						result.remove(ReflectionUIUtils.findInfoByName(result,
 								"createInstance"));
-						result.remove(ReflectionUIUtils.findInfoByName(result,
-								"getFieldInfo"));
 						return result;
 					}
 
@@ -142,67 +155,93 @@ public class CommandLineEditor extends ReflectionUI {
 											return new StandardMapEntryTypeInfo() {
 
 												@Override
-												public List<IFieldInfo> getFields() {
-													List<IFieldInfo> result = new ArrayList<IFieldInfo>();
-													for (IFieldInfo field : super
-															.getFields()) {
-														if (field.getName()
-																.equals("key")) {
-															field = new FieldInfoProxy(
-																	field) {
+												public IFieldInfo getKeyField() {
+													return new FieldInfoProxy(
+															super.getKeyField()) {
 
-																@Override
-																public String getCaption() {
-																	return "Title";
-																}
-
-															};
-														} else if (field
-																.getName()
-																.equals("value")) {
-															field = new FieldInfoProxy(
-																	field) {
-
-																@Override
-																public Object getValue(
-																		Object object) {
-																	ArgumentGroup group = (ArgumentGroup) super
-																			.getValue(object);
-																	if (group == null) {
-																		return null;
-																	}
-																	return group.parts;
-																}
-
-																@Override
-																public void setValue(
-																		Object object,
-																		Object value) {
-																	@SuppressWarnings("unchecked")
-																	List<AbstractCommandLinePart> parts = (List<AbstractCommandLinePart>) value;
-																	ArgumentGroup group;
-																	if (parts == null) {
-																		group = null;
-																	}
-																	group = new ArgumentGroup();
-																	group.parts = parts;
-																	super.setValue(
-																			object,
-																			group);
-																}
-															};
+														@Override
+														public String getCaption() {
+															return "Title";
 														}
-														result.add(field);
-													}
-													return result;
+
+													};
 												}
 
 												@Override
-												public ITypeInfo getValueType() {
-													return new StandardListTypeInfo(
-															CommandLineEditor.this,
-															List.class,
-															AbstractCommandLinePart.class);
+												public IFieldInfo getValueField() {
+													return new FieldInfoProxy(
+															super.getValueField()) {
+
+														@Override
+														public Object getValue(
+																Object object) {
+															ArgumentGroup group = (ArgumentGroup) super
+																	.getValue(object);
+															if (group == null) {
+																return null;
+															}
+															return group.parts;
+														}
+
+														@Override
+														public void setValue(
+																Object object,
+																Object value) {
+															@SuppressWarnings("unchecked")
+															List<AbstractCommandLinePart> parts = (List<AbstractCommandLinePart>) value;
+															ArgumentGroup group;
+															if (parts == null) {
+																group = null;
+															}
+															group = new ArgumentGroup();
+															group.parts = parts;
+															super.setValue(
+																	object,
+																	group);
+														}
+
+														@Override
+														public ITypeInfo getType() {
+															return new StandardListTypeInfo(
+																	CommandLineEditor.this,
+																	List.class,
+																	AbstractCommandLinePart.class);
+														}
+
+													};
+												}
+
+											};
+										}
+
+									};
+								}
+
+							});
+							return result;
+						} else if (classTypeSource.getJavaType().equals(
+								CommandLine.class)) {
+							List<IFieldInfo> result = new ArrayList<IFieldInfo>(
+									super.getFields());
+							IFieldInfo pagesField = ReflectionUIUtils
+									.findInfoByName(result, "pages");
+							result.remove(pagesField);
+							result.add(new FieldInfoProxy(pagesField) {
+
+								@Override
+								public ITypeInfo getType() {
+									return new ListTypeInfoProxy(
+											(IListTypeInfo) super.getType()) {
+
+										@Override
+										public IListStructuralInfo getStructuralInfo() {
+											return new DefaultListStructuralInfo(
+													CommandLineEditor.this,
+													getItemType()) {
+
+												@Override
+												public boolean isTabular() {
+													return false;
 												}
 
 											};

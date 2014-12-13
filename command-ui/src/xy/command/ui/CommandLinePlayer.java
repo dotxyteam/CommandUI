@@ -44,7 +44,7 @@ import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.AbstractConstructorMethodInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.parameter.IParameterInfo;
-import xy.reflect.ui.info.type.DefaultListTabularInfo;
+import xy.reflect.ui.info.type.DefaultListStructuralInfo;
 import xy.reflect.ui.info.type.DefaultTextualTypeInfo;
 import xy.reflect.ui.info.type.DefaultTypeInfo;
 import xy.reflect.ui.info.type.FileTypeInfo;
@@ -843,19 +843,14 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 
 		@Override
-		public IListTabularInfo getTabularInfo() {
-			return new DefaultListTabularInfo(player, getItemType(), false);
+		public IListStructuralInfo getStructuralInfo() {
+			return new DefaultListStructuralInfo(player, getItemType());
 		}
 
 		@Override
 		public ITypeInfo getItemType() {
 			return player.getTypeInfo(player.getTypeInfoSource(group
 					.createInstance()));
-		}
-
-		@Override
-		public IListHierarchicalInfo getHierarchicalInfo() {
-			return null;
 		}
 
 		@Override
