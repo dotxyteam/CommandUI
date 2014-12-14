@@ -2,7 +2,9 @@ package xy.command.ui.component;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +15,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.JToggleButton;
 import javax.swing.border.EmptyBorder;
@@ -197,12 +200,15 @@ public class CommandMonitoringDialog extends JDialog {
 
 				getTextAttributes(Color.BLACK));
 
-				CommandUIUtils.runCommand(command, true,
-						new DocumentOutputStream(textControl.getDocument(),
-								getTextAttributes(Color.BLACK)),
-						new DocumentOutputStream(textControl.getDocument(),
-								getTextAttributes(Color.BLUE)), workingDir);
-
+				try {
+					CommandUIUtils.runCommand(command, true,
+							new DocumentOutputStream(textControl.getDocument(),
+									getTextAttributes(Color.BLACK)),
+							new DocumentOutputStream(textControl.getDocument(),
+									getTextAttributes(Color.BLUE)), workingDir);
+				} catch (Throwable t) {
+					showError(t.toString());
+				}
 				killOrCloseButton.setText("Close");
 
 			}
@@ -270,11 +276,14 @@ public class CommandMonitoringDialog extends JDialog {
 	}
 
 	protected void showError(String errorMsg) {
-
-		JOptionPane.showMessageDialog(CommandMonitoringDialog.this, errorMsg,
-
-		"An error Ocuured", JOptionPane.ERROR_MESSAGE);
-
+		JTextArea textArea = new JTextArea(errorMsg);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		textArea.setPreferredSize(new Dimension(screenSize.width / 2,
+				screenSize.height / 2));
+		textArea.setEditable(false);
+		JOptionPane.showMessageDialog(CommandMonitoringDialog.this,
+				new JScrollPane(textArea), "An error Ocuured",
+				JOptionPane.ERROR_MESSAGE);
 	}
 
 }

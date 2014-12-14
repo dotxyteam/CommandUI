@@ -120,34 +120,34 @@ public class CommandLinePlayer extends ReflectionUI {
 		List<Component> result = new ArrayList<Component>(
 				super.createCommonToolbarControls(form));
 
-		final JButton runButton = new JButton();
-		result.add(runButton);
-		runButton.setToolTipText("Start the execution");
-		runButton.setIcon(new ImageIcon(
-				xy.command.ui.resource.ClassInPackage.class
-						.getResource("Execute.gif")));
-		runButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					CommandLineInstance instance = (CommandLineInstance) getObjectByForm()
-							.get(form);
-					launchCommandLine(instance, form);
-				} catch (Throwable t) {
-					handleDisplayedUIExceptions(runButton, t);
+		Object object = getObjectByForm().get(form);
+		if (object instanceof CommandLineInstance) {
+			final JButton runButton = new JButton();
+			result.add(runButton);
+			runButton.setToolTipText("Start the execution");
+			runButton.setIcon(new ImageIcon(
+					xy.command.ui.resource.ClassInPackage.class
+							.getResource("Execute.gif")));
+			runButton.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					try {
+						CommandLineInstance instance = (CommandLineInstance) getObjectByForm()
+								.get(form);
+						launchCommandLine(instance, form);
+					} catch (Throwable t) {
+						handleDisplayedUIExceptions(runButton, t);
+					}
 				}
-			}
-		});
+			});
+		}
 
 		return result;
 	}
 
 	private static IFieldInfo getFieldInfo(AbstractCommandLinePart part,
 			IPartsAsTypeInfoSource typeInfoSource, int partIndex) {
-		if (part instanceof ArgumentGroup) {
-			return getArgumentGroupFieldInfo((ArgumentGroup) part,
-					typeInfoSource, partIndex);
-		} else if (part instanceof Choice) {
+		if (part instanceof Choice) {
 			return getChoiceFieldInfo((Choice) part, typeInfoSource, partIndex);
 		} else if (part instanceof FileArgument) {
 			return getFileArgumentFieldInfo((FileArgument) part,
@@ -160,6 +160,9 @@ public class CommandLinePlayer extends ReflectionUI {
 					typeInfoSource, partIndex);
 		} else if (part instanceof OptionalPart) {
 			return getOptionalPartFieldInfo((OptionalPart) part,
+					typeInfoSource, partIndex);
+		} else if (part instanceof ArgumentGroup) {
+			return getArgumentGroupFieldInfo((ArgumentGroup) part,
 					typeInfoSource, partIndex);
 		} else {
 			throw new AssertionError();
@@ -519,7 +522,6 @@ public class CommandLinePlayer extends ReflectionUI {
 		};
 	}
 
-
 	protected void launchCommandLine(CommandLineInstance instance, JPanel form) {
 		String cmd = instance.getCommandlineString();
 		String workingDirPath = instance.getModel().executionDir;
@@ -527,6 +529,7 @@ public class CommandLinePlayer extends ReflectionUI {
 				instance.getModel().executionDir) : null;
 		CommandMonitoringDialog cmdDialog = new CommandMonitoringDialog(
 				SwingUtilities.getWindowAncestor(form), cmd, workingDir);
+		cmdDialog.setLocationRelativeTo(null);
 		cmdDialog.setVisible(true);
 	}
 
@@ -710,7 +713,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		private CommandLinePlayer player;
 		private ArgumentGroup model;
-		
+
 		public ArgumentGroupAsTypeInfoSource(CommandLinePlayer player,
 				ArgumentGroup model) {
 			this.player = player;
@@ -849,8 +852,32 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		@Override
 		public ITypeInfo getItemType() {
-			return player.getTypeInfo(player.getTypeInfoSource(group
-					.createInstance()));
+			return new PartsAsTypeInfo(player,
+					new ArgumentGroupAsTypeInfoSource(player, group)) {
+
+				@Override
+				public List<IMethodInfo> getConstructors() {
+					return Collections
+							.<IMethodInfo> singletonList(new AbstractConstructorMethodInfo(
+									ArgumentGroupOccurrenceListTypeInfo.this) {
+
+								@Override
+								public Object invoke(Object object,
+										Map<String, Object> valueByParameterName) {
+									ArgumentGroupInstance instance = group
+											.createInstance();
+									instance.addOccurrence();
+									return instance;
+								}
+
+								@Override
+								public List<IParameterInfo> getParameters() {
+									return Collections.emptyList();
+								}
+							});
+				}
+
+			};
 		}
 
 		@Override

@@ -10,11 +10,12 @@ import xy.command.model.ArgumentGroup.Cardinality;
 public class ArgumentGroupInstance extends AbstractCommandLinePartInstance {
 
 	public List<List<AbstractCommandLinePartInstance>> multiPartInstances;
+	
 	public ArgumentGroupInstance(ArgumentGroup model) {
 		super(model);
 		multiPartInstances = new ArrayList<List<AbstractCommandLinePartInstance>>();
 		if (model.cardinality == Cardinality.ONE) {
-			multiPartInstances.add(newPartInstances());
+			addOccurrence();
 		}
 	}
 	
@@ -26,12 +27,13 @@ public class ArgumentGroupInstance extends AbstractCommandLinePartInstance {
 
 
 
-	protected List<AbstractCommandLinePartInstance> newPartInstances() {
-		List<AbstractCommandLinePartInstance> result = new ArrayList<AbstractCommandLinePartInstance>();
+	public List<AbstractCommandLinePartInstance> addOccurrence() {
+		List<AbstractCommandLinePartInstance> occurrence = new ArrayList<AbstractCommandLinePartInstance>();
 		for (AbstractCommandLinePart part : getModel().parts) {
-			result.add(part.createInstance());
+			occurrence.add(part.createInstance());
 		}
-		return result;
+		multiPartInstances.add(occurrence);
+		return occurrence;
 	}
 
 	@Override

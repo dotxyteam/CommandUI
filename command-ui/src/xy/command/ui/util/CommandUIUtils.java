@@ -66,10 +66,10 @@ public class CommandUIUtils {
 		result.setBorder(BorderFactory.createTitledBorder(title));
 		return result;
 	}
-	
-	
+
 	public static int runCommand(final String command, boolean wait,
-			final OutputStream outReceiver, final OutputStream errReceiver, File workingDir) {
+			final OutputStream outReceiver, final OutputStream errReceiver,
+			File workingDir) {
 		final Process process;
 		try {
 			process = Runtime.getRuntime().exec(command, null, workingDir);
@@ -110,6 +110,7 @@ public class CommandUIUtils {
 				} catch (Exception e) {
 					throw new AssertionError(e);
 				}
+				CommandUIUtils.sleep(1000);
 				for (Thread thread : new Thread[] { outputRedirector,
 						errorRedirector }) {
 					if (thread.isAlive()) {
@@ -210,15 +211,23 @@ public class CommandUIUtils {
 		Thread thread = new Thread("Stream Redirector (" + reason + ")") {
 			public void run() {
 				try {
+					boolean unstable = false;
 					while (true) {
 						if (src.available() > 0) {
 							int b = src.read();
 							if (b == -1) {
 								break;
 							}
-							dst.write(b);
+							try {
+								dst.write(b);
+							} catch (Throwable t) {
+								if (!unstable ) {
+									t.printStackTrace();
+									unstable = true;
+								}
+							}
 						} else {
-							if (isInterrupted()) {
+							if (unstable || isInterrupted()) {
 								if (src.available() == 0) {
 									break;
 								}
@@ -242,11 +251,14 @@ public class CommandUIUtils {
 
 	public static String formatArgumentList(List<String> argList) {
 		StringBuilder result = new StringBuilder();
-		for (String arg : argList) {
-			result.append(" " + arg);
+		for (int i = 0; i < argList.size(); i++) {
+			String arg = argList.get(i);
+			if (i > 0) {
+				result.append(" ");
+			}
+			result.append(arg);
 		}
 		return result.toString();
 	}
-
 
 }
