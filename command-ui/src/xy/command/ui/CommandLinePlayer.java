@@ -41,6 +41,7 @@ import xy.reflect.ui.control.ListControl;
 import xy.reflect.ui.control.PolymorphicEmbeddedForm;
 import xy.reflect.ui.info.IInfoCollectionSettings;
 import xy.reflect.ui.info.field.IFieldInfo;
+import xy.reflect.ui.info.field.InfoCategory;
 import xy.reflect.ui.info.method.AbstractConstructorMethodInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.parameter.IParameterInfo;
@@ -56,7 +57,8 @@ import xy.reflect.ui.util.ReflectionUIUtils;
 public class CommandLinePlayer extends ReflectionUI {
 
 	protected static Map<AbstractCommandLinePart, ArgumentPage> pageByPart = new WeakHashMap<AbstractCommandLinePart, ArgumentPage>();
-
+	protected static Map<ArgumentPage, CommandLine> commandLineByPage = new WeakHashMap<ArgumentPage, CommandLine>();
+	
 	public static void main(String[] args) {
 		CommandLine commandLine = new CommandLine();
 		commandLine.load(new File("example.cml"));
@@ -71,10 +73,15 @@ public class CommandLinePlayer extends ReflectionUI {
 		if (object instanceof CommandLineInstance) {
 			CommandLineInstance instance = (CommandLineInstance) object;
 			for (ArgumentPage page : instance.getModel().pages) {
+				setPageCommandLine(page, instance.getModel());
 				setPartsPage(page.parts, page);
 			}
 		}
 		return super.fillForm(object, form, settings);
+	}
+
+	private void setPageCommandLine(ArgumentPage page, CommandLine commandLine) {
+		commandLineByPage.put(page, commandLine);
 	}
 
 	private void setPartsPage(List<AbstractCommandLinePart> parts,
@@ -223,10 +230,17 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
-			public String getCategoryCaption() {
-				return pageByPart.get(part).title;
+			public InfoCategory getCategory() {
+				return getPartCategory(part);
 			}
 		};
+	}
+
+	protected static InfoCategory getPartCategory(AbstractCommandLinePart part) {
+		ArgumentPage page = pageByPart.get(part);
+		CommandLine cmdLine = commandLineByPage.get(page);
+		int pageIndex = cmdLine.pages.indexOf(page);
+		return new InfoCategory(page.title, pageIndex);
 	}
 
 	private static IFieldInfo getInputArgumentFieldInfo(
@@ -275,8 +289,8 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
-			public String getCategoryCaption() {
-				return pageByPart.get(part).title;
+			public InfoCategory getCategory() {
+				return getPartCategory(part);
 			}
 		};
 	}
@@ -341,8 +355,8 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
-			public String getCategoryCaption() {
-				return pageByPart.get(part).title;
+			public InfoCategory getCategory() {
+				return getPartCategory(part);
 			}
 		};
 	}
@@ -399,8 +413,8 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
-			public String getCategoryCaption() {
-				return pageByPart.get(part).title;
+			public InfoCategory getCategory() {
+				return getPartCategory(part);
 			}
 
 			@Override
@@ -516,8 +530,8 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
-			public String getCategoryCaption() {
-				return pageByPart.get(part).title;
+			public InfoCategory getCategory() {
+				return getPartCategory(part);
 			}
 		};
 	}
