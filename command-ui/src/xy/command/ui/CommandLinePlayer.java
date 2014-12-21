@@ -68,7 +68,7 @@ public class CommandLinePlayer extends ReflectionUI {
 	}
 
 	@Override
-	public int fillForm(Object object, JPanel form,
+	public void fillForm(Object object, JPanel form,
 			IInfoCollectionSettings settings) {
 		if (object instanceof CommandLineInstance) {
 			CommandLineInstance instance = (CommandLineInstance) object;
@@ -77,7 +77,6 @@ public class CommandLinePlayer extends ReflectionUI {
 				setPartsPage(page.parts, page);
 			}
 		}
-		return super.fillForm(object, form, settings);
 	}
 
 	private void setPageCommandLine(ArgumentPage page, CommandLine commandLine) {
