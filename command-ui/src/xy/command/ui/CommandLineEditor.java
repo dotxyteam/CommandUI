@@ -25,14 +25,15 @@ import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.type.DefaultListStructuralInfo;
 import xy.reflect.ui.info.type.IListTypeInfo;
+import xy.reflect.ui.info.type.IListTypeInfo.IItemPosition;
+import xy.reflect.ui.info.type.IListTypeInfo.IListStructuralInfo;
 import xy.reflect.ui.info.type.IMapEntryTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.ITypeInfoSource;
 import xy.reflect.ui.info.type.JavaTypeInfoSource;
-import xy.reflect.ui.info.type.ListTypeInfoProxy;
-import xy.reflect.ui.info.type.SimpleTypeInfoProxy;
 import xy.reflect.ui.info.type.StandardCollectionTypeInfo;
 import xy.reflect.ui.info.type.StandardMapListTypeInfo;
+import xy.reflect.ui.info.type.TypeInfoProxy;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
 ;
@@ -85,238 +86,199 @@ public class CommandLineEditor extends ReflectionUI {
 
 	@Override
 	public ITypeInfo getTypeInfo(ITypeInfoSource typeSource) {
-		if (typeSource instanceof JavaTypeInfoSource) {
-			final JavaTypeInfoSource classTypeSource = (JavaTypeInfoSource) typeSource;
-			if (classTypeSource.getJavaType().equals(
-					AbstractCommandLinePart.class)) {
+		return new TypeInfoProxy() {
 
-				return new SimpleTypeInfoProxy(super.getTypeInfo(typeSource)) {
-
-					@Override
-					public String getCaption() {
-						return "Command Line part";
-					}
-
-					@Override
-					public List<ITypeInfo> getPolymorphicInstanceTypes() {
-						return Arrays
-								.asList(getTypeInfo(new JavaTypeInfoSource(
-										InputArgument.class)),
-										getTypeInfo(new JavaTypeInfoSource(
-												OptionalPart.class)),
-										getTypeInfo(new JavaTypeInfoSource(
-												Choice.class)),
-										getTypeInfo(new JavaTypeInfoSource(
-												FixedArgument.class)),
-										getTypeInfo(new JavaTypeInfoSource(
-												FileArgument.class)),
-										getTypeInfo(new JavaTypeInfoSource(
-												DirectoryArgument.class)),
-										getTypeInfo(new JavaTypeInfoSource(
-												ArgumentGroup.class)));
-					}
-
-				};
-
-			} else if (ReflectionUIUtils
-					.equalsOrBothNull(classTypeSource.getJavaType()
-							.getPackage(), CommandLine.class.getPackage())
-					&& (classTypeSource.getJavaType().getEnclosingClass() == null)) {
-
-				return new SimpleTypeInfoProxy(super.getTypeInfo(typeSource)) {
-
-					@Override
-					public List<IMethodInfo> getMethods() {
-						List<IMethodInfo> result = new ArrayList<IMethodInfo>(
-								super.getMethods());
-						result.remove(ReflectionUIUtils.findInfoByName(result,
-								"createInstance"));
-						return result;
-					}
-
-					@Override
-					public List<IFieldInfo> getFields() {
-						if (classTypeSource.getJavaType().equals(Choice.class)) {
-							List<IFieldInfo> result = new ArrayList<IFieldInfo>(
-									super.getFields());
-							IFieldInfo optionsField = ReflectionUIUtils
-									.findInfoByName(result, "options");
-							result.remove(optionsField);
-							result.add(new FieldInfoProxy(optionsField) {
-
-								@Override
-								public ITypeInfo getType() {
-									return new StandardMapListTypeInfo(
-											CommandLineEditor.this,
-											HashMap.class, String.class,
-											List.class) {
-
-										@Override
-										public StandardMapEntryTypeInfo getItemType() {
-											return new StandardMapEntryTypeInfo() {
-
-												@Override
-												public IFieldInfo getKeyField() {
-													return new FieldInfoProxy(
-															super.getKeyField()) {
-
-														@Override
-														public String getCaption() {
-															return "Title";
-														}
-
-													};
-												}
-
-												@Override
-												public IFieldInfo getValueField() {
-													return new FieldInfoProxy(
-															super.getValueField()) {
-
-														@Override
-														public Object getValue(
-																Object object) {
-															ArgumentGroup group = (ArgumentGroup) super
-																	.getValue(object);
-															if (group == null) {
-																return null;
-															}
-															return group.parts;
-														}
-
-														@Override
-														public void setValue(
-																Object object,
-																Object value) {
-															@SuppressWarnings("unchecked")
-															List<AbstractCommandLinePart> parts = (List<AbstractCommandLinePart>) value;
-															ArgumentGroup group;
-															if (parts == null) {
-																group = null;
-															}
-															group = new ArgumentGroup();
-															group.parts = parts;
-															super.setValue(
-																	object,
-																	group);
-														}
-
-														@Override
-														public ITypeInfo getType() {
-															return new StandardCollectionTypeInfo(
-																	CommandLineEditor.this,
-																	List.class,
-																	AbstractCommandLinePart.class);
-														}
-
-													};
-												}
-
-											};
-										}
-
-									};
-								}
-
-							});
-							return result;
-						} else if (classTypeSource.getJavaType().equals(
-								CommandLine.class)) {
-							List<IFieldInfo> result = new ArrayList<IFieldInfo>(
-									super.getFields());
-							IFieldInfo pagesField = ReflectionUIUtils
-									.findInfoByName(result, "pages");
-							result.remove(pagesField);
-							result.add(new FieldInfoProxy(pagesField) {
-
-								@Override
-								public ITypeInfo getType() {
-									return new ListTypeInfoProxy(
-											(IListTypeInfo) super.getType()) {
-
-										@Override
-										public IListStructuralInfo getStructuralInfo() {
-											return new DefaultListStructuralInfo(
-													CommandLineEditor.this,
-													getItemType()) {
-
-												@Override
-												protected boolean isTabular() {
-													return false;
-												}
-
-												@Override
-												public int getColumnCount() {
-													return 2;
-												}
-
-												@Override
-												public String getColumnCaption(
-														int columnIndex) {
-													if (columnIndex == 0) {
-														return "Type";
-													} else if (columnIndex == 1) {
-														return "Title";
-													} else {
-														throw new AssertionError();
-													}
-												}
-
-												@Override
-												public String getCellValue(
-														IItemPosition itemPosition,
-														int columnIndex) {
-													Object item = itemPosition
-															.getItem();
-													ITypeInfo type = getTypeInfo(getTypeInfoSource(item));
-													if (columnIndex == 0) {
-														if (type instanceof IMapEntryTypeInfo) {
-															Object key = ((IMapEntryTypeInfo) type)
-																	.getKeyField()
-																	.getValue(
-																			item);
-															return (key == null) ? ""
-																	: CommandLineEditor.this.toString(key); 
-														} else {
-															return type
-																	.getCaption();
-														}
-													} else if (columnIndex == 1) {
-														IFieldInfo titleField = ReflectionUIUtils
-																.findInfoByName(
-																		type.getFields(),
-																		"title");
-														if (titleField == null) {
-															return "";
-														} else {
-															return (String) titleField
-																	.getValue(item);
-														}
-													} else {
-														throw new AssertionError();
-													}
-												}
-
-											};
-										}
-
-									};
-								}
-
-							});
-							return result;
-						} else {
-							return super.getFields();
-						}
-					}
-
-				};
-
-			} else {
-				return super.getTypeInfo(typeSource);
+			@Override
+			protected String getTypeCaption(ITypeInfo type) {
+				if (type.getName().equals(
+						AbstractCommandLinePart.class.getName())) {
+					return "Command Line part";
+				} else {
+					return super.getTypeCaption(type);
+				}
 			}
-		} else {
-			return super.getTypeInfo(typeSource);
-		}
+
+			@Override
+			protected List<ITypeInfo> getTypePolymorphicInstanceTypes(
+					ITypeInfo type) {
+				if (type.getName().equals(
+						AbstractCommandLinePart.class.getName())) {
+					return Arrays.asList(getTypeInfo(new JavaTypeInfoSource(
+							InputArgument.class)),
+							getTypeInfo(new JavaTypeInfoSource(
+									OptionalPart.class)),
+							getTypeInfo(new JavaTypeInfoSource(Choice.class)),
+							getTypeInfo(new JavaTypeInfoSource(
+									FixedArgument.class)),
+							getTypeInfo(new JavaTypeInfoSource(
+									FileArgument.class)),
+							getTypeInfo(new JavaTypeInfoSource(
+									DirectoryArgument.class)),
+							getTypeInfo(new JavaTypeInfoSource(
+									ArgumentGroup.class)));
+				} else {
+					return super.getTypePolymorphicInstanceTypes(type);
+				}
+			}
+
+			@Override
+			protected List<IMethodInfo> getTypeMethods(ITypeInfo type) {
+				if (type.getName().startsWith(
+						CommandLine.class.getPackage().getName())
+						&& !type.getName().contains("$")) {
+					List<IMethodInfo> result = new ArrayList<IMethodInfo>(
+							super.getTypeMethods(type));
+					result.remove(ReflectionUIUtils.findInfoByName(result,
+							"createInstance"));
+					return result;
+				} else {
+					return super.getTypeMethods(type);
+				}
+			}
+
+			@Override
+			protected ITypeInfo getFieldType(IFieldInfo field,
+					ITypeInfo containingType) {
+				if (containingType.getName().equals(Choice.class.getName())
+						&& field.getName().equals("options")) {
+					return new StandardMapListTypeInfo(CommandLineEditor.this,
+							HashMap.class, String.class, List.class) {
+
+						@Override
+						public StandardMapEntryTypeInfo getItemType() {
+							return new StandardMapEntryTypeInfo() {
+
+								@Override
+								public IFieldInfo getKeyField() {
+									return new FieldInfoProxy(
+											super.getKeyField()) {
+
+										@Override
+										public String getCaption() {
+											return "Title";
+										}
+
+									};
+								}
+
+								@Override
+								public IFieldInfo getValueField() {
+									return new FieldInfoProxy(
+											super.getValueField()) {
+
+										@Override
+										public Object getValue(Object object) {
+											ArgumentGroup group = (ArgumentGroup) super
+													.getValue(object);
+											if (group == null) {
+												return null;
+											}
+											return group.parts;
+										}
+
+										@Override
+										public void setValue(Object object,
+												Object value) {
+											@SuppressWarnings("unchecked")
+											List<AbstractCommandLinePart> parts = (List<AbstractCommandLinePart>) value;
+											ArgumentGroup group;
+											if (parts == null) {
+												group = null;
+											}
+											group = new ArgumentGroup();
+											group.parts = parts;
+											super.setValue(object, group);
+										}
+
+										@Override
+										public ITypeInfo getType() {
+											return new StandardCollectionTypeInfo(
+													CommandLineEditor.this,
+													List.class,
+													AbstractCommandLinePart.class);
+										}
+
+									};
+								}
+
+							};
+						}
+
+					};
+				} else if (containingType.getName().equals(
+						CommandLine.class.getName())
+						&& field.getName().equals("pages")) {
+					return new TypeInfoProxy() {
+
+						@Override
+						protected IListStructuralInfo getListTypeStructuralInfo(
+								IListTypeInfo type) {
+							return new DefaultListStructuralInfo(
+									CommandLineEditor.this, type.getItemType()) {
+
+								@Override
+								protected boolean isTabular() {
+									return false;
+								}
+
+								@Override
+								public int getColumnCount() {
+									return 2;
+								}
+
+								@Override
+								public String getColumnCaption(int columnIndex) {
+									if (columnIndex == 0) {
+										return "Type";
+									} else if (columnIndex == 1) {
+										return "Title";
+									} else {
+										throw new AssertionError();
+									}
+								}
+
+								@Override
+								public String getCellValue(
+										IItemPosition itemPosition,
+										int columnIndex) {
+									Object item = itemPosition.getItem();
+									ITypeInfo type = getTypeInfo(getTypeInfoSource(item));
+									if (columnIndex == 0) {
+										if (type instanceof IMapEntryTypeInfo) {
+											Object key = ((IMapEntryTypeInfo) type)
+													.getKeyField().getValue(
+															item);
+											return (key == null) ? ""
+													: CommandLineEditor.this
+															.toString(key);
+										} else {
+											return type.getCaption();
+										}
+									} else if (columnIndex == 1) {
+										IFieldInfo titleField = ReflectionUIUtils
+												.findInfoByName(
+														type.getFields(),
+														"title");
+										if (titleField == null) {
+											return "";
+										} else {
+											return (String) titleField
+													.getValue(item);
+										}
+									} else {
+										throw new AssertionError();
+									}
+								}
+
+							};
+						}
+
+					}.get((IListTypeInfo) field.getType());
+				} else {
+					return super.getFieldType(field, containingType);
+				}
+			}
+
+		}.get(super.getTypeInfo(typeSource));
 	}
 }
