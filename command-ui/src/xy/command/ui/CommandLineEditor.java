@@ -20,7 +20,7 @@ import xy.command.model.FixedArgument;
 import xy.command.model.InputArgument;
 import xy.command.model.OptionalPart;
 import xy.reflect.ui.ReflectionUI;
-import xy.reflect.ui.info.field.FieldInfoProxy;
+import xy.reflect.ui.info.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.type.DefaultListStructuralInfo;
@@ -31,7 +31,7 @@ import xy.reflect.ui.info.type.ITypeInfoSource;
 import xy.reflect.ui.info.type.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.ListTypeInfoProxy;
 import xy.reflect.ui.info.type.SimpleTypeInfoProxy;
-import xy.reflect.ui.info.type.StandardListTypeInfo;
+import xy.reflect.ui.info.type.StandardCollectionTypeInfo;
 import xy.reflect.ui.info.type.StandardMapListTypeInfo;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
@@ -71,7 +71,7 @@ public class CommandLineEditor extends ReflectionUI {
 	}
 
 	@Override
-	public String toInfoString(Object object) {
+	public String toString(Object object) {
 		if (object instanceof ArgumentPage) {
 			String title = ((ArgumentPage) object).title;
 			return ((title == null) ? "" : title);
@@ -79,7 +79,7 @@ public class CommandLineEditor extends ReflectionUI {
 			String title = ((AbstractCommandLinePart) object).title;
 			return ((title == null) ? "" : title);
 		} else {
-			return super.toInfoString(object);
+			return super.toString(object);
 		}
 	}
 
@@ -203,7 +203,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 														@Override
 														public ITypeInfo getType() {
-															return new StandardListTypeInfo(
+															return new StandardCollectionTypeInfo(
 																	CommandLineEditor.this,
 																	List.class,
 																	AbstractCommandLinePart.class);
@@ -276,7 +276,7 @@ public class CommandLineEditor extends ReflectionUI {
 																	.getValue(
 																			item);
 															return (key == null) ? ""
-																	: toInfoString(key);
+																	: CommandLineEditor.this.toString(key); 
 														} else {
 															return type
 																	.getCaption();

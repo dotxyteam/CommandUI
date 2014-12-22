@@ -4,7 +4,7 @@
   <executionDir>c:\path</executionDir>
   <pages>
     <xy.command.model.ArgumentPage>
-      <title>1</title>
+      <title>intro</title>
       <parts>
         <xy.command.model.InputArgument>
           <title>the input</title>
@@ -40,7 +40,7 @@
       </parts>
     </xy.command.model.ArgumentPage>
     <xy.command.model.ArgumentPage>
-      <title>2</title>
+      <title>advanced</title>
       <parts>
         <xy.command.model.ArgumentGroup>
           <title>the group 1 to n</title>
