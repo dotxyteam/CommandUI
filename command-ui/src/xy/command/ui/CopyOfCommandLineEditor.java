@@ -100,7 +100,7 @@ public class CopyOfCommandLineEditor extends ReflectionUI {
 					}
 
 					@Override
-					public List<ITypeInfo> getTypePolymorphicInstanceTypes(ITypeInfo type) {
+					public List<ITypeInfo> getTypePolymorphicInstanceSubTypes(ITypeInfo type) {
 						return Arrays
 								.asList(getTypeInfo(new JavaTypeInfoSource(
 										InputArgument.class)),

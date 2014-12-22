@@ -24,6 +24,7 @@ import xy.reflect.ui.info.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.type.DefaultListStructuralInfo;
+import xy.reflect.ui.info.type.HiddenNullableFacetsTypeInfoProxy;
 import xy.reflect.ui.info.type.IListTypeInfo;
 import xy.reflect.ui.info.type.IListTypeInfo.IItemPosition;
 import xy.reflect.ui.info.type.IListTypeInfo.IListStructuralInfo;
@@ -86,7 +87,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 	@Override
 	public ITypeInfo getTypeInfo(ITypeInfoSource typeSource) {
-		return new TypeInfoProxy() {
+		return new HiddenNullableFacetsTypeInfoProxy(CommandLineEditor.this) {
 
 			@Override
 			protected String getTypeCaption(ITypeInfo type) {
@@ -99,7 +100,7 @@ public class CommandLineEditor extends ReflectionUI {
 			}
 
 			@Override
-			protected List<ITypeInfo> getTypePolymorphicInstanceTypes(
+			protected List<ITypeInfo> getTypePolymorphicInstanceSubTypes(
 					ITypeInfo type) {
 				if (type.getName().equals(
 						AbstractCommandLinePart.class.getName())) {
@@ -117,7 +118,7 @@ public class CommandLineEditor extends ReflectionUI {
 							getTypeInfo(new JavaTypeInfoSource(
 									ArgumentGroup.class)));
 				} else {
-					return super.getTypePolymorphicInstanceTypes(type);
+					return super.getTypePolymorphicInstanceSubTypes(type);
 				}
 			}
 

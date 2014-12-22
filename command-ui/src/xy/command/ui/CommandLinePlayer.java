@@ -429,7 +429,7 @@ public class CommandLinePlayer extends ReflectionUI {
 					}
 
 					@Override
-					public List<ITypeInfo> getPolymorphicInstanceTypes() {
+					public List<ITypeInfo> getPolymorphicInstanceSubTypes() {
 						List<ITypeInfo> result = new ArrayList<ITypeInfo>();
 						for (final Map.Entry<String, ArgumentGroup> optionEntry : part.options
 								.entrySet()) {
