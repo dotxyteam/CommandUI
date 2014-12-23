@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -19,13 +18,13 @@ import javax.swing.SwingUtilities;
 
 import xy.command.model.AbstractCommandLinePart;
 import xy.command.model.ArgumentGroup;
-import xy.command.model.ArgumentGroup.Cardinality;
 import xy.command.model.ArgumentPage;
 import xy.command.model.Choice;
 import xy.command.model.CommandLine;
 import xy.command.model.FileArgument;
 import xy.command.model.FixedArgument;
 import xy.command.model.InputArgument;
+import xy.command.model.MultiplePart;
 import xy.command.model.OptionalPart;
 import xy.command.model.instance.AbstractCommandLinePartInstance;
 import xy.command.model.instance.ArgumentGroupInstance;
@@ -33,6 +32,7 @@ import xy.command.model.instance.ChoiceInstance;
 import xy.command.model.instance.CommandLineInstance;
 import xy.command.model.instance.FileArgumentInstance;
 import xy.command.model.instance.InputArgumentInstance;
+import xy.command.model.instance.MultiplePartInstance;
 import xy.command.model.instance.OptionalPartInstance;
 import xy.command.ui.component.CommandMonitoringDialog;
 import xy.reflect.ui.ReflectionUI;
@@ -58,7 +58,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 	protected static Map<AbstractCommandLinePart, ArgumentPage> pageByPart = new WeakHashMap<AbstractCommandLinePart, ArgumentPage>();
 	protected static Map<ArgumentPage, CommandLine> commandLineByPage = new WeakHashMap<ArgumentPage, CommandLine>();
-	
+
 	public static void main(String[] args) {
 		CommandLine commandLine = new CommandLine();
 		commandLine.load(new File("example.cml"));
@@ -167,6 +167,9 @@ public class CommandLinePlayer extends ReflectionUI {
 					typeInfoSource, partIndex);
 		} else if (part instanceof OptionalPart) {
 			return getOptionalPartFieldInfo((OptionalPart) part,
+					typeInfoSource, partIndex);
+		} else if (part instanceof MultiplePart) {
+			return getMultiplePartFieldInfo((MultiplePart) part,
 					typeInfoSource, partIndex);
 		} else if (part instanceof ArgumentGroup) {
 			return getArgumentGroupFieldInfo((ArgumentGroup) part,
@@ -519,16 +522,64 @@ public class CommandLinePlayer extends ReflectionUI {
 
 			@Override
 			public ITypeInfo getType() {
-				if (part.cardinality == Cardinality.ONE) {
-					return typeInfoSource.getPlayer().getTypeInfo(
-							typeInfoSource.getPlayer().getTypeInfoSource(
-									part.createInstance()));
-				} else {
-					return new ArgumentGroupOccurrenceListTypeInfo(
-							typeInfoSource.getPlayer(), part);
-				}
+				CommandLinePlayer player = typeInfoSource.getPlayer();
+				return new PartsAsTypeInfo(player,
+						new ArgumentGroupAsTypeInfoSource(player, part));
 			}
 
+			@Override
+			public InfoCategory getCategory() {
+				return getPartCategory(part);
+			}
+		};
+	}
+	
+	
+	private static IFieldInfo getMultiplePartFieldInfo(
+			final MultiplePart part,
+			final IPartsAsTypeInfoSource typeInfoSource, final int partIndex) {
+		return new IFieldInfo() {
+	
+			@Override
+			public String getName() {
+				return part.title;
+			}
+	
+			@Override
+			public String getCaption() {
+				return part.title;
+			}
+	
+			@Override
+			public void setValue(Object object, Object value) {
+				ArgumentGroupInstance instance = (ArgumentGroupInstance) value;
+				typeInfoSource.getFieldValueSources(object).set(partIndex,
+						instance);
+			}
+	
+			@Override
+			public boolean isReadOnly() {
+				return false;
+			}
+	
+			@Override
+			public boolean isNullable() {
+				return false;
+			}
+	
+			@Override
+			public Object getValue(Object object) {
+				ArgumentGroupInstance instance = (ArgumentGroupInstance) typeInfoSource
+						.getFieldValueSources(object).get(partIndex);
+				return instance;
+			}
+	
+			@Override
+			public ITypeInfo getType() {
+				return new MultiplePartListTypeInfo(
+						typeInfoSource.getPlayer(), part);
+			}
+	
 			@Override
 			public InfoCategory getCategory() {
 				return getPartCategory(part);
@@ -546,6 +597,8 @@ public class CommandLinePlayer extends ReflectionUI {
 		cmdDialog.setLocationRelativeTo(null);
 		cmdDialog.setVisible(true);
 	}
+
+
 
 	public static interface IPartsAsTypeInfoSource extends ITypeInfoSource {
 
@@ -747,15 +800,14 @@ public class CommandLinePlayer extends ReflectionUI {
 		public List<AbstractCommandLinePartInstance> getFieldValueSources(
 				Object object) {
 			final ArgumentGroupInstance instance = (ArgumentGroupInstance) object;
-			return instance.multiPartInstances.get(0);
+			return instance.partInstances;
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override
 		public void setFieldValueSources(Object object,
 				List<AbstractCommandLinePartInstance> data) {
 			final ArgumentGroupInstance instance = (ArgumentGroupInstance) object;
-			instance.multiPartInstances = Arrays.asList(data);
+			instance.partInstances = data;
 		}
 
 		@Override
@@ -779,17 +831,17 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 	}
 
-	public static class ArgumentGroupOccurrenceListTypeInfo extends
-			DefaultTypeInfo implements IListTypeInfo {
+	public static class MultiplePartListTypeInfo extends DefaultTypeInfo
+			implements IListTypeInfo {
 
-		protected ArgumentGroup group;
+		protected MultiplePart multiplePart;
 		protected CommandLinePlayer player;
 
-		public ArgumentGroupOccurrenceListTypeInfo(CommandLinePlayer player,
-				ArgumentGroup group) {
+		public MultiplePartListTypeInfo(CommandLinePlayer player,
+				MultiplePart multiplePart) {
 			super(player, ArgumentGroupInstance.class);
 			this.player = player;
-			this.group = group;
+			this.multiplePart = multiplePart;
 		}
 
 		@Override
@@ -835,13 +887,12 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		@Override
 		public List<?> toStandardList(Object value) {
-			ArgumentGroupInstance instance = (ArgumentGroupInstance) value;
+			MultiplePartInstance instance = (MultiplePartInstance) value;
 			List<ArgumentGroupInstance> result = new ArrayList<ArgumentGroupInstance>();
 			for (List<AbstractCommandLinePartInstance> partInstances : instance.multiPartInstances) {
 				ArgumentGroupInstance occurence = new ArgumentGroupInstance(
-						group);
-				occurence.multiPartInstances = Collections
-						.singletonList(partInstances);
+						multiplePart);
+				occurence.partInstances = partInstances;
 				result.add(occurence);
 			}
 			return result;
@@ -852,9 +903,10 @@ public class CommandLinePlayer extends ReflectionUI {
 			List<List<AbstractCommandLinePartInstance>> multiPartInstances = new ArrayList<List<AbstractCommandLinePartInstance>>();
 			for (Object item : list) {
 				ArgumentGroupInstance occurence = (ArgumentGroupInstance) item;
-				multiPartInstances.add(occurence.multiPartInstances.get(0));
+				multiPartInstances.add(occurence.partInstances);
 			}
-			ArgumentGroupInstance instance = new ArgumentGroupInstance(group);
+			MultiplePartInstance instance = new MultiplePartInstance(
+					multiplePart);
 			instance.multiPartInstances = multiPartInstances;
 			return instance;
 		}
@@ -867,20 +919,19 @@ public class CommandLinePlayer extends ReflectionUI {
 		@Override
 		public ITypeInfo getItemType() {
 			return new PartsAsTypeInfo(player,
-					new ArgumentGroupAsTypeInfoSource(player, group)) {
+					new ArgumentGroupAsTypeInfoSource(player, multiplePart)) {
 
 				@Override
 				public List<IMethodInfo> getConstructors() {
 					return Collections
 							.<IMethodInfo> singletonList(new AbstractConstructorMethodInfo(
-									ArgumentGroupOccurrenceListTypeInfo.this) {
+									MultiplePartListTypeInfo.this) {
 
 								@Override
 								public Object invoke(Object object,
 										Map<String, Object> valueByParameterName) {
-									ArgumentGroupInstance instance = group
-											.createInstance();
-									instance.addOccurrence();
+									ArgumentGroupInstance instance = new ArgumentGroupInstance(
+											multiplePart);
 									return instance;
 								}
 

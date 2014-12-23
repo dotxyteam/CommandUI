@@ -16,7 +16,6 @@
         <xy.command.model.OptionalPart>
           <title>the optional group</title>
           <layout>COLUMN</layout>
-          <cardinality>ONE</cardinality>
           <parts>
             <xy.command.model.FileArgument>
               <title>the 2nd file</title>
@@ -28,9 +27,8 @@
           <title>the dir arg</title>
         </xy.command.model.DirectoryArgument>
         <xy.command.model.ArgumentGroup>
-          <title>the group 1 to 1</title>
+          <title>the group</title>
           <layout>COLUMN</layout>
-          <cardinality>ONE</cardinality>
           <parts>
             <xy.command.model.FileArgument>
               <title>the file</title>
@@ -42,16 +40,15 @@
     <xy.command.model.ArgumentPage>
       <title>advanced</title>
       <parts>
-        <xy.command.model.ArgumentGroup>
+        <xy.command.model.MultiplePart>
           <title>the group 1 to n</title>
           <layout>COLUMN</layout>
-          <cardinality>MANY</cardinality>
           <parts>
             <xy.command.model.FileArgument>
               <title>the file</title>
             </xy.command.model.FileArgument>
           </parts>
-        </xy.command.model.ArgumentGroup>
+        </xy.command.model.MultiplePart>
         <xy.command.model.Choice>
           <title>the choice</title>
           <options>
@@ -59,7 +56,6 @@
               <string>-a</string>
               <xy.command.model.ArgumentGroup>
                 <layout>COLUMN</layout>
-                <cardinality>ONE</cardinality>
                 <parts>
                   <xy.command.model.InputArgument>
                     <title>value of a</title>
@@ -71,7 +67,6 @@
               <string>-b</string>
               <xy.command.model.ArgumentGroup>
                 <layout>COLUMN</layout>
-                <cardinality>ONE</cardinality>
                 <parts>
                   <xy.command.model.InputArgument>
                     <title>value of b1</title>

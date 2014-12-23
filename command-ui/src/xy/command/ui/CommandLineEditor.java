@@ -18,6 +18,7 @@ import xy.command.model.DirectoryArgument;
 import xy.command.model.FileArgument;
 import xy.command.model.FixedArgument;
 import xy.command.model.InputArgument;
+import xy.command.model.MultiplePart;
 import xy.command.model.OptionalPart;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.FieldInfoProxy;
@@ -108,6 +109,8 @@ public class CommandLineEditor extends ReflectionUI {
 							InputArgument.class)),
 							getTypeInfo(new JavaTypeInfoSource(
 									OptionalPart.class)),
+							getTypeInfo(new JavaTypeInfoSource(
+									MultiplePart.class)),
 							getTypeInfo(new JavaTypeInfoSource(Choice.class)),
 							getTypeInfo(new JavaTypeInfoSource(
 									FixedArgument.class)),

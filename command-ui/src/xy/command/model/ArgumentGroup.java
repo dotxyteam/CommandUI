@@ -9,15 +9,10 @@ public class ArgumentGroup extends AbstractCommandLinePart {
 
 	protected static final long serialVersionUID = 1L;
 	public Layout layout = Layout.COLUMN;
-	public Cardinality cardinality = Cardinality.ONE;
 	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
 
 	public enum Layout {
 		ROW, COLUMN
-	}
-
-	public enum Cardinality {
-		ONE, MANY
 	}
 
 	@Override
