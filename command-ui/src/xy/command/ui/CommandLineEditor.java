@@ -90,17 +90,17 @@ public class CommandLineEditor extends ReflectionUI {
 		return new HiddenNullableFacetsTypeInfoProxy(CommandLineEditor.this) {
 
 			@Override
-			protected String getTypeCaption(ITypeInfo type) {
+			protected String getCaption(ITypeInfo type) {
 				if (type.getName().equals(
 						AbstractCommandLinePart.class.getName())) {
 					return "Command Line part";
 				} else {
-					return super.getTypeCaption(type);
+					return super.getCaption(type);
 				}
 			}
 
 			@Override
-			protected List<ITypeInfo> getTypePolymorphicInstanceSubTypes(
+			protected List<ITypeInfo> getPolymorphicInstanceSubTypes(
 					ITypeInfo type) {
 				if (type.getName().equals(
 						AbstractCommandLinePart.class.getName())) {
@@ -118,27 +118,27 @@ public class CommandLineEditor extends ReflectionUI {
 							getTypeInfo(new JavaTypeInfoSource(
 									ArgumentGroup.class)));
 				} else {
-					return super.getTypePolymorphicInstanceSubTypes(type);
+					return super.getPolymorphicInstanceSubTypes(type);
 				}
 			}
 
 			@Override
-			protected List<IMethodInfo> getTypeMethods(ITypeInfo type) {
+			protected List<IMethodInfo> getMethods(ITypeInfo type) {
 				if (type.getName().startsWith(
 						CommandLine.class.getPackage().getName())
 						&& !type.getName().contains("$")) {
 					List<IMethodInfo> result = new ArrayList<IMethodInfo>(
-							super.getTypeMethods(type));
+							super.getMethods(type));
 					result.remove(ReflectionUIUtils.findInfoByName(result,
 							"createInstance"));
 					return result;
 				} else {
-					return super.getTypeMethods(type);
+					return super.getMethods(type);
 				}
 			}
 
 			@Override
-			protected ITypeInfo getFieldType(IFieldInfo field,
+			protected ITypeInfo getType(IFieldInfo field,
 					ITypeInfo containingType) {
 				if (containingType.getName().equals(Choice.class.getName())
 						&& field.getName().equals("options")) {
@@ -212,7 +212,7 @@ public class CommandLineEditor extends ReflectionUI {
 					return new TypeInfoProxy() {
 
 						@Override
-						protected IListStructuralInfo getListTypeStructuralInfo(
+						protected IListStructuralInfo getStructuralInfo(
 								IListTypeInfo type) {
 							return new DefaultListStructuralInfo(
 									CommandLineEditor.this, type.getItemType()) {
@@ -276,7 +276,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 					}.get((IListTypeInfo) field.getType());
 				} else {
-					return super.getFieldType(field, containingType);
+					return super.getType(field, containingType);
 				}
 			}
 

@@ -54,7 +54,7 @@ import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.ITypeInfoSource;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
-public class CommandLinePlayer extends ReflectionUI {
+public class CopyOfCommandLinePlayer extends ReflectionUI {
 
 	protected static Map<AbstractCommandLinePart, ArgumentPage> pageByPart = new WeakHashMap<AbstractCommandLinePart, ArgumentPage>();
 	protected static Map<ArgumentPage, CommandLine> commandLineByPage = new WeakHashMap<ArgumentPage, CommandLine>();
@@ -62,7 +62,7 @@ public class CommandLinePlayer extends ReflectionUI {
 	public static void main(String[] args) {
 		CommandLine commandLine = new CommandLine();
 		commandLine.load(new File("example.cml"));
-		CommandLinePlayer player = new CommandLinePlayer();
+		CopyOfCommandLinePlayer player = new CopyOfCommandLinePlayer();
 		player.openObjectFrame(commandLine.createInstance(), commandLine.title,
 				null);
 	}
@@ -77,7 +77,6 @@ public class CommandLinePlayer extends ReflectionUI {
 				setPartsPage(page.parts, page);
 			}
 		}
-		super.fillForm(object, form, settings);
 	}
 
 	private void setPageCommandLine(ArgumentPage page, CommandLine commandLine) {
@@ -435,7 +434,7 @@ public class CommandLinePlayer extends ReflectionUI {
 						for (final Map.Entry<String, ArgumentGroup> optionEntry : part.options
 								.entrySet()) {
 							ArgumentGroup group = optionEntry.getValue();
-							ITypeInfoSource subTypeSource = new CommandLinePlayer.ArgumentGroupAsTypeInfoSource(
+							ITypeInfoSource subTypeSource = new CopyOfCommandLinePlayer.ArgumentGroupAsTypeInfoSource(
 									typeInfoSource.getPlayer(), group);
 							ITypeInfo subType = typeInfoSource.getPlayer()
 									.getTypeInfo(subTypeSource);
@@ -558,7 +557,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		List<AbstractCommandLinePartInstance> getFieldValueSources(Object object);
 
-		CommandLinePlayer getPlayer();
+		CopyOfCommandLinePlayer getPlayer();
 
 		Object instanciate();
 
@@ -567,10 +566,10 @@ public class CommandLinePlayer extends ReflectionUI {
 
 	public static class PartsAsTypeInfo extends DefaultTypeInfo {
 
-		protected CommandLinePlayer player;
+		protected CopyOfCommandLinePlayer player;
 		protected IPartsAsTypeInfoSource typeInfoSource;
 
-		public PartsAsTypeInfo(CommandLinePlayer player,
+		public PartsAsTypeInfo(CopyOfCommandLinePlayer player,
 				IPartsAsTypeInfoSource typeInfoSource) {
 			super(player, IPartsAsTypeInfoSource.class);
 			this.player = player;
@@ -663,9 +662,9 @@ public class CommandLinePlayer extends ReflectionUI {
 	public static class CommandLineAsTypeInfoSource implements
 			IPartsAsTypeInfoSource {
 		private CommandLine model;
-		private CommandLinePlayer player;
+		private CopyOfCommandLinePlayer player;
 
-		public CommandLineAsTypeInfoSource(CommandLinePlayer player,
+		public CommandLineAsTypeInfoSource(CopyOfCommandLinePlayer player,
 				CommandLine model) {
 			this.player = player;
 			this.model = model;
@@ -711,7 +710,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 
 		@Override
-		public CommandLinePlayer getPlayer() {
+		public CopyOfCommandLinePlayer getPlayer() {
 			return player;
 		}
 
@@ -725,10 +724,10 @@ public class CommandLinePlayer extends ReflectionUI {
 	public static class ArgumentGroupAsTypeInfoSource implements
 			IPartsAsTypeInfoSource {
 
-		private CommandLinePlayer player;
+		private CopyOfCommandLinePlayer player;
 		private ArgumentGroup model;
 
-		public ArgumentGroupAsTypeInfoSource(CommandLinePlayer player,
+		public ArgumentGroupAsTypeInfoSource(CopyOfCommandLinePlayer player,
 				ArgumentGroup model) {
 			this.player = player;
 			this.model = model;
@@ -769,7 +768,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 
 		@Override
-		public CommandLinePlayer getPlayer() {
+		public CopyOfCommandLinePlayer getPlayer() {
 			return player;
 		}
 
@@ -783,9 +782,9 @@ public class CommandLinePlayer extends ReflectionUI {
 			DefaultTypeInfo implements IListTypeInfo {
 
 		protected ArgumentGroup group;
-		protected CommandLinePlayer player;
+		protected CopyOfCommandLinePlayer player;
 
-		public ArgumentGroupOccurrenceListTypeInfo(CommandLinePlayer player,
+		public ArgumentGroupOccurrenceListTypeInfo(CopyOfCommandLinePlayer player,
 				ArgumentGroup group) {
 			super(player, ArgumentGroupInstance.class);
 			this.player = player;
