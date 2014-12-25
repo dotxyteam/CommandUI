@@ -1,6 +1,0 @@
-#surefire
-#Thu Dec 25 22:24:21 CET 2014
-user.dir=C\:\\Users\\olitank\\git\\CommandUI\\command-ui
-exec.mainClass=xy.command.ui.CommandLineEditor
-localRepository=C\:\\Users\\olitank\\.m2\\repository
-basedir=C\:\\Users\\olitank\\git\\CommandUI\\command-ui
