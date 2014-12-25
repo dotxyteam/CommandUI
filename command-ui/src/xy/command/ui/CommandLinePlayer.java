@@ -143,7 +143,7 @@ public class CommandLinePlayer extends ReflectionUI {
 								.get(form);
 						launchCommandLine(instance, form);
 					} catch (Throwable t) {
-						handleDisplayedUIExceptions(runButton, t);
+						handleExceptionsFromDisplayedUI(runButton, t);
 					}
 				}
 			});
@@ -425,8 +425,6 @@ public class CommandLinePlayer extends ReflectionUI {
 				return new DefaultTypeInfo(typeInfoSource.getPlayer(),
 						ArgumentGroupInstance.class) {
 
-					DefaultTypeInfo thisType = this;
-
 					@Override
 					public boolean isConcrete() {
 						return false;
@@ -456,8 +454,7 @@ public class CommandLinePlayer extends ReflectionUI {
 					public Component createFieldControl(Object object,
 							IFieldInfo field) {
 						return new PolymorphicEmbeddedForm(
-								typeInfoSource.getPlayer(), object, field,
-								thisType) {
+								typeInfoSource.getPlayer(), object, field) {
 
 							private static final long serialVersionUID = 1L;
 

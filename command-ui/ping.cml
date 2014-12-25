@@ -20,7 +20,6 @@
               <string>google</string>
               <xy.command.model.ArgumentGroup>
                 <layout>COLUMN</layout>
-                <cardinality>ONE</cardinality>
                 <parts>
                   <xy.command.model.FixedArgument>
                     <value>www.google.com</value>
