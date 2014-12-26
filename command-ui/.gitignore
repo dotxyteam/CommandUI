@@ -1,2 +1,7 @@
 /bin
 /target
+/.settings
+/.project
+/tmp-src
+/.classpath
+/example.cml
