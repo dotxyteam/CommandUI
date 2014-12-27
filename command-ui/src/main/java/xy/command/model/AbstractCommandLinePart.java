@@ -8,6 +8,7 @@ public abstract class AbstractCommandLinePart implements Serializable {
 
 	protected static final long serialVersionUID = 1L;
 	public String title;
+	public String documentation;
 
 	public abstract AbstractCommandLinePartInstance createInstance();
 }

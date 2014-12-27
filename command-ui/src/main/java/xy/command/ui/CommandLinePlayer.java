@@ -41,7 +41,7 @@ import xy.reflect.ui.control.ListControl;
 import xy.reflect.ui.control.PolymorphicEmbeddedForm;
 import xy.reflect.ui.info.IInfoCollectionSettings;
 import xy.reflect.ui.info.field.IFieldInfo;
-import xy.reflect.ui.info.field.InfoCategory;
+import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.method.AbstractConstructorMethodInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.parameter.IParameterInfo;
@@ -72,7 +72,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			IInfoCollectionSettings settings) {
 		if (object instanceof CommandLineInstance) {
 			CommandLineInstance instance = (CommandLineInstance) object;
-			for (ArgumentPage page : instance.getModel().pages) {
+			for (ArgumentPage page : instance.getModel().arguments) {
 				setPageCommandLine(page, instance.getModel());
 				setPartsPage(page.parts, page);
 			}
@@ -236,13 +236,18 @@ public class CommandLinePlayer extends ReflectionUI {
 			public InfoCategory getCategory() {
 				return getPartCategory(part);
 			}
+
+			@Override
+			public String getDocumentation() {
+				return part.documentation;
+			}
 		};
 	}
 
 	protected static InfoCategory getPartCategory(AbstractCommandLinePart part) {
 		ArgumentPage page = pageByPart.get(part);
 		CommandLine cmdLine = commandLineByPage.get(page);
-		int pageIndex = cmdLine.pages.indexOf(page);
+		int pageIndex = cmdLine.arguments.indexOf(page);
 		return new InfoCategory(page.title, pageIndex);
 	}
 
@@ -294,6 +299,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			@Override
 			public InfoCategory getCategory() {
 				return getPartCategory(part);
+			}
+
+			@Override
+			public String getDocumentation() {
+				return part.documentation;
 			}
 		};
 	}
@@ -361,6 +371,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			public InfoCategory getCategory() {
 				return getPartCategory(part);
 			}
+
+			@Override
+			public String getDocumentation() {
+				return part.documentation;
+			}
 		};
 	}
 
@@ -412,12 +427,17 @@ public class CommandLinePlayer extends ReflectionUI {
 
 			@Override
 			public boolean isNullable() {
-				return false;
+				return true;
 			}
 
 			@Override
 			public InfoCategory getCategory() {
 				return getPartCategory(part);
+			}
+
+			@Override
+			public String getDocumentation() {
+				return part.documentation;
 			}
 
 			@Override
@@ -437,7 +457,14 @@ public class CommandLinePlayer extends ReflectionUI {
 								.entrySet()) {
 							ArgumentGroup group = optionEntry.getValue();
 							ITypeInfoSource subTypeSource = new CommandLinePlayer.ArgumentGroupAsTypeInfoSource(
-									typeInfoSource.getPlayer(), group);
+									typeInfoSource.getPlayer(), group){
+
+										@Override
+										public String getTypeCaption() {
+											return optionEntry.getKey();
+										}
+								
+							};
 							ITypeInfo subType = typeInfoSource.getPlayer()
 									.getTypeInfo(subTypeSource);
 							result.add(subType);
@@ -486,6 +513,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			@Override
 			public String getName() {
 				return part.title;
+			}
+
+			@Override
+			public String getDocumentation() {
+				return part.documentation;
 			}
 
 			@Override
@@ -540,6 +572,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			@Override
 			public String getName() {
 				return part.title;
+			}
+
+			@Override
+			public String getDocumentation() {
+				return part.documentation;
 			}
 	
 			@Override
@@ -728,7 +765,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		@Override
 		public List<AbstractCommandLinePart> getFieldTypeInfoSources() {
 			List<AbstractCommandLinePart> result = new ArrayList<AbstractCommandLinePart>();
-			for (ArgumentPage page : model.pages) {
+			for (ArgumentPage page : model.arguments) {
 				for (AbstractCommandLinePart part : page.parts) {
 					result.add(part);
 				}

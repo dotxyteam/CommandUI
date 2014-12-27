@@ -15,7 +15,7 @@ public class CommandLineInstance {
 	
 	public CommandLineInstance(CommandLine model) {
 		this.model = model;
-		for (ArgumentPage page : model.pages) {
+		for (ArgumentPage page : model.arguments) {
 			for(AbstractCommandLinePart part: page.parts){
 				partInstances.add(part.createInstance());
 			}

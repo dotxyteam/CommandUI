@@ -16,7 +16,7 @@ public class CommandLine {
 	public String title;
 	public String executablePath;
 	public String executionDir;
-	public List<ArgumentPage> pages = new ArrayList<ArgumentPage>();
+	public List<ArgumentPage> arguments = new ArrayList<ArgumentPage>();
 	
 	
 	public CommandLineInstance createInstance() {
@@ -24,18 +24,18 @@ public class CommandLine {
 	}
 	
 	
-	public void load(File file) {
+	public void load(File input) {
 		XStream xstream = new XStream();
-		CommandLine loaded = (CommandLine)xstream.fromXML(file);
+		CommandLine loaded = (CommandLine)xstream.fromXML(input);
 		title = loaded.title;
 		executablePath = loaded.executablePath;
 		executionDir = loaded.executionDir;
-		pages = loaded.pages;
+		arguments = loaded.arguments;
 	}
 	
-	public void save(File file) throws IOException {
+	public void save(File output) throws IOException {
 		XStream xstream = new XStream();
-		FileWriter fileWriter = new FileWriter(file);
+		FileWriter fileWriter = new FileWriter(output);
 		xstream.toXML(this, fileWriter);
 		fileWriter.flush();
 		fileWriter.close();

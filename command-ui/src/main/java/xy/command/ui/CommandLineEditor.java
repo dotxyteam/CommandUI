@@ -126,6 +126,18 @@ public class CommandLineEditor extends ReflectionUI {
 			}
 
 			@Override
+			protected List<IFieldInfo> getFields(ITypeInfo type) {
+				if (type.getName().equals(FixedArgument.class.getName())) {
+					List<IFieldInfo> result = new ArrayList<IFieldInfo>(
+							super.getFields(type));
+					result.remove(ReflectionUIUtils.findInfoByName(result, "documentation"));
+					return result;
+				} else {
+					return super.getFields(type);
+				}
+			}
+
+			@Override
 			protected List<IMethodInfo> getMethods(ITypeInfo type) {
 				if (type.getName().startsWith(
 						CommandLine.class.getPackage().getName())
@@ -211,7 +223,7 @@ public class CommandLineEditor extends ReflectionUI {
 					};
 				} else if (containingType.getName().equals(
 						CommandLine.class.getName())
-						&& field.getName().equals("pages")) {
+						&& field.getName().equals("arguments")) {
 					return new TypeInfoProxy() {
 
 						@Override
