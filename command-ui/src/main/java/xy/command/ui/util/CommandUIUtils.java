@@ -3,9 +3,6 @@ package xy.command.ui.util;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,8 +11,6 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-
-import xy.command.model.ArgumentGroup.Layout;
 
 public class CommandUIUtils {
 
@@ -26,38 +21,6 @@ public class CommandUIUtils {
 		return result;
 	}
 
-	public static JPanel createPanel(final Layout layout) {
-		return new JPanel() {
-			protected static final long serialVersionUID = 1L;
-			protected int addComponentCount = 0;
-			{
-				setLayout(new GridBagLayout());
-			}
-
-			@Override
-			public Component add(Component comp) {
-				GridBagConstraints gc = new GridBagConstraints();
-				gc.weightx = 1.0;
-				gc.weighty = 1.0;
-				if (layout == Layout.COLUMN) {
-					gc.gridx = 0;
-					gc.gridy = addComponentCount;
-					gc.fill = GridBagConstraints.HORIZONTAL;
-				} else if (layout == Layout.ROW) {
-					gc.gridx = addComponentCount;
-					gc.gridy = 0;
-					gc.fill = GridBagConstraints.VERTICAL;
-				} else {
-					throw new AssertionError();
-				}
-				int SPACING = 5;
-				gc.insets = new Insets(SPACING, SPACING, SPACING, SPACING);
-				super.add(comp, gc);
-				addComponentCount++;
-				return comp;
-			}
-		};
-	}
 
 	public static Component withLabel(Component c, String title) {
 		JPanel result = new JPanel();

@@ -1,5 +1,5 @@
 - command icon arg
-- apply group layout
+- add group layout
 - "new commandpart" short labels & icons
 - remove group label and add labelPart
 - allow group multiplicity=many

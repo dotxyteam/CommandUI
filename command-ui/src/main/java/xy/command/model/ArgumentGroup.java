@@ -8,12 +8,7 @@ import xy.command.model.instance.ArgumentGroupInstance;
 public class ArgumentGroup extends AbstractCommandLinePart {
 
 	protected static final long serialVersionUID = 1L;
-	public Layout layout = Layout.COLUMN;
 	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
-
-	public enum Layout {
-		ROW, COLUMN
-	}
 
 	@Override
 	public ArgumentGroupInstance createInstance() {
