@@ -14,6 +14,7 @@ import com.thoughtworks.xstream.XStream;
 public class CommandLine {
 
 	public String title;
+	public String documentation;
 	public String executablePath;
 	public String executionDir;
 	public List<ArgumentPage> arguments = new ArrayList<ArgumentPage>();

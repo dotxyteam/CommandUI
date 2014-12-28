@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
@@ -129,12 +128,9 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		Object object = getObjectByForm().get(form);
 		if (object instanceof CommandLineInstance) {
-			final JButton runButton = new JButton();
+			final JButton runButton = new JButton("Execute");
 			result.add(runButton);
 			runButton.setToolTipText("Start the execution");
-			runButton.setIcon(new ImageIcon(
-					xy.command.ui.resource.ClassInPackage.class
-							.getResource("Execute.gif")));
 			runButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -650,6 +646,8 @@ public class CommandLinePlayer extends ReflectionUI {
 		Object instanciate();
 
 		String getTypeCaption();
+
+		String getTypeDocumentation();
 	}
 
 	public static class PartsAsTypeInfo extends DefaultTypeInfo {
@@ -745,6 +743,13 @@ public class CommandLinePlayer extends ReflectionUI {
 				IFieldInfo field) {
 			return new EmbeddedFormControl(player, object, field);
 		}
+
+		@Override
+		public String getDocumentation() {
+			return typeInfoSource.getTypeDocumentation();
+		}
+		
+		
 	}
 
 	public static class CommandLineAsTypeInfoSource implements
@@ -807,6 +812,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			return new CommandLineInstance(model);
 		}
 
+		@Override
+		public String getTypeDocumentation() {
+			return model.documentation;
+		}
+
 	}
 
 	public static class ArgumentGroupAsTypeInfoSource implements
@@ -862,6 +872,11 @@ public class CommandLinePlayer extends ReflectionUI {
 		@Override
 		public Object instanciate() {
 			return new ArgumentGroupInstance(model);
+		}
+
+		@Override
+		public String getTypeDocumentation() {
+			return null;
 		}
 	}
 

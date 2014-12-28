@@ -1,10 +1,5 @@
+- command icon arg
 - apply group layout
-- arg documentation
-- custom model text for the "run" action
-- add the run button
-- choice ui
-- add page type
-- undo redo does no work
 - "new commandpart" short labels & icons
 - remove group label and add labelPart
 - allow group multiplicity=many

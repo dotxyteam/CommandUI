@@ -21,11 +21,12 @@ import xy.command.model.InputArgument;
 import xy.command.model.MultiplePart;
 import xy.command.model.OptionalPart;
 import xy.reflect.ui.ReflectionUI;
+import xy.reflect.ui.info.HiddenNullableFacetsInfoProxyConfiguration;
+import xy.reflect.ui.info.InfoProxyConfiguration;
 import xy.reflect.ui.info.field.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.type.DefaultListStructuralInfo;
-import xy.reflect.ui.info.type.HiddenNullableFacetsTypeInfoProxy;
 import xy.reflect.ui.info.type.IListTypeInfo;
 import xy.reflect.ui.info.type.IListTypeInfo.IItemPosition;
 import xy.reflect.ui.info.type.IListTypeInfo.IListStructuralInfo;
@@ -35,7 +36,6 @@ import xy.reflect.ui.info.type.ITypeInfoSource;
 import xy.reflect.ui.info.type.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.StandardCollectionTypeInfo;
 import xy.reflect.ui.info.type.StandardMapListTypeInfo;
-import xy.reflect.ui.info.type.TypeInfoProxy;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
 ;
@@ -88,7 +88,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 	@Override
 	public ITypeInfo getTypeInfo(ITypeInfoSource typeSource) {
-		return new HiddenNullableFacetsTypeInfoProxy(CommandLineEditor.this) {
+		return new HiddenNullableFacetsInfoProxyConfiguration(CommandLineEditor.this) {
 
 			@Override
 			protected String getCaption(ITypeInfo type) {
@@ -224,7 +224,7 @@ public class CommandLineEditor extends ReflectionUI {
 				} else if (containingType.getName().equals(
 						CommandLine.class.getName())
 						&& field.getName().equals("arguments")) {
-					return new TypeInfoProxy() {
+					return new InfoProxyConfiguration() {
 
 						@Override
 						protected IListStructuralInfo getStructuralInfo(
