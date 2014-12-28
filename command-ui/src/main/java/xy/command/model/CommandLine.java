@@ -29,6 +29,7 @@ public class CommandLine {
 		XStream xstream = new XStream();
 		CommandLine loaded = (CommandLine)xstream.fromXML(input);
 		title = loaded.title;
+		documentation = loaded.documentation;
 		executablePath = loaded.executablePath;
 		executionDir = loaded.executionDir;
 		arguments = loaded.arguments;

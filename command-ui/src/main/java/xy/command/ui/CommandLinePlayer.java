@@ -33,7 +33,6 @@ import xy.command.model.instance.FileArgumentInstance;
 import xy.command.model.instance.InputArgumentInstance;
 import xy.command.model.instance.MultiplePartInstance;
 import xy.command.model.instance.OptionalPartInstance;
-import xy.command.ui.component.CommandMonitoringDialog;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.control.EmbeddedFormControl;
 import xy.reflect.ui.control.ListControl;

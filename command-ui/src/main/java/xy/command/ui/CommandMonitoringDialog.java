@@ -1,4 +1,4 @@
-package xy.command.ui.component;
+package xy.command.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -25,6 +25,9 @@ import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
+import xy.command.ui.component.AutoScrollerToMaximum;
+import xy.command.ui.component.DocumentOutputStream;
+import xy.command.ui.component.LimitLinesDocumentListener;
 import xy.command.ui.util.CommandUIUtils;
 
 public class CommandMonitoringDialog extends JDialog {
@@ -84,6 +87,7 @@ public class CommandMonitoringDialog extends JDialog {
 		this.command = command;
 		this.workingDir = workingDir;
 
+		setTitle("Command Execution Monitoring");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
 		setBounds(100, 100, 450, 300);
