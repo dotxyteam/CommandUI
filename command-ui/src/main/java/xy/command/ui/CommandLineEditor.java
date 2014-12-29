@@ -26,19 +26,19 @@ import xy.reflect.ui.info.InfoProxyConfiguration;
 import xy.reflect.ui.info.field.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
+import xy.reflect.ui.info.parameter.IParameterInfo;
 import xy.reflect.ui.info.type.DefaultListStructuralInfo;
 import xy.reflect.ui.info.type.IListTypeInfo;
 import xy.reflect.ui.info.type.IListTypeInfo.IItemPosition;
 import xy.reflect.ui.info.type.IListTypeInfo.IListStructuralInfo;
 import xy.reflect.ui.info.type.IMapEntryTypeInfo;
+import xy.reflect.ui.info.type.ITextualTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.ITypeInfoSource;
 import xy.reflect.ui.info.type.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.StandardCollectionTypeInfo;
 import xy.reflect.ui.info.type.StandardMapListTypeInfo;
 import xy.reflect.ui.util.ReflectionUIUtils;
-
-;
 
 public class CommandLineEditor extends ReflectionUI {
 
@@ -88,7 +88,8 @@ public class CommandLineEditor extends ReflectionUI {
 
 	@Override
 	public ITypeInfo getTypeInfo(ITypeInfoSource typeSource) {
-		return new HiddenNullableFacetsInfoProxyConfiguration(CommandLineEditor.this) {
+		return new HiddenNullableFacetsInfoProxyConfiguration(
+				CommandLineEditor.this) {
 
 			@Override
 			protected String getCaption(ITypeInfo type) {
@@ -130,7 +131,8 @@ public class CommandLineEditor extends ReflectionUI {
 				if (type.getName().equals(FixedArgument.class.getName())) {
 					List<IFieldInfo> result = new ArrayList<IFieldInfo>(
 							super.getFields(type));
-					result.remove(ReflectionUIUtils.findInfoByName(result, "documentation"));
+					result.remove(ReflectionUIUtils.findInfoByName(result,
+							"description"));
 					return result;
 				} else {
 					return super.getFields(type);
@@ -155,7 +157,8 @@ public class CommandLineEditor extends ReflectionUI {
 			@Override
 			protected ITypeInfo getType(IFieldInfo field,
 					ITypeInfo containingType) {
-				if (containingType.getName().equals(Choice.class.getName())
+				if (containingType.getName().equals(
+						Choice.class.getName())
 						&& field.getName().equals("options")) {
 					return new StandardMapListTypeInfo(CommandLineEditor.this,
 							HashMap.class, String.class, List.class) {

@@ -1,5 +1,8 @@
 <xy.command.model.CommandLine>
-  <title>the command</title>
+  <title>n ping  command</title>
+  <description>this should be the command description
+this should be the command description
+this should be the command description</description>
   <executablePath>ping</executablePath>
   <executionDir>.</executionDir>
   <arguments>
@@ -21,6 +24,7 @@
               <xy.command.model.ArgumentGroup>
                 <parts>
                   <xy.command.model.FixedArgument>
+                    <title></title>
                     <value>www.google.com</value>
                   </xy.command.model.FixedArgument>
                 </parts>

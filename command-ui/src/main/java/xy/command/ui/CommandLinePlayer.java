@@ -234,7 +234,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 			@Override
 			public String getDocumentation() {
-				return part.documentation;
+				return part.description;
 			}
 		};
 	}
@@ -298,7 +298,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 			@Override
 			public String getDocumentation() {
-				return part.documentation;
+				return part.description;
 			}
 		};
 	}
@@ -369,7 +369,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 			@Override
 			public String getDocumentation() {
-				return part.documentation;
+				return part.description;
 			}
 		};
 	}
@@ -432,7 +432,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 			@Override
 			public String getDocumentation() {
-				return part.documentation;
+				return part.description;
 			}
 
 			@Override
@@ -512,7 +512,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 			@Override
 			public String getDocumentation() {
-				return part.documentation;
+				return part.description;
 			}
 
 			@Override
@@ -571,7 +571,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 			@Override
 			public String getDocumentation() {
-				return part.documentation;
+				return part.description;
 			}
 	
 			@Override
@@ -813,7 +813,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		@Override
 		public String getTypeDocumentation() {
-			return model.documentation;
+			return model.description;
 		}
 
 	}

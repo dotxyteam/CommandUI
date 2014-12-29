@@ -1,38 +1,76 @@
 <xy.command.model.CommandLine>
-  <title>n ping  command</title>
-  <documentation>this should be the command documentation</documentation>
-  <executablePath>ping</executablePath>
-  <executionDir>.</executionDir>
+  <title>the command</title>
+  <description>this should
+be the command
+description</description>
+  <executablePath>c:\path\run.exe</executablePath>
+  <executionDir>c:\path</executionDir>
   <arguments>
     <xy.command.model.ArgumentPage>
-      <title>1</title>
+      <title>intro</title>
       <parts>
-        <xy.command.model.FixedArgument>
-          <title>-n</title>
-          <value>-n</value>
-        </xy.command.model.FixedArgument>
         <xy.command.model.InputArgument>
-          <title>number of pings</title>
+          <title>the input</title>
         </xy.command.model.InputArgument>
+        <xy.command.model.FixedArgument>
+          <title>the fixed argument</title>
+          <value>-a</value>
+        </xy.command.model.FixedArgument>
+        <xy.command.model.OptionalPart>
+          <title>the optional group</title>
+          <parts>
+            <xy.command.model.FileArgument>
+              <title>the 2nd file</title>
+            </xy.command.model.FileArgument>
+          </parts>
+          <defaultValue>false</defaultValue>
+        </xy.command.model.OptionalPart>
+        <xy.command.model.DirectoryArgument>
+          <title>the dir arg</title>
+        </xy.command.model.DirectoryArgument>
+        <xy.command.model.ArgumentGroup>
+          <title>the group</title>
+          <parts>
+            <xy.command.model.FileArgument>
+              <title>the file</title>
+            </xy.command.model.FileArgument>
+          </parts>
+        </xy.command.model.ArgumentGroup>
+      </parts>
+    </xy.command.model.ArgumentPage>
+    <xy.command.model.ArgumentPage>
+      <title>advanced</title>
+      <parts>
+        <xy.command.model.MultiplePart>
+          <title>the group 1 to n</title>
+          <parts>
+            <xy.command.model.FileArgument>
+              <title>the file</title>
+            </xy.command.model.FileArgument>
+          </parts>
+        </xy.command.model.MultiplePart>
         <xy.command.model.Choice>
-          <title>host</title>
+          <title>the choice</title>
           <options>
             <entry>
-              <string>google</string>
+              <string>-a</string>
               <xy.command.model.ArgumentGroup>
                 <parts>
-                  <xy.command.model.FixedArgument>
-                    <value>www.google.com</value>
-                  </xy.command.model.FixedArgument>
+                  <xy.command.model.InputArgument>
+                    <title>value of a</title>
+                  </xy.command.model.InputArgument>
                 </parts>
               </xy.command.model.ArgumentGroup>
             </entry>
             <entry>
-              <string>custom</string>
+              <string>-b</string>
               <xy.command.model.ArgumentGroup>
                 <parts>
                   <xy.command.model.InputArgument>
-                    <title>address</title>
+                    <title>value of b1</title>
+                  </xy.command.model.InputArgument>
+                  <xy.command.model.InputArgument>
+                    <title>value of b2</title>
                   </xy.command.model.InputArgument>
                 </parts>
               </xy.command.model.ArgumentGroup>
