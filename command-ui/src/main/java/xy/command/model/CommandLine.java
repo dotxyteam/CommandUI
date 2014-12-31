@@ -42,11 +42,5 @@ public class CommandLine {
 		fileWriter.flush();
 		fileWriter.close();
 	}
-	
-	public void test(){
-		CommandLinePlayer player = new CommandLinePlayer();
-		player.openObjectFrame(createInstance(), title, null);
-	}
-
 		
 }

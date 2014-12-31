@@ -83,7 +83,6 @@ public class CommandMonitoringDialog extends JDialog {
 	public CommandMonitoringDialog(Window owner, String command, File workingDir) {
 
 		super(owner);
-
 		this.command = command;
 		this.workingDir = workingDir;
 

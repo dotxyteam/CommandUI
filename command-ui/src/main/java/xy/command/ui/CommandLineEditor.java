@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 
@@ -20,12 +21,14 @@ import xy.command.model.FixedArgument;
 import xy.command.model.InputArgument;
 import xy.command.model.MultiplePart;
 import xy.command.model.OptionalPart;
+import xy.command.model.instance.CommandLineInstance;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.HiddenNullableFacetsInfoProxyConfiguration;
 import xy.reflect.ui.info.InfoProxyConfiguration;
 import xy.reflect.ui.info.field.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
+import xy.reflect.ui.info.method.MethodInfoProxy;
 import xy.reflect.ui.info.parameter.IParameterInfo;
 import xy.reflect.ui.info.type.DefaultListStructuralInfo;
 import xy.reflect.ui.info.type.IListTypeInfo;
@@ -146,8 +149,34 @@ public class CommandLineEditor extends ReflectionUI {
 						&& !type.getName().contains("$")) {
 					List<IMethodInfo> result = new ArrayList<IMethodInfo>(
 							super.getMethods(type));
-					result.remove(ReflectionUIUtils.findInfoByName(result,
-							"createInstance"));
+					IMethodInfo createInstanceMethod = ReflectionUIUtils
+							.findInfoByName(result, "createInstance");
+					result.remove(createInstanceMethod);
+					if (type.getName().equals(CommandLine.class.getName())) {
+						result.add(new MethodInfoProxy(createInstanceMethod){
+							@Override
+							public Object invoke(Object object,
+									Map<String, Object> valueByParameterName) {
+								CommandLineInstance instance = (CommandLineInstance) super.invoke(object, valueByParameterName);
+								CommandLinePlayer player = new CommandLinePlayer();
+								CommandLine model = instance.getModel();
+								player.openObjectFrame(instance, model.title, getObjectIconImage(model));
+								return null;
+							}
+
+							@Override
+							public String getCaption() {
+								return "Test";
+							}
+
+							@Override
+							public ITypeInfo getReturnValueType() {
+								return null;
+							}		
+							
+							
+						});
+					}
 					return result;
 				} else {
 					return super.getMethods(type);
@@ -157,8 +186,7 @@ public class CommandLineEditor extends ReflectionUI {
 			@Override
 			protected ITypeInfo getType(IFieldInfo field,
 					ITypeInfo containingType) {
-				if (containingType.getName().equals(
-						Choice.class.getName())
+				if (containingType.getName().equals(Choice.class.getName())
 						&& field.getName().equals("options")) {
 					return new StandardMapListTypeInfo(CommandLineEditor.this,
 							HashMap.class, String.class, List.class) {
