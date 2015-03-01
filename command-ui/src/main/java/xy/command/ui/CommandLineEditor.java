@@ -23,24 +23,22 @@ import xy.command.model.MultiplePart;
 import xy.command.model.OptionalPart;
 import xy.command.model.instance.CommandLineInstance;
 import xy.reflect.ui.ReflectionUI;
-import xy.reflect.ui.info.HiddenNullableFacetsInfoProxyConfiguration;
-import xy.reflect.ui.info.InfoProxyConfiguration;
 import xy.reflect.ui.info.field.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.method.MethodInfoProxy;
-import xy.reflect.ui.info.parameter.IParameterInfo;
-import xy.reflect.ui.info.type.DefaultListStructuralInfo;
 import xy.reflect.ui.info.type.IListTypeInfo;
 import xy.reflect.ui.info.type.IListTypeInfo.IItemPosition;
 import xy.reflect.ui.info.type.IListTypeInfo.IListStructuralInfo;
+import xy.reflect.ui.info.type.HiddenNullableFacetsTypeInfoProxyConfiguration;
 import xy.reflect.ui.info.type.IMapEntryTypeInfo;
-import xy.reflect.ui.info.type.ITextualTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.ITypeInfoSource;
 import xy.reflect.ui.info.type.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.StandardCollectionTypeInfo;
 import xy.reflect.ui.info.type.StandardMapListTypeInfo;
+import xy.reflect.ui.info.type.TabularTreeistStructuralInfo;
+import xy.reflect.ui.info.type.TypeInfoProxyConfiguration;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
 public class CommandLineEditor extends ReflectionUI {
@@ -91,7 +89,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 	@Override
 	public ITypeInfo getTypeInfo(ITypeInfoSource typeSource) {
-		return new HiddenNullableFacetsInfoProxyConfiguration(
+		return new HiddenNullableFacetsTypeInfoProxyConfiguration(
 				CommandLineEditor.this) {
 
 			@Override
@@ -255,12 +253,12 @@ public class CommandLineEditor extends ReflectionUI {
 				} else if (containingType.getName().equals(
 						CommandLine.class.getName())
 						&& field.getName().equals("arguments")) {
-					return new InfoProxyConfiguration() {
+					return new TypeInfoProxyConfiguration() {
 
 						@Override
 						protected IListStructuralInfo getStructuralInfo(
 								IListTypeInfo type) {
-							return new DefaultListStructuralInfo(
+							return new TabularTreeistStructuralInfo(
 									CommandLineEditor.this, type.getItemType()) {
 
 								@Override

@@ -11,4 +11,11 @@ public abstract class AbstractCommandLinePart implements Serializable {
 	public String description;
 
 	public abstract AbstractCommandLinePartInstance createInstance();
+
+	@Override
+	public String toString() {
+		return title;
+	}
+	
+	
 }

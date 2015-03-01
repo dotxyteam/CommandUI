@@ -33,6 +33,7 @@ import xy.command.model.instance.FileArgumentInstance;
 import xy.command.model.instance.InputArgumentInstance;
 import xy.command.model.instance.MultiplePartInstance;
 import xy.command.model.instance.OptionalPartInstance;
+import xy.command.model.instance.MultiplePartInstance.MultiplePartInstanceOccurrence;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.control.EmbeddedFormControl;
 import xy.reflect.ui.control.ListControl;
@@ -43,13 +44,13 @@ import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.method.AbstractConstructorMethodInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.parameter.IParameterInfo;
-import xy.reflect.ui.info.type.DefaultListStructuralInfo;
 import xy.reflect.ui.info.type.DefaultTextualTypeInfo;
 import xy.reflect.ui.info.type.DefaultTypeInfo;
 import xy.reflect.ui.info.type.FileTypeInfo;
 import xy.reflect.ui.info.type.IListTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.ITypeInfoSource;
+import xy.reflect.ui.info.type.TabularTreeistStructuralInfo;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
 public class CommandLinePlayer extends ReflectionUI {
@@ -450,15 +451,15 @@ public class CommandLinePlayer extends ReflectionUI {
 						List<ITypeInfo> result = new ArrayList<ITypeInfo>();
 						for (final Map.Entry<String, ArgumentGroup> optionEntry : part.options
 								.entrySet()) {
-							ArgumentGroup group = optionEntry.getValue();
 							ITypeInfoSource subTypeSource = new CommandLinePlayer.ArgumentGroupAsTypeInfoSource(
-									typeInfoSource.getPlayer(), group){
+									typeInfoSource.getPlayer(),
+									optionEntry.getValue()) {
 
-										@Override
-										public String getTypeCaption() {
-											return optionEntry.getKey();
-										}
-								
+								@Override
+								public String getTypeCaption() {
+									return optionEntry.getKey();
+								}
+
 							};
 							ITypeInfo subType = typeInfoSource.getPlayer()
 									.getTypeInfo(subTypeSource);
@@ -557,13 +558,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 		};
 	}
-	
-	
-	private static IFieldInfo getMultiplePartFieldInfo(
-			final MultiplePart part,
+
+	private static IFieldInfo getMultiplePartFieldInfo(final MultiplePart part,
 			final IPartsAsTypeInfoSource typeInfoSource, final int partIndex) {
 		return new IFieldInfo() {
-	
+
 			@Override
 			public String getName() {
 				return part.title;
@@ -573,42 +572,42 @@ public class CommandLinePlayer extends ReflectionUI {
 			public String getDocumentation() {
 				return part.description;
 			}
-	
+
 			@Override
 			public String getCaption() {
 				return part.title;
 			}
-	
+
 			@Override
 			public void setValue(Object object, Object value) {
 				ArgumentGroupInstance instance = (ArgumentGroupInstance) value;
 				typeInfoSource.getFieldValueSources(object).set(partIndex,
 						instance);
 			}
-	
+
 			@Override
 			public boolean isReadOnly() {
 				return false;
 			}
-	
+
 			@Override
 			public boolean isNullable() {
 				return false;
 			}
-	
+
 			@Override
 			public Object getValue(Object object) {
-				ArgumentGroupInstance instance = (ArgumentGroupInstance) typeInfoSource
+				MultiplePartInstance instance = (MultiplePartInstance) typeInfoSource
 						.getFieldValueSources(object).get(partIndex);
 				return instance;
 			}
-	
+
 			@Override
 			public ITypeInfo getType() {
-				return new MultiplePartListTypeInfo(
-						typeInfoSource.getPlayer(), part);
+				return new MultiplePartListTypeInfo(typeInfoSource.getPlayer(),
+						part);
 			}
-	
+
 			@Override
 			public InfoCategory getCategory() {
 				return getPartCategory(part);
@@ -626,8 +625,6 @@ public class CommandLinePlayer extends ReflectionUI {
 		cmdDialog.setLocationRelativeTo(null);
 		cmdDialog.setVisible(true);
 	}
-
-
 
 	public static interface IPartsAsTypeInfoSource extends ITypeInfoSource {
 
@@ -659,6 +656,20 @@ public class CommandLinePlayer extends ReflectionUI {
 			super(player, IPartsAsTypeInfoSource.class);
 			this.player = player;
 			this.typeInfoSource = typeInfoSource;
+		}
+
+		@Override
+		public int hashCode() {
+			return typeInfoSource.hashCode();
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (!(obj instanceof PartsAsTypeInfo)) {
+				return false;
+			}
+			PartsAsTypeInfo other = (PartsAsTypeInfo) obj;
+			return typeInfoSource.equals(other.typeInfoSource);
 		}
 
 		public IPartsAsTypeInfoSource getTypeInfoSource() {
@@ -747,8 +758,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		public String getDocumentation() {
 			return typeInfoSource.getTypeDocumentation();
 		}
-		
-		
+
 	}
 
 	public static class CommandLineAsTypeInfoSource implements
@@ -760,6 +770,20 @@ public class CommandLinePlayer extends ReflectionUI {
 				CommandLine model) {
 			this.player = player;
 			this.model = model;
+		}
+
+		@Override
+		public int hashCode() {
+			return model.hashCode();
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (!(obj instanceof CommandLineAsTypeInfoSource)) {
+				return false;
+			}
+			CommandLineAsTypeInfoSource other = (CommandLineAsTypeInfoSource) obj;
+			return model.equals(other.model);
 		}
 
 		public CommandLine getModel() {
@@ -828,6 +852,20 @@ public class CommandLinePlayer extends ReflectionUI {
 				ArgumentGroup model) {
 			this.player = player;
 			this.model = model;
+		}
+
+		@Override
+		public int hashCode() {
+			return model.hashCode();
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (!(obj instanceof ArgumentGroupAsTypeInfoSource)) {
+				return false;
+			}
+			ArgumentGroupAsTypeInfoSource other = (ArgumentGroupAsTypeInfoSource) obj;
+			return model.equals(other.model);
 		}
 
 		public ArgumentGroup getModel() {
@@ -937,31 +975,34 @@ public class CommandLinePlayer extends ReflectionUI {
 		public List<?> toStandardList(Object value) {
 			MultiplePartInstance instance = (MultiplePartInstance) value;
 			List<ArgumentGroupInstance> result = new ArrayList<ArgumentGroupInstance>();
-			for (List<AbstractCommandLinePartInstance> partInstances : instance.multiPartInstances) {
-				ArgumentGroupInstance occurence = new ArgumentGroupInstance(
+			for (MultiplePartInstanceOccurrence occurrence : instance.multiPartInstanceOccurrences) {
+				ArgumentGroupInstance occurenceAsGroupInstance = new ArgumentGroupInstance(
 						multiplePart);
-				occurence.partInstances = partInstances;
-				result.add(occurence);
+				occurenceAsGroupInstance.partInstances = occurrence.partInstances;
+				result.add(occurenceAsGroupInstance);
 			}
 			return result;
 		}
 
 		@Override
 		public Object fromStandardList(List<?> list) {
-			List<List<AbstractCommandLinePartInstance>> multiPartInstances = new ArrayList<List<AbstractCommandLinePartInstance>>();
+			List<MultiplePartInstanceOccurrence> multiPartInstanceOccurrences = new ArrayList<MultiplePartInstanceOccurrence>();
 			for (Object item : list) {
-				ArgumentGroupInstance occurence = (ArgumentGroupInstance) item;
-				multiPartInstances.add(occurence.partInstances);
+				ArgumentGroupInstance occurenceAsGroupInstance = (ArgumentGroupInstance) item;
+				MultiplePartInstanceOccurrence occurrence = new MultiplePartInstanceOccurrence(
+						multiplePart);
+				occurrence.partInstances = occurenceAsGroupInstance.partInstances;
+				multiPartInstanceOccurrences.add(occurrence);
 			}
 			MultiplePartInstance instance = new MultiplePartInstance(
 					multiplePart);
-			instance.multiPartInstances = multiPartInstances;
+			instance.multiPartInstanceOccurrences = multiPartInstanceOccurrences;
 			return instance;
 		}
 
 		@Override
 		public IListStructuralInfo getStructuralInfo() {
-			return new DefaultListStructuralInfo(player, getItemType());
+			return new TabularTreeistStructuralInfo(player, getItemType());
 		}
 
 		@Override

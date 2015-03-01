@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import xy.command.model.instance.CommandLineInstance;
-import xy.command.ui.CommandLinePlayer;
 
 import com.thoughtworks.xstream.XStream;
 
@@ -42,5 +41,11 @@ public class CommandLine {
 		fileWriter.flush();
 		fileWriter.close();
 	}
+	
+	@Override
+	public String toString() {
+		return title;
+	}
+
 		
 }
