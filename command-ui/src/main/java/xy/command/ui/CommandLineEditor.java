@@ -1,6 +1,8 @@
 package xy.command.ui;
 
+import java.awt.FileDialog;
 import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 import xy.command.model.AbstractCommandLinePart;
 import xy.command.model.ArgumentGroup;
@@ -23,11 +26,15 @@ import xy.command.model.InputArgument;
 import xy.command.model.MultiplePart;
 import xy.command.model.OptionalPart;
 import xy.command.model.instance.CommandLineInstance;
+import xy.command.ui.util.FileUtils;
 import xy.reflect.ui.ReflectionUI;
+import xy.reflect.ui.control.ModificationStack.IModification;
+import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.field.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
-import xy.reflect.ui.info.method.MethodInfoProxy;
+import xy.reflect.ui.info.parameter.IParameterInfo;
+import xy.reflect.ui.info.type.FileTypeInfo;
 import xy.reflect.ui.info.type.IListTypeInfo;
 import xy.reflect.ui.info.type.IListTypeInfo.IItemPosition;
 import xy.reflect.ui.info.type.IListTypeInfo.IListStructuralInfo;
@@ -40,15 +47,30 @@ import xy.reflect.ui.info.type.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.StandardCollectionTypeInfo;
 import xy.reflect.ui.info.type.StandardMapListTypeInfo;
 import xy.reflect.ui.info.type.TypeInfoProxyConfiguration;
+import xy.reflect.ui.util.ReflectionUIError;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
 public class CommandLineEditor extends ReflectionUI {
- 
+
 	public static final String COMMAND_LINE_FILE_EXTENSION = "cml";
+	private static final String EXE_FILE_PATH_PROPERTY_KEY = "commandui.exe.file";
+	protected static final String APP_NAME = "Command UI";
 
 	public static void main(String[] args) {
-		new CommandLineEditor().openObjectFrame(new CommandLine(), "",
-				getClassIconImage(CommandLine.class));
+		String exeFilePath = System.getProperty(EXE_FILE_PATH_PROPERTY_KEY);
+		if (exeFilePath != null) {
+			File playerFile = getPlayerFile(new File(exeFilePath));
+			if (playerFile.exists()) {
+				CommandLinePlayer.main(new String[] { playerFile.getPath() });
+				return;
+			}
+		}
+		new CommandLineEditor().openObjectFrame(new CommandLine(),
+				"Command UI", getClassIconImage(CommandLine.class));
+	}
+
+	private static File getPlayerFile(File exeFile) {
+		return new File(exeFile + COMMAND_LINE_FILE_EXTENSION);
 	}
 
 	public static Image getClassIconImage(Class<? extends Object> class1) {
@@ -152,30 +174,8 @@ public class CommandLineEditor extends ReflectionUI {
 						IMethodInfo createInstanceMethod = ReflectionUIUtils
 								.findInfoByName(result, "createInstance");
 						result.remove(createInstanceMethod);
-						result.add(new MethodInfoProxy(createInstanceMethod) {
-							@Override
-							public Object invoke(Object object,
-									Map<String, Object> valueByParameterName) {
-								CommandLineInstance instance = (CommandLineInstance) super
-										.invoke(object, valueByParameterName);
-								CommandLinePlayer player = new CommandLinePlayer();
-								CommandLine model = instance.getModel();
-								player.openObjectFrame(instance, model.title,
-										getObjectIconImage(model));
-								return null;
-							}
-
-							@Override
-							public String getCaption() {
-								return "Test";
-							}
-
-							@Override
-							public ITypeInfo getReturnValueType() {
-								return null;
-							}
-
-						});
+						result.add(getTestMethod());
+						result.add(getDistributeMethod());
 						return result;
 					} else {
 						return Collections.<IMethodInfo> emptyList();
@@ -266,7 +266,7 @@ public class CommandLineEditor extends ReflectionUI {
 									CommandLineEditor.this, type.getItemType()) {
 
 								@Override
-								protected boolean isFieldBased(){
+								protected boolean isFieldBased() {
 									return false;
 								}
 
@@ -329,5 +329,184 @@ public class CommandLineEditor extends ReflectionUI {
 			}
 
 		}.get(super.getTypeInfo(typeSource));
+	}
+
+	private IMethodInfo getTestMethod() {
+		return new IMethodInfo() {
+			@Override
+			public Object invoke(Object object,
+					Map<String, Object> valueByParameterName) {
+				CommandLine commandLine = (CommandLine) object;
+				CommandLineInstance instance = commandLine.createInstance();
+				CommandLinePlayer player = new CommandLinePlayer();
+				CommandLine model = instance.getModel();
+				player.openObjectFrame(instance, model.title,
+						getObjectIconImage(model));
+				return null;
+			}
+
+			@Override
+			public String getCaption() {
+				return "Test";
+			}
+
+			@Override
+			public ITypeInfo getReturnValueType() {
+				return null;
+			}
+
+			@Override
+			public String getName() {
+				return "test";
+			}
+
+			@Override
+			public String getDocumentation() {
+				return null;
+			}
+
+			@Override
+			public List<IParameterInfo> getParameters() {
+				return Collections.emptyList();
+			}
+
+			@Override
+			public boolean isReadOnly() {
+				return true;
+			}
+
+			@Override
+			public InfoCategory getCategory() {
+				return null;
+			}
+
+			@Override
+			public IModification getUndoModification(Object object,
+					Map<String, Object> valueByParameterName) {
+				return null;
+			}
+
+		};
+	}
+
+	private IMethodInfo getDistributeMethod() {
+		return new IMethodInfo() {
+			@Override
+			public Object invoke(Object object,
+					Map<String, Object> valueByParameterName) {
+				File commandUIExeFile;
+				String commandUIExeFilePath = System
+						.getProperty(EXE_FILE_PATH_PROPERTY_KEY);
+				if (commandUIExeFilePath == null) {
+					if ((commandUIExeFile = askCommandUIExecutableLocation()) == null) {
+						return null;
+					}
+				} else {
+					commandUIExeFile = new File(commandUIExeFilePath);
+				}
+				File outputExeFile = (File) valueByParameterName
+						.get("executableFilePath");
+				CommandLine commandLine = (CommandLine) object;
+				generateOutputFiles(commandLine, commandUIExeFile,
+						outputExeFile);
+				return null;
+			}
+
+			private void generateOutputFiles(CommandLine commandLine,
+					File commandUIExeFile, File outputExeFile) {
+				try {
+					FileUtils.copy(commandUIExeFile, outputExeFile);
+					commandLine.save(getPlayerFile(outputExeFile));
+				} catch (Exception e) {
+					throw new ReflectionUIError(e);
+				}
+			}
+
+			private File askCommandUIExecutableLocation() {
+				FileDialog fd = new FileDialog((JFrame) null, "Locate the '"
+						+ APP_NAME + "' executable file:", FileDialog.LOAD);
+				fd.setVisible(true);
+				return new File(fd.getDirectory(), fd.getFile());
+			}
+
+			@Override
+			public String getCaption() {
+				return "Distribute";
+			}
+
+			@Override
+			public ITypeInfo getReturnValueType() {
+				return null;
+			}
+
+			@Override
+			public String getName() {
+				return "distribute";
+			}
+
+			@Override
+			public String getDocumentation() {
+				return null;
+			}
+
+			@Override
+			public List<IParameterInfo> getParameters() {
+				return Collections
+						.<IParameterInfo> singletonList(new IParameterInfo() {
+
+							@Override
+							public String getName() {
+								return "executableFilePath";
+							}
+
+							@Override
+							public String getDocumentation() {
+								return null;
+							}
+
+							@Override
+							public String getCaption() {
+								return "Executable File Path";
+							}
+
+							@Override
+							public boolean isNullable() {
+								return false;
+							}
+
+							@Override
+							public ITypeInfo getType() {
+								return new FileTypeInfo(CommandLineEditor.this);
+							}
+
+							@Override
+							public int getPosition() {
+								return 0;
+							}
+
+							@Override
+							public Object getDefaultValue() {
+								return null;
+							}
+						});
+			}
+
+			@Override
+			public boolean isReadOnly() {
+				return true;
+			}
+
+			@Override
+			public InfoCategory getCategory() {
+				return null;
+			}
+
+			@Override
+			public IModification getUndoModification(Object object,
+					Map<String, Object> valueByParameterName) {
+				return null;
+			}
+
+		};
 	}
 }

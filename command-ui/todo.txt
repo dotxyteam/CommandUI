@@ -1,14 +1,10 @@
+- add online documentation
 - command icon arg
-- add group layout
-- "new commandpart" short labels & icons
+- add group layout???
 - remove group label and add labelPart
-- allow group multiplicity=many
-- use the photomatic command runner
 - working console
 - live example command in the editor, maybe usage text
-- remove nullable checkboxes
 - use env path 
 - change theme
 - make player themable
 - distribution feature
-- add page model

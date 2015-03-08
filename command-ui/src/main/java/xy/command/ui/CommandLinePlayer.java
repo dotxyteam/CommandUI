@@ -60,7 +60,11 @@ public class CommandLinePlayer extends ReflectionUI {
 
 	public static void main(String[] args) {
 		CommandLine commandLine = new CommandLine();
-		commandLine.load(new File("example.cml"));
+		if (args.length >= 1) {
+			commandLine.load(new File(args[0]));
+		} else {
+			commandLine.load(new File("example.cml"));
+		}
 		CommandLinePlayer player = new CommandLinePlayer();
 		player.openObjectFrame(commandLine.createInstance(), commandLine.title,
 				null);
@@ -122,7 +126,8 @@ public class CommandLinePlayer extends ReflectionUI {
 	}
 
 	@Override
-	public List<Component> createCommonToolbarControls(final JPanel form, IInfoCollectionSettings settings) {
+	public List<Component> createCommonToolbarControls(final JPanel form,
+			IInfoCollectionSettings settings) {
 		List<Component> result = new ArrayList<Component>(
 				super.createCommonToolbarControls(form, settings));
 
