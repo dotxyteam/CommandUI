@@ -5,7 +5,7 @@ import xy.command.model.instance.OptionalPartInstance;
 public class OptionalPart extends ArgumentGroup {
 
 	protected static final long serialVersionUID = 1L;
-	public boolean defaultValue = false;
+	public boolean activeByDefault = false;
 
 	@Override
 	public OptionalPartInstance createInstance() {

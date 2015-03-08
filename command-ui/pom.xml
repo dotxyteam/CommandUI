@@ -9,7 +9,7 @@
 		<dependency>
 			<groupId>xy</groupId>
 			<artifactId>reflection-ui</artifactId>
-			<version>1.0</version>
+			<version>1.0.5</version>
 		</dependency>
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
@@ -57,6 +57,55 @@
 						jars, they need to be added to the classpath -->
 				</dependencies>
 			</plugin>
+
+
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attached</goal>
+						</goals>
+						<configuration>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<groupId>com.akathist.maven.plugins.launch4j</groupId>
+				<artifactId>launch4j-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>l4j-gui</id>
+						<phase>package</phase>
+						<goals>
+							<goal>launch4j</goal>
+						</goals>
+						<configuration>
+							<headerType>gui</headerType>
+							<outfile>target/CommandUI.exe</outfile>
+							<icon>CommandLine.ico</icon>
+							<jar>target/command-ui-1.0-jar-with-dependencies.jar</jar>
+							<errTitle>CommandUI</errTitle>
+							<classPath>
+								<mainClass>xy.command.ui.CommandLineEditor</mainClass>
+							</classPath>
+							<jre>
+								<minVersion>1.6.0</minVersion>
+							</jre>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 </project>

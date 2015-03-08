@@ -23,7 +23,7 @@ description</description>
               <title>the 2nd file</title>
             </xy.command.model.FileArgument>
           </parts>
-          <defaultValue>false</defaultValue>
+          <activeByDefault>false</activeByDefault>
         </xy.command.model.OptionalPart>
         <xy.command.model.DirectoryArgument>
           <title>the dir arg</title>

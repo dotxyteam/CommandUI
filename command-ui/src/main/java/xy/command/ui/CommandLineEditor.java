@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,7 @@ import xy.reflect.ui.info.method.MethodInfoProxy;
 import xy.reflect.ui.info.type.IListTypeInfo;
 import xy.reflect.ui.info.type.IListTypeInfo.IItemPosition;
 import xy.reflect.ui.info.type.IListTypeInfo.IListStructuralInfo;
+import xy.reflect.ui.info.type.AbstractTreeDetectionListStructuralInfo;
 import xy.reflect.ui.info.type.HiddenNullableFacetsTypeInfoProxyConfiguration;
 import xy.reflect.ui.info.type.IMapEntryTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
@@ -37,12 +39,11 @@ import xy.reflect.ui.info.type.ITypeInfoSource;
 import xy.reflect.ui.info.type.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.StandardCollectionTypeInfo;
 import xy.reflect.ui.info.type.StandardMapListTypeInfo;
-import xy.reflect.ui.info.type.TabularTreeistStructuralInfo;
 import xy.reflect.ui.info.type.TypeInfoProxyConfiguration;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
 public class CommandLineEditor extends ReflectionUI {
-
+ 
 	public static final String COMMAND_LINE_FILE_EXTENSION = "cml";
 
 	public static void main(String[] args) {
@@ -145,20 +146,22 @@ public class CommandLineEditor extends ReflectionUI {
 				if (type.getName().startsWith(
 						CommandLine.class.getPackage().getName())
 						&& !type.getName().contains("$")) {
-					List<IMethodInfo> result = new ArrayList<IMethodInfo>(
-							super.getMethods(type));
-					IMethodInfo createInstanceMethod = ReflectionUIUtils
-							.findInfoByName(result, "createInstance");
-					result.remove(createInstanceMethod);
 					if (type.getName().equals(CommandLine.class.getName())) {
-						result.add(new MethodInfoProxy(createInstanceMethod){
+						List<IMethodInfo> result = new ArrayList<IMethodInfo>(
+								super.getMethods(type));
+						IMethodInfo createInstanceMethod = ReflectionUIUtils
+								.findInfoByName(result, "createInstance");
+						result.remove(createInstanceMethod);
+						result.add(new MethodInfoProxy(createInstanceMethod) {
 							@Override
 							public Object invoke(Object object,
 									Map<String, Object> valueByParameterName) {
-								CommandLineInstance instance = (CommandLineInstance) super.invoke(object, valueByParameterName);
+								CommandLineInstance instance = (CommandLineInstance) super
+										.invoke(object, valueByParameterName);
 								CommandLinePlayer player = new CommandLinePlayer();
 								CommandLine model = instance.getModel();
-								player.openObjectFrame(instance, model.title, getObjectIconImage(model));
+								player.openObjectFrame(instance, model.title,
+										getObjectIconImage(model));
 								return null;
 							}
 
@@ -170,12 +173,13 @@ public class CommandLineEditor extends ReflectionUI {
 							@Override
 							public ITypeInfo getReturnValueType() {
 								return null;
-							}		
-							
-							
+							}
+
 						});
+						return result;
+					} else {
+						return Collections.<IMethodInfo> emptyList();
 					}
-					return result;
 				} else {
 					return super.getMethods(type);
 				}
@@ -258,11 +262,11 @@ public class CommandLineEditor extends ReflectionUI {
 						@Override
 						protected IListStructuralInfo getStructuralInfo(
 								IListTypeInfo type) {
-							return new TabularTreeistStructuralInfo(
+							return new AbstractTreeDetectionListStructuralInfo(
 									CommandLineEditor.this, type.getItemType()) {
 
 								@Override
-								protected boolean isTabular() {
+								protected boolean isFieldBased(){
 									return false;
 								}
 

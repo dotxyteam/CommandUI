@@ -50,7 +50,7 @@ import xy.reflect.ui.info.type.FileTypeInfo;
 import xy.reflect.ui.info.type.IListTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.ITypeInfoSource;
-import xy.reflect.ui.info.type.TabularTreeistStructuralInfo;
+import xy.reflect.ui.info.type.TabularTreetStructuralInfo;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
 public class CommandLinePlayer extends ReflectionUI {
@@ -122,9 +122,9 @@ public class CommandLinePlayer extends ReflectionUI {
 	}
 
 	@Override
-	public List<Component> createCommonToolbarControls(final JPanel form) {
+	public List<Component> createCommonToolbarControls(final JPanel form, IInfoCollectionSettings settings) {
 		List<Component> result = new ArrayList<Component>(
-				super.createCommonToolbarControls(form));
+				super.createCommonToolbarControls(form, settings));
 
 		Object object = getObjectByForm().get(form);
 		if (object instanceof CommandLineInstance) {
@@ -195,7 +195,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			public Object getValue(Object object) {
 				OptionalPartInstance instance = (OptionalPartInstance) typeInfoSource
 						.getFieldValueSources(object).get(partIndex);
-				if (instance.value == false) {
+				if (instance.active == false) {
 					return null;
 				} else {
 					return instance;
@@ -207,9 +207,9 @@ public class CommandLinePlayer extends ReflectionUI {
 				OptionalPartInstance instance = (OptionalPartInstance) typeInfoSource
 						.getFieldValueSources(object).get(partIndex);
 				if (value == null) {
-					instance.value = false;
+					instance.active = false;
 				} else {
-					instance.value = true;
+					instance.active = true;
 				}
 			}
 
@@ -1002,7 +1002,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		@Override
 		public IListStructuralInfo getStructuralInfo() {
-			return new TabularTreeistStructuralInfo(player, getItemType());
+			return new TabularTreetStructuralInfo(player, getItemType());
 		}
 
 		@Override
