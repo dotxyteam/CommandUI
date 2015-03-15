@@ -12,5 +12,10 @@ public class FixedArgument extends AbstractCommandLinePart{
 		return new FixedArgumentInstance(this);
 	}
 
+	@Override
+	public String toString() {
+		return value;
+	}
+	
 
 }

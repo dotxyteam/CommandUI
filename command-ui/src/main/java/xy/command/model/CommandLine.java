@@ -14,8 +14,8 @@ public class CommandLine {
 
 	public String title;
 	public String description;
-	public String executablePath;
-	public String executionDir;
+	public File executablePath;
+	public File executionDir;
 	public List<ArgumentPage> arguments = new ArrayList<ArgumentPage>();
 	
 	

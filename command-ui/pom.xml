@@ -3,13 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>xy</groupId>
 	<artifactId>command-ui</artifactId>
-	<version>1.0</version>
+	<version>1.0.3</version>
 	<name>Command UI</name>
 	<dependencies>
 		<dependency>
 			<groupId>xy</groupId>
 			<artifactId>reflection-ui</artifactId>
-			<version>1.0.5</version>
+			<version>1.0.6</version>
 		</dependency>
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
@@ -93,7 +93,7 @@
 							<headerType>gui</headerType>
 							<outfile>target/CommandUI.exe</outfile>
 							<icon>CommandLine.ico</icon>
-							<jar>target/command-ui-1.0-jar-with-dependencies.jar</jar>
+							<jar>target/command-ui-${version}-jar-with-dependencies.jar</jar>
 							<errTitle>CommandUI</errTitle>
 							<classPath>
 								<mainClass>xy.command.ui.CommandLineEditor</mainClass>

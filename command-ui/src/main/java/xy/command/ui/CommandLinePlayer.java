@@ -622,9 +622,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 	protected void launchCommandLine(CommandLineInstance instance, JPanel form) {
 		String cmd = instance.getCommandlineString();
-		String workingDirPath = instance.getModel().executionDir;
-		File workingDir = (workingDirPath != null) ? new File(
-				instance.getModel().executionDir) : null;
+		File workingDir = instance.getModel().executionDir;
 		CommandMonitoringDialog cmdDialog = new CommandMonitoringDialog(
 				SwingUtilities.getWindowAncestor(form), cmd, workingDir);
 		cmdDialog.setLocationRelativeTo(null);

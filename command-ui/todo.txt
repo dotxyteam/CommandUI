@@ -1,3 +1,8 @@
+- choice opption selection => creates a visible empty control
+- Context menu needed
+- Remove InputArgument default value “<value>”
+- When an option is selected then the window must grow, not only the scrollPane
+- Needs indication that the script execution is finished
 - add online documentation
 - command icon arg
 - add group layout???

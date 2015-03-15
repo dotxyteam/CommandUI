@@ -11,5 +11,10 @@ public class ArgumentPage  implements Serializable {
 	public String title;
 	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
 	
-	
+
+
+	@Override
+	public String toString() {
+		return title;
+	}
 }

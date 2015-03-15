@@ -102,9 +102,6 @@ public class CommandLineEditor extends ReflectionUI {
 		if (object instanceof ArgumentPage) {
 			String title = ((ArgumentPage) object).title;
 			return ((title == null) ? "" : title);
-		} else if (object instanceof AbstractCommandLinePart) {
-			String title = ((AbstractCommandLinePart) object).title;
-			return ((title == null) ? "" : title);
 		} else {
 			return super.toString(object);
 		}
@@ -131,14 +128,14 @@ public class CommandLineEditor extends ReflectionUI {
 				if (type.getName().equals(
 						AbstractCommandLinePart.class.getName())) {
 					return Arrays.asList(getTypeInfo(new JavaTypeInfoSource(
-							InputArgument.class)),
+							FixedArgument.class)),
+							getTypeInfo(new JavaTypeInfoSource(
+									InputArgument.class)),
 							getTypeInfo(new JavaTypeInfoSource(
 									OptionalPart.class)),
 							getTypeInfo(new JavaTypeInfoSource(
 									MultiplePart.class)),
 							getTypeInfo(new JavaTypeInfoSource(Choice.class)),
-							getTypeInfo(new JavaTypeInfoSource(
-									FixedArgument.class)),
 							getTypeInfo(new JavaTypeInfoSource(
 									FileArgument.class)),
 							getTypeInfo(new JavaTypeInfoSource(
@@ -204,7 +201,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 										@Override
 										public String getCaption() {
-											return "Title";
+											return "Option Title";
 										}
 
 									};
@@ -280,7 +277,7 @@ public class CommandLineEditor extends ReflectionUI {
 									if (columnIndex == 0) {
 										return "Type";
 									} else if (columnIndex == 1) {
-										return "Title";
+										return "Value";
 									} else {
 										throw new AssertionError();
 									}
@@ -304,15 +301,10 @@ public class CommandLineEditor extends ReflectionUI {
 											return type.getCaption();
 										}
 									} else if (columnIndex == 1) {
-										IFieldInfo titleField = ReflectionUIUtils
-												.findInfoByName(
-														type.getFields(),
-														"title");
-										if (titleField == null) {
+										if (type instanceof IMapEntryTypeInfo) {
 											return "";
 										} else {
-											return (String) titleField
-													.getValue(item);
+											return item.toString();
 										}
 									} else {
 										throw new AssertionError();

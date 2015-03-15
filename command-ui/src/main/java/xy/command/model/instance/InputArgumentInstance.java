@@ -7,12 +7,15 @@ import xy.command.model.InputArgument;
 
 public class InputArgumentInstance extends AbstractCommandLinePartInstance {
 
-	public String title;
 	public String value;
-	
+
 	public InputArgumentInstance(InputArgument model) {
 		super(model);
-		this.value = "<value>";
+		if (model.defaultValue != null) {
+			this.value = model.defaultValue;
+		} else {
+			value = "";
+		}
 	}
 
 	public InputArgument getModel() {

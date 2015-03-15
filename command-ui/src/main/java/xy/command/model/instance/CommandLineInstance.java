@@ -27,7 +27,7 @@ public class CommandLineInstance {
 	}
 
 	public String getCommandlineString(){
-		return model.executablePath + " " + CommandUIUtils.formatArgumentList(listArgumentValues());
+		return model.executablePath.getPath() + " " + CommandUIUtils.formatArgumentList(listArgumentValues());
 	}
 	
 	public List<String> listArgumentValues(){
