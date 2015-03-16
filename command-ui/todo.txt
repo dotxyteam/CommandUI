@@ -1,3 +1,5 @@
+- check parameter values not empty
+- allow to save player state
 - Context menu needed
 - command icon arg
 - add group layout???
