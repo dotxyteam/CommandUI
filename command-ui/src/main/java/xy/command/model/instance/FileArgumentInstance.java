@@ -11,6 +11,11 @@ public class FileArgumentInstance extends AbstractCommandLinePartInstance {
 	
 	public FileArgumentInstance(FileArgument model) {
 		super(model);
+		if (model.defaultValue != null) {
+			this.value = model.defaultValue;
+		} else {
+			value = "";
+		}
 	}
 	
 	

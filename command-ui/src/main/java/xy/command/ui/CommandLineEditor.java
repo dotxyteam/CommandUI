@@ -13,6 +13,7 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import xy.command.model.AbstractCommandLinePart;
 import xy.command.model.ArgumentGroup;
@@ -45,7 +46,7 @@ import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.ITypeInfoSource;
 import xy.reflect.ui.info.type.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.StandardCollectionTypeInfo;
-import xy.reflect.ui.info.type.StandardMapListTypeInfo;
+import xy.reflect.ui.info.type.StandardMapAsListTypeInfo;
 import xy.reflect.ui.info.type.TypeInfoProxyConfiguration;
 import xy.reflect.ui.util.ReflectionUIError;
 import xy.reflect.ui.util.ReflectionUIUtils;
@@ -53,24 +54,36 @@ import xy.reflect.ui.util.ReflectionUIUtils;
 public class CommandLineEditor extends ReflectionUI {
 
 	public static final String COMMAND_LINE_FILE_EXTENSION = "cml";
-	private static final String EXE_FILE_PATH_PROPERTY_KEY = "commandui.exe.file";
+	private static final String CURRENT_EXE_FILE_PATH_PROPERTY_KEY = "current.exe.file.path";
+	private static final String NORMAL_EXE_FILE_NAME_PROPERTY_KEY = "normal.exe.file.name";
 	protected static final String APP_NAME = "Command UI";
 
 	public static void main(String[] args) {
-		String exeFilePath = System.getProperty(EXE_FILE_PATH_PROPERTY_KEY);
-		if (exeFilePath != null) {
-			File playerFile = getPlayerFile(new File(exeFilePath));
-			if (playerFile.exists()) {
-				CommandLinePlayer.main(new String[] { playerFile.getPath() });
-				return;
+		try {
+			String exeFilePath = System
+					.getProperty(CURRENT_EXE_FILE_PATH_PROPERTY_KEY);
+			if (exeFilePath != null) {
+				File exeFile = new File(exeFilePath);
+				String normalExeFileName = System
+						.getProperty(NORMAL_EXE_FILE_NAME_PROPERTY_KEY);
+				if (!normalExeFileName.equals(exeFile.getName())) {
+					File playerFile = getPlayerFile(new File(exeFilePath));
+					CommandLinePlayer
+							.main(new String[] { playerFile.getPath() });
+					return;
+				}
 			}
+			new CommandLineEditor().openObjectFrame(new CommandLine(),
+					"Command UI", getClassIconImage(CommandLine.class));
+		} catch (Throwable t) {
+			JOptionPane.showMessageDialog(null, t.toString(), null,
+					JOptionPane.ERROR_MESSAGE);
 		}
-		new CommandLineEditor().openObjectFrame(new CommandLine(),
-				"Command UI", getClassIconImage(CommandLine.class));
+
 	}
 
 	private static File getPlayerFile(File exeFile) {
-		return new File(exeFile + COMMAND_LINE_FILE_EXTENSION);
+		return new File(exeFile + ".ini");
 	}
 
 	public static Image getClassIconImage(Class<? extends Object> class1) {
@@ -187,8 +200,9 @@ public class CommandLineEditor extends ReflectionUI {
 					ITypeInfo containingType) {
 				if (containingType.getName().equals(Choice.class.getName())
 						&& field.getName().equals("options")) {
-					return new StandardMapListTypeInfo(CommandLineEditor.this,
-							HashMap.class, String.class, List.class) {
+					return new StandardMapAsListTypeInfo(
+							CommandLineEditor.this, HashMap.class,
+							String.class, List.class) {
 
 						@Override
 						public StandardMapEntryTypeInfo getItemType() {
@@ -354,7 +368,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public String getDocumentation() {
-				return null;
+				return "Runs a preview of the current command line specification GUI";
 			}
 
 			@Override
@@ -388,7 +402,7 @@ public class CommandLineEditor extends ReflectionUI {
 					Map<String, Object> valueByParameterName) {
 				File commandUIExeFile;
 				String commandUIExeFilePath = System
-						.getProperty(EXE_FILE_PATH_PROPERTY_KEY);
+						.getProperty(CURRENT_EXE_FILE_PATH_PROPERTY_KEY);
 				if (commandUIExeFilePath == null) {
 					if ((commandUIExeFile = askCommandUIExecutableLocation()) == null) {
 						return null;
@@ -418,6 +432,9 @@ public class CommandLineEditor extends ReflectionUI {
 				FileDialog fd = new FileDialog((JFrame) null, "Locate the '"
 						+ APP_NAME + "' executable file:", FileDialog.LOAD);
 				fd.setVisible(true);
+				if (fd.getFile() == null) {
+					return null;
+				}
 				return new File(fd.getDirectory(), fd.getFile());
 			}
 
@@ -438,7 +455,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public String getDocumentation() {
-				return null;
+				return "Builds an executable for the GUI of the current command line specification";
 			}
 
 			@Override

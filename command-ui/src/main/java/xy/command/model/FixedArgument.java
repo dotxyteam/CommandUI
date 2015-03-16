@@ -1,5 +1,8 @@
 package xy.command.model;
 
+import java.io.IOException;
+import java.io.Writer;
+
 import xy.command.model.instance.FixedArgumentInstance;
 
 public class FixedArgument extends AbstractCommandLinePart{
@@ -17,5 +20,9 @@ public class FixedArgument extends AbstractCommandLinePart{
 		return value;
 	}
 	
+	@Override
+	public void writetUsageText(Writer out) throws IOException {
+		out.write(value);
+	}
 
 }

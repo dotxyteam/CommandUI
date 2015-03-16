@@ -1,8 +1,6 @@
 <xy.command.model.CommandLine>
-  <title>n ping  command</title>
-  <description>this should be the command description
-this should be the command description
-this should be the command description</description>
+  <title>ping  connectivity</title>
+  <description>This is a GUI for testing connectivity to a remote machine using the ping command.</description>
   <executablePath>ping</executablePath>
   <executionDir>.</executionDir>
   <arguments>
@@ -10,21 +8,18 @@ this should be the command description</description>
       <title>1</title>
       <parts>
         <xy.command.model.FixedArgument>
-          <title>-n</title>
           <value>-n</value>
         </xy.command.model.FixedArgument>
         <xy.command.model.InputArgument>
           <title>number of pings</title>
         </xy.command.model.InputArgument>
         <xy.command.model.Choice>
-          <title>host</title>
           <options>
             <entry>
               <string>google</string>
               <xy.command.model.ArgumentGroup>
                 <parts>
                   <xy.command.model.FixedArgument>
-                    <title></title>
                     <value>www.google.com</value>
                   </xy.command.model.FixedArgument>
                 </parts>
@@ -41,6 +36,7 @@ this should be the command description</description>
               </xy.command.model.ArgumentGroup>
             </entry>
           </options>
+          <title>host</title>
         </xy.command.model.Choice>
       </parts>
     </xy.command.model.ArgumentPage>

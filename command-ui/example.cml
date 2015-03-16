@@ -13,7 +13,6 @@ description</description>
           <title>the input</title>
         </xy.command.model.InputArgument>
         <xy.command.model.FixedArgument>
-          <title>the fixed argument</title>
           <value>-a</value>
         </xy.command.model.FixedArgument>
         <xy.command.model.OptionalPart>

@@ -52,6 +52,8 @@ public class CommandMonitoringDialog extends JDialog {
 
 	private File workingDir;
 
+	private boolean killed = false;
+
 	/**
 	 * 
 	 * Launch the application.
@@ -88,88 +90,49 @@ public class CommandMonitoringDialog extends JDialog {
 
 		setTitle("Command Execution Monitoring");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-
 		setBounds(100, 100, 450, 300);
-
 		getContentPane().setLayout(new BorderLayout());
-
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-
 		contentPanel.setLayout(new BorderLayout(0, 0));
-
 		{
-
 			textControl = new JTextPane();
-
 			textControl.setEditable(false);
-
 			textControl.getDocument().addDocumentListener(
 					new LimitLinesDocumentListener(getMaximumlineCount()));
-
 			contentPanel.add(scrollPane = new JScrollPane(textControl));
-
 		}
-
 		{
 
 			JPanel buttonPane = new JPanel();
-
 			getContentPane().add(buttonPane, BorderLayout.NORTH);
-
 			buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
 			{
-
 				killOrCloseButton = new JButton();
-
 				killOrCloseButton.setText("Kill");
-
 				killOrCloseButton.addActionListener(new ActionListener() {
-
 					public void actionPerformed(ActionEvent e) {
-
 						killOrClose();
-
 					}
-
 				});
-
 				{
-
 					autoScrollButton = new JToggleButton("Auto-Scroll");
-
 					autoScrollButton.setSelected(true);
-
 					buttonPane.add(autoScrollButton);
-
 				}
-
 				killOrCloseButton.setActionCommand("");
-
 				buttonPane.add(killOrCloseButton);
-
 				getRootPane().setDefaultButton(killOrCloseButton);
-
 			}
-
 		}
-
 		scrollerToBottom = new AutoScrollerToMaximum(
 				scrollPane.getVerticalScrollBar()) {
-
 			@Override
 			public boolean shouldScroll() {
-
 				return autoScrollButton.isSelected() && super.shouldScroll();
-
 			}
-
 		};
-
 		scrollerToBottom.start();
-
 		launchCommand();
 
 	}
@@ -193,24 +156,25 @@ public class CommandMonitoringDialog extends JDialog {
 	protected void launchCommand() {
 
 		commandThread = new Thread("Executing: " + command) {
-
 			@Override
 			public void run() {
-
 				killOrCloseButton.setText("Kill");
-
 				write("Executing: " + command + "...\n",
-
-				getTextAttributes(Color.BLACK));
-
+						getTextAttributes(Color.BLACK));
 				try {
 					CommandUIUtils.runCommand(command, true,
 							new DocumentOutputStream(textControl.getDocument(),
 									getTextAttributes(Color.BLACK)),
 							new DocumentOutputStream(textControl.getDocument(),
 									getTextAttributes(Color.BLUE)), workingDir);
+					if (!killed) {
+						write("\n<Terminated>\n",
+								getTextAttributes(Color.GREEN.darker().darker()));
+					}
 				} catch (Throwable t) {
 					showError(t.toString());
+					write("\n<An error occured>\n",
+							getTextAttributes(Color.RED));
 				}
 				killOrCloseButton.setText("Close");
 
@@ -233,33 +197,20 @@ public class CommandMonitoringDialog extends JDialog {
 	}
 
 	protected void killOrClose() {
-
 		if (commandThread.isAlive()) {
-
 			commandThread.interrupt();
-
+			killed = true;
 			while (commandThread.isAlive()) {
-
 				try {
-
 					Thread.sleep(100);
-
 				} catch (InterruptedException e) {
-
 					throw new AssertionError(e);
-
 				}
-
 			}
-
 			write("\n<Killed>\n", getTextAttributes(Color.RED));
-
 		} else {
-
 			CommandMonitoringDialog.this.dispose();
-
 		}
-
 	}
 
 	protected void write(String string, AttributeSet textAttributes) {

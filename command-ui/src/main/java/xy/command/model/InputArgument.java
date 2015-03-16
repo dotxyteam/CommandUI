@@ -1,5 +1,8 @@
 package xy.command.model;
 
+import java.io.IOException;
+import java.io.Writer;
+
 import xy.command.model.instance.InputArgumentInstance;
 
 public class InputArgument extends AbstractCommandLinePart {
@@ -7,7 +10,7 @@ public class InputArgument extends AbstractCommandLinePart {
 	protected static final long serialVersionUID = 1L;
 	public String title;
 	public String defaultValue;
-	
+
 	@Override
 	public InputArgumentInstance createInstance() {
 		return new InputArgumentInstance(this);
@@ -15,8 +18,18 @@ public class InputArgument extends AbstractCommandLinePart {
 
 	@Override
 	public String toString() {
-		return "<"+title+">";
+		return "<" + title + ">";
 	}
-	
+
+	@Override
+	public void writetUsageText(Writer out) throws IOException {
+		out.write("<");
+		if ((title == null) || (title.trim().length() == 0)) {
+			out.write("arg");
+		} else {
+			out.write(title.replaceAll("\\s", "_"));
+		}
+		out.write(">");
+	}
 
 }

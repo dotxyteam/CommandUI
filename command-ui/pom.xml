@@ -101,7 +101,8 @@
 							<jre>
 								<minVersion>1.6.0</minVersion>
 								<opts>
-									<param>-Dcommandui.exe.file="%EXEFILE%"</param>
+									<param>-Dnormal.exe.file.name="CommandUI.exe"</param>
+									<param>-Dcurrent.exe.file.path="%EXEFILE%"</param>
 								</opts>
 							</jre>
 						</configuration>

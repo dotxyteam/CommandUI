@@ -6,7 +6,6 @@ public class DirectoryArgumentInstance extends FileArgumentInstance {
 
 	public DirectoryArgumentInstance(DirectoryArgument model) {
 		super(model);
-		this.value = "<path to the directory>";
 	}
 
 	public DirectoryArgument getModel() {
