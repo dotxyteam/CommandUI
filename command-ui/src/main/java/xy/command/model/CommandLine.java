@@ -35,7 +35,7 @@ public class CommandLine {
 	}
 
 	@Documentation("Loads a command line specification file")
-	public void load(File input) {
+	public void loadFromFile(File input) {
 		XStream xstream = new XStream();
 		CommandLine loaded = (CommandLine) xstream.fromXML(input);
 		title = loaded.title;
@@ -46,7 +46,7 @@ public class CommandLine {
 	}
 
 	@Documentation("Saves the current command line specification in a file")
-	public void save(File output) throws IOException {
+	public void saveToFile(File output) throws IOException {
 		XStream xstream = new XStream();
 		FileWriter fileWriter = new FileWriter(output);
 		xstream.toXML(this, fileWriter);

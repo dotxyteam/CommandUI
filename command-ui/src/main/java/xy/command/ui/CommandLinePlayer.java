@@ -61,9 +61,9 @@ public class CommandLinePlayer extends ReflectionUI {
 	public static void main(String[] args) {
 		CommandLine commandLine = new CommandLine();
 		if (args.length >= 1) {
-			commandLine.load(new File(args[0]));
+			commandLine.loadFromFile(new File(args[0]));
 		} else {
-			commandLine.load(new File("example.cml"));
+			commandLine.loadFromFile(new File("example.cml"));
 		}
 		CommandLinePlayer player = new CommandLinePlayer();
 		player.openObjectFrame(commandLine.createInstance(), commandLine.title,

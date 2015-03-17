@@ -184,7 +184,7 @@ public class CommandLineEditor extends ReflectionUI {
 						IMethodInfo createInstanceMethod = ReflectionUIUtils
 								.findInfoByName(result, "createInstance");
 						result.remove(createInstanceMethod);
-						result.add(getTestMethod());
+						result.add(getPreviewMethod());
 						result.add(getDistributeMethod());
 						return result;
 					} else {
@@ -337,7 +337,7 @@ public class CommandLineEditor extends ReflectionUI {
 		}.get(super.getTypeInfo(typeSource));
 	}
 
-	private IMethodInfo getTestMethod() {
+	private IMethodInfo getPreviewMethod() {
 		return new IMethodInfo() {
 			@Override
 			public Object invoke(Object object,
@@ -353,7 +353,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public String getCaption() {
-				return "Test";
+				return "Preview GUI";
 			}
 
 			@Override
@@ -363,7 +363,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public String getName() {
-				return "test";
+				return "preview";
 			}
 
 			@Override
@@ -422,7 +422,7 @@ public class CommandLineEditor extends ReflectionUI {
 					File commandUIExeFile, File outputExeFile) {
 				try {
 					FileUtils.copy(commandUIExeFile, outputExeFile);
-					commandLine.save(getPlayerFile(outputExeFile));
+					commandLine.saveToFile(getPlayerFile(outputExeFile));
 				} catch (Exception e) {
 					throw new ReflectionUIError(e);
 				}
@@ -440,7 +440,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public String getCaption() {
-				return "Distribute";
+				return "Generate GUI";
 			}
 
 			@Override
@@ -450,12 +450,12 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public String getName() {
-				return "distribute";
+				return "generate";
 			}
 
 			@Override
 			public String getDocumentation() {
-				return "Builds an executable for the GUI of the current command line specification";
+				return "Builds an executable file for the GUI of the current command line specification";
 			}
 
 			@Override
