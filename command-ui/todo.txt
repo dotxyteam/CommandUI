@@ -1,4 +1,3 @@
-test
 - check parameter values not empty
 - allow to save player state
 - Context menu needed
