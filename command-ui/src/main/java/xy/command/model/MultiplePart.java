@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.Writer;
 
 import xy.command.model.instance.MultiplePartInstance;
-import xy.reflect.ui.info.annotation.Validating;
 
 public class MultiplePart extends ArgumentGroup{
 
@@ -23,12 +22,5 @@ public class MultiplePart extends ArgumentGroup{
 	}
 
 	
-	@Validating
-	@Override
-	public void validate() throws Exception {
-		if ((title == null) || (title.trim().length() == 0)) {
-			throw new Exception("Missing title");
-		}
-	}
-
+	
 }

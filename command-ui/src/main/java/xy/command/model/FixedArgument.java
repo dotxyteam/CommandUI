@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 import xy.command.model.instance.FixedArgumentInstance;
+import xy.command.ui.util.ValidationError;
 import xy.reflect.ui.info.annotation.Validating;
 
 public class FixedArgument extends AbstractCommandLinePart{
@@ -30,7 +31,7 @@ public class FixedArgument extends AbstractCommandLinePart{
 	@Override
 	public void validate() throws Exception {
 		if ((value == null) || (value.trim().length() == 0)) {
-			throw new Exception("Missing value");
+			throw new ValidationError("Enter the value");
 		}
 	}
 

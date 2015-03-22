@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import xy.command.model.FileArgument;
+import xy.command.ui.util.ValidationError;
 
 public class FileArgumentInstance extends AbstractCommandLinePartInstance {
 
@@ -29,4 +30,15 @@ public class FileArgumentInstance extends AbstractCommandLinePartInstance {
 		return Collections.singletonList(value);
 	}
 
+	@Override
+	public void validate() throws Exception {
+		try {
+			if ((value == null) || (value.trim().length() == 0)) {
+				throw new ValidationError("Enter the value");
+			}
+		} catch (Exception e) {
+			throw contextualizeFieldValidationError(e, ((FileArgument) model).title);
+		}
+
+	}
 }

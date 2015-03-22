@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 import xy.command.model.instance.InputArgumentInstance;
+import xy.command.ui.util.ValidationError;
 import xy.reflect.ui.info.annotation.Validating;
 
 public class InputArgument extends AbstractCommandLinePart {
@@ -37,7 +38,7 @@ public class InputArgument extends AbstractCommandLinePart {
 	@Override
 	public void validate() throws Exception {
 		if ((title == null) || (title.trim().length() == 0)) {
-			throw new Exception("Missing title");
+			throw new ValidationError("Enter the title");
 		}
 	}
 

@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 import xy.command.model.instance.AbstractCommandLinePartInstance;
 import xy.command.model.instance.ChoiceInstance;
+import xy.command.ui.util.ValidationError;
 import xy.reflect.ui.info.annotation.Documentation;
 import xy.reflect.ui.info.annotation.Validating;
 
@@ -47,7 +48,7 @@ public class Choice extends AbstractCommandLinePart {
 	@Override
 	public void validate() throws Exception {
 		if ((title == null) || (title.trim().length() == 0)) {
-			throw new Exception("Missing title");
+			throw new ValidationError("Enter the title");
 		}
 	}
 

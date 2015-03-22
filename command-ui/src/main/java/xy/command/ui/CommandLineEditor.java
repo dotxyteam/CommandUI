@@ -1,5 +1,6 @@
 package xy.command.ui;
 
+import java.awt.Component;
 import java.awt.FileDialog;
 import java.awt.Image;
 import java.io.File;
@@ -14,6 +15,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import xy.command.model.AbstractCommandLinePart;
 import xy.command.model.ArgumentGroup;
@@ -29,6 +31,7 @@ import xy.command.model.OptionalPart;
 import xy.command.model.instance.CommandLineInstance;
 import xy.command.ui.util.FileUtils;
 import xy.reflect.ui.ReflectionUI;
+import xy.reflect.ui.control.ListControl;
 import xy.reflect.ui.control.ModificationStack.IModification;
 import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.field.FieldInfoProxy;
@@ -198,6 +201,7 @@ public class CommandLineEditor extends ReflectionUI {
 						IMethodInfo createInstanceMethod = ReflectionUIUtils
 								.findInfoByName(result, "createInstance");
 						result.remove(createInstanceMethod);
+						result.add(getValidateMethod());
 						result.add(getPreviewMethod());
 						result.add(getDistributeMethod());
 						return result;
@@ -357,11 +361,8 @@ public class CommandLineEditor extends ReflectionUI {
 			public Object invoke(Object object,
 					Map<String, Object> valueByParameterName) {
 				CommandLine commandLine = (CommandLine) object;
-				try {
-					commandLine.validate();
-				} catch (Exception e) {
-					throw new ReflectionUIError(e);
-				}
+				getValidateMethod().invoke(commandLine,
+						Collections.<String, Object> emptyMap());
 				CommandLineInstance instance = commandLine.createInstance();
 				CommandLinePlayer player = new CommandLinePlayer();
 				CommandLine model = instance.getModel();
@@ -527,6 +528,107 @@ public class CommandLineEditor extends ReflectionUI {
 								return null;
 							}
 						});
+			}
+
+			@Override
+			public boolean isReadOnly() {
+				return true;
+			}
+
+			@Override
+			public InfoCategory getCategory() {
+				return null;
+			}
+
+			@Override
+			public IModification getUndoModification(Object object,
+					Map<String, Object> valueByParameterName) {
+				return null;
+			}
+
+			@Override
+			public void validateParameters(Object object,
+					Map<String, Object> valueByParameterName) throws Exception {
+			}
+
+		};
+	}
+
+	private IMethodInfo getValidateMethod() {
+		return new IMethodInfo() {
+			@Override
+			public Object invoke(Object object,
+					Map<String, Object> valueByParameterName) {
+				CommandLine commandLine = (CommandLine) object;
+				try {
+					commandLine.validate();
+				} catch (Exception e) {
+					throw new ReflectionUIError(e);
+				}
+				for (JPanel form : getForms(commandLine)) {
+					for (Component fieldControl : ((ReflectionUI) CommandLineEditor.this)
+							.getFieldControlsOf(form, "arguments")) {
+						if (fieldControl instanceof ListControl) {
+							final ListControl listControl = (ListControl) fieldControl;
+							listControl
+									.visitItems(new ListControl.IItemsVisitor() {
+										@Override
+										public void visitItem(
+												ListControl.ItemPosition itemPosition) {
+											Object item = itemPosition
+													.getItem();
+											try {
+												if (item instanceof ArgumentPage) {
+													((ArgumentPage) item)
+															.validate();
+												} else if (item instanceof AbstractCommandLinePart) {
+													((AbstractCommandLinePart) item)
+															.validate();
+												}
+											} catch (Exception e) {
+												listControl
+														.scrollRectToVisible(listControl
+																.getBounds());
+												listControl
+														.setSingleSelection(itemPosition);
+												ITypeInfo itemType = getTypeInfo(getTypeInfoSource(item));
+												throw new ReflectionUIError(
+														"Invalid "
+																+ itemType
+																		.getCaption()
+																+ ": " + e, e);
+											}
+										}
+									});
+						}
+					}
+				}
+				return null;
+			}
+
+			@Override
+			public String getCaption() {
+				return "Validate";
+			}
+
+			@Override
+			public ITypeInfo getReturnValueType() {
+				return null;
+			}
+
+			@Override
+			public String getName() {
+				return "validate";
+			}
+
+			@Override
+			public String getDocumentation() {
+				return "validate the command line specification";
+			}
+
+			@Override
+			public List<IParameterInfo> getParameters() {
+				return Collections.<IParameterInfo> emptyList();
 			}
 
 			@Override

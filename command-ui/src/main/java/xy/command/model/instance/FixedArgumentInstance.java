@@ -20,5 +20,9 @@ public class FixedArgumentInstance extends AbstractCommandLinePartInstance {
 	public List<String> listArgumentValues() {
 		return Collections.singletonList(getModel().value);
 	}
+	
+	@Override
+	public void validate() throws Exception {
+	}
 
 }

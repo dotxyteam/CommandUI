@@ -23,4 +23,11 @@ public class OptionalPartInstance extends ArgumentGroupInstance {
 		}
 	}
 
+	@Override
+	public void validate() throws Exception {
+		if(active){
+			super.validate();
+		}
+	}
+
 }

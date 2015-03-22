@@ -6,9 +6,8 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 import xy.command.model.instance.CommandLineInstance;
+import xy.command.ui.util.ValidationError;
 import xy.reflect.ui.info.annotation.Documentation;
 import xy.reflect.ui.info.annotation.Validating;
 
@@ -39,57 +38,15 @@ public class CommandLine {
 	@Validating
 	public void validate() throws Exception {
 		if ((title == null) || (title.trim().length() == 0)) {
-			throw new Exception("Missing title");
+			throw new ValidationError("Enter the title");
 		}
 		if ((executablePath == null)
 				|| (executablePath.getPath().trim().length() == 0)) {
-			throw new Exception("Missing executable path");
+			throw new ValidationError("Enter the executable path");
 		}
 		if ((executionDir == null)
 				|| (executionDir.getPath().trim().length() == 0)) {
-			throw new Exception("Missing execution directory");
-		}
-	}
-
-	public void validateRecursively() throws Exception {
-		validate();
-		for (int i = 0; i < arguments.size(); i++) {
-			ArgumentPage page = arguments.get(i);
-			try {
-				validateRecursively(page.parts);
-			} catch (Exception e) {
-				throw new Exception("\n"+ArgumentPage.class.getSimpleName()
-						+ (i + 1) + "->" + e.getMessage());
-			}
-		}
-	}
-
-	private void validateRecursively(List<AbstractCommandLinePart> parts)
-			throws Exception {
-		for (int i = 0; i < parts.size(); i++) {
-			AbstractCommandLinePart part = parts.get(i);
-			try {
-				part.validate();
-				if (part instanceof ArgumentGroup) {
-					ArgumentGroup group = (ArgumentGroup) part;
-					validateRecursively(group.parts);
-				} else if (part instanceof Choice) {
-					Choice choice = (Choice) part;
-					for (Map.Entry<String, ArgumentGroup> entry : choice.options
-							.entrySet()) {
-						ArgumentGroup group = entry.getValue();
-						try {
-							validateRecursively(group.parts);
-						} catch (Exception e) {
-							throw new Exception("\n["
-									+ entry.getKey() + "]-> " + e.getMessage());
-						}
-					}
-				}
-			} catch (Exception e) {
-				throw new Exception("\n[" + part.getClass().getSimpleName()
-						+ "] " + part.toString() + "-> " + e.getMessage());
-			}
+			throw new ValidationError("Enter the execution directory");
 		}
 	}
 

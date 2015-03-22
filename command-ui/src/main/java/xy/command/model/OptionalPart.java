@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.Writer;
 
 import xy.command.model.instance.OptionalPartInstance;
-import xy.reflect.ui.info.annotation.Validating;
 
 public class OptionalPart extends ArgumentGroup {
 
@@ -23,13 +22,5 @@ public class OptionalPart extends ArgumentGroup {
 		out.write("]");		
 	}
 
-	
-	@Validating
-	@Override
-	public void validate() throws Exception {
-		if ((title == null) || (title.trim().length() == 0)) {
-			throw new Exception("Missing title");
-		}
-	}
 
 }

@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import xy.command.model.instance.ArgumentGroupInstance;
+import xy.command.ui.util.ValidationError;
 import xy.reflect.ui.info.annotation.Documentation;
+import xy.reflect.ui.info.annotation.Validating;
 
 public class ArgumentGroup extends AbstractCommandLinePart {
 
@@ -36,6 +38,14 @@ public class ArgumentGroup extends AbstractCommandLinePart {
 			}
 			part.writetUsageText(out);
 			first = false;
+		}
+	}
+	
+	@Validating
+	@Override
+	public void validate() throws Exception {
+		if ((title == null) || (title.trim().length() == 0)) {
+			throw new ValidationError("Enter the title");
 		}
 	}
 

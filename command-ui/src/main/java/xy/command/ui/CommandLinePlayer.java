@@ -656,7 +656,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		public PartsAsTypeInfo(CommandLinePlayer player,
 				IPartsAsTypeInfoSource typeInfoSource) {
-			super(player, IPartsAsTypeInfoSource.class);
+			super(player, Object.class);
 			this.player = player;
 			this.typeInfoSource = typeInfoSource;
 		}
@@ -760,6 +760,19 @@ public class CommandLinePlayer extends ReflectionUI {
 		@Override
 		public String getDocumentation() {
 			return typeInfoSource.getTypeDocumentation();
+		}
+
+		@Override
+		public void validate(Object object) throws Exception {
+			if (object instanceof CommandLineInstance) {
+				for (AbstractCommandLinePartInstance partInstance : ((CommandLineInstance) object).partInstances) {
+					partInstance.validate();
+				}
+			} else if (object instanceof ArgumentGroupInstance) {
+				for (AbstractCommandLinePartInstance partInstance : ((ArgumentGroupInstance) object).partInstances) {
+					partInstance.validate();
+				}
+			}
 		}
 
 	}
@@ -990,10 +1003,11 @@ public class CommandLinePlayer extends ReflectionUI {
 		@Override
 		public Object fromStandardList(List<?> list) {
 			List<MultiplePartInstanceOccurrence> multiPartInstanceOccurrences = new ArrayList<MultiplePartInstanceOccurrence>();
-			for (Object item : list) {
+			for (int i = 0; i < list.size(); i++) {
+				Object item = list.get(i);
 				ArgumentGroupInstance occurenceAsGroupInstance = (ArgumentGroupInstance) item;
 				MultiplePartInstanceOccurrence occurrence = new MultiplePartInstanceOccurrence(
-						multiplePart);
+						multiplePart, i);
 				occurrence.partInstances = occurenceAsGroupInstance.partInstances;
 				multiPartInstanceOccurrences.add(occurrence);
 			}

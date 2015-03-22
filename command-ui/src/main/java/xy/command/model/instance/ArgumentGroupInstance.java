@@ -32,4 +32,15 @@ public class ArgumentGroupInstance extends AbstractCommandLinePartInstance {
 		return result;
 	}
 
+	@Override
+	public void validate() throws Exception {
+		try {
+			for (AbstractCommandLinePartInstance partInstance : partInstances) {
+				partInstance.validate();
+			}
+		} catch (Exception e) {
+			throw contextualizeFieldValidationError(e, ((ArgumentGroup) model).title);
+		}
+	}
+
 }

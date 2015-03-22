@@ -22,4 +22,13 @@ public class ArgumentPage  implements Serializable {
 	public String toString() {
 		return title;
 	}
+
+
+
+	public void validate() throws Exception {
+		for(AbstractCommandLinePart part: parts){
+			part.validate();
+		}
+		
+	}
 }
