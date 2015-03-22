@@ -38,5 +38,11 @@ public class CommandLineInstance {
 		return result;
 	}
 
+	public void validate() throws Exception {
+		for (AbstractCommandLinePartInstance partInstance : partInstances) {
+			partInstance.validate();
+		}	
+	}
+
 
 }

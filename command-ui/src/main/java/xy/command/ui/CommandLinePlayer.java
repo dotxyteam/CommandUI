@@ -34,6 +34,7 @@ import xy.command.model.instance.InputArgumentInstance;
 import xy.command.model.instance.MultiplePartInstance;
 import xy.command.model.instance.OptionalPartInstance;
 import xy.command.model.instance.MultiplePartInstance.MultiplePartInstanceOccurrence;
+import xy.command.ui.util.ValidationError;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.control.EmbeddedFormControl;
 import xy.reflect.ui.control.ListControl;
@@ -133,24 +134,34 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		Object object = getObjectByForm().get(form);
 		if (object instanceof CommandLineInstance) {
-			final JButton runButton = new JButton("Execute");
-			result.add(runButton);
-			runButton.setToolTipText("Start the execution");
-			runButton.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					try {
-						CommandLineInstance instance = (CommandLineInstance) getObjectByForm()
-								.get(form);
-						launchCommandLine(instance, form);
-					} catch (Throwable t) {
-						handleExceptionsFromDisplayedUI(runButton, t);
-					}
-				}
-			});
+			result.add(createRunButton(form));
 		}
 
 		return result;
+	}
+
+	private Component createRunButton(final JPanel form) {
+		final JButton runButton = new JButton("Execute");
+		runButton.setToolTipText("Start the execution");
+		runButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent ev) {
+				try {
+					CommandLineInstance instance = (CommandLineInstance) getObjectByForm()
+							.get(form);
+					try {
+						instance.validate();
+					} catch (Exception e) {
+						throw new ValidationError("Validation Error: "
+								+ e.toString(), e);
+					}
+					launchCommandLine(instance, form);
+				} catch (Throwable t) {
+					handleExceptionsFromDisplayedUI(runButton, t);
+				}
+			}
+		});
+		return runButton;
 	}
 
 	private static IFieldInfo getFieldInfo(AbstractCommandLinePart part,
@@ -765,13 +776,9 @@ public class CommandLinePlayer extends ReflectionUI {
 		@Override
 		public void validate(Object object) throws Exception {
 			if (object instanceof CommandLineInstance) {
-				for (AbstractCommandLinePartInstance partInstance : ((CommandLineInstance) object).partInstances) {
-					partInstance.validate();
-				}
+				((CommandLineInstance) object).validate();
 			} else if (object instanceof ArgumentGroupInstance) {
-				for (AbstractCommandLinePartInstance partInstance : ((ArgumentGroupInstance) object).partInstances) {
-					partInstance.validate();
-				}
+				((ArgumentGroupInstance) object).validate();
 			}
 		}
 
