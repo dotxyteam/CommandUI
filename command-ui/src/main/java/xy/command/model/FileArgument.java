@@ -6,6 +6,7 @@ import java.io.Writer;
 import javax.swing.JFileChooser;
 
 import xy.command.model.instance.FileArgumentInstance;
+import xy.reflect.ui.info.annotation.Validating;
 
 public class FileArgument extends AbstractCommandLinePart {
 
@@ -39,6 +40,15 @@ public class FileArgument extends AbstractCommandLinePart {
 		}
 		out.write(">");
 	}
+	
+	@Validating
+	@Override
+	public void validate() throws Exception {
+		if ((title == null) || (title.trim().length() == 0)) {
+			throw new Exception("Missing title");
+		}
+	}
+
 	
 
 }

@@ -6,9 +6,11 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import xy.command.model.instance.CommandLineInstance;
 import xy.reflect.ui.info.annotation.Documentation;
+import xy.reflect.ui.info.annotation.Validating;
 
 import com.thoughtworks.xstream.XStream;
 
@@ -17,21 +19,78 @@ public class CommandLine {
 
 	@Documentation("Title of the generated command line GUI")
 	public String title;
-	
+
 	@Documentation("Description of the generated command line GUI")
 	public String description;
-	
+
 	@Documentation("Relative or absolute path of the executable file")
 	public File executablePath;
-	
+
 	@Documentation("The directory from which the command will be executed")
 	public File executionDir;
-	
+
 	@Documentation("The list of arguments of the command line")
 	public List<ArgumentPage> arguments = new ArrayList<ArgumentPage>();
 
 	public CommandLineInstance createInstance() {
 		return new CommandLineInstance(this);
+	}
+
+	@Validating
+	public void validate() throws Exception {
+		if ((title == null) || (title.trim().length() == 0)) {
+			throw new Exception("Missing title");
+		}
+		if ((executablePath == null)
+				|| (executablePath.getPath().trim().length() == 0)) {
+			throw new Exception("Missing executable path");
+		}
+		if ((executionDir == null)
+				|| (executionDir.getPath().trim().length() == 0)) {
+			throw new Exception("Missing execution directory");
+		}
+	}
+
+	public void validateRecursively() throws Exception {
+		validate();
+		for (int i = 0; i < arguments.size(); i++) {
+			ArgumentPage page = arguments.get(i);
+			try {
+				validateRecursively(page.parts);
+			} catch (Exception e) {
+				throw new Exception("\n"+ArgumentPage.class.getSimpleName()
+						+ (i + 1) + "->" + e.getMessage());
+			}
+		}
+	}
+
+	private void validateRecursively(List<AbstractCommandLinePart> parts)
+			throws Exception {
+		for (int i = 0; i < parts.size(); i++) {
+			AbstractCommandLinePart part = parts.get(i);
+			try {
+				part.validate();
+				if (part instanceof ArgumentGroup) {
+					ArgumentGroup group = (ArgumentGroup) part;
+					validateRecursively(group.parts);
+				} else if (part instanceof Choice) {
+					Choice choice = (Choice) part;
+					for (Map.Entry<String, ArgumentGroup> entry : choice.options
+							.entrySet()) {
+						ArgumentGroup group = entry.getValue();
+						try {
+							validateRecursively(group.parts);
+						} catch (Exception e) {
+							throw new Exception("\n["
+									+ entry.getKey() + "]-> " + e.getMessage());
+						}
+					}
+				}
+			} catch (Exception e) {
+				throw new Exception("\n[" + part.getClass().getSimpleName()
+						+ "] " + part.toString() + "-> " + e.getMessage());
+			}
+		}
 	}
 
 	@Documentation("Loads a command line specification file")

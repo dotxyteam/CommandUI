@@ -6,6 +6,7 @@ import java.io.Writer;
 
 import xy.command.model.instance.AbstractCommandLinePartInstance;
 import xy.reflect.ui.info.annotation.Documentation;
+import xy.reflect.ui.info.annotation.Validating;
 
 public abstract class AbstractCommandLinePart implements Serializable {
 
@@ -17,5 +18,12 @@ public abstract class AbstractCommandLinePart implements Serializable {
 	public abstract AbstractCommandLinePartInstance createInstance();
 
 	public abstract void writetUsageText(Writer out) throws IOException;
+	
+
+
+	
+	@Validating
+	public void validate() throws Exception {
+	}
 	
 }

@@ -35,12 +35,12 @@ import xy.reflect.ui.info.field.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.parameter.IParameterInfo;
+import xy.reflect.ui.info.type.AbstractTreeDetectionListStructuralInfo;
 import xy.reflect.ui.info.type.FileTypeInfo;
+import xy.reflect.ui.info.type.HiddenNullableFacetsTypeInfoProxyConfiguration;
 import xy.reflect.ui.info.type.IListTypeInfo;
 import xy.reflect.ui.info.type.IListTypeInfo.IItemPosition;
 import xy.reflect.ui.info.type.IListTypeInfo.IListStructuralInfo;
-import xy.reflect.ui.info.type.AbstractTreeDetectionListStructuralInfo;
-import xy.reflect.ui.info.type.HiddenNullableFacetsTypeInfoProxyConfiguration;
 import xy.reflect.ui.info.type.IMapEntryTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.ITypeInfoSource;
@@ -68,6 +68,20 @@ public class CommandLineEditor extends ReflectionUI {
 						.getProperty(NORMAL_EXE_FILE_NAME_PROPERTY_KEY);
 				if (!normalExeFileName.equals(exeFile.getName())) {
 					File playerFile = getPlayerFile(new File(exeFilePath));
+					if (!playerFile.exists()) {
+						throw new Exception(
+								"Unexpected executable file name: '"
+										+ exeFile.getName()
+										+ "'.\nFile not found: '" + playerFile
+										+ "'.") {
+							private static final long serialVersionUID = 1L;
+
+							@Override
+							public String toString() {
+								return getMessage();
+							}
+						};
+					}
 					CommandLinePlayer
 							.main(new String[] { playerFile.getPath() });
 					return;
@@ -343,6 +357,11 @@ public class CommandLineEditor extends ReflectionUI {
 			public Object invoke(Object object,
 					Map<String, Object> valueByParameterName) {
 				CommandLine commandLine = (CommandLine) object;
+				try {
+					commandLine.validate();
+				} catch (Exception e) {
+					throw new ReflectionUIError(e);
+				}
 				CommandLineInstance instance = commandLine.createInstance();
 				CommandLinePlayer player = new CommandLinePlayer();
 				CommandLine model = instance.getModel();
@@ -392,6 +411,11 @@ public class CommandLineEditor extends ReflectionUI {
 				return null;
 			}
 
+			@Override
+			public void validateParameters(Object object,
+					Map<String, Object> valueByParameterName) throws Exception {
+			}
+
 		};
 	}
 
@@ -400,6 +424,12 @@ public class CommandLineEditor extends ReflectionUI {
 			@Override
 			public Object invoke(Object object,
 					Map<String, Object> valueByParameterName) {
+				CommandLine commandLine = (CommandLine) object;
+				try {
+					commandLine.validate();
+				} catch (Exception e) {
+					throw new ReflectionUIError(e);
+				}
 				File commandUIExeFile;
 				String commandUIExeFilePath = System
 						.getProperty(CURRENT_EXE_FILE_PATH_PROPERTY_KEY);
@@ -412,7 +442,6 @@ public class CommandLineEditor extends ReflectionUI {
 				}
 				File outputExeFile = (File) valueByParameterName
 						.get("executableFilePath");
-				CommandLine commandLine = (CommandLine) object;
 				generateOutputFiles(commandLine, commandUIExeFile,
 						outputExeFile);
 				return null;
@@ -514,6 +543,11 @@ public class CommandLineEditor extends ReflectionUI {
 			public IModification getUndoModification(Object object,
 					Map<String, Object> valueByParameterName) {
 				return null;
+			}
+
+			@Override
+			public void validateParameters(Object object,
+					Map<String, Object> valueByParameterName) throws Exception {
 			}
 
 		};
