@@ -5,12 +5,17 @@ import java.io.Writer;
 
 import xy.command.model.instance.InputArgumentInstance;
 import xy.command.ui.util.ValidationError;
+import xy.reflect.ui.info.annotation.Documentation;
 import xy.reflect.ui.info.annotation.Validating;
 
 public class InputArgument extends AbstractCommandLinePart {
 
 	protected static final long serialVersionUID = 1L;
+
+	@Documentation("This title will identify the current element")
 	public String title;
+	
+	@Documentation("This value will provided by default")
 	public String defaultValue;
 
 	@Override

@@ -5,11 +5,14 @@ import java.io.Writer;
 
 import xy.command.model.instance.FixedArgumentInstance;
 import xy.command.ui.util.ValidationError;
+import xy.reflect.ui.info.annotation.Documentation;
 import xy.reflect.ui.info.annotation.Validating;
 
 public class FixedArgument extends AbstractCommandLinePart{
 
 	protected static final long serialVersionUID = 1L;
+	
+	@Documentation("This is the fixed argument value")
 	public String value;
 
 	@Override

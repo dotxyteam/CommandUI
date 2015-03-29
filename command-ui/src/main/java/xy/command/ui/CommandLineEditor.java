@@ -343,6 +343,11 @@ public class CommandLineEditor extends ReflectionUI {
 									}
 								}
 
+								@Override
+								protected boolean autoDetectTreeStructure() {
+									return true;
+								}
+
 							};
 						}
 

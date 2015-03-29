@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.io.Writer;
 
 import xy.command.model.instance.OptionalPartInstance;
+import xy.reflect.ui.info.annotation.Documentation;
 
 public class OptionalPart extends ArgumentGroup {
 
 	protected static final long serialVersionUID = 1L;
+	
+	@Documentation("If true, the option will be selected by default")
 	public boolean activeByDefault = false;
 
 	@Override

@@ -995,7 +995,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 
 		@Override
-		public List<?> toStandardList(Object value) {
+		public Object[] toListValue(Object value) {
 			MultiplePartInstance instance = (MultiplePartInstance) value;
 			List<ArgumentGroupInstance> result = new ArrayList<ArgumentGroupInstance>();
 			for (MultiplePartInstanceOccurrence occurrence : instance.multiPartInstanceOccurrences) {
@@ -1004,14 +1004,14 @@ public class CommandLinePlayer extends ReflectionUI {
 				occurenceAsGroupInstance.partInstances = occurrence.partInstances;
 				result.add(occurenceAsGroupInstance);
 			}
-			return result;
+			return result.toArray();
 		}
 
 		@Override
-		public Object fromStandardList(List<?> list) {
+		public Object fromListValue(Object[] listValue) {
 			List<MultiplePartInstanceOccurrence> multiPartInstanceOccurrences = new ArrayList<MultiplePartInstanceOccurrence>();
-			for (int i = 0; i < list.size(); i++) {
-				Object item = list.get(i);
+			for (int i = 0; i < listValue.length; i++) {
+				Object item = listValue[i];
 				ArgumentGroupInstance occurenceAsGroupInstance = (ArgumentGroupInstance) item;
 				MultiplePartInstanceOccurrence occurrence = new MultiplePartInstanceOccurrence(
 						multiplePart, i);
