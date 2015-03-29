@@ -295,11 +295,6 @@ public class CommandLineEditor extends ReflectionUI {
 									CommandLineEditor.this, type.getItemType()) {
 
 								@Override
-								protected boolean isFieldBased() {
-									return false;
-								}
-
-								@Override
 								public int getColumnCount() {
 									return 2;
 								}
@@ -346,6 +341,25 @@ public class CommandLineEditor extends ReflectionUI {
 								@Override
 								protected boolean autoDetectTreeStructure() {
 									return true;
+								}
+
+								@Override
+								public IFieldInfo getItemSubListField(
+										IItemPosition itemPosition) {
+									IFieldInfo containingListField = itemPosition
+											.getContainingListField();
+									if (containingListField.getName().equals(
+											"arguments")) {
+										ITypeInfo pageType = ((IListTypeInfo) containingListField
+												.getType()).getItemType();
+										IFieldInfo pagePartsField = ReflectionUIUtils
+												.findInfoByName(
+														pageType.getFields(),
+														"parts");
+										return pagePartsField;
+									}
+									return super
+											.getItemSubListField(itemPosition);
 								}
 
 							};
