@@ -32,7 +32,6 @@ import xy.command.model.instance.CommandLineInstance;
 import xy.command.ui.util.FileUtils;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.control.ListControl;
-import xy.reflect.ui.control.ModificationStack.IModification;
 import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.field.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
@@ -51,6 +50,7 @@ import xy.reflect.ui.info.type.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.StandardCollectionTypeInfo;
 import xy.reflect.ui.info.type.StandardMapAsListTypeInfo;
 import xy.reflect.ui.info.type.TypeInfoProxyConfiguration;
+import xy.reflect.ui.undo.IModification;
 import xy.reflect.ui.util.ReflectionUIError;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
