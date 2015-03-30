@@ -32,6 +32,7 @@ import xy.command.model.instance.CommandLineInstance;
 import xy.command.ui.util.FileUtils;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.control.ListControl;
+import xy.reflect.ui.info.IInfoCollectionSettings;
 import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.field.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
@@ -344,7 +345,7 @@ public class CommandLineEditor extends ReflectionUI {
 								}
 
 								@Override
-								public IFieldInfo getItemSubListField(
+								public List<IFieldInfo> getItemSubListCandidateFields(
 										IItemPosition itemPosition) {
 									IFieldInfo containingListField = itemPosition
 											.getContainingListField();
@@ -356,10 +357,11 @@ public class CommandLineEditor extends ReflectionUI {
 												.findInfoByName(
 														pageType.getFields(),
 														"parts");
-										return pagePartsField;
+										return Collections
+												.singletonList(pagePartsField);
 									}
 									return super
-											.getItemSubListField(itemPosition);
+											.getItemSubListCandidateFields(itemPosition);
 								}
 
 							};
