@@ -208,6 +208,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
+			public Map<String, Object> getSpecificProperties() {
+				return Collections.emptyMap();
+			}
+
+			@Override
 			public Object getValue(Object object) {
 				OptionalPartInstance instance = (OptionalPartInstance) typeInfoSource
 						.getFieldValueSources(object).get(partIndex);
@@ -279,6 +284,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
+			public Map<String, Object> getSpecificProperties() {
+				return Collections.emptyMap();
+			}
+
+			@Override
 			public Object getValue(Object object) {
 				InputArgumentInstance instance = (InputArgumentInstance) typeInfoSource
 						.getFieldValueSources(object).get(partIndex);
@@ -338,6 +348,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			@Override
 			public String getCaption() {
 				return part.title;
+			}
+
+			@Override
+			public Map<String, Object> getSpecificProperties() {
+				return Collections.emptyMap();
 			}
 
 			@Override
@@ -403,6 +418,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			@Override
 			public String getCaption() {
 				return part.title;
+			}
+
+			@Override
+			public Map<String, Object> getSpecificProperties() {
+				return Collections.emptyMap();
 			}
 
 			@Override
@@ -533,6 +553,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
+			public Map<String, Object> getSpecificProperties() {
+				return Collections.emptyMap();
+			}
+
+			@Override
 			public String getCaption() {
 				return part.title;
 			}
@@ -587,6 +612,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			@Override
 			public String getDocumentation() {
 				return part.description;
+			}
+
+			@Override
+			public Map<String, Object> getSpecificProperties() {
+				return Collections.emptyMap();
 			}
 
 			@Override

@@ -397,6 +397,11 @@ public class CommandLineEditor extends ReflectionUI {
 			}
 
 			@Override
+			public Map<String, Object> getSpecificProperties() {
+				return Collections.emptyMap();
+			}
+
+			@Override
 			public ITypeInfo getReturnValueType() {
 				return null;
 			}
@@ -499,6 +504,11 @@ public class CommandLineEditor extends ReflectionUI {
 			}
 
 			@Override
+			public Map<String, Object> getSpecificProperties() {
+				return Collections.emptyMap();
+			}
+
+			@Override
 			public String getName() {
 				return "generate";
 			}
@@ -521,6 +531,11 @@ public class CommandLineEditor extends ReflectionUI {
 							@Override
 							public String getDocumentation() {
 								return null;
+							}
+
+							@Override
+							public Map<String, Object> getSpecificProperties() {
+								return Collections.emptyMap();
 							}
 
 							@Override
@@ -634,6 +649,11 @@ public class CommandLineEditor extends ReflectionUI {
 			@Override
 			public ITypeInfo getReturnValueType() {
 				return null;
+			}
+
+			@Override
+			public Map<String, Object> getSpecificProperties() {
+				return Collections.emptyMap();
 			}
 
 			@Override
