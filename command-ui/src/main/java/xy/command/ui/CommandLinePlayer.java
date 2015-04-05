@@ -51,6 +51,7 @@ import xy.reflect.ui.info.type.FileTypeInfo;
 import xy.reflect.ui.info.type.IListTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.ITypeInfoSource;
+import xy.reflect.ui.info.type.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.TabularTreetStructuralInfo;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
@@ -739,8 +740,8 @@ public class CommandLinePlayer extends ReflectionUI {
 			if (!(object instanceof List)) {
 				return false;
 			}
-			Class<?> itemType = ReflectionUIUtils.getJavaTypeParameter(
-					object.getClass(), null, List.class, 0);
+			Class<?> itemType = ReflectionUIUtils.getJavaGenericTypeParameter(
+					new JavaTypeInfoSource(object.getClass()), List.class, 0);
 			if (!AbstractCommandLinePartInstance.class.equals(itemType)) {
 				return false;
 			}
@@ -991,6 +992,12 @@ public class CommandLinePlayer extends ReflectionUI {
 		@Override
 		public String getCaption() {
 			return "";
+		}
+
+		@Override
+		public List<IListAction> getSpecificActions(
+				Object object, IFieldInfo field, List<? extends IItemPosition> selection) {
+			return Collections.emptyList();
 		}
 
 		@Override
