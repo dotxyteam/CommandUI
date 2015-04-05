@@ -41,7 +41,7 @@ import xy.reflect.ui.info.type.AbstractTreeDetectionListStructuralInfo;
 import xy.reflect.ui.info.type.FileTypeInfo;
 import xy.reflect.ui.info.type.HiddenNullableFacetsTypeInfoProxyConfiguration;
 import xy.reflect.ui.info.type.IListTypeInfo;
-import xy.reflect.ui.info.type.IListTypeInfo.IItemPosition;
+import xy.reflect.ui.info.type.IListTypeInfo.ItemPosition;
 import xy.reflect.ui.info.type.IListTypeInfo.IListStructuralInfo;
 import xy.reflect.ui.info.type.IMapEntryTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
@@ -312,7 +312,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 								@Override
 								public String getCellValue(
-										IItemPosition itemPosition,
+										ItemPosition itemPosition,
 										int columnIndex) {
 									Object item = itemPosition.getItem();
 									ITypeInfo type = getTypeInfo(getTypeInfoSource(item));
@@ -345,7 +345,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 								@Override
 								public List<IFieldInfo> getItemSubListCandidateFields(
-										IItemPosition itemPosition) {
+										ItemPosition itemPosition) {
 									IFieldInfo containingListField = itemPosition
 											.getContainingListField();
 									if (containingListField.getName().equals(
@@ -379,10 +379,10 @@ public class CommandLineEditor extends ReflectionUI {
 		return new IMethodInfo() {
 			@Override
 			public Object invoke(Object object,
-					Map<String, Object> valueByParameterName) {
+					Map<Integer, Object> valueByParameterPosition) {
 				CommandLine commandLine = (CommandLine) object;
 				getValidateMethod().invoke(commandLine,
-						Collections.<String, Object> emptyMap());
+						Collections.<Integer, Object> emptyMap());
 				CommandLineInstance instance = commandLine.createInstance();
 				CommandLinePlayer player = new CommandLinePlayer();
 				CommandLine model = instance.getModel();
@@ -433,13 +433,13 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public IModification getUndoModification(Object object,
-					Map<String, Object> valueByParameterName) {
+					Map<Integer, Object> valueByParameterPosition) {
 				return null;
 			}
 
 			@Override
 			public void validateParameters(Object object,
-					Map<String, Object> valueByParameterName) throws Exception {
+					Map<Integer, Object> valueByParameterPosition) throws Exception {
 			}
 
 		};
@@ -449,7 +449,7 @@ public class CommandLineEditor extends ReflectionUI {
 		return new IMethodInfo() {
 			@Override
 			public Object invoke(Object object,
-					Map<String, Object> valueByParameterName) {
+					Map<Integer, Object> valueByParameterPosition) {
 				CommandLine commandLine = (CommandLine) object;
 				try {
 					commandLine.validate();
@@ -466,8 +466,8 @@ public class CommandLineEditor extends ReflectionUI {
 				} else {
 					commandUIExeFile = new File(commandUIExeFilePath);
 				}
-				File outputExeFile = (File) valueByParameterName
-						.get("executableFilePath");
+				File outputExeFile = (File) valueByParameterPosition
+						.get(0);
 				generateOutputFiles(commandLine, commandUIExeFile,
 						outputExeFile);
 				return null;
@@ -577,13 +577,13 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public IModification getUndoModification(Object object,
-					Map<String, Object> valueByParameterName) {
+					Map<Integer, Object> valueByParameterPosition) {
 				return null;
 			}
 
 			@Override
 			public void validateParameters(Object object,
-					Map<String, Object> valueByParameterName) throws Exception {
+					Map<Integer, Object> valueByParameterPosition) throws Exception {
 			}
 
 		};
@@ -593,7 +593,7 @@ public class CommandLineEditor extends ReflectionUI {
 		return new IMethodInfo() {
 			@Override
 			public Object invoke(Object object,
-					Map<String, Object> valueByParameterName) {
+					Map<Integer, Object> valueByParameterPosition) {
 				CommandLine commandLine = (CommandLine) object;
 				try {
 					commandLine.validate();
@@ -609,7 +609,7 @@ public class CommandLineEditor extends ReflectionUI {
 									.visitItems(new ListControl.IItemsVisitor() {
 										@Override
 										public void visitItem(
-												ListControl.ItemPosition itemPosition) {
+												ListControl.AutoUpdatingFieldItemPosition itemPosition) {
 											Object item = itemPosition
 													.getItem();
 											try {
@@ -683,13 +683,13 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public IModification getUndoModification(Object object,
-					Map<String, Object> valueByParameterName) {
+					Map<Integer, Object> valueByParameterPosition) {
 				return null;
 			}
 
 			@Override
 			public void validateParameters(Object object,
-					Map<String, Object> valueByParameterName) throws Exception {
+					Map<Integer, Object> valueByParameterPosition) throws Exception {
 			}
 
 		};

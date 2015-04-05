@@ -782,7 +782,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 						@Override
 						public Object invoke(Object object,
-								Map<String, Object> valueByParameterName) {
+								Map<Integer, Object> valueByParameterPosition) {
 							return typeInfoSource.instanciate();
 						}
 
@@ -996,7 +996,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 		@Override
 		public List<IListAction> getSpecificActions(
-				Object object, IFieldInfo field, List<? extends IItemPosition> selection) {
+				Object object, IFieldInfo field, List<? extends ItemPosition> selection) {
 			return Collections.emptyList();
 		}
 
@@ -1079,7 +1079,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 								@Override
 								public Object invoke(Object object,
-										Map<String, Object> valueByParameterName) {
+										Map<Integer, Object> valueByParameterPosition) {
 									ArgumentGroupInstance instance = new ArgumentGroupInstance(
 											multiplePart);
 									return instance;
