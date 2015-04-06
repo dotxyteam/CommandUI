@@ -732,8 +732,8 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 
 		@Override
-		public boolean supportsValue(Object value) {
-			return isCommandLinePartInstanceList(value);
+		public boolean supportsInstance(Object object) {
+			return isCommandLinePartInstanceList(object);
 		}
 
 		protected boolean isCommandLinePartInstanceList(Object object) {
@@ -1001,8 +1001,8 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 
 		@Override
-		public boolean supportsValue(Object value) {
-			return value instanceof ArgumentGroupInstance;
+		public boolean supportsInstance(Object object) {
+			return object instanceof ArgumentGroupInstance;
 		}
 
 		@Override
@@ -1032,8 +1032,8 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 
 		@Override
-		public Object[] toListValue(Object value) {
-			MultiplePartInstance instance = (MultiplePartInstance) value;
+		public Object[] toListValue(Object object) {
+			MultiplePartInstance instance = (MultiplePartInstance) object;
 			List<ArgumentGroupInstance> result = new ArrayList<ArgumentGroupInstance>();
 			for (MultiplePartInstanceOccurrence occurrence : instance.multiPartInstanceOccurrences) {
 				ArgumentGroupInstance occurenceAsGroupInstance = new ArgumentGroupInstance(
