@@ -994,7 +994,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			return "";
 		}
 
-		@Override
+		@Override 
 		public List<IListAction> getSpecificActions(
 				Object object, IFieldInfo field, List<? extends ItemPosition> selection) {
 			return Collections.emptyList();
