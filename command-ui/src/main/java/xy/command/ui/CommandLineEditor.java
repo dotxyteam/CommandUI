@@ -360,6 +360,9 @@ public class CommandLineEditor extends ReflectionUI {
 									if(subListField.getName().equals("parts")){
 										return false;
 									}
+									if(subListField.getName().equals("options")){
+										return false;
+									}
 									return super.displaysSubListFieldNameAsTreeNode(subListField, itemPosition);
 								}
 
