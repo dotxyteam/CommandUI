@@ -31,7 +31,7 @@ import xy.command.model.OptionalPart;
 import xy.command.model.instance.CommandLineInstance;
 import xy.command.ui.util.FileUtils;
 import xy.reflect.ui.ReflectionUI;
-import xy.reflect.ui.control.ListControl; 
+import xy.reflect.ui.control.ListControl;
 import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.field.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
@@ -344,6 +344,26 @@ public class CommandLineEditor extends ReflectionUI {
 								}
 
 								@Override
+								protected boolean isValidTreeNodeItemType(
+										ITypeInfo type) {
+									return type.getName().startsWith(
+											CommandLine.class.getPackage()
+													.getName());
+								}
+
+								
+								
+								@Override
+								protected boolean displaysSubListFieldNameAsTreeNode(
+										IFieldInfo subListField,
+										ItemPosition itemPosition) {
+									if(subListField.getName().equals("parts")){
+										return false;
+									}
+									return super.displaysSubListFieldNameAsTreeNode(subListField, itemPosition);
+								}
+
+								@Override
 								public List<IFieldInfo> getItemSubListCandidateFields(
 										ItemPosition itemPosition) {
 									IFieldInfo containingListField = itemPosition
@@ -439,7 +459,8 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public void validateParameters(Object object,
-					Map<Integer, Object> valueByParameterPosition) throws Exception {
+					Map<Integer, Object> valueByParameterPosition)
+					throws Exception {
 			}
 
 		};
@@ -466,8 +487,7 @@ public class CommandLineEditor extends ReflectionUI {
 				} else {
 					commandUIExeFile = new File(commandUIExeFilePath);
 				}
-				File outputExeFile = (File) valueByParameterPosition
-						.get(0);
+				File outputExeFile = (File) valueByParameterPosition.get(0);
 				generateOutputFiles(commandLine, commandUIExeFile,
 						outputExeFile);
 				return null;
@@ -583,7 +603,8 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public void validateParameters(Object object,
-					Map<Integer, Object> valueByParameterPosition) throws Exception {
+					Map<Integer, Object> valueByParameterPosition)
+					throws Exception {
 			}
 
 		};
@@ -689,7 +710,8 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public void validateParameters(Object object,
-					Map<Integer, Object> valueByParameterPosition) throws Exception {
+					Map<Integer, Object> valueByParameterPosition)
+					throws Exception {
 			}
 
 		};
