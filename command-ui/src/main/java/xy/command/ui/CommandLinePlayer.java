@@ -225,6 +225,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
+			public Object[] getValueOptions(Object object) {
+				return null;
+			}
+
+			@Override
 			public void setValue(Object object, Object value) {
 				OptionalPartInstance instance = (OptionalPartInstance) typeInfoSource
 						.getFieldValueSources(object).get(partIndex);
@@ -297,6 +302,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
+			public Object[] getValueOptions(Object object) {
+				return null;
+			}
+
+			@Override
 			public void setValue(Object object, Object value) {
 				InputArgumentInstance instance = (InputArgumentInstance) typeInfoSource
 						.getFieldValueSources(object).get(partIndex);
@@ -361,6 +371,11 @@ public class CommandLinePlayer extends ReflectionUI {
 				FileArgumentInstance instance = (FileArgumentInstance) typeInfoSource
 						.getFieldValueSources(object).get(partIndex);
 				return new File(instance.value);
+			}
+
+			@Override
+			public Object[] getValueOptions(Object object) {
+				return null;
 			}
 
 			@Override
@@ -437,6 +452,11 @@ public class CommandLinePlayer extends ReflectionUI {
 							.get(instance.value);
 					return groupInstance;
 				}
+			}
+
+			@Override
+			public Object[] getValueOptions(Object object) {
+				return null;
 			}
 
 			@Override
@@ -588,6 +608,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
+			public Object[] getValueOptions(Object object) {
+				return null;
+			}
+
+			@Override
 			public ITypeInfo getType() {
 				CommandLinePlayer player = typeInfoSource.getPlayer();
 				return new PartsAsTypeInfo(player,
@@ -647,6 +672,11 @@ public class CommandLinePlayer extends ReflectionUI {
 				MultiplePartInstance instance = (MultiplePartInstance) typeInfoSource
 						.getFieldValueSources(object).get(partIndex);
 				return instance;
+			}
+
+			@Override
+			public Object[] getValueOptions(Object object) {
+				return null;
 			}
 
 			@Override
@@ -994,9 +1024,9 @@ public class CommandLinePlayer extends ReflectionUI {
 			return "";
 		}
 
-		@Override 
-		public List<IListAction> getSpecificActions(
-				Object object, IFieldInfo field, List<? extends ItemPosition> selection) {
+		@Override
+		public List<IListAction> getSpecificActions(Object object,
+				IFieldInfo field, List<? extends ItemPosition> selection) {
 			return Collections.emptyList();
 		}
 
@@ -1078,7 +1108,8 @@ public class CommandLinePlayer extends ReflectionUI {
 									MultiplePartListTypeInfo.this) {
 
 								@Override
-								public Object invoke(Object object,
+								public Object invoke(
+										Object object,
 										Map<Integer, Object> valueByParameterPosition) {
 									ArgumentGroupInstance instance = new ArgumentGroupInstance(
 											multiplePart);
