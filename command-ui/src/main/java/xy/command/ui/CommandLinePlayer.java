@@ -37,6 +37,7 @@ import xy.command.model.instance.MultiplePartInstance.MultiplePartInstanceOccurr
 import xy.command.ui.util.ValidationError;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.control.EmbeddedFormControl;
+import xy.reflect.ui.control.FileControl;
 import xy.reflect.ui.control.ListControl;
 import xy.reflect.ui.control.PolymorphicEmbeddedForm;
 import xy.reflect.ui.info.IInfoCollectionSettings;
@@ -45,14 +46,14 @@ import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.method.AbstractConstructorMethodInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.parameter.IParameterInfo;
-import xy.reflect.ui.info.type.DefaultTextualTypeInfo;
 import xy.reflect.ui.info.type.DefaultTypeInfo;
-import xy.reflect.ui.info.type.FileTypeInfo;
-import xy.reflect.ui.info.type.IListTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
-import xy.reflect.ui.info.type.ITypeInfoSource;
-import xy.reflect.ui.info.type.JavaTypeInfoSource;
-import xy.reflect.ui.info.type.TabularTreetStructuralInfo;
+import xy.reflect.ui.info.type.custom.FileTypeInfo;
+import xy.reflect.ui.info.type.custom.TextualTypeInfo;
+import xy.reflect.ui.info.type.list.IListTypeInfo;
+import xy.reflect.ui.info.type.list.TabularTreetStructuralInfo;
+import xy.reflect.ui.info.type.source.ITypeInfoSource;
+import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
 public class CommandLinePlayer extends ReflectionUI {
@@ -325,7 +326,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 			@Override
 			public ITypeInfo getType() {
-				return new DefaultTextualTypeInfo(typeInfoSource.getPlayer(),
+				return new TextualTypeInfo(typeInfoSource.getPlayer(),
 						String.class);
 			}
 
@@ -401,10 +402,19 @@ public class CommandLinePlayer extends ReflectionUI {
 				return new FileTypeInfo(typeInfoSource.getPlayer()) {
 
 					@Override
-					public void configureFileChooser(JFileChooser fileChooser,
-							File currentFile) {
-						super.configureFileChooser(fileChooser, currentFile);
-						part.configureFileChooser(fileChooser);
+					public Component createNonNullFieldValueControl(
+							Object object, IFieldInfo field) {
+						return new FileControl(reflectionUI, object, field) {
+							private static final long serialVersionUID = 1L;
+
+							@Override
+							public void configureFileChooser(
+									JFileChooser fileChooser, File currentFile) {
+								super.configureFileChooser(fileChooser,
+										currentFile);
+								part.configureFileChooser(fileChooser);
+							}
+						};
 					}
 
 				};

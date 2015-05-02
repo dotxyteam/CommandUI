@@ -9,6 +9,7 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -18,16 +19,19 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.JToggleButton;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultCaret;
 import javax.swing.text.Document;
+import javax.swing.text.Element;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
-import xy.command.ui.component.AutoScrollerToMaximum;
 import xy.command.ui.component.DocumentOutputStream;
-import xy.command.ui.component.LimitLinesDocumentListener;
 import xy.command.ui.util.CommandUIUtils;
 
 public class CommandMonitoringDialog extends JDialog {
@@ -45,10 +49,6 @@ public class CommandMonitoringDialog extends JDialog {
 	private JTextPane textControl;
 
 	private JToggleButton autoScrollButton;
-
-	private JScrollPane scrollPane;
-
-	private AutoScrollerToMaximum scrollerToBottom;
 
 	private File workingDir;
 
@@ -98,9 +98,7 @@ public class CommandMonitoringDialog extends JDialog {
 		{
 			textControl = new JTextPane();
 			textControl.setEditable(false);
-			textControl.getDocument().addDocumentListener(
-					new LimitLinesDocumentListener(getMaximumlineCount()));
-			contentPanel.add(scrollPane = new JScrollPane(textControl));
+			contentPanel.add(new JScrollPane(textControl));
 		}
 		{
 
@@ -118,6 +116,13 @@ public class CommandMonitoringDialog extends JDialog {
 				{
 					autoScrollButton = new JToggleButton("Auto-Scroll");
 					autoScrollButton.setSelected(true);
+					autoScrollButton.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							onAutoScrollChange();
+						}
+					});
+					onAutoScrollChange();
 					buttonPane.add(autoScrollButton);
 				}
 				killOrCloseButton.setActionCommand("");
@@ -125,16 +130,57 @@ public class CommandMonitoringDialog extends JDialog {
 				getRootPane().setDefaultButton(killOrCloseButton);
 			}
 		}
-		scrollerToBottom = new AutoScrollerToMaximum(
-				scrollPane.getVerticalScrollBar()) {
-			@Override
-			public boolean shouldScroll() {
-				return autoScrollButton.isSelected() && super.shouldScroll();
-			}
-		};
-		scrollerToBottom.start();
+		limitLines();
 		launchCommand();
+	}
 
+	protected void onAutoScrollChange() {
+		DefaultCaret caret = (DefaultCaret) textControl.getCaret();
+		caret.setUpdatePolicy(autoScrollButton.isSelected() ? DefaultCaret.ALWAYS_UPDATE
+				: DefaultCaret.NEVER_UPDATE);
+	}
+
+	protected void limitLines() {
+		textControl.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				update();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				update();
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				update();
+			}
+
+			private void update() {
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						limitLines();
+					}
+				});
+			}
+
+			private void limitLines() {
+				Document document = textControl.getDocument();
+				Element root = document.getDefaultRootElement();
+				while (root.getElementCount() > getMaximumlineCount()) {
+					Element line = root.getElement(0);
+					int end = line.getEndOffset();
+					try {
+						document.remove(0, end);
+					} catch (BadLocationException ble) {
+						System.out.println(ble);
+					}
+				}
+			}
+		});
 	}
 
 	@Override
@@ -142,15 +188,12 @@ public class CommandMonitoringDialog extends JDialog {
 		if (commandThread.isAlive()) {
 			commandThread.interrupt();
 		}
-		scrollerToBottom.interrupt();
 		super.dispose();
 
 	}
 
 	protected int getMaximumlineCount() {
-
 		return 100;
-
 	}
 
 	protected void launchCommand() {
@@ -168,8 +211,8 @@ public class CommandMonitoringDialog extends JDialog {
 							new DocumentOutputStream(textControl.getDocument(),
 									getTextAttributes(Color.BLUE)), workingDir);
 					if (!killed) {
-						write("\n<Terminated>\n",
-								getTextAttributes(Color.GREEN.darker().darker()));
+						write("\n<Terminated>\n", getTextAttributes(Color.GREEN
+								.darker().darker()));
 					}
 				} catch (Throwable t) {
 					showError(t.toString());
@@ -213,20 +256,29 @@ public class CommandMonitoringDialog extends JDialog {
 		}
 	}
 
-	protected void write(String string, AttributeSet textAttributes) {
-
-		Document doc = textControl.getDocument();
-
-		try {
-
-			doc.insertString(doc.getLength(), string, textAttributes);
-
-		} catch (BadLocationException e) {
-
-			throw new AssertionError(e);
-
+	protected void write(final String string, final AttributeSet textAttributes) {
+		Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+				Document doc = textControl.getDocument();
+				try {
+					doc.insertString(doc.getLength(), string, textAttributes);
+				} catch (BadLocationException e) {
+					throw new AssertionError(e);
+				}
+			}
+		};
+		if (SwingUtilities.isEventDispatchThread()) {
+			runnable.run();
+		} else {
+			try {
+				SwingUtilities.invokeAndWait(runnable);
+			} catch (InterruptedException e) {
+				throw new AssertionError(e);
+			} catch (InvocationTargetException e) {
+				throw new AssertionError(e);
+			}
 		}
-
 	}
 
 	protected void showError(String errorMsg) {
