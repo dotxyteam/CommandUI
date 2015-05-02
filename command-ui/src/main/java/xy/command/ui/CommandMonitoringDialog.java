@@ -33,6 +33,7 @@ import javax.swing.text.StyleConstants;
 
 import xy.command.ui.component.DocumentOutputStream;
 import xy.command.ui.util.CommandUIUtils;
+import xy.reflect.ui.util.ReflectionUIUtils;
 
 public class CommandMonitoringDialog extends JDialog {
 
@@ -53,11 +54,6 @@ public class CommandMonitoringDialog extends JDialog {
 	private File workingDir;
 
 	private boolean killed = false;
-
-	/**
-	 * 
-	 * Launch the application.
-	 */
 
 	public static void main(String[] args) {
 
@@ -214,10 +210,12 @@ public class CommandMonitoringDialog extends JDialog {
 						write("\n<Terminated>\n", getTextAttributes(Color.GREEN
 								.darker().darker()));
 					}
-				} catch (Throwable t) {
-					showError(t.toString());
-					write("\n<An error occured>\n",
-							getTextAttributes(Color.RED));
+				} catch (final Throwable t) {
+					if (!killed) {
+						write("\n<An error occured>:\n"
+								+ ReflectionUIUtils.getPrintedStackTrace(t),
+								getTextAttributes(Color.RED));
+					}
 				}
 				killOrCloseButton.setText("Close");
 
@@ -241,16 +239,9 @@ public class CommandMonitoringDialog extends JDialog {
 
 	protected void killOrClose() {
 		if (commandThread.isAlive()) {
-			commandThread.interrupt();
+			write("\n\n<Kill>\n\n", getTextAttributes(Color.RED));
 			killed = true;
-			while (commandThread.isAlive()) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					throw new AssertionError(e);
-				}
-			}
-			write("\n<Killed>\n", getTextAttributes(Color.RED));
+			commandThread.interrupt();
 		} else {
 			CommandMonitoringDialog.this.dispose();
 		}

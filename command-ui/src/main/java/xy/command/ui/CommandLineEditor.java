@@ -38,13 +38,13 @@ import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.parameter.IParameterInfo;
 import xy.reflect.ui.info.type.custom.FileTypeInfo;
-import xy.reflect.ui.info.type.list.AbstractTreeDetectionListStructuralInfo;
-import xy.reflect.ui.info.type.list.IListTypeInfo;
-import xy.reflect.ui.info.type.list.IMapEntryTypeInfo;
-import xy.reflect.ui.info.type.list.StandardCollectionTypeInfo;
-import xy.reflect.ui.info.type.list.StandardMapAsListTypeInfo;
-import xy.reflect.ui.info.type.list.IListTypeInfo.IListStructuralInfo;
-import xy.reflect.ui.info.type.list.IListTypeInfo.ItemPosition;
+import xy.reflect.ui.info.type.iterable.IListTypeInfo;
+import xy.reflect.ui.info.type.iterable.StandardCollectionTypeInfo;
+import xy.reflect.ui.info.type.iterable.map.IMapEntryTypeInfo;
+import xy.reflect.ui.info.type.iterable.map.StandardMapAsListTypeInfo;
+import xy.reflect.ui.info.type.iterable.util.ItemPosition;
+import xy.reflect.ui.info.type.iterable.util.structure.AbstractTreeDetectionListStructuralInfo;
+import xy.reflect.ui.info.type.iterable.util.structure.IListStructuralInfo;
 import xy.reflect.ui.info.type.source.ITypeInfoSource;
 import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.util.HiddenNullableFacetsTypeInfoProxyConfiguration;
@@ -346,24 +346,28 @@ public class CommandLineEditor extends ReflectionUI {
 								@Override
 								protected boolean isValidTreeNodeItemType(
 										ITypeInfo type) {
-									return type.getName().startsWith(
+									if (type.getName().startsWith(
 											CommandLine.class.getPackage()
-													.getName());
+													.getName())) {
+										return true;
+									}									
+									return super.isValidTreeNodeItemType(type);
 								}
 
-								
-								
 								@Override
 								protected boolean displaysSubListFieldNameAsTreeNode(
 										IFieldInfo subListField,
 										ItemPosition itemPosition) {
-									if(subListField.getName().equals("parts")){
+									if (subListField.getName().equals("parts")) {
 										return false;
 									}
-									if(subListField.getName().equals("options")){
+									if (subListField.getName()
+											.equals("options")) {
 										return false;
 									}
-									return super.displaysSubListFieldNameAsTreeNode(subListField, itemPosition);
+									return super
+											.displaysSubListFieldNameAsTreeNode(
+													subListField, itemPosition);
 								}
 
 								@Override
@@ -435,7 +439,7 @@ public class CommandLineEditor extends ReflectionUI {
 			}
 
 			@Override
-			public String getDocumentation() {
+			public String getOnlineHelp() {
 				return "Runs a preview of the current command line specification GUI";
 			}
 
@@ -537,7 +541,7 @@ public class CommandLineEditor extends ReflectionUI {
 			}
 
 			@Override
-			public String getDocumentation() {
+			public String getOnlineHelp() {
 				return "Builds an executable file for the GUI of the current command line specification";
 			}
 
@@ -552,7 +556,7 @@ public class CommandLineEditor extends ReflectionUI {
 							}
 
 							@Override
-							public String getDocumentation() {
+							public String getOnlineHelp() {
 								return null;
 							}
 
@@ -686,7 +690,7 @@ public class CommandLineEditor extends ReflectionUI {
 			}
 
 			@Override
-			public String getDocumentation() {
+			public String getOnlineHelp() {
 				return "validate the command line specification";
 			}
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 import xy.command.model.instance.ArgumentGroupInstance;
 import xy.command.ui.util.ValidationError;
-import xy.reflect.ui.info.annotation.Documentation;
+import xy.reflect.ui.info.annotation.OnlineHelp;
 import xy.reflect.ui.info.annotation.Validating;
 
 public class ArgumentGroup extends AbstractCommandLinePart {
@@ -16,7 +16,7 @@ public class ArgumentGroup extends AbstractCommandLinePart {
 	
 	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
 	
-	@Documentation("This title will identify the current element")
+	@OnlineHelp("This title will identify the current element")
 	public String title;
 
 	@Override

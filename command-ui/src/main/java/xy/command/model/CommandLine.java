@@ -8,27 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 import xy.command.model.instance.CommandLineInstance;
 import xy.command.ui.util.ValidationError;
-import xy.reflect.ui.info.annotation.Documentation;
+import xy.reflect.ui.info.annotation.OnlineHelp;
 import xy.reflect.ui.info.annotation.Validating;
 
 import com.thoughtworks.xstream.XStream;
 
-@Documentation("Here you can specify and generate a GUI wrapper for your command line tool")
+@OnlineHelp("Here you can specify and generate a GUI wrapper for your command line tool")
 public class CommandLine {
 
-	@Documentation("Title of the generated command line GUI")
+	@OnlineHelp("Title of the generated command line GUI")
 	public String title;
 
-	@Documentation("Description of the generated command line GUI")
+	@OnlineHelp("Description of the generated command line GUI")
 	public String description;
 
-	@Documentation("Relative or absolute path of the executable file")
+	@OnlineHelp("Relative or absolute path of the executable file")
 	public File executablePath;
 
-	@Documentation("The directory from which the command will be executed")
+	@OnlineHelp("The directory from which the command will be executed")
 	public File executionDir;
 
-	@Documentation("The list of arguments of the command line")
+	@OnlineHelp("The list of arguments of the command line")
 	public List<ArgumentPage> arguments = new ArrayList<ArgumentPage>();
 
 	public CommandLineInstance createInstance() {
@@ -50,7 +50,7 @@ public class CommandLine {
 		}
 	}
 
-	@Documentation("Loads a command line specification file")
+	@OnlineHelp("Loads a command line specification file")
 	public void loadFromFile(File input) {
 		XStream xstream = new XStream();
 		CommandLine loaded = (CommandLine) xstream.fromXML(input);
@@ -61,7 +61,7 @@ public class CommandLine {
 		arguments = loaded.arguments;
 	}
 
-	@Documentation("Saves the current command line specification in a file")
+	@OnlineHelp("Saves the current command line specification in a file")
 	public void saveToFile(File output) throws IOException {
 		XStream xstream = new XStream();
 		FileWriter fileWriter = new FileWriter(output);

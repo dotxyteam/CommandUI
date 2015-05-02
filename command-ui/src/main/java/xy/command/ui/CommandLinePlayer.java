@@ -50,8 +50,11 @@ import xy.reflect.ui.info.type.DefaultTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.custom.FileTypeInfo;
 import xy.reflect.ui.info.type.custom.TextualTypeInfo;
-import xy.reflect.ui.info.type.list.IListTypeInfo;
-import xy.reflect.ui.info.type.list.TabularTreetStructuralInfo;
+import xy.reflect.ui.info.type.iterable.IListTypeInfo;
+import xy.reflect.ui.info.type.iterable.util.IListAction;
+import xy.reflect.ui.info.type.iterable.util.ItemPosition;
+import xy.reflect.ui.info.type.iterable.util.structure.IListStructuralInfo;
+import xy.reflect.ui.info.type.iterable.util.structure.TabularTreetStructuralInfo;
 import xy.reflect.ui.info.type.source.ITypeInfoSource;
 import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
 import xy.reflect.ui.util.ReflectionUIUtils;
@@ -262,7 +265,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
-			public String getDocumentation() {
+			public String getOnlineHelp() {
 				return part.description;
 			}
 		};
@@ -336,7 +339,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
-			public String getDocumentation() {
+			public String getOnlineHelp() {
 				return part.description;
 			}
 		};
@@ -426,7 +429,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
-			public String getDocumentation() {
+			public String getOnlineHelp() {
 				return part.description;
 			}
 		};
@@ -499,7 +502,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
-			public String getDocumentation() {
+			public String getOnlineHelp() {
 				return part.description;
 			}
 
@@ -579,7 +582,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
-			public String getDocumentation() {
+			public String getOnlineHelp() {
 				return part.description;
 			}
 
@@ -646,7 +649,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			}
 
 			@Override
-			public String getDocumentation() {
+			public String getOnlineHelp() {
 				return part.description;
 			}
 
@@ -840,7 +843,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 
 		@Override
-		public String getDocumentation() {
+		public String getOnlineHelp() {
 			return typeInfoSource.getTypeDocumentation();
 		}
 
@@ -1034,6 +1037,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			return "";
 		}
 
+		
 		@Override
 		public List<IListAction> getSpecificActions(Object object,
 				IFieldInfo field, List<? extends ItemPosition> selection) {

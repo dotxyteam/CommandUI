@@ -5,14 +5,14 @@ import java.io.Serializable;
 import java.io.Writer;
 
 import xy.command.model.instance.AbstractCommandLinePartInstance;
-import xy.reflect.ui.info.annotation.Documentation;
+import xy.reflect.ui.info.annotation.OnlineHelp;
 import xy.reflect.ui.info.annotation.Validating;
 
 public abstract class AbstractCommandLinePart implements Serializable {
 
 	protected static final long serialVersionUID = 1L;
 	
-	@Documentation("Specifies the description of the current element")
+	@OnlineHelp("Specifies the description of the current element")
 	public String description;
 
 	public abstract AbstractCommandLinePartInstance createInstance();

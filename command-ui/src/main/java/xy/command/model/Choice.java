@@ -8,7 +8,7 @@ import java.util.TreeMap;
 import xy.command.model.instance.AbstractCommandLinePartInstance;
 import xy.command.model.instance.ChoiceInstance;
 import xy.command.ui.util.ValidationError;
-import xy.reflect.ui.info.annotation.Documentation;
+import xy.reflect.ui.info.annotation.OnlineHelp;
 import xy.reflect.ui.info.annotation.Validating;
 
 public class Choice extends AbstractCommandLinePart {
@@ -16,7 +16,7 @@ public class Choice extends AbstractCommandLinePart {
 	protected static final long serialVersionUID = 1L;
 	public Map<String, ArgumentGroup> options = new TreeMap<String, ArgumentGroup>();
 	
-	@Documentation("This title will identify the current element")
+	@OnlineHelp("This title will identify the current element")
 	public String title;
 	
 	@Override

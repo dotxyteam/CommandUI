@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import xy.reflect.ui.info.annotation.Documentation;
+import xy.reflect.ui.info.annotation.OnlineHelp;
 
 
 public class ArgumentPage  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Documentation("This title will identify the current element")
+	@OnlineHelp("This title will identify the current element")
 	public String title;
 	
 	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
