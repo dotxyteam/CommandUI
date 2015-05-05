@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 public class CountingFilenameFilter implements FilenameFilter {
-		private int filteredCount = 0;
-		private FilenameFilter delegate;
+		protected int filteredCount = 0;
+		protected FilenameFilter delegate;
 
 		public CountingFilenameFilter(FilenameFilter delegate) {
 			this.delegate = delegate;

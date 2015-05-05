@@ -120,7 +120,7 @@ public class CommandUIUtils {
 		}
 	}
 
-	private static OutputStream getNullOutputStream() {
+	protected static OutputStream getNullOutputStream() {
 		return new OutputStream() {
 			@Override
 			public void write(int b) throws IOException {

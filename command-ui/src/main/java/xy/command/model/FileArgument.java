@@ -12,7 +12,7 @@ import xy.reflect.ui.info.annotation.Validating;
 
 public class FileArgument extends AbstractCommandLinePart {
 
-	protected static final long serialVersionUID = 1L;
+	protected  static final long serialVersionUID = 1L;
 	
 	@OnlineHelp("This title will identify the current element")
 	public String title;

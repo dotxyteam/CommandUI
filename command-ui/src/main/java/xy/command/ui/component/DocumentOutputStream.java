@@ -153,10 +153,10 @@ public class DocumentOutputStream extends OutputStream {
 
 	}
 
-	private byte[] one = new byte[1];
+	protected byte[] one = new byte[1];
 
-	private Document doc;
+	protected Document doc;
 
-	private AttributeSet a;
+	protected AttributeSet a;
 
 }

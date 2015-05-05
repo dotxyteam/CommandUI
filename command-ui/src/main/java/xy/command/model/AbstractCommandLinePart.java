@@ -10,7 +10,7 @@ import xy.reflect.ui.info.annotation.Validating;
 
 public abstract class AbstractCommandLinePart implements Serializable {
 
-	protected static final long serialVersionUID = 1L;
+	protected  static final long serialVersionUID = 1L;
 	
 	@OnlineHelp("Specifies the description of the current element")
 	public String description;

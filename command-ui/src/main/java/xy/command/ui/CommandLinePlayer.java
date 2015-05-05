@@ -61,8 +61,8 @@ import xy.reflect.ui.util.ReflectionUIUtils;
 
 public class CommandLinePlayer extends ReflectionUI {
 
-	protected static Map<AbstractCommandLinePart, ArgumentPage> pageByPart = new WeakHashMap<AbstractCommandLinePart, ArgumentPage>();
-	protected static Map<ArgumentPage, CommandLine> commandLineByPage = new WeakHashMap<ArgumentPage, CommandLine>();
+	protected  static Map<AbstractCommandLinePart, ArgumentPage> pageByPart = new WeakHashMap<AbstractCommandLinePart, ArgumentPage>();
+	protected  static Map<ArgumentPage, CommandLine> commandLineByPage = new WeakHashMap<ArgumentPage, CommandLine>();
 
 	public static void main(String[] args) {
 		CommandLine commandLine = new CommandLine();
@@ -89,11 +89,11 @@ public class CommandLinePlayer extends ReflectionUI {
 		super.fillForm(object, form, settings);
 	}
 
-	private void setPageCommandLine(ArgumentPage page, CommandLine commandLine) {
+	protected void setPageCommandLine(ArgumentPage page, CommandLine commandLine) {
 		commandLineByPage.put(page, commandLine);
 	}
 
-	private void setPartsPage(List<AbstractCommandLinePart> parts,
+	protected void setPartsPage(List<AbstractCommandLinePart> parts,
 			ArgumentPage page) {
 		for (AbstractCommandLinePart part : parts) {
 			pageByPart.put(part, page);
@@ -145,7 +145,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		return result;
 	}
 
-	private Component createRunButton(final JPanel form) {
+	protected Component createRunButton(final JPanel form) {
 		final JButton runButton = new JButton("Execute");
 		runButton.setToolTipText("Start the execution");
 		runButton.addActionListener(new ActionListener() {
@@ -169,7 +169,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		return runButton;
 	}
 
-	private static IFieldInfo getFieldInfo(AbstractCommandLinePart part,
+	protected static IFieldInfo getFieldInfo(AbstractCommandLinePart part,
 			IPartsAsTypeInfoSource typeInfoSource, int partIndex) {
 		if (part instanceof Choice) {
 			return getChoiceFieldInfo((Choice) part, typeInfoSource, partIndex);
@@ -196,7 +196,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 	}
 
-	private static IFieldInfo getOptionalPartFieldInfo(final OptionalPart part,
+	protected static IFieldInfo getOptionalPartFieldInfo(final OptionalPart part,
 			final IPartsAsTypeInfoSource typeInfoSource, final int partIndex) {
 		final IFieldInfo groupFieldInfo = getArgumentGroupFieldInfo(part,
 				typeInfoSource, partIndex);
@@ -271,14 +271,14 @@ public class CommandLinePlayer extends ReflectionUI {
 		};
 	}
 
-	protected static InfoCategory getPartCategory(AbstractCommandLinePart part) {
+	protected  static InfoCategory getPartCategory(AbstractCommandLinePart part) {
 		ArgumentPage page = pageByPart.get(part);
 		CommandLine cmdLine = commandLineByPage.get(page);
 		int pageIndex = cmdLine.arguments.indexOf(page);
 		return new InfoCategory(page.title, pageIndex);
 	}
 
-	private static IFieldInfo getInputArgumentFieldInfo(
+	protected static IFieldInfo getInputArgumentFieldInfo(
 			final InputArgument part,
 			final IPartsAsTypeInfoSource typeInfoSource, final int partIndex) {
 		return new IFieldInfo() {
@@ -345,13 +345,13 @@ public class CommandLinePlayer extends ReflectionUI {
 		};
 	}
 
-	private static IFieldInfo getFixedArgumentFieldInfo(
+	protected static IFieldInfo getFixedArgumentFieldInfo(
 			final FixedArgument part,
 			final IPartsAsTypeInfoSource typeInfoSource, final int partIndex) {
 		return null;
 	}
 
-	private static IFieldInfo getFileArgumentFieldInfo(final FileArgument part,
+	protected static IFieldInfo getFileArgumentFieldInfo(final FileArgument part,
 			final IPartsAsTypeInfoSource typeInfoSource, final int partIndex) {
 		return new IFieldInfo() {
 
@@ -408,7 +408,7 @@ public class CommandLinePlayer extends ReflectionUI {
 					public Component createNonNullFieldValueControl(
 							Object object, IFieldInfo field) {
 						return new FileControl(reflectionUI, object, field) {
-							private static final long serialVersionUID = 1L;
+							protected static final long serialVersionUID = 1L;
 
 							@Override
 							public void configureFileChooser(
@@ -435,7 +435,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		};
 	}
 
-	private static IFieldInfo getChoiceFieldInfo(final Choice part,
+	protected static IFieldInfo getChoiceFieldInfo(final Choice part,
 			final IPartsAsTypeInfoSource typeInfoSource, final int partIndex) {
 		return new IFieldInfo() {
 
@@ -546,10 +546,10 @@ public class CommandLinePlayer extends ReflectionUI {
 						return new PolymorphicEmbeddedForm(
 								typeInfoSource.getPlayer(), object, field) {
 
-							private static final long serialVersionUID = 1L;
+							protected static final long serialVersionUID = 1L;
 
 							@Override
-							protected String getEnumerationValueCaption(
+							protected  String getEnumerationValueCaption(
 									ITypeInfo actualFieldValueType) {
 								PartsAsTypeInfo type = (PartsAsTypeInfo) actualFieldValueType;
 								ArgumentGroupAsTypeInfoSource typeSource = (ArgumentGroupAsTypeInfoSource) type
@@ -566,7 +566,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		};
 	}
 
-	private static IFieldInfo getArgumentGroupFieldInfo(
+	protected static IFieldInfo getArgumentGroupFieldInfo(
 			final ArgumentGroup part,
 			final IPartsAsTypeInfoSource typeInfoSource, final int partIndex) {
 		return new IFieldInfo() {
@@ -634,7 +634,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		};
 	}
 
-	private static IFieldInfo getMultiplePartFieldInfo(final MultiplePart part,
+	protected static IFieldInfo getMultiplePartFieldInfo(final MultiplePart part,
 			final IPartsAsTypeInfoSource typeInfoSource, final int partIndex) {
 		return new IFieldInfo() {
 
@@ -700,7 +700,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		};
 	}
 
-	protected void launchCommandLine(CommandLineInstance instance, JPanel form) {
+	protected  void launchCommandLine(CommandLineInstance instance, JPanel form) {
 		String cmd = instance.getCommandlineString();
 		File workingDir = instance.getModel().executionDir;
 		CommandMonitoringDialog cmdDialog = new CommandMonitoringDialog(
@@ -731,8 +731,8 @@ public class CommandLinePlayer extends ReflectionUI {
 
 	public static class PartsAsTypeInfo extends DefaultTypeInfo {
 
-		protected CommandLinePlayer player;
-		protected IPartsAsTypeInfoSource typeInfoSource;
+		protected  CommandLinePlayer player;
+		protected  IPartsAsTypeInfoSource typeInfoSource;
 
 		public PartsAsTypeInfo(CommandLinePlayer player,
 				IPartsAsTypeInfoSource typeInfoSource) {
@@ -774,7 +774,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			return isCommandLinePartInstanceList(object);
 		}
 
-		protected boolean isCommandLinePartInstanceList(Object object) {
+		protected  boolean isCommandLinePartInstanceList(Object object) {
 			if (!(object instanceof List)) {
 				return false;
 			}
@@ -855,8 +855,8 @@ public class CommandLinePlayer extends ReflectionUI {
 
 	public static class CommandLineAsTypeInfoSource implements
 			IPartsAsTypeInfoSource {
-		private CommandLine model;
-		private CommandLinePlayer player;
+		protected CommandLine model;
+		protected CommandLinePlayer player;
 
 		public CommandLineAsTypeInfoSource(CommandLinePlayer player,
 				CommandLine model) {
@@ -937,8 +937,8 @@ public class CommandLinePlayer extends ReflectionUI {
 	public static class ArgumentGroupAsTypeInfoSource implements
 			IPartsAsTypeInfoSource {
 
-		private CommandLinePlayer player;
-		private ArgumentGroup model;
+		protected CommandLinePlayer player;
+		protected ArgumentGroup model;
 
 		public ArgumentGroupAsTypeInfoSource(CommandLinePlayer player,
 				ArgumentGroup model) {
@@ -1012,8 +1012,8 @@ public class CommandLinePlayer extends ReflectionUI {
 	public static class MultiplePartListTypeInfo extends DefaultTypeInfo
 			implements IListTypeInfo {
 
-		protected MultiplePart multiplePart;
-		protected CommandLinePlayer player;
+		protected  MultiplePart multiplePart;
+		protected  CommandLinePlayer player;
 
 		public MultiplePartListTypeInfo(CommandLinePlayer player,
 				MultiplePart multiplePart) {

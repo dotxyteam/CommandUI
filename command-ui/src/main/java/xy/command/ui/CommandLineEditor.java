@@ -3,6 +3,7 @@ package xy.command.ui;
 import java.awt.Component;
 import java.awt.FileDialog;
 import java.awt.Image;
+import java.awt.Window;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import xy.command.model.AbstractCommandLinePart;
 import xy.command.model.ArgumentGroup;
@@ -53,8 +55,8 @@ import xy.reflect.ui.util.ReflectionUIUtils;
 public class CommandLineEditor extends ReflectionUI {
 
 	public static final String COMMAND_LINE_FILE_EXTENSION = "cml";
-	private static final String CURRENT_EXE_FILE_PATH_PROPERTY_KEY = "current.exe.file.path";
-	private static final String NORMAL_EXE_FILE_NAME_PROPERTY_KEY = "normal.exe.file.name";
+	protected static final String CURRENT_EXE_FILE_PATH_PROPERTY_KEY = "current.exe.file.path";
+	protected static final String NORMAL_EXE_FILE_NAME_PROPERTY_KEY = "normal.exe.file.name";
 	protected static final String APP_NAME = "Command UI";
 
 	public static void main(String[] args) {
@@ -73,7 +75,7 @@ public class CommandLineEditor extends ReflectionUI {
 										+ exeFile.getName()
 										+ "'.\nFile not found: '" + playerFile
 										+ "'.") {
-							private static final long serialVersionUID = 1L;
+							protected static final long serialVersionUID = 1L;
 
 							@Override
 							public String toString() {
@@ -95,7 +97,7 @@ public class CommandLineEditor extends ReflectionUI {
 
 	}
 
-	private static File getPlayerFile(File exeFile) {
+	protected static File getPlayerFile(File exeFile) {
 		return new File(exeFile + ".ini");
 	}
 
@@ -200,6 +202,7 @@ public class CommandLineEditor extends ReflectionUI {
 						result.add(getValidateMethod());
 						result.add(getPreviewMethod());
 						result.add(getDistributeMethod());
+						result.add(getOpenCommandTestWindowMethod());
 						return result;
 					} else {
 						return Collections.<IMethodInfo> emptyList();
@@ -212,8 +215,8 @@ public class CommandLineEditor extends ReflectionUI {
 			@Override
 			protected ITypeInfo getType(IFieldInfo field,
 					ITypeInfo containingType) {
-				if (containingType.getName().equals(
-						CommandLine.class.getName())
+				if (containingType.getName()
+						.equals(CommandLine.class.getName())
 						&& field.getName().equals("arguments")) {
 					return new TypeInfoProxyConfiguration() {
 
@@ -279,7 +282,7 @@ public class CommandLineEditor extends ReflectionUI {
 											CommandLine.class.getPackage()
 													.getName())) {
 										return true;
-									}									
+									}
 									return super.isValidTreeNodeItemType(type);
 								}
 
@@ -331,7 +334,83 @@ public class CommandLineEditor extends ReflectionUI {
 		}.get(super.getTypeInfo(typeSource));
 	}
 
-	private IMethodInfo getPreviewMethod() {
+	protected IMethodInfo getOpenCommandTestWindowMethod() {
+		return new IMethodInfo() {
+			@Override
+			public Object invoke(Object object,
+					Map<Integer, Object> valueByParameterPosition) {
+				CommandLine commandLine = (CommandLine) object;
+				if ((commandLine.executionDir == null)
+						|| (commandLine.executionDir.getPath().trim().length() == 0)) {
+					throw new ReflectionUIError("Enter the execution directory");
+				}
+				JPanel commandLineForm = ReflectionUIUtils.getKeysFromValue(
+						getObjectByForm(), commandLine).get(0);
+				Window commandLineWindow = SwingUtilities
+						.getWindowAncestor(commandLineForm);
+				CommandMonitoringDialog dialog = new CommandMonitoringDialog(
+						commandLineWindow, null, commandLine.executionDir);
+				dialog.setModal(false);
+				dialog.setVisible(true);
+				return null;
+			}
+
+			@Override
+			public String getCaption() {
+				return "Open Command WIndow";
+			}
+
+			@Override
+			public Map<String, Object> getSpecificProperties() {
+				return Collections.emptyMap();
+			}
+
+			@Override
+			public ITypeInfo getReturnValueType() {
+				return null;
+			}
+
+			@Override
+			public String getName() {
+				return "testCommand";
+			}
+
+			@Override
+			public String getOnlineHelp() {
+				return "Open the command execution window for testing purposes";
+			}
+
+			@Override
+			public List<IParameterInfo> getParameters() {
+				return Collections.emptyList();
+			}
+
+			@Override
+			public boolean isReadOnly() {
+				return true;
+			}
+
+			@Override
+			public InfoCategory getCategory() {
+				return null;
+			}
+
+			@Override
+			public IModification getUndoModification(Object object,
+					Map<Integer, Object> valueByParameterPosition) {
+				return null;
+			}
+
+			@Override
+			public void validateParameters(Object object,
+					Map<Integer, Object> valueByParameterPosition)
+					throws Exception {
+			}
+
+		};
+	}
+
+	protected IMethodInfo getPreviewMethod() {
 		return new IMethodInfo() {
 			@Override
 			public Object invoke(Object object,
@@ -402,7 +481,7 @@ public class CommandLineEditor extends ReflectionUI {
 		};
 	}
 
-	private IMethodInfo getDistributeMethod() {
+	protected IMethodInfo getDistributeMethod() {
 		return new IMethodInfo() {
 			@Override
 			public Object invoke(Object object,
@@ -429,7 +508,7 @@ public class CommandLineEditor extends ReflectionUI {
 				return null;
 			}
 
-			private void generateOutputFiles(CommandLine commandLine,
+			protected void generateOutputFiles(CommandLine commandLine,
 					File commandUIExeFile, File outputExeFile) {
 				try {
 					FileUtils.copy(commandUIExeFile, outputExeFile);
@@ -439,7 +518,7 @@ public class CommandLineEditor extends ReflectionUI {
 				}
 			}
 
-			private File askCommandUIExecutableLocation() {
+			protected File askCommandUIExecutableLocation() {
 				FileDialog fd = new FileDialog((JFrame) null, "Locate the '"
 						+ APP_NAME + "' executable file:", FileDialog.LOAD);
 				fd.setVisible(true);
@@ -546,7 +625,7 @@ public class CommandLineEditor extends ReflectionUI {
 		};
 	}
 
-	private IMethodInfo getValidateMethod() {
+	protected IMethodInfo getValidateMethod() {
 		return new IMethodInfo() {
 			@Override
 			public Object invoke(Object object,

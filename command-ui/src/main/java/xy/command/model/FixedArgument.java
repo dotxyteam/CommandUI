@@ -10,7 +10,7 @@ import xy.reflect.ui.info.annotation.Validating;
 
 public class FixedArgument extends AbstractCommandLinePart{
 
-	protected static final long serialVersionUID = 1L;
+	protected  static final long serialVersionUID = 1L;
 	
 	@OnlineHelp("This is the fixed argument value")
 	public String value;

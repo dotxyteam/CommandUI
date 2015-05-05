@@ -12,7 +12,7 @@ import xy.reflect.ui.info.annotation.Validating;
 
 public class ArgumentGroup extends AbstractCommandLinePart {
 
-	protected static final long serialVersionUID = 1L;
+	protected  static final long serialVersionUID = 1L;
 	
 	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
 	

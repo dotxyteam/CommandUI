@@ -7,7 +7,7 @@ import xy.command.model.instance.MultiplePartInstance;
 
 public class MultiplePart extends ArgumentGroup{
 
-	protected static final long serialVersionUID = 1L;
+	protected  static final long serialVersionUID = 1L;
 	
 	@Override
 	public MultiplePartInstance createInstance() {

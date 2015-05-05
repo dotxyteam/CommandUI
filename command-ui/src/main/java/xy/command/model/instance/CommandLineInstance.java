@@ -11,7 +11,7 @@ import xy.command.ui.util.CommandUIUtils;
 public class CommandLineInstance {
 
 	public List<AbstractCommandLinePartInstance> partInstances = new ArrayList<AbstractCommandLinePartInstance>();
-	protected CommandLine model;
+	protected  CommandLine model;
 	
 	public CommandLineInstance(CommandLine model) {
 		this.model = model;

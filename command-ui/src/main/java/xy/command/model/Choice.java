@@ -12,7 +12,7 @@ import xy.reflect.ui.info.annotation.Validating;
 
 public class Choice extends AbstractCommandLinePart {
 
-	protected static final long serialVersionUID = 1L;
+	protected  static final long serialVersionUID = 1L;
 	public List<ArgumentGroup> options = new ArrayList<ArgumentGroup>();
 	
 	@OnlineHelp("This title will identify the current element")

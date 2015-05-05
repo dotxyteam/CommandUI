@@ -9,7 +9,7 @@ import xy.reflect.ui.info.annotation.OnlineHelp;
 
 public class ArgumentPage  implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	protected static final long serialVersionUID = 1L;
 	
 	@OnlineHelp("This title will identify the current element")
 	public String title;

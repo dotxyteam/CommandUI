@@ -8,7 +8,7 @@ import xy.reflect.ui.info.annotation.OnlineHelp;
 
 public class OptionalPart extends ArgumentGroup {
 
-	protected static final long serialVersionUID = 1L;
+	protected  static final long serialVersionUID = 1L;
 	
 	@OnlineHelp("If true, the option will be selected by default")
 	public boolean activeByDefault = false;

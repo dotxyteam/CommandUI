@@ -6,7 +6,7 @@ import xy.command.model.instance.DirectoryArgumentInstance;
 
 public class DirectoryArgument extends FileArgument {
 
-	protected static final long serialVersionUID = 1L;
+	protected  static final long serialVersionUID = 1L;
 	
 	@Override
 	public DirectoryArgumentInstance createInstance() {
