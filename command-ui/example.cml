@@ -51,19 +51,16 @@ description</description>
         <xy.command.model.Choice>
           <title>the choice</title>
           <options>
-            <entry>
-              <string>-a</string>
               <xy.command.model.ArgumentGroup>
+              	<title>-a</title>
                 <parts>
                   <xy.command.model.InputArgument>
                     <title>value of a</title>
                   </xy.command.model.InputArgument>
                 </parts>
               </xy.command.model.ArgumentGroup>
-            </entry>
-            <entry>
-              <string>-b</string>
               <xy.command.model.ArgumentGroup>
+                <title>-b</title>
                 <parts>
                   <xy.command.model.InputArgument>
                     <title>value of b1</title>
@@ -73,7 +70,6 @@ description</description>
                   </xy.command.model.InputArgument>
                 </parts>
               </xy.command.model.ArgumentGroup>
-            </entry>
           </options>
         </xy.command.model.Choice>
       </parts>

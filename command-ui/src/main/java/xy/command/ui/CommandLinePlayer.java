@@ -100,7 +100,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			if (part instanceof ArgumentGroup) {
 				setPartsPage(((ArgumentGroup) part).parts, page);
 			} else if (part instanceof Choice) {
-				for (ArgumentGroup group : ((Choice) part).options.values()) {
+				for (ArgumentGroup group : ((Choice) part).options) {
 					setPartsPage(group.parts, page);
 				}
 			}
@@ -458,11 +458,11 @@ public class CommandLinePlayer extends ReflectionUI {
 			public Object getValue(Object object) {
 				ChoiceInstance instance = (ChoiceInstance) typeInfoSource
 						.getFieldValueSources(object).get(partIndex);
-				if (instance.value == null) {
+				if (instance.chosenOption == -1) {
 					return null;
 				} else {
 					ArgumentGroupInstance groupInstance = instance.optionInstances
-							.get(instance.value);
+							.get(instance.chosenOption);
 					return groupInstance;
 				}
 			}
@@ -478,11 +478,10 @@ public class CommandLinePlayer extends ReflectionUI {
 						.getFieldValueSources(object).get(partIndex);
 				ArgumentGroupInstance groupInstance = (ArgumentGroupInstance) value;
 				if (groupInstance == null) {
-					instance.value = null;
+					instance.chosenOption = -1;
 				} else {
 					ArgumentGroup group = groupInstance.getModel();
-					instance.value = ReflectionUIUtils.getKeysFromValue(
-							part.options, group).get(0);
+					instance.chosenOption = part.options.indexOf(group);
 				}
 			}
 
@@ -519,15 +518,13 @@ public class CommandLinePlayer extends ReflectionUI {
 					@Override
 					public List<ITypeInfo> getPolymorphicInstanceSubTypes() {
 						List<ITypeInfo> result = new ArrayList<ITypeInfo>();
-						for (final Map.Entry<String, ArgumentGroup> optionEntry : part.options
-								.entrySet()) {
+						for (final ArgumentGroup optionEntry : part.options) {
 							ITypeInfoSource subTypeSource = new CommandLinePlayer.ArgumentGroupAsTypeInfoSource(
-									typeInfoSource.getPlayer(),
-									optionEntry.getValue()) {
+									typeInfoSource.getPlayer(), optionEntry) {
 
 								@Override
 								public String getTypeCaption() {
-									return optionEntry.getKey();
+									return optionEntry.title;
 								}
 
 							};
@@ -558,9 +555,7 @@ public class CommandLinePlayer extends ReflectionUI {
 								ArgumentGroupAsTypeInfoSource typeSource = (ArgumentGroupAsTypeInfoSource) type
 										.getTypeInfoSource();
 								ArgumentGroup model = typeSource.getModel();
-								String optionKey = ReflectionUIUtils
-										.getKeysFromValue(part.options, model)
-										.get(0);
+								String optionKey = model.title;
 								return optionKey;
 							}
 
@@ -1037,7 +1032,6 @@ public class CommandLinePlayer extends ReflectionUI {
 			return "";
 		}
 
-		
 		@Override
 		public List<IListAction> getSpecificActions(Object object,
 				IFieldInfo field, List<? extends ItemPosition> selection) {

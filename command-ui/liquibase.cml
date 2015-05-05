@@ -13,27 +13,23 @@
         <xy.command.model.Choice>
           <description></description>
           <options>
-            <entry>
-              <string>update</string>
               <xy.command.model.ArgumentGroup>
-                <parts>
+                <title>update</title>
+              	<parts>
                   <xy.command.model.FixedArgument>
                     <value>lb_update</value>
                   </xy.command.model.FixedArgument>
                 </parts>
               </xy.command.model.ArgumentGroup>
-            </entry>
-            <entry>
-              <string>rollback</string>
               <xy.command.model.ArgumentGroup>
-                <parts>
+                <title>rollback</title>
+             	<parts>
                   <xy.command.model.FixedArgument>
                     <value>lb_rollback</value>
                   </xy.command.model.FixedArgument>
                 </parts>
               </xy.command.model.ArgumentGroup>
-            </entry>
-          </options>
+           </options>
           <title>action</title>
         </xy.command.model.Choice>
         <xy.command.model.InputArgument>
@@ -43,26 +39,22 @@
         <xy.command.model.Choice>
           <description></description>
           <options>
-            <entry>
-              <string>MOXUAT1</string>
               <xy.command.model.ArgumentGroup>
+              <title>MOXUAT1</title>
                 <parts>
                   <xy.command.model.FixedArgument>
                     <value>MOXUAT1</value>
                   </xy.command.model.FixedArgument>
                 </parts>
               </xy.command.model.ArgumentGroup>
-            </entry>
-            <entry>
-              <string>MOXDEV1</string>
               <xy.command.model.ArgumentGroup>
+              <title>MOXDEV1</title>
                 <parts>
                   <xy.command.model.FixedArgument>
                     <value>MOXDEV1</value>
                   </xy.command.model.FixedArgument>
                 </parts>
               </xy.command.model.ArgumentGroup>
-            </entry>
           </options>
           <title>environment</title>
         </xy.command.model.Choice>

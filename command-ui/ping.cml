@@ -15,27 +15,23 @@
         </xy.command.model.InputArgument>
         <xy.command.model.Choice>
           <options>
-            <entry>
-              <string>google</string>
               <xy.command.model.ArgumentGroup>
+              <title>google</title>
                 <parts>
                   <xy.command.model.FixedArgument>
                     <value>www.google.com</value>
                   </xy.command.model.FixedArgument>
                 </parts>
               </xy.command.model.ArgumentGroup>
-            </entry>
-            <entry>
-              <string>custom</string>
               <xy.command.model.ArgumentGroup>
+              <title>custom</title>
                 <parts>
                   <xy.command.model.InputArgument>
                     <title>address</title>
                   </xy.command.model.InputArgument>
                 </parts>
               </xy.command.model.ArgumentGroup>
-            </entry>
-          </options>
+           </options>
           <title>host</title>
         </xy.command.model.Choice>
       </parts>

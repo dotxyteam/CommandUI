@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,15 +32,12 @@ import xy.command.ui.util.FileUtils;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.control.ListControl;
 import xy.reflect.ui.info.InfoCategory;
-import xy.reflect.ui.info.field.FieldInfoProxy;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.parameter.IParameterInfo;
 import xy.reflect.ui.info.type.custom.FileTypeInfo;
 import xy.reflect.ui.info.type.iterable.IListTypeInfo;
-import xy.reflect.ui.info.type.iterable.StandardCollectionTypeInfo;
 import xy.reflect.ui.info.type.iterable.map.IMapEntryTypeInfo;
-import xy.reflect.ui.info.type.iterable.map.StandardMapAsListTypeInfo;
 import xy.reflect.ui.info.type.iterable.util.ItemPosition;
 import xy.reflect.ui.info.type.iterable.util.structure.AbstractTreeDetectionListStructuralInfo;
 import xy.reflect.ui.info.type.iterable.util.structure.IListStructuralInfo;
@@ -216,74 +212,7 @@ public class CommandLineEditor extends ReflectionUI {
 			@Override
 			protected ITypeInfo getType(IFieldInfo field,
 					ITypeInfo containingType) {
-				if (containingType.getName().equals(Choice.class.getName())
-						&& field.getName().equals("options")) {
-					return new StandardMapAsListTypeInfo(
-							CommandLineEditor.this, HashMap.class,
-							String.class, List.class) {
-
-						@Override
-						public StandardMapEntryTypeInfo getItemType() {
-							return new StandardMapEntryTypeInfo() {
-
-								@Override
-								public IFieldInfo getKeyField() {
-									return new FieldInfoProxy(
-											super.getKeyField()) {
-
-										@Override
-										public String getCaption() {
-											return "Option Title";
-										}
-
-									};
-								}
-
-								@Override
-								public IFieldInfo getValueField() {
-									return new FieldInfoProxy(
-											super.getValueField()) {
-
-										@Override
-										public Object getValue(Object object) {
-											ArgumentGroup group = (ArgumentGroup) super
-													.getValue(object);
-											if (group == null) {
-												return null;
-											}
-											return group.parts;
-										}
-
-										@Override
-										public void setValue(Object object,
-												Object value) {
-											@SuppressWarnings("unchecked")
-											List<AbstractCommandLinePart> parts = (List<AbstractCommandLinePart>) value;
-											ArgumentGroup group;
-											if (parts == null) {
-												group = null;
-											}
-											group = new ArgumentGroup();
-											group.parts = parts;
-											super.setValue(object, group);
-										}
-
-										@Override
-										public ITypeInfo getType() {
-											return new StandardCollectionTypeInfo(
-													CommandLineEditor.this,
-													List.class,
-													AbstractCommandLinePart.class);
-										}
-
-									};
-								}
-
-							};
-						}
-
-					};
-				} else if (containingType.getName().equals(
+				if (containingType.getName().equals(
 						CommandLine.class.getName())
 						&& field.getName().equals("arguments")) {
 					return new TypeInfoProxyConfiguration() {

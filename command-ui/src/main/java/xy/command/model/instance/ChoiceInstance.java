@@ -1,24 +1,20 @@
 package xy.command.model.instance;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
 import xy.command.model.ArgumentGroup;
 import xy.command.model.Choice;
 import xy.command.ui.util.ValidationError;
 
 public class ChoiceInstance extends AbstractCommandLinePartInstance {
 
-	public Map<String, ArgumentGroupInstance> optionInstances = new TreeMap<String, ArgumentGroupInstance>();
-	public String value;
+	public List<ArgumentGroupInstance> optionInstances = new ArrayList<ArgumentGroupInstance>();
+	public int chosenOption = -1;
 
 	public ChoiceInstance(Choice model) {
 		super(model);
-		for (Map.Entry<String, ArgumentGroup> modelEntry : model.options
-				.entrySet()) {
-			optionInstances.put(modelEntry.getKey(), modelEntry.getValue()
-					.createInstance());
+		for (ArgumentGroup modelEntry : model.options) {
+			optionInstances.add(modelEntry.createInstance());
 		}
 	}
 
@@ -28,16 +24,16 @@ public class ChoiceInstance extends AbstractCommandLinePartInstance {
 
 	@Override
 	public List<String> listArgumentValues() {
-		return optionInstances.get(value).listArgumentValues();
+		return optionInstances.get(chosenOption).listArgumentValues();
 	}
 
 	@Override
 	public void validate() throws Exception {
 		try {
-			if ((value == null) || (value.trim().length() == 0)) {
+			if (chosenOption == -1) {
 				throw new ValidationError("Choose an option");
 			}
-			ArgumentGroupInstance chosen = optionInstances.get(value);
+			ArgumentGroupInstance chosen = optionInstances.get(chosenOption);
 			for (AbstractCommandLinePartInstance partInstance : chosen.partInstances) {
 				partInstance.validate();
 			}

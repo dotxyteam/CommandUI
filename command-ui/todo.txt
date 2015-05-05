@@ -1,3 +1,34 @@
+-          Need ordered list of choice entries
+
+o   Choice must contain list of argGroup
+
+-          Allow to rerun the command (modified or not)
+
+-          Allow to open command execution window for tests
+
+-          Allow to parse command syntax???
+
+o   Into clipboard??? In a new argument group??? Allow to choose
+
+-          “fixed args only” optionalArg must be represented by a simple checkbox
+
+-          Save/load settings option
+
+-          Display successful validation
+
+-          Validation error for
+
+o   Empty optionalArg, MultipleArg, choice, argument group
+
+ 
+
+For reflectionUI
+
+-          List copy problem: modification of original modifies the copy and vice-versa
+
+-          Undo tooltip empty
+
+-          ListControl “Paste” must be before “Paste Before/After”
 - check parameter values not empty
 - allow to save player state
 - Context menu needed
