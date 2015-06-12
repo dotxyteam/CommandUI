@@ -30,6 +30,7 @@ import xy.command.model.InputArgument;
 import xy.command.model.MultiplePart;
 import xy.command.model.OptionalPart;
 import xy.command.model.instance.CommandLineInstance;
+import xy.command.ui.util.CommandUIUtils;
 import xy.command.ui.util.FileUtils;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.control.ListControl;
@@ -60,6 +61,7 @@ public class CommandLineEditor extends ReflectionUI {
 	protected static final String APP_NAME = "Command UI";
 
 	public static void main(String[] args) {
+		CommandUIUtils.setupLookAndFeel();
 		try {
 			String exeFilePath = System
 					.getProperty(CURRENT_EXE_FILE_PATH_PROPERTY_KEY);
@@ -177,15 +179,19 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			protected List<IFieldInfo> getFields(ITypeInfo type) {
+				List<IFieldInfo> result = new ArrayList<IFieldInfo>(
+						super.getFields(type));
+				IFieldInfo titleField = ReflectionUIUtils.findInfoByName(
+						result, "title");
+				if (titleField != null) {
+					result.remove(titleField);
+					result.add(0, titleField);
+				}
 				if (type.getName().equals(FixedArgument.class.getName())) {
-					List<IFieldInfo> result = new ArrayList<IFieldInfo>(
-							super.getFields(type));
 					result.remove(ReflectionUIUtils.findInfoByName(result,
 							"description"));
-					return result;
-				} else {
-					return super.getFields(type);
 				}
+				return result;
 			}
 
 			@Override
@@ -267,6 +273,18 @@ public class CommandLineEditor extends ReflectionUI {
 										}
 									} else {
 										throw new AssertionError();
+									}
+								}
+
+								@Override
+								public Image getCellIconImage(
+										ItemPosition itemPosition,
+										int columnIndex) {
+									if (columnIndex == 0) {
+										Object item = itemPosition.getItem();
+										return CommandLineEditor.this.getObjectIconImage(item);
+									} else {
+										return null;
 									}
 								}
 

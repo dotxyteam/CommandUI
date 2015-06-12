@@ -34,6 +34,7 @@ import xy.command.model.instance.InputArgumentInstance;
 import xy.command.model.instance.MultiplePartInstance;
 import xy.command.model.instance.OptionalPartInstance;
 import xy.command.model.instance.MultiplePartInstance.MultiplePartInstanceOccurrence;
+import xy.command.ui.util.CommandUIUtils;
 import xy.command.ui.util.ValidationError;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.control.EmbeddedFormControl;
@@ -65,6 +66,7 @@ public class CommandLinePlayer extends ReflectionUI {
 	protected  static Map<ArgumentPage, CommandLine> commandLineByPage = new WeakHashMap<ArgumentPage, CommandLine>();
 
 	public static void main(String[] args) {
+		CommandUIUtils.setupLookAndFeel();
 		CommandLine commandLine = new CommandLine();
 		if (args.length >= 1) {
 			commandLine.loadFromFile(new File(args[0]));
@@ -1070,8 +1072,8 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 
 		@Override
-		public Object[] toListValue(Object object) {
-			MultiplePartInstance instance = (MultiplePartInstance) object;
+		public Object[] toArray(Object listValue) {
+			MultiplePartInstance instance = (MultiplePartInstance) listValue;
 			List<ArgumentGroupInstance> result = new ArrayList<ArgumentGroupInstance>();
 			for (MultiplePartInstanceOccurrence occurrence : instance.multiPartInstanceOccurrences) {
 				ArgumentGroupInstance occurenceAsGroupInstance = new ArgumentGroupInstance(
@@ -1083,10 +1085,10 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 
 		@Override
-		public Object fromListValue(Object[] listValue) {
+		public Object fromArray(Object[] array) {
 			List<MultiplePartInstanceOccurrence> multiPartInstanceOccurrences = new ArrayList<MultiplePartInstanceOccurrence>();
-			for (int i = 0; i < listValue.length; i++) {
-				Object item = listValue[i];
+			for (int i = 0; i < array.length; i++) {
+				Object item = array[i];
 				ArgumentGroupInstance occurenceAsGroupInstance = (ArgumentGroupInstance) item;
 				MultiplePartInstanceOccurrence occurrence = new MultiplePartInstanceOccurrence(
 						multiplePart, i);
