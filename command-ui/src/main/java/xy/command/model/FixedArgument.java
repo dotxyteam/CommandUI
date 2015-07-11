@@ -5,7 +5,6 @@ import java.io.Writer;
 
 import xy.command.model.instance.FixedArgumentInstance;
 import xy.command.ui.util.ValidationError;
-import xy.reflect.ui.info.annotation.Hidden;
 import xy.reflect.ui.info.annotation.OnlineHelp;
 import xy.reflect.ui.info.annotation.Validating;
 
@@ -16,7 +15,6 @@ public class FixedArgument extends AbstractCommandLinePart{
 	@OnlineHelp("This is the fixed argument value")
 	public String value;
 
-	@Hidden
 	@Override
 	public FixedArgumentInstance createInstance() {
 		return new FixedArgumentInstance(this);

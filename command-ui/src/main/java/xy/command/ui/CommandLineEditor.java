@@ -202,6 +202,9 @@ public class CommandLineEditor extends ReflectionUI {
 					if (type.getName().equals(CommandLine.class.getName())) {
 						List<IMethodInfo> result = new ArrayList<IMethodInfo>(
 								super.getMethods(type));
+						IMethodInfo createInstanceMethod = ReflectionUIUtils
+								.findInfoByName(result, "createInstance");
+						result.remove(createInstanceMethod);
 						result.add(getValidateMethod());
 						result.add(getPreviewMethod());
 						result.add(getDistributeMethod());

@@ -7,7 +7,6 @@ import java.util.List;
 
 import xy.command.model.instance.ArgumentGroupInstance;
 import xy.command.ui.util.ValidationError;
-import xy.reflect.ui.info.annotation.Hidden;
 import xy.reflect.ui.info.annotation.OnlineHelp;
 import xy.reflect.ui.info.annotation.Validating;
 
@@ -20,7 +19,6 @@ public class ArgumentGroup extends AbstractCommandLinePart {
 	@OnlineHelp("This title will identify the current element")
 	public String title;
 
-	@Hidden
 	@Override
 	public ArgumentGroupInstance createInstance() {
 		return new ArgumentGroupInstance(this);

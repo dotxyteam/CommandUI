@@ -7,7 +7,6 @@ import java.util.List;
 import xy.command.model.instance.AbstractCommandLinePartInstance;
 import xy.command.model.instance.ChoiceInstance;
 import xy.command.ui.util.ValidationError;
-import xy.reflect.ui.info.annotation.Hidden;
 import xy.reflect.ui.info.annotation.OnlineHelp;
 import xy.reflect.ui.info.annotation.Validating;
 
@@ -19,7 +18,6 @@ public class Choice extends AbstractCommandLinePart {
 	@OnlineHelp("This title will identify the current element")
 	public String title;
 	
-	@Hidden
 	@Override
 	public AbstractCommandLinePartInstance createInstance() {
 		return new ChoiceInstance(this);

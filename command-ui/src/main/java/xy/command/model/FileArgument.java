@@ -7,7 +7,6 @@ import javax.swing.JFileChooser;
 
 import xy.command.model.instance.FileArgumentInstance;
 import xy.command.ui.util.ValidationError;
-import xy.reflect.ui.info.annotation.Hidden;
 import xy.reflect.ui.info.annotation.OnlineHelp;
 import xy.reflect.ui.info.annotation.Validating;
 
@@ -21,7 +20,6 @@ public class FileArgument extends AbstractCommandLinePart {
 	@OnlineHelp("This value will provided by default")
 	public String defaultValue;
 
-	@Hidden
 	@Override
 	public FileArgumentInstance createInstance() {
 		return new FileArgumentInstance(this);

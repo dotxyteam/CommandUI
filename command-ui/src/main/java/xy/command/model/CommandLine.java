@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import xy.command.model.instance.CommandLineInstance;
 import xy.command.ui.util.ValidationError;
-import xy.reflect.ui.info.annotation.Hidden;
 import xy.reflect.ui.info.annotation.OnlineHelp;
 import xy.reflect.ui.info.annotation.Validating;
 
@@ -32,7 +31,6 @@ public class CommandLine {
 	@OnlineHelp("The list of arguments of the command line")
 	public List<ArgumentPage> arguments = new ArrayList<ArgumentPage>();
 
-	@Hidden
 	public CommandLineInstance createInstance() {
 		return new CommandLineInstance(this);
 	}
