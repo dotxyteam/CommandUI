@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 import xy.command.model.instance.OptionalPartInstance;
+import xy.reflect.ui.info.annotation.Hidden;
 import xy.reflect.ui.info.annotation.OnlineHelp;
 
 public class OptionalPart extends ArgumentGroup {
@@ -13,6 +14,7 @@ public class OptionalPart extends ArgumentGroup {
 	@OnlineHelp("If true, the option will be selected by default")
 	public boolean activeByDefault = false;
 
+	@Hidden
 	@Override
 	public OptionalPartInstance createInstance() {
 		return new OptionalPartInstance(this);

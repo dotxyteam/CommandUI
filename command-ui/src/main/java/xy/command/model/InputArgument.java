@@ -5,6 +5,7 @@ import java.io.Writer;
 
 import xy.command.model.instance.InputArgumentInstance;
 import xy.command.ui.util.ValidationError;
+import xy.reflect.ui.info.annotation.Hidden;
 import xy.reflect.ui.info.annotation.OnlineHelp;
 import xy.reflect.ui.info.annotation.Validating;
 
@@ -18,6 +19,7 @@ public class InputArgument extends AbstractCommandLinePart {
 	@OnlineHelp("This value will provided by default")
 	public String defaultValue;
 
+	@Hidden
 	@Override
 	public InputArgumentInstance createInstance() {
 		return new InputArgumentInstance(this);
