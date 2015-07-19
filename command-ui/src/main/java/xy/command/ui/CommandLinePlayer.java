@@ -59,6 +59,7 @@ import xy.reflect.ui.info.type.iterable.util.structure.TabularTreetStructuralInf
 import xy.reflect.ui.info.type.source.ITypeInfoSource;
 import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
 import xy.reflect.ui.util.ReflectionUIUtils;
+import xy.reflect.ui.info.method.InvocationData;
 
 public class CommandLinePlayer extends ReflectionUI {
 
@@ -822,7 +823,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 						@Override
 						public Object invoke(Object object,
-								Map<Integer, Object> valueByParameterPosition) {
+								InvocationData invocationData) {
 							return typeInfoSource.instanciate();
 						}
 
@@ -1120,7 +1121,7 @@ public class CommandLinePlayer extends ReflectionUI {
 								@Override
 								public Object invoke(
 										Object object,
-										Map<Integer, Object> valueByParameterPosition) {
+										InvocationData invocationData) {
 									ArgumentGroupInstance instance = new ArgumentGroupInstance(
 											multiplePart);
 									return instance;

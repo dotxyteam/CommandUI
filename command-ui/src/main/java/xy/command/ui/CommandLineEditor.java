@@ -52,6 +52,7 @@ import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.undo.IModification;
 import xy.reflect.ui.util.ReflectionUIError;
 import xy.reflect.ui.util.ReflectionUIUtils;
+import xy.reflect.ui.info.method.InvocationData;
 
 public class CommandLineEditor extends ReflectionUI {
 
@@ -282,7 +283,8 @@ public class CommandLineEditor extends ReflectionUI {
 										int columnIndex) {
 									if (columnIndex == 0) {
 										Object item = itemPosition.getItem();
-										return CommandLineEditor.this.getObjectIconImage(item);
+										return CommandLineEditor.this
+												.getObjectIconImage(item);
 									} else {
 										return null;
 									}
@@ -355,8 +357,7 @@ public class CommandLineEditor extends ReflectionUI {
 	protected IMethodInfo getOpenCommandTestWindowMethod() {
 		return new IMethodInfo() {
 			@Override
-			public Object invoke(Object object,
-					Map<Integer, Object> valueByParameterPosition) {
+			public Object invoke(Object object, InvocationData invocationData) {
 				CommandLine commandLine = (CommandLine) object;
 				if ((commandLine.executionDir == null)
 						|| (commandLine.executionDir.getPath().trim().length() == 0)) {
@@ -415,14 +416,13 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public IModification getUndoModification(Object object,
-					Map<Integer, Object> valueByParameterPosition) {
+					InvocationData invocationData) {
 				return null;
 			}
 
 			@Override
 			public void validateParameters(Object object,
-					Map<Integer, Object> valueByParameterPosition)
-					throws Exception {
+					InvocationData invocationData) throws Exception {
 			}
 
 		};
@@ -431,11 +431,10 @@ public class CommandLineEditor extends ReflectionUI {
 	protected IMethodInfo getPreviewMethod() {
 		return new IMethodInfo() {
 			@Override
-			public Object invoke(Object object,
-					Map<Integer, Object> valueByParameterPosition) {
+			public Object invoke(Object object, InvocationData invocationData) {
 				CommandLine commandLine = (CommandLine) object;
 				getValidateMethod().invoke(commandLine,
-						Collections.<Integer, Object> emptyMap());
+						new InvocationData());
 				CommandLineInstance instance = commandLine.createInstance();
 				CommandLinePlayer player = new CommandLinePlayer();
 				CommandLine model = instance.getModel();
@@ -486,14 +485,13 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public IModification getUndoModification(Object object,
-					Map<Integer, Object> valueByParameterPosition) {
+					InvocationData invocationData) {
 				return null;
 			}
 
 			@Override
 			public void validateParameters(Object object,
-					Map<Integer, Object> valueByParameterPosition)
-					throws Exception {
+					InvocationData invocationData) throws Exception {
 			}
 
 		};
@@ -502,8 +500,7 @@ public class CommandLineEditor extends ReflectionUI {
 	protected IMethodInfo getDistributeMethod() {
 		return new IMethodInfo() {
 			@Override
-			public Object invoke(Object object,
-					Map<Integer, Object> valueByParameterPosition) {
+			public Object invoke(Object object, InvocationData invocationData) {
 				CommandLine commandLine = (CommandLine) object;
 				try {
 					commandLine.validate();
@@ -520,7 +517,8 @@ public class CommandLineEditor extends ReflectionUI {
 				} else {
 					commandUIExeFile = new File(commandUIExeFilePath);
 				}
-				File outputExeFile = (File) valueByParameterPosition.get(0);
+				File outputExeFile = (File) invocationData
+						.getParameterValue(getParameters().get(0));
 				generateOutputFiles(commandLine, commandUIExeFile,
 						outputExeFile);
 				return null;
@@ -630,14 +628,13 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public IModification getUndoModification(Object object,
-					Map<Integer, Object> valueByParameterPosition) {
+					InvocationData invocationData) {
 				return null;
 			}
 
 			@Override
 			public void validateParameters(Object object,
-					Map<Integer, Object> valueByParameterPosition)
-					throws Exception {
+					InvocationData invocationData) throws Exception {
 			}
 
 		};
@@ -646,8 +643,7 @@ public class CommandLineEditor extends ReflectionUI {
 	protected IMethodInfo getValidateMethod() {
 		return new IMethodInfo() {
 			@Override
-			public Object invoke(Object object,
-					Map<Integer, Object> valueByParameterPosition) {
+			public Object invoke(Object object, InvocationData invocationData) {
 				CommandLine commandLine = (CommandLine) object;
 				try {
 					commandLine.validate();
@@ -737,14 +733,13 @@ public class CommandLineEditor extends ReflectionUI {
 
 			@Override
 			public IModification getUndoModification(Object object,
-					Map<Integer, Object> valueByParameterPosition) {
+					InvocationData invocationData) {
 				return null;
 			}
 
 			@Override
 			public void validateParameters(Object object,
-					Map<Integer, Object> valueByParameterPosition)
-					throws Exception {
+					InvocationData invocationData) throws Exception {
 			}
 
 		};
