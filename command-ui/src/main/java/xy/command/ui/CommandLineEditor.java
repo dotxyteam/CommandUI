@@ -33,7 +33,7 @@ import xy.command.model.instance.CommandLineInstance;
 import xy.command.ui.util.CommandUIUtils;
 import xy.command.ui.util.FileUtils;
 import xy.reflect.ui.ReflectionUI;
-import xy.reflect.ui.control.ListControl;
+import xy.reflect.ui.control.swing.ListControl;
 import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
@@ -91,7 +91,7 @@ public class CommandLineEditor extends ReflectionUI {
 					return;
 				}
 			}
-			new CommandLineEditor().openObjectFrame(new CommandLine(),
+			new CommandLineEditor().getSwingRenderer().openObjectFrame(new CommandLine(),
 					"Command UI", getClassIconImage(CommandLine.class));
 		} catch (Throwable t) {
 			JOptionPane.showMessageDialog(null, t.toString(), null,
@@ -364,7 +364,7 @@ public class CommandLineEditor extends ReflectionUI {
 					throw new ReflectionUIError("Enter the execution directory");
 				}
 				JPanel commandLineForm = ReflectionUIUtils.getKeysFromValue(
-						getObjectByForm(), commandLine).get(0);
+						getSwingRenderer().getObjectByForm(), commandLine).get(0);
 				Window commandLineWindow = SwingUtilities
 						.getWindowAncestor(commandLineForm);
 				CommandMonitoringDialog dialog = new CommandMonitoringDialog(
@@ -438,7 +438,7 @@ public class CommandLineEditor extends ReflectionUI {
 				CommandLineInstance instance = commandLine.createInstance();
 				CommandLinePlayer player = new CommandLinePlayer();
 				CommandLine model = instance.getModel();
-				player.openObjectFrame(instance, model.title,
+				player.getSwingRenderer().openObjectFrame(instance, model.title,
 						getObjectIconImage(model));
 				return null;
 			}
@@ -650,9 +650,9 @@ public class CommandLineEditor extends ReflectionUI {
 				} catch (Exception e) {
 					throw new ReflectionUIError(e);
 				}
-				for (JPanel form : getForms(commandLine)) {
+				for (JPanel form : getSwingRenderer().getForms(commandLine)) {
 					for (Component fieldControl : ((ReflectionUI) CommandLineEditor.this)
-							.getFieldControlsOf(form, "arguments")) {
+							.getSwingRenderer().getFieldControlsByName(form, "arguments")) {
 						if (fieldControl instanceof ListControl) {
 							final ListControl listControl = (ListControl) fieldControl;
 							listControl

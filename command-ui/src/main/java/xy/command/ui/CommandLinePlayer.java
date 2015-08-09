@@ -37,10 +37,10 @@ import xy.command.model.instance.MultiplePartInstance.MultiplePartInstanceOccurr
 import xy.command.ui.util.CommandUIUtils;
 import xy.command.ui.util.ValidationError;
 import xy.reflect.ui.ReflectionUI;
-import xy.reflect.ui.control.EmbeddedFormControl;
-import xy.reflect.ui.control.FileControl;
-import xy.reflect.ui.control.ListControl;
-import xy.reflect.ui.control.PolymorphicEmbeddedForm;
+import xy.reflect.ui.control.swing.EmbeddedFormControl;
+import xy.reflect.ui.control.swing.FileControl;
+import xy.reflect.ui.control.swing.ListControl;
+import xy.reflect.ui.control.swing.PolymorphicEmbeddedForm;
 import xy.reflect.ui.info.IInfoCollectionSettings;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.InfoCategory;
@@ -58,13 +58,14 @@ import xy.reflect.ui.info.type.iterable.util.structure.IListStructuralInfo;
 import xy.reflect.ui.info.type.iterable.util.structure.TabularTreetStructuralInfo;
 import xy.reflect.ui.info.type.source.ITypeInfoSource;
 import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
+import xy.reflect.ui.renderer.SwingRenderer;
 import xy.reflect.ui.util.ReflectionUIUtils;
 import xy.reflect.ui.info.method.InvocationData;
 
 public class CommandLinePlayer extends ReflectionUI {
 
-	protected  static Map<AbstractCommandLinePart, ArgumentPage> pageByPart = new WeakHashMap<AbstractCommandLinePart, ArgumentPage>();
-	protected  static Map<ArgumentPage, CommandLine> commandLineByPage = new WeakHashMap<ArgumentPage, CommandLine>();
+	protected static Map<AbstractCommandLinePart, ArgumentPage> pageByPart = new WeakHashMap<AbstractCommandLinePart, ArgumentPage>();
+	protected static Map<ArgumentPage, CommandLine> commandLineByPage = new WeakHashMap<ArgumentPage, CommandLine>();
 
 	public static void main(String[] args) {
 		CommandUIUtils.setupLookAndFeel();
@@ -75,21 +76,42 @@ public class CommandLinePlayer extends ReflectionUI {
 			commandLine.loadFromFile(new File("example.cml"));
 		}
 		CommandLinePlayer player = new CommandLinePlayer();
-		player.openObjectFrame(commandLine.createInstance(), commandLine.title,
-				null);
+		player.getSwingRenderer().openObjectFrame(commandLine.createInstance(),
+				commandLine.title, null);
 	}
 
 	@Override
-	public void fillForm(Object object, JPanel form,
-			IInfoCollectionSettings settings) {
-		if (object instanceof CommandLineInstance) {
-			CommandLineInstance instance = (CommandLineInstance) object;
-			for (ArgumentPage page : instance.getModel().arguments) {
-				setPageCommandLine(page, instance.getModel());
-				setPartsPage(page.parts, page);
+	public SwingRenderer createSwingRenderer() {
+		return new SwingRenderer(CommandLinePlayer.this) {
+
+			@Override
+			public List<Component> createCommonToolbarControls(
+					final JPanel form, IInfoCollectionSettings settings) {
+				List<Component> result = new ArrayList<Component>(
+						super.createCommonToolbarControls(form, settings));
+
+				Object object = getObjectByForm().get(form);
+				if (object instanceof CommandLineInstance) {
+					result.add(createRunButton(form));
+				}
+
+				return result;
 			}
-		}
-		super.fillForm(object, form, settings);
+
+			@Override
+			public void fillForm(Object object, JPanel form,
+					IInfoCollectionSettings settings) {
+				if (object instanceof CommandLineInstance) {
+					CommandLineInstance instance = (CommandLineInstance) object;
+					for (ArgumentPage page : instance.getModel().arguments) {
+						setPageCommandLine(page, instance.getModel());
+						setPartsPage(page.parts, page);
+					}
+				}
+				super.fillForm(object, form, settings);
+			}
+
+		};
 	}
 
 	protected void setPageCommandLine(ArgumentPage page, CommandLine commandLine) {
@@ -134,20 +156,6 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 	}
 
-	@Override
-	public List<Component> createCommonToolbarControls(final JPanel form,
-			IInfoCollectionSettings settings) {
-		List<Component> result = new ArrayList<Component>(
-				super.createCommonToolbarControls(form, settings));
-
-		Object object = getObjectByForm().get(form);
-		if (object instanceof CommandLineInstance) {
-			result.add(createRunButton(form));
-		}
-
-		return result;
-	}
-
 	protected Component createRunButton(final JPanel form) {
 		final JButton runButton = new JButton("Execute");
 		runButton.setToolTipText("Start the execution");
@@ -155,7 +163,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			@Override
 			public void actionPerformed(ActionEvent ev) {
 				try {
-					CommandLineInstance instance = (CommandLineInstance) getObjectByForm()
+					CommandLineInstance instance = (CommandLineInstance) getSwingRenderer().getObjectByForm()
 							.get(form);
 					try {
 						instance.validate();
@@ -165,7 +173,7 @@ public class CommandLinePlayer extends ReflectionUI {
 					}
 					launchCommandLine(instance, form);
 				} catch (Throwable t) {
-					handleExceptionsFromDisplayedUI(runButton, t);
+					getSwingRenderer().handleExceptionsFromDisplayedUI(runButton, t);
 				}
 			}
 		});
@@ -199,7 +207,8 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 	}
 
-	protected static IFieldInfo getOptionalPartFieldInfo(final OptionalPart part,
+	protected static IFieldInfo getOptionalPartFieldInfo(
+			final OptionalPart part,
 			final IPartsAsTypeInfoSource typeInfoSource, final int partIndex) {
 		final IFieldInfo groupFieldInfo = getArgumentGroupFieldInfo(part,
 				typeInfoSource, partIndex);
@@ -274,7 +283,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		};
 	}
 
-	protected  static InfoCategory getPartCategory(AbstractCommandLinePart part) {
+	protected static InfoCategory getPartCategory(AbstractCommandLinePart part) {
 		ArgumentPage page = pageByPart.get(part);
 		CommandLine cmdLine = commandLineByPage.get(page);
 		int pageIndex = cmdLine.arguments.indexOf(page);
@@ -354,7 +363,8 @@ public class CommandLinePlayer extends ReflectionUI {
 		return null;
 	}
 
-	protected static IFieldInfo getFileArgumentFieldInfo(final FileArgument part,
+	protected static IFieldInfo getFileArgumentFieldInfo(
+			final FileArgument part,
 			final IPartsAsTypeInfoSource typeInfoSource, final int partIndex) {
 		return new IFieldInfo() {
 
@@ -552,7 +562,7 @@ public class CommandLinePlayer extends ReflectionUI {
 							protected static final long serialVersionUID = 1L;
 
 							@Override
-							protected  String getEnumerationValueCaption(
+							protected String getEnumerationValueCaption(
 									ITypeInfo actualFieldValueType) {
 								PartsAsTypeInfo type = (PartsAsTypeInfo) actualFieldValueType;
 								ArgumentGroupAsTypeInfoSource typeSource = (ArgumentGroupAsTypeInfoSource) type
@@ -637,7 +647,8 @@ public class CommandLinePlayer extends ReflectionUI {
 		};
 	}
 
-	protected static IFieldInfo getMultiplePartFieldInfo(final MultiplePart part,
+	protected static IFieldInfo getMultiplePartFieldInfo(
+			final MultiplePart part,
 			final IPartsAsTypeInfoSource typeInfoSource, final int partIndex) {
 		return new IFieldInfo() {
 
@@ -703,7 +714,7 @@ public class CommandLinePlayer extends ReflectionUI {
 		};
 	}
 
-	protected  void launchCommandLine(CommandLineInstance instance, JPanel form) {
+	protected void launchCommandLine(CommandLineInstance instance, JPanel form) {
 		String cmd = instance.getCommandlineString();
 		File workingDir = instance.getModel().executionDir;
 		CommandMonitoringDialog cmdDialog = new CommandMonitoringDialog(
@@ -734,8 +745,8 @@ public class CommandLinePlayer extends ReflectionUI {
 
 	public static class PartsAsTypeInfo extends DefaultTypeInfo {
 
-		protected  CommandLinePlayer player;
-		protected  IPartsAsTypeInfoSource typeInfoSource;
+		protected CommandLinePlayer player;
+		protected IPartsAsTypeInfoSource typeInfoSource;
 
 		public PartsAsTypeInfo(CommandLinePlayer player,
 				IPartsAsTypeInfoSource typeInfoSource) {
@@ -777,7 +788,7 @@ public class CommandLinePlayer extends ReflectionUI {
 			return isCommandLinePartInstanceList(object);
 		}
 
-		protected  boolean isCommandLinePartInstanceList(Object object) {
+		protected boolean isCommandLinePartInstanceList(Object object) {
 			if (!(object instanceof List)) {
 				return false;
 			}
@@ -1015,8 +1026,8 @@ public class CommandLinePlayer extends ReflectionUI {
 	public static class MultiplePartListTypeInfo extends DefaultTypeInfo
 			implements IListTypeInfo {
 
-		protected  MultiplePart multiplePart;
-		protected  CommandLinePlayer player;
+		protected MultiplePart multiplePart;
+		protected CommandLinePlayer player;
 
 		public MultiplePartListTypeInfo(CommandLinePlayer player,
 				MultiplePart multiplePart) {
@@ -1119,8 +1130,7 @@ public class CommandLinePlayer extends ReflectionUI {
 									MultiplePartListTypeInfo.this) {
 
 								@Override
-								public Object invoke(
-										Object object,
+								public Object invoke(Object object,
 										InvocationData invocationData) {
 									ArgumentGroupInstance instance = new ArgumentGroupInstance(
 											multiplePart);
