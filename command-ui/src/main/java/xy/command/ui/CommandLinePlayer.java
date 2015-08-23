@@ -37,6 +37,7 @@ import xy.command.model.instance.MultiplePartInstance.MultiplePartInstanceOccurr
 import xy.command.ui.util.CommandUIUtils;
 import xy.command.ui.util.ValidationError;
 import xy.reflect.ui.ReflectionUI;
+import xy.reflect.ui.SwingRenderer;
 import xy.reflect.ui.control.swing.EmbeddedFormControl;
 import xy.reflect.ui.control.swing.FileControl;
 import xy.reflect.ui.control.swing.ListControl;
@@ -58,7 +59,6 @@ import xy.reflect.ui.info.type.iterable.util.structure.IListStructuralInfo;
 import xy.reflect.ui.info.type.iterable.util.structure.TabularTreetStructuralInfo;
 import xy.reflect.ui.info.type.source.ITypeInfoSource;
 import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
-import xy.reflect.ui.renderer.SwingRenderer;
 import xy.reflect.ui.util.ReflectionUIUtils;
 import xy.reflect.ui.info.method.InvocationData;
 

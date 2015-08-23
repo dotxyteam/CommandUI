@@ -114,7 +114,7 @@ public class CommandLineEditor extends ReflectionUI {
 	}
 
 	@Override
-	public Image getObjectIconImage(Object object) {
+	public Image getIconImage(Object object) {
 		if (object == null) {
 			return null;
 		}
@@ -124,7 +124,7 @@ public class CommandLineEditor extends ReflectionUI {
 				&& (class1.getEnclosingClass() == null)) {
 			return getClassIconImage(class1);
 		} else {
-			return super.getObjectIconImage(object);
+			return super.getIconImage(object);
 		}
 	}
 
@@ -284,7 +284,7 @@ public class CommandLineEditor extends ReflectionUI {
 									if (columnIndex == 0) {
 										Object item = itemPosition.getItem();
 										return CommandLineEditor.this
-												.getObjectIconImage(item);
+												.getIconImage(item);
 									} else {
 										return null;
 									}
@@ -439,7 +439,7 @@ public class CommandLineEditor extends ReflectionUI {
 				CommandLinePlayer player = new CommandLinePlayer();
 				CommandLine model = instance.getModel();
 				player.getSwingRenderer().openObjectFrame(instance, model.title,
-						getObjectIconImage(model));
+						getIconImage(model));
 				return null;
 			}
 
@@ -658,7 +658,7 @@ public class CommandLineEditor extends ReflectionUI {
 							listControl
 									.visitItems(new ListControl.IItemsVisitor() {
 										@Override
-										public void visitItem(
+										public boolean visitItem(
 												ListControl.AutoUpdatingFieldItemPosition itemPosition) {
 											Object item = itemPosition
 													.getItem();
@@ -683,6 +683,7 @@ public class CommandLineEditor extends ReflectionUI {
 																		.getCaption()
 																+ ": " + e, e);
 											}
+											return true;
 										}
 									});
 						}
