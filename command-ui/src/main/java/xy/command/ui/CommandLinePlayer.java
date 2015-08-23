@@ -32,21 +32,20 @@ import xy.command.model.instance.CommandLineInstance;
 import xy.command.model.instance.FileArgumentInstance;
 import xy.command.model.instance.InputArgumentInstance;
 import xy.command.model.instance.MultiplePartInstance;
-import xy.command.model.instance.OptionalPartInstance;
 import xy.command.model.instance.MultiplePartInstance.MultiplePartInstanceOccurrence;
+import xy.command.model.instance.OptionalPartInstance;
 import xy.command.ui.util.CommandUIUtils;
 import xy.command.ui.util.ValidationError;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.SwingRenderer;
-import xy.reflect.ui.control.swing.EmbeddedFormControl;
 import xy.reflect.ui.control.swing.FileControl;
-import xy.reflect.ui.control.swing.ListControl;
 import xy.reflect.ui.control.swing.PolymorphicEmbeddedForm;
 import xy.reflect.ui.info.IInfoCollectionSettings;
-import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.InfoCategory;
+import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.method.AbstractConstructorMethodInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
+import xy.reflect.ui.info.method.InvocationData;
 import xy.reflect.ui.info.parameter.IParameterInfo;
 import xy.reflect.ui.info.type.DefaultTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
@@ -60,7 +59,6 @@ import xy.reflect.ui.info.type.iterable.util.structure.TabularTreetStructuralInf
 import xy.reflect.ui.info.type.source.ITypeInfoSource;
 import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
 import xy.reflect.ui.util.ReflectionUIUtils;
-import xy.reflect.ui.info.method.InvocationData;
 
 public class CommandLinePlayer extends ReflectionUI {
 
@@ -83,6 +81,45 @@ public class CommandLinePlayer extends ReflectionUI {
 	@Override
 	public SwingRenderer createSwingRenderer() {
 		return new SwingRenderer(CommandLinePlayer.this) {
+
+			@Override
+			public Component createCustomFieldControl(Object object,
+					IFieldInfo field) {
+				final Object fieldValue = field.getValue(object);
+				if (fieldValue instanceof ChoiceInstance) {
+					return new PolymorphicEmbeddedForm(CommandLinePlayer.this,
+							object, field) {
+						protected static final long serialVersionUID = 1L;
+
+						@Override
+						protected String getEnumerationValueCaption(
+								ITypeInfo actualFieldValueType) {
+							PartsAsTypeInfo type = (PartsAsTypeInfo) actualFieldValueType;
+							ArgumentGroupAsTypeInfoSource typeSource = (ArgumentGroupAsTypeInfoSource) type
+									.getTypeInfoSource();
+							ArgumentGroup model = typeSource.getModel();
+							String optionKey = model.title;
+							return optionKey;
+						}
+
+					};
+				} else if (fieldValue instanceof FileArgumentInstance) {
+					return new FileControl(CommandLinePlayer.this, object,
+							field) {
+						protected static final long serialVersionUID = 1L;
+
+						@Override
+						public void configureFileChooser(
+								JFileChooser fileChooser, File currentFile) {
+							super.configureFileChooser(fileChooser, currentFile);
+							((FileArgumentInstance) fieldValue).getModel()
+									.configureFileChooser(fileChooser);
+						}
+					};
+				} else {
+					return super.createNonNullFieldValueControl(object, field);
+				}
+			}
 
 			@Override
 			public List<Component> createCommonToolbarControls(
@@ -163,8 +200,8 @@ public class CommandLinePlayer extends ReflectionUI {
 			@Override
 			public void actionPerformed(ActionEvent ev) {
 				try {
-					CommandLineInstance instance = (CommandLineInstance) getSwingRenderer().getObjectByForm()
-							.get(form);
+					CommandLineInstance instance = (CommandLineInstance) getSwingRenderer()
+							.getObjectByForm().get(form);
 					try {
 						instance.validate();
 					} catch (Exception e) {
@@ -173,7 +210,8 @@ public class CommandLinePlayer extends ReflectionUI {
 					}
 					launchCommandLine(instance, form);
 				} catch (Throwable t) {
-					getSwingRenderer().handleExceptionsFromDisplayedUI(runButton, t);
+					getSwingRenderer().handleExceptionsFromDisplayedUI(
+							runButton, t);
 				}
 			}
 		});
@@ -415,25 +453,7 @@ public class CommandLinePlayer extends ReflectionUI {
 
 			@Override
 			public ITypeInfo getType() {
-				return new FileTypeInfo(typeInfoSource.getPlayer()) {
-
-					@Override
-					public Component createNonNullFieldValueControl(
-							Object object, IFieldInfo field) {
-						return new FileControl(reflectionUI, object, field) {
-							protected static final long serialVersionUID = 1L;
-
-							@Override
-							public void configureFileChooser(
-									JFileChooser fileChooser, File currentFile) {
-								super.configureFileChooser(fileChooser,
-										currentFile);
-								part.configureFileChooser(fileChooser);
-							}
-						};
-					}
-
-				};
+				return new FileTypeInfo(typeInfoSource.getPlayer());
 			}
 
 			@Override
@@ -551,28 +571,6 @@ public class CommandLinePlayer extends ReflectionUI {
 					@Override
 					public List<IMethodInfo> getConstructors() {
 						return Collections.emptyList();
-					}
-
-					@Override
-					public Component createFieldControl(Object object,
-							IFieldInfo field) {
-						return new PolymorphicEmbeddedForm(
-								typeInfoSource.getPlayer(), object, field) {
-
-							protected static final long serialVersionUID = 1L;
-
-							@Override
-							protected String getEnumerationValueCaption(
-									ITypeInfo actualFieldValueType) {
-								PartsAsTypeInfo type = (PartsAsTypeInfo) actualFieldValueType;
-								ArgumentGroupAsTypeInfoSource typeSource = (ArgumentGroupAsTypeInfoSource) type
-										.getTypeInfoSource();
-								ArgumentGroup model = typeSource.getModel();
-								String optionKey = model.title;
-								return optionKey;
-							}
-
-						};
 					}
 				};
 			}
@@ -846,12 +844,6 @@ public class CommandLinePlayer extends ReflectionUI {
 		}
 
 		@Override
-		public Component createNonNullFieldValueControl(Object object,
-				IFieldInfo field) {
-			return new EmbeddedFormControl(player, object, field);
-		}
-
-		@Override
 		public String getOnlineHelp() {
 			return typeInfoSource.getTypeDocumentation();
 		}
@@ -1075,12 +1067,6 @@ public class CommandLinePlayer extends ReflectionUI {
 		@Override
 		public List<IMethodInfo> getConstructors() {
 			return Collections.emptyList();
-		}
-
-		@Override
-		public Component createNonNullFieldValueControl(Object object,
-				IFieldInfo field) {
-			return new ListControl(player, object, field);
 		}
 
 		@Override
