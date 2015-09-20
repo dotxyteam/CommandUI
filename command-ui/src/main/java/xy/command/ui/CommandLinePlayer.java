@@ -1043,6 +1043,13 @@ public class CommandLinePlayer extends ReflectionUI {
 				IFieldInfo field, List<? extends ItemPosition> selection) {
 			return Collections.emptyList();
 		}
+		
+
+
+		@Override
+		public List<IMethodInfo> getSpecificItemConstructors(Object object, IFieldInfo field) {
+			return Collections.emptyList();
+		}
 
 		@Override
 		public boolean supportsInstance(Object object) {
