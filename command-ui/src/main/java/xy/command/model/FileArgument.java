@@ -5,26 +5,19 @@ import java.io.Writer;
 
 import javax.swing.JFileChooser;
 
-import xy.command.model.instance.FileArgumentInstance;
+import xy.command.instance.AbstractCommandLinePartInstance;
+import xy.command.instance.FileArgumentInstance;
 import xy.command.ui.util.ValidationError;
-import xy.reflect.ui.info.annotation.OnlineHelp;
-import xy.reflect.ui.info.annotation.Validating;
 
 public class FileArgument extends AbstractCommandLinePart {
 
 	protected  static final long serialVersionUID = 1L;
 	
-	@OnlineHelp("This title will identify the current element")
+	// @OnlineHelp("This title will identify the current element")
 	public String title;
 	
-	@OnlineHelp("This value will provided by default")
+	// @OnlineHelp("This value will provided by default")
 	public String defaultValue;
-
-	@Override
-	public FileArgumentInstance createInstance() {
-		return new FileArgumentInstance(this);
-	}
-
 
 	public void configureFileChooser(JFileChooser fileChooser) {
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -47,12 +40,17 @@ public class FileArgument extends AbstractCommandLinePart {
 		out.write(">");
 	}
 	
-	@Validating
+	// @Validating
 	@Override
 	public void validate() throws Exception {
 		if ((title == null) || (title.trim().length() == 0)) {
 			throw new ValidationError("Enter the title");
 		}
+	}
+
+	@Override
+	public AbstractCommandLinePartInstance instanciate() {
+		return new FileArgumentInstance(this);
 	}
 
 	

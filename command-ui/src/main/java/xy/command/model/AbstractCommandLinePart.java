@@ -4,26 +4,22 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.io.Writer;
 
-import xy.command.model.instance.AbstractCommandLinePartInstance;
-import xy.reflect.ui.info.annotation.OnlineHelp;
-import xy.reflect.ui.info.annotation.Validating;
+import xy.command.instance.AbstractCommandLinePartInstance;
 
 public abstract class AbstractCommandLinePart implements Serializable {
 
-	protected  static final long serialVersionUID = 1L;
-	
-	@OnlineHelp("Specifies the description of the current element")
+	protected static final long serialVersionUID = 1L;
+
+	public abstract AbstractCommandLinePartInstance instanciate();
+
+	// @OnlineHelp("Specifies the description of the current element")
 	public String description;
 
-	public abstract AbstractCommandLinePartInstance createInstance();
-
 	public abstract void writetUsageText(Writer out) throws IOException;
-	
 
-
-	
-	@Validating
+	// @Validating
 	public void validate() throws Exception {
 	}
-	
+
+
 }

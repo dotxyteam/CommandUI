@@ -4,24 +4,20 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-import xy.command.model.instance.AbstractCommandLinePartInstance;
-import xy.command.model.instance.ChoiceInstance;
+
+import xy.command.instance.AbstractCommandLinePartInstance;
+import xy.command.instance.ChoiceInstance;
 import xy.command.ui.util.ValidationError;
-import xy.reflect.ui.info.annotation.OnlineHelp;
-import xy.reflect.ui.info.annotation.Validating;
 
 public class Choice extends AbstractCommandLinePart {
 
 	protected  static final long serialVersionUID = 1L;
-	public List<ArgumentGroup> options = new ArrayList<ArgumentGroup>();
 	
-	@OnlineHelp("This title will identify the current element")
+	public List<CommandLine> options = new ArrayList<CommandLine>();
+	
+	// @OnlineHelp("This title will identify the current element")
 	public String title;
 	
-	@Override
-	public AbstractCommandLinePartInstance createInstance() {
-		return new ChoiceInstance(this);
-	}
 
 	@Override
 	public String toString() {
@@ -32,7 +28,7 @@ public class Choice extends AbstractCommandLinePart {
 	public void writetUsageText(Writer out) throws IOException {
 		out.append("(");
 		boolean first = true;
-		for(ArgumentGroup optionEntry: options){
+		for(CommandLine optionEntry: options){
 			if(!first){
 				out.append(" | ");
 			}
@@ -43,12 +39,17 @@ public class Choice extends AbstractCommandLinePart {
 	}
 	
 
-	@Validating
+	// @Validating
 	@Override
 	public void validate() throws Exception {
 		if ((title == null) || (title.trim().length() == 0)) {
 			throw new ValidationError("Enter the title");
 		}
+	}
+
+	@Override
+	public AbstractCommandLinePartInstance instanciate() {
+		return new ChoiceInstance(this);
 	}
 
 

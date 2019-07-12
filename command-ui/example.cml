@@ -1,78 +1,82 @@
-<xy.command.model.CommandLine>
-  <title>the command</title>
-  <description>this should
-be the command
-description</description>
-  <executablePath>c:\path\run.exe</executablePath>
-  <executionDir>c:\path</executionDir>
+<xy.command.model.CommandLineProject>
+  <description>UI for using easily liquibase scripts</description>
+  <title>liquibas UI</title>
   <arguments>
     <xy.command.model.ArgumentPage>
-      <title>intro</title>
+      <title>page1</title>
       <parts>
+        <xy.command.model.FileArgument>
+          <description>bla bla bla</description>
+          <title>file1</title>
+        </xy.command.model.FileArgument>
+        <xy.command.model.DirectoryArgument>
+          <description>bla bla bla</description>
+          <title>dir1</title>
+        </xy.command.model.DirectoryArgument>
         <xy.command.model.InputArgument>
-          <title>the input</title>
+          <description>bla bla bla</description>
+          <title>input1</title>
         </xy.command.model.InputArgument>
         <xy.command.model.FixedArgument>
+          <description>bla bla bla</description>
           <value>-a</value>
         </xy.command.model.FixedArgument>
-        <xy.command.model.OptionalPart>
-          <title>the optional group</title>
-          <parts>
-            <xy.command.model.FileArgument>
-              <title>the 2nd file</title>
-            </xy.command.model.FileArgument>
-          </parts>
-          <activeByDefault>false</activeByDefault>
-        </xy.command.model.OptionalPart>
-        <xy.command.model.DirectoryArgument>
-          <title>the dir arg</title>
-        </xy.command.model.DirectoryArgument>
-        <xy.command.model.ArgumentGroup>
-          <title>the group</title>
-          <parts>
-            <xy.command.model.FileArgument>
-              <title>the file</title>
-            </xy.command.model.FileArgument>
-          </parts>
-        </xy.command.model.ArgumentGroup>
       </parts>
     </xy.command.model.ArgumentPage>
     <xy.command.model.ArgumentPage>
-      <title>advanced</title>
+      <title>page2</title>
       <parts>
-        <xy.command.model.MultiplePart>
-          <title>the group 1 to n</title>
-          <parts>
-            <xy.command.model.FileArgument>
-              <title>the file</title>
-            </xy.command.model.FileArgument>
-          </parts>
-        </xy.command.model.MultiplePart>
         <xy.command.model.Choice>
-          <title>the choice</title>
+          <description>bla bla bla</description>
           <options>
-              <xy.command.model.ArgumentGroup>
-              	<title>-a</title>
-                <parts>
-                  <xy.command.model.InputArgument>
-                    <title>value of a</title>
-                  </xy.command.model.InputArgument>
-                </parts>
-              </xy.command.model.ArgumentGroup>
-              <xy.command.model.ArgumentGroup>
-                <title>-b</title>
-                <parts>
-                  <xy.command.model.InputArgument>
-                    <title>value of b1</title>
-                  </xy.command.model.InputArgument>
-                  <xy.command.model.InputArgument>
-                    <title>value of b2</title>
-                  </xy.command.model.InputArgument>
-                </parts>
-              </xy.command.model.ArgumentGroup>
+            <xy.command.model.CommandLine>
+              <title>c1</title>
+              <arguments>
+                <xy.command.model.ArgumentPage>
+                  <title>p2</title>
+                  <parts>
+                    <xy.command.model.FileArgument>
+                      <title>f2</title>
+                    </xy.command.model.FileArgument>
+                  </parts>
+                </xy.command.model.ArgumentPage>
+              </arguments>
+            </xy.command.model.CommandLine>
           </options>
+          <title>choice1</title>
         </xy.command.model.Choice>
+        <xy.command.model.OptionalPart>
+          <title>optional1</title>
+          <arguments>
+            <xy.command.model.ArgumentPage>
+              <title>p3</title>
+              <parts>
+                <xy.command.model.InputArgument>
+                  <description>bla bla bla</description>
+                  <title>i3</title>
+                </xy.command.model.InputArgument>
+              </parts>
+            </xy.command.model.ArgumentPage>
+          </arguments>
+          <activeByDefault>false</activeByDefault>
+        </xy.command.model.OptionalPart>
+        <xy.command.model.MultiplePart>
+          <description>bla bla bla</description>
+          <title>m1</title>
+          <arguments>
+            <xy.command.model.ArgumentPage>
+              <title>p5</title>
+              <parts>
+                <xy.command.model.InputArgument>
+                  <title>i5</title>
+                </xy.command.model.InputArgument>
+              </parts>
+            </xy.command.model.ArgumentPage>
+          </arguments>
+        </xy.command.model.MultiplePart>
       </parts>
     </xy.command.model.ArgumentPage>
   </arguments>
-</xy.command.model.CommandLine>
+  <executablePath>cmd</executablePath>
+  <executionDir>C:\Users\olitank\git\CommandUI\command-ui\tmp</executionDir>
+</xy.command.model.CommandLineProject>

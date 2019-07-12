@@ -5,24 +5,18 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
-import xy.command.model.instance.ArgumentGroupInstance;
+import xy.command.instance.AbstractCommandLinePartInstance;
+import xy.command.instance.ArgumentGroupInstance;
 import xy.command.ui.util.ValidationError;
-import xy.reflect.ui.info.annotation.OnlineHelp;
-import xy.reflect.ui.info.annotation.Validating;
 
 public class ArgumentGroup extends AbstractCommandLinePart {
 
-	protected  static final long serialVersionUID = 1L;
-	
-	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
-	
-	@OnlineHelp("This title will identify the current element")
-	public String title;
+	protected static final long serialVersionUID = 1L;
 
-	@Override
-	public ArgumentGroupInstance createInstance() {
-		return new ArgumentGroupInstance(this);
-	}
+	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
+
+	// @OnlineHelp("This title will identify the current element")
+	public String title;
 
 	@Override
 	public String toString() {
@@ -40,13 +34,20 @@ public class ArgumentGroup extends AbstractCommandLinePart {
 			first = false;
 		}
 	}
-	
-	@Validating
+
+	// @Validating
 	@Override
 	public void validate() throws Exception {
 		if ((title == null) || (title.trim().length() == 0)) {
 			throw new ValidationError("Enter the title");
 		}
 	}
+
+	@Override
+	public AbstractCommandLinePartInstance instanciate() {
+		return new ArgumentGroupInstance(this);
+	}
+	
+	
 
 }

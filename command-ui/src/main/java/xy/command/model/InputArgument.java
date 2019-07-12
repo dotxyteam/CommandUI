@@ -3,25 +3,20 @@ package xy.command.model;
 import java.io.IOException;
 import java.io.Writer;
 
-import xy.command.model.instance.InputArgumentInstance;
+import xy.command.instance.AbstractCommandLinePartInstance;
+import xy.command.instance.InputArgumentInstance;
 import xy.command.ui.util.ValidationError;
-import xy.reflect.ui.info.annotation.OnlineHelp;
-import xy.reflect.ui.info.annotation.Validating;
 
 public class InputArgument extends AbstractCommandLinePart {
 
 	protected  static final long serialVersionUID = 1L;
 
-	@OnlineHelp("This title will identify the current element")
+	// @OnlineHelp("This title will identify the current element")
 	public String title;
 	
-	@OnlineHelp("This value will provided by default")
+	// @OnlineHelp("This value will provided by default")
 	public String defaultValue;
 
-	@Override
-	public InputArgumentInstance createInstance() {
-		return new InputArgumentInstance(this);
-	}
 
 	@Override
 	public String toString() {
@@ -39,12 +34,17 @@ public class InputArgument extends AbstractCommandLinePart {
 		out.write(">");
 	}
 	
-	@Validating
+	// @Validating
 	@Override
 	public void validate() throws Exception {
 		if ((title == null) || (title.trim().length() == 0)) {
 			throw new ValidationError("Enter the title");
 		}
+	}
+
+	@Override
+	public AbstractCommandLinePartInstance instanciate() {
+		return new InputArgumentInstance(this);
 	}
 
 

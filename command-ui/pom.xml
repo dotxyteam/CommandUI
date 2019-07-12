@@ -3,24 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>xy</groupId>
 	<artifactId>command-ui</artifactId>
-	<version>1.0.7</version>
+	<version>1.0.8</version>
 	<name>Command UI</name>
 	<dependencies>
 		<dependency>
-			<groupId>xy</groupId>
-			<artifactId>reflection-ui</artifactId>
-			<version>2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.thoughtworks.xstream</groupId>
-			<artifactId>xstream</artifactId>
-			<version>1.4.7</version>
-		</dependency>
-		<dependency>
-			<groupId>xy.lib.theme</groupId>
-			<artifactId>Metalizer</artifactId>
-			<version>0.8</version>
-		</dependency>
+			<groupId>com.github.dotxyteam</groupId>
+			<artifactId>custom-ui</artifactId>
+			<version>4.6.0</version>
+		</dependency>		
 	</dependencies>
 
 	<build>

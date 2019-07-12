@@ -3,16 +3,14 @@ package xy.command.model;
 import java.io.IOException;
 import java.io.Writer;
 
-import xy.command.model.instance.MultiplePartInstance;
+import xy.command.instance.AbstractCommandLinePartInstance;
+import xy.command.instance.MultiplePartInstance;
 
-public class MultiplePart extends ArgumentGroup{
+
+public class MultiplePart extends CommandLine{
 
 	protected  static final long serialVersionUID = 1L;
 	
-	@Override
-	public MultiplePartInstance createInstance() {
-		return new MultiplePartInstance(this);
-	}
 	
 	@Override
 	public void writetUsageText(Writer out) throws IOException {
@@ -21,6 +19,14 @@ public class MultiplePart extends ArgumentGroup{
 		out.write(" ...)");		
 	}
 
-	
-	
+	@Override
+	public AbstractCommandLinePartInstance instanciate() {
+		return new MultiplePartInstance(this);
+	}
+
+	@Override
+	public String toString() {
+		return "<"+title+">";
+	}
+
 }

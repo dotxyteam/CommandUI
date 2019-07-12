@@ -4,14 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import xy.reflect.ui.info.annotation.OnlineHelp;
+import xy.command.instance.ArgumentPageInstance;
+
 
 
 public class ArgumentPage  implements Serializable {
 
 	protected static final long serialVersionUID = 1L;
 	
-	@OnlineHelp("This title will identify the current element")
+	// @OnlineHelp("This title will identify the current element")
 	public String title;
 	
 	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
@@ -30,5 +31,11 @@ public class ArgumentPage  implements Serializable {
 			part.validate();
 		}
 		
+	}
+
+
+
+	public ArgumentPageInstance instanciate() {
+		return  new ArgumentPageInstance(this);
 	}
 }

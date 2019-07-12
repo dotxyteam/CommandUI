@@ -12,8 +12,6 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import xy.lib.theme.EqualizedTheme;
-
 public class CommandUIUtils {
 
 	public static Component flowInLayout(Component c, int flowLayoutAlignment) {
@@ -227,8 +225,6 @@ public class CommandUIUtils {
 	}
 
 
-	public static void setupLookAndFeel() {
-		new EqualizedTheme(190, 0, 255).activate();
-	}
+	
 
 }
