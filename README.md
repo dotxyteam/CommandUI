@@ -1,4 +1,6 @@
 CommandUI
 =========
 
-In ALPHA stage.
+Change log
+- In ALPHA stage.
+- In Beta stage
