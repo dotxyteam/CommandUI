@@ -12,6 +12,7 @@ import xy.command.model.CommandLine;
 import xy.command.model.FileArgument;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.control.swing.plugin.FileBrowserPlugin;
+import xy.reflect.ui.control.swing.plugin.FileBrowserPlugin.SelectionModeConfiguration;
 import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.ValueReturnMode;
 import xy.reflect.ui.info.field.IFieldInfo;
@@ -68,7 +69,11 @@ public class FieldInfoFromFileArgument implements IFieldInfo {
 			@Override
 			public Map<String, Object> getSpecificProperties() {
 				Map<String, Object> result = new HashMap<String, Object>(super.getSpecificProperties());
-				ReflectionUIUtils.setFieldControlPluginIdentifier(result, new FileBrowserPlugin().getIdentifier());
+				FileBrowserPlugin plugin = new FileBrowserPlugin();
+				FileBrowserPlugin.FileBrowserConfiguration c = new FileBrowserPlugin.FileBrowserConfiguration();
+				c.selectionMode = SelectionModeConfiguration.FILES_ONLY;
+				ReflectionUIUtils.setFieldControlPluginIdentifier(result, plugin.getIdentifier());
+				ReflectionUIUtils.setFieldControlPluginConfiguration(result, plugin.getIdentifier(), c);
 				return result;
 			}
 
