@@ -1,9 +1,9 @@
 package xy.command.instance;
 
-import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+
 import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
 
@@ -42,13 +42,17 @@ public class CommandLineInstance extends AbstractCommandLinePartInstance {
 
 	@Override
 	public String toString() {
-		StringWriter out = new StringWriter();
 		try {
-			model.writetUsageText(out);
-		} catch (IOException e) {
-			return "";
+			return getExecutionText();
+		} catch (Exception e1) {
+			StringWriter out = new StringWriter();
+			try {
+				model.writetUsageText(out);
+			} catch (Exception e2) {
+				return "";
+			}
+			return out.toString();
 		}
-		return out.toString();
 	}
 
 }
