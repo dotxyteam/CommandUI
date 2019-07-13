@@ -33,7 +33,7 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>assembly</id>
+						<id>assembly-jar-with-dependencies</id>
 						<phase>package</phase>
 						<goals>
 							<goal>attached</goal>
@@ -42,6 +42,29 @@
 							<descriptorRefs>
 								<descriptorRef>jar-with-dependencies</descriptorRef>
 							</descriptorRefs>
+							<archive>
+								<manifest>
+									<mainClass>xy.command.ui.CommandLineUI</mainClass>
+								</manifest>
+							</archive>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<copy file="${basedir}/commandLine.icu" tofile="${basedir}/target/commandLine.icu" />
+							</tasks>
 						</configuration>
 					</execution>
 				</executions>
@@ -52,7 +75,7 @@
 				<executions>
 					<execution>
 						<id>l4j-gui</id>
-						<phase>package</phase>
+						<phase>verify</phase>
 						<goals>
 							<goal>launch4j</goal>
 						</goals>
@@ -63,11 +86,32 @@
 							<jar>target/command-ui-${version}-jar-with-dependencies.jar</jar>
 							<errTitle>CommandUI</errTitle>
 							<classPath>
-								<mainClass>xy.command.ui.CommandLineEditor</mainClass>
+								<mainClass>xy.command.ui.CommandLineUI</mainClass>
 							</classPath>
 							<jre>
 								<minVersion>1.6.0</minVersion>
+								<minVersion>1.8.0</minVersion>
+								<opts>
+									<opt>-Dxy.reflect.ui.infoCustomizationsToolsHidden=true</opt>
+								</opts>
 							</jre>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>assembly-zip</id>
+						<phase>install</phase>
+						<goals>
+							<goal>attached</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>assembly.xml</descriptor>
+							</descriptors>
 						</configuration>
 					</execution>
 				</executions>
