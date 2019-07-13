@@ -64,6 +64,23 @@
 						<configuration>
 							<tasks>
 								<copy file="${basedir}/commandLine.icu" tofile="${basedir}/target/commandLine.icu" />
+								<echo file="${basedir}/target/CommandUI.tmp" append="yes">
+									#set -x
+									cd `dirname $0`
+									JVM_ARGS=""
+									JVM_ARGS="$$JVM_ARGS -Dxy.reflect.ui.infoCustomizationsToolsHidden=true"
+									$$JAVA_HOME/bin/java $$JVM_ARGS -jar $0
+									exit $$?
+								</echo>
+								<fixcrlf srcdir="${basedir}/target" includes="CommandUI.tmp"
+									eol="lf" eof="remove" />
+								<concat destfile="${basedir}/target/CommandUI.sh" binary="true">
+									<filelist>
+										<file name="${basedir}/target/CommandUI.tmp" />
+										<file name="${basedir}/target/command-ui-${version}-jar-with-dependencies.jar" />
+									</filelist>
+								</concat>
+								<delete file="${basedir}/target/CommandUI.tmp"/>								
 							</tasks>
 						</configuration>
 					</execution>

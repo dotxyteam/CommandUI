@@ -1,3 +1,5 @@
+- get new exe icon
+- set part types icons
 - Allow to parse command syntax???
 	. Into clipboard??? In a new argument group??? Allow to choose
 - “fixed args only” optionalArg must be represented by a simple checkbox

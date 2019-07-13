@@ -16,7 +16,8 @@
 		<fileSet>
 			<directory>${project.build.directory}</directory>
 			<includes>
-				<include>*.exe</include>
+				<include>CommandUI.sh</include>
+				<include>CommandUI.exe</include>
 				<include>commandLine.icu</include>
 			</includes>
 			<excludes>

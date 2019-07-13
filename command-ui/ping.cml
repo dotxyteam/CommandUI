@@ -6,7 +6,7 @@
       <title>Settings</title>
       <parts>
         <xy.command.model.InputArgument>
-          <description></description>
+          <description>Destination server name</description>
           <title>hostname</title>
           <defaultValue>localhost</defaultValue>
         </xy.command.model.InputArgument>
