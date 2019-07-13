@@ -14,10 +14,10 @@ public class DirectoryArgument extends AbstractCommandLinePart {
 protected  static final long serialVersionUID = 1L;
 	
 	// @OnlineHelp("This title will identify the current element")
-	public String title;
+	public String title = "";
 	
 	// @OnlineHelp("This value will provided by default")
-	public String defaultValue;
+	public String defaultValue = "";
 
 	
 	@Override

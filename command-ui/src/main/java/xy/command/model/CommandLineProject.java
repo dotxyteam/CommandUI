@@ -13,10 +13,10 @@ public class CommandLineProject extends CommandLine {
 	private static final long serialVersionUID = 1L;
 
 	// @OnlineHelp("Relative or absolute path of the executable file")
-	public File executablePath;
+	public File executablePath = new File("");
 
 	// @OnlineHelp("The directory from which the command will be executed")
-	public File executionDir;
+	public File executionDir = new File(".");
 
 	// @Validating
 	public void validate() throws Exception {

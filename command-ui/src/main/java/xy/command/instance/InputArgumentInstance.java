@@ -1,15 +1,20 @@
 package xy.command.instance;
 
 import xy.command.model.InputArgument;
+import xy.command.ui.util.CommandUIUtils;
 
 public class InputArgumentInstance extends AbstractCommandLinePartInstance {
 
 	public InputArgument model;
+	public String value;
 
 	public InputArgumentInstance(InputArgument model) {
 		this.model = model;
+		value = model.defaultValue;
 	}
 
-	public String value;
-
+	@Override
+	public String getExecutionText() {
+		return CommandUIUtils.quoteArgument(value);
+	}
 }

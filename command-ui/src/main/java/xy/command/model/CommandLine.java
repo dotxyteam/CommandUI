@@ -14,7 +14,7 @@ public class CommandLine extends AbstractCommandLinePart{
 	private static final long serialVersionUID = 1L;
 
 	// @OnlineHelp("Title of the generated command line GUI")
-	public String title;
+	public String title = "";
 
 	// @OnlineHelp("The list of arguments of the command line")
 	public List<ArgumentPage> arguments = new ArrayList<ArgumentPage>();

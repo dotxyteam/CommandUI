@@ -13,7 +13,7 @@ public abstract class AbstractCommandLinePart implements Serializable {
 	public abstract AbstractCommandLinePartInstance instanciate();
 
 	// @OnlineHelp("Specifies the description of the current element")
-	public String description;
+	public String description = "";
 
 	public abstract void writetUsageText(Writer out) throws IOException;
 

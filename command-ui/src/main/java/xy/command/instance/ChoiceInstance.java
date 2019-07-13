@@ -11,6 +11,11 @@ public class ChoiceInstance extends AbstractCommandLinePartInstance {
 		this.model = model;
 	}
 
+	@Override
+	public String getExecutionText() {
+		return null;
+	}
+
 	
 	
 }

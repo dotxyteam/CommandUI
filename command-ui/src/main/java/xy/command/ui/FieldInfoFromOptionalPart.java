@@ -68,11 +68,7 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 		int indexInArgumentPage = argumentPage.parts.indexOf(optionalPart);
 		OptionalPartInstance optionalPartInstance = (OptionalPartInstance) commandLineInstance.argumentPageInstances
 				.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-		if (optionalPartInstance.selected) {
-			return optionalPartInstance.commandLineInstance;
-		} else {
-			return null;
-		}
+		return optionalPartInstance.commandLineInstance;
 	}
 
 	@Override
@@ -84,11 +80,6 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 		OptionalPartInstance optionalPartInstance = (OptionalPartInstance) commandLineInstance.argumentPageInstances
 				.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
 		optionalPartInstance.commandLineInstance = (CommandLineInstance) value;
-		if (value == null) {
-			optionalPartInstance.selected = false;
-		} else {
-			optionalPartInstance.selected = true;
-		}
 	}
 
 	@Override

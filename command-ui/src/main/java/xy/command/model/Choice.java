@@ -16,7 +16,7 @@ public class Choice extends AbstractCommandLinePart {
 	public List<CommandLine> options = new ArrayList<CommandLine>();
 	
 	// @OnlineHelp("This title will identify the current element")
-	public String title;
+	public String title = "";
 	
 
 	@Override

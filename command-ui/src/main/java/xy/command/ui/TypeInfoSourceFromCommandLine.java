@@ -8,29 +8,36 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.SwingUtilities;
+
 import xy.command.instance.CommandLineInstance;
 import xy.command.model.AbstractCommandLinePart;
 import xy.command.model.ArgumentPage;
 import xy.command.model.Choice;
 import xy.command.model.CommandLine;
+import xy.command.model.CommandLineProject;
 import xy.command.model.DirectoryArgument;
 import xy.command.model.FileArgument;
 import xy.command.model.FixedArgument;
 import xy.command.model.InputArgument;
 import xy.command.model.MultiplePart;
 import xy.command.model.OptionalPart;
+import xy.command.ui.util.CommandUIUtils;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.ColorSpecification;
+import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.ResourcePath;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.menu.MenuModel;
 import xy.reflect.ui.info.method.AbstractConstructorInfo;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.method.InvocationData;
+import xy.reflect.ui.info.method.MethodInfoProxy;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.source.ITypeInfoSource;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 import xy.reflect.ui.util.ReflectionUIError;
+import xy.reflect.ui.util.ReflectionUIUtils;
 
 public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
@@ -150,7 +157,13 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
 		@Override
 		public List<IMethodInfo> getMethods() {
-			return Collections.emptyList();
+			if (commandLine instanceof CommandLineProject) {
+				List<IMethodInfo> result = new ArrayList<>();
+				result.add(getExecutionMethod(reflectionUI));
+				return result;
+			} else {
+				return Collections.emptyList();
+			}
 		}
 
 		@Override
@@ -247,6 +260,50 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 		this.specificitiesIdentifier = specificitiesIdentifier;
 	}
 
+	public IMethodInfo getExecutionMethod(ReflectionUI reflectionUI) {
+		return new MethodInfoProxy(IMethodInfo.NULL_METHOD_INFO) {
+
+			@Override
+			public String getName() {
+				return "execute";
+			}
+
+			@Override
+			public String getSignature() {
+				return ReflectionUIUtils.buildMethodSignature(this);
+			}
+
+			@Override
+			public String getCaption() {
+				return "Execute";
+			}
+
+			@Override
+			public InfoCategory getCategory() {
+				return new InfoCategory("Finish", Integer.MAX_VALUE);
+			}
+
+			@Override
+			public Object invoke(Object object, InvocationData invocationData) {
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						CommandLineProject project = (CommandLineProject) commandLine;
+						CommandLineInstance instance = (CommandLineInstance) object;
+						String commandText = CommandUIUtils.quoteArgument(project.executablePath.getPath()) + " "
+								+ instance.getExecutionText();
+						CommandMonitoringDialog d = new CommandMonitoringDialog(null, commandText,
+								project.executionDir);
+						d.setVisible(true);
+					}
+				});
+				return null;
+			}
+
+		};
+	}
+
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

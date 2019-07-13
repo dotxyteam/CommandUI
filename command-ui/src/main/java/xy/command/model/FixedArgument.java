@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 import xy.command.instance.AbstractCommandLinePartInstance;
-import xy.command.instance.FixedARgumentInstance;
+import xy.command.instance.FixedArgumentInstance;
 import xy.command.ui.util.ValidationError;
 
 public class FixedArgument extends AbstractCommandLinePart{
@@ -12,7 +12,7 @@ public class FixedArgument extends AbstractCommandLinePart{
 	protected  static final long serialVersionUID = 1L;
 	
 	// @OnlineHelp("This is the fixed argument value")
-	public String value;
+	public String value = "";
 
 
 	@Override
@@ -35,7 +35,7 @@ public class FixedArgument extends AbstractCommandLinePart{
 
 	@Override
 	public AbstractCommandLinePartInstance instanciate() {
-		return new FixedARgumentInstance(this);
+		return new FixedArgumentInstance(this);
 	}
 
 

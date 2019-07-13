@@ -5,37 +5,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 import xy.command.instance.ArgumentPageInstance;
+import xy.command.ui.util.ValidationError;
 
-
-
-public class ArgumentPage  implements Serializable {
+public class ArgumentPage implements Serializable {
 
 	protected static final long serialVersionUID = 1L;
-	
-	// @OnlineHelp("This title will identify the current element")
-	public String title;
-	
-	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
-	
 
+	// @OnlineHelp("This title will identify the current element")
+	public String title = "";
+
+	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
 
 	@Override
 	public String toString() {
 		return title;
 	}
 
-
-
+	// @Validating
 	public void validate() throws Exception {
-		for(AbstractCommandLinePart part: parts){
-			part.validate();
+		if ((title == null) || (title.trim().length() == 0)) {
+			throw new ValidationError("Enter the title");
 		}
-		
 	}
 
-
-
 	public ArgumentPageInstance instanciate() {
-		return  new ArgumentPageInstance(this);
+		return new ArgumentPageInstance(this);
 	}
 }
