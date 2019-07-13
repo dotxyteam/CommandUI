@@ -158,7 +158,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 		@Override
 		public List<IMethodInfo> getMethods() {
 			if (commandLine instanceof CommandLineProject) {
-				List<IMethodInfo> result = new ArrayList<>();
+				List<IMethodInfo> result = new ArrayList<IMethodInfo>();
 				result.add(getExecutionMethod(reflectionUI));
 				return result;
 			} else {
@@ -218,7 +218,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
 		@Override
 		public List<IMethodInfo> getConstructors() {
-			return Collections.singletonList(new AbstractConstructorInfo() {
+			return Collections.<IMethodInfo>singletonList(new AbstractConstructorInfo() {
 
 				@Override
 				public Object invoke(Object parentObject, InvocationData invocationData) {
@@ -285,8 +285,8 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
 			@Override
 			public Object invoke(Object object, InvocationData invocationData) {
-				CommandLineProject project = (CommandLineProject) commandLine;
-				CommandLineInstance instance = (CommandLineInstance) object;
+				final CommandLineProject project = (CommandLineProject) commandLine;
+				final CommandLineInstance instance = (CommandLineInstance) object;
 				final String commandText = CommandUIUtils.quoteArgument(project.executablePath.getPath()) + " "
 						+ instance.getExecutionText();
 				SwingUtilities.invokeLater(new Runnable() {

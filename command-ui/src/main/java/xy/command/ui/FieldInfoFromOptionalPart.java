@@ -46,7 +46,7 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 
 	@Override
 	public String getOnlineHelp() {
-		return null;
+		return optionalPart.description;
 	}
 
 	@Override

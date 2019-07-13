@@ -10,7 +10,12 @@
 			<groupId>com.github.dotxyteam</groupId>
 			<artifactId>custom-ui</artifactId>
 			<version>4.6.0</version>
-		</dependency>		
+		</dependency>
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.7</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -23,26 +28,6 @@
 					<source>1.6</source>
 					<target>1.6</target>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>com.thoughtworks.paranamer</groupId>
-				<artifactId>paranamer-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>run</id>  <!-- id is optional -->
-						<configuration>
-							<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
-							<outputDirectory>${project.build.outputDirectory}</outputDirectory>
-						</configuration>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-				<dependencies>
-					<!-- if some of parameter names you need to retain are held in pre-existing 
-						jars, they need to be added to the classpath -->
-				</dependencies>
 			</plugin>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -82,10 +67,6 @@
 							</classPath>
 							<jre>
 								<minVersion>1.6.0</minVersion>
-								<opts>
-									<param>-Dnormal.exe.file.name="CommandUI.exe"</param>
-									<param>-Dcurrent.exe.file.path="%EXEFILE%"</param>
-								</opts>
 							</jre>
 						</configuration>
 					</execution>

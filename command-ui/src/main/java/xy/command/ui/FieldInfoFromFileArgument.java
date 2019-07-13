@@ -52,7 +52,7 @@ public class FieldInfoFromFileArgument implements IFieldInfo {
 
 	@Override
 	public String getOnlineHelp() {
-		return null;
+		return fileArgument.description;
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class FieldInfoFromFileArgument implements IFieldInfo {
 
 			@Override
 			public Map<String, Object> getSpecificProperties() {
-				Map<String, Object> result = new HashMap<>(super.getSpecificProperties());
+				Map<String, Object> result = new HashMap<String, Object>(super.getSpecificProperties());
 				ReflectionUIUtils.setFieldControlPluginIdentifier(result, new FileBrowserPlugin().getIdentifier());
 				return result;
 			}

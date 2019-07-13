@@ -46,7 +46,7 @@ public class FieldInfoFromChoice implements IFieldInfo {
 
 	@Override
 	public String getOnlineHelp() {
-		return null;
+		return choice.description;
 	}
 
 	@Override

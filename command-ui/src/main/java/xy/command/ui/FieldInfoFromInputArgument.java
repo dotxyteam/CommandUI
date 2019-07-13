@@ -47,7 +47,7 @@ public class FieldInfoFromInputArgument implements IFieldInfo {
 
 	@Override
 	public String getOnlineHelp() {
-		return null;
+		return inputArgument.description;
 	}
 
 	@Override

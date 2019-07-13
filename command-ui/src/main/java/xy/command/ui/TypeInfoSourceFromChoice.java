@@ -41,7 +41,7 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 	}
 
 	@Override
-	public ITypeInfo getTypeInfo(ReflectionUI reflectionUI) {
+	public ITypeInfo getTypeInfo(final ReflectionUI reflectionUI) {
 		return new ITypeInfo() {
 
 			@Override

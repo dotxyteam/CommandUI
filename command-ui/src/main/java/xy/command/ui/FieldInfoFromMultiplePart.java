@@ -66,7 +66,7 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 	@Override
 	public String getOnlineHelp() {
-		return null;
+		return multiplePart.description;
 	}
 
 	@Override
