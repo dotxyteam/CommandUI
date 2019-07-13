@@ -3,12 +3,12 @@
   <title>ping</title>
   <arguments>
     <xy.command.model.ArgumentPage>
-      <title></title>
+      <title>Settings</title>
       <parts>
         <xy.command.model.InputArgument>
           <description></description>
           <title>hostname</title>
-          <defaultValue></defaultValue>
+          <defaultValue>localhost</defaultValue>
         </xy.command.model.InputArgument>
         <xy.command.model.FixedArgument>
           <value>-c</value>
@@ -16,6 +16,7 @@
         <xy.command.model.InputArgument>
           <description>Stop after sending count  ECHO_REQUEST  packets.</description>
           <title>count</title>
+          <defaultValue>4</defaultValue>
         </xy.command.model.InputArgument>
       </parts>
     </xy.command.model.ArgumentPage>

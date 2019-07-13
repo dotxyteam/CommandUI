@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 
@@ -54,8 +55,7 @@ public class CommandMonitoringDialog extends JDialog {
 	public static void main(String[] args) {
 		try {
 
-			CommandMonitoringDialog dialog = new CommandMonitoringDialog(null,
-					"ping -n 10 localhost", null);
+			CommandMonitoringDialog dialog = new CommandMonitoringDialog(null, "ping -n 10 localhost", null);
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -72,6 +72,7 @@ public class CommandMonitoringDialog extends JDialog {
 		this.workingDir = workingDir;
 
 		setTitle("Command Execution");
+		setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB));
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setSize(400, 300);
 		setLocationRelativeTo(null);
@@ -101,13 +102,12 @@ public class CommandMonitoringDialog extends JDialog {
 					{
 						autoScrollControl = new JCheckBox("Auto-Scroll");
 						autoScrollControl.setSelected(true);
-						autoScrollControl
-								.addActionListener(new ActionListener() {
-									@Override
-									public void actionPerformed(ActionEvent e) {
-										onAutoScrollChange();
-									}
-								});
+						autoScrollControl.addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								onAutoScrollChange();
+							}
+						});
 						buttonPane.add(autoScrollControl);
 						onAutoScrollChange();
 					}
@@ -145,52 +145,50 @@ public class CommandMonitoringDialog extends JDialog {
 
 	protected void onAutoScrollChange() {
 		DefaultCaret caret = (DefaultCaret) logTextControl.getCaret();
-		caret.setUpdatePolicy(autoScrollControl.isSelected() ? DefaultCaret.ALWAYS_UPDATE
-				: DefaultCaret.NEVER_UPDATE);
+		caret.setUpdatePolicy(autoScrollControl.isSelected() ? DefaultCaret.ALWAYS_UPDATE : DefaultCaret.NEVER_UPDATE);
 	}
 
 	protected void limitLines() {
-		logTextControl.getDocument().addDocumentListener(
-				new DocumentListener() {
+		logTextControl.getDocument().addDocumentListener(new DocumentListener() {
 
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				update();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				update();
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				update();
+			}
+
+			protected void update() {
+				SwingUtilities.invokeLater(new Runnable() {
 					@Override
-					public void insertUpdate(DocumentEvent e) {
-						update();
-					}
-
-					@Override
-					public void removeUpdate(DocumentEvent e) {
-						update();
-					}
-
-					@Override
-					public void changedUpdate(DocumentEvent e) {
-						update();
-					}
-
-					protected void update() {
-						SwingUtilities.invokeLater(new Runnable() {
-							@Override
-							public void run() {
-								limitLines();
-							}
-						});
-					}
-
-					protected void limitLines() {
-						Document document = logTextControl.getDocument();
-						Element root = document.getDefaultRootElement();
-						while (root.getElementCount() > getMaximumlineCount()) {
-							Element line = root.getElement(0);
-							int end = line.getEndOffset();
-							try {
-								document.remove(0, end);
-							} catch (BadLocationException ble) {
-								System.out.println(ble);
-							}
-						}
+					public void run() {
+						limitLines();
 					}
 				});
+			}
+
+			protected void limitLines() {
+				Document document = logTextControl.getDocument();
+				Element root = document.getDefaultRootElement();
+				while (root.getElementCount() > getMaximumlineCount()) {
+					Element line = root.getElement(0);
+					int end = line.getEndOffset();
+					try {
+						document.remove(0, end);
+					} catch (BadLocationException ble) {
+						System.out.println(ble);
+					}
+				}
+			}
+		});
 	}
 
 	@Override
@@ -215,24 +213,16 @@ public class CommandMonitoringDialog extends JDialog {
 			@Override
 			public void run() {
 				try {
-					CommandUIUtils.runCommand(
-							commandTextControl.getText(),
-							true,
-							new DocumentOutputStream(logTextControl
-									.getDocument(),
-									getTextAttributes(Color.BLACK)),
-							new DocumentOutputStream(logTextControl
-									.getDocument(),
-									getTextAttributes(Color.BLUE)), workingDir);
+					CommandUIUtils.runCommand(commandTextControl.getText(), true,
+							new DocumentOutputStream(logTextControl.getDocument(), getTextAttributes(Color.BLACK)),
+							new DocumentOutputStream(logTextControl.getDocument(), getTextAttributes(Color.BLUE)),
+							workingDir);
 					if (!killed) {
-						write("\n<Terminated>\n", getTextAttributes(Color.GREEN
-								.darker().darker()));
+						write("\n<Terminated>\n", getTextAttributes(Color.GREEN.darker().darker()));
 					}
 				} catch (final Throwable t) {
 					if (!killed) {
-						write("\n<An error occured>:\n"
-								+ new ReflectionUIError(t),
-								getTextAttributes(Color.RED));
+						write("\n<An error occured>:\n" + new ReflectionUIError(t), getTextAttributes(Color.RED));
 					}
 				}
 				SwingUtilities.invokeLater(new Runnable() {
@@ -304,11 +294,9 @@ public class CommandMonitoringDialog extends JDialog {
 	protected void showError(String errorMsg) {
 		JTextArea textArea = new JTextArea(errorMsg);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		textArea.setPreferredSize(new Dimension(screenSize.width / 2,
-				screenSize.height / 2));
+		textArea.setPreferredSize(new Dimension(screenSize.width / 2, screenSize.height / 2));
 		textArea.setEditable(false);
-		JOptionPane.showMessageDialog(CommandMonitoringDialog.this,
-				new JScrollPane(textArea), "An error Ocuured",
+		JOptionPane.showMessageDialog(CommandMonitoringDialog.this, new JScrollPane(textArea), "An error Ocuured",
 				JOptionPane.ERROR_MESSAGE);
 	}
 

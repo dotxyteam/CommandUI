@@ -285,13 +285,13 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
 			@Override
 			public Object invoke(Object object, InvocationData invocationData) {
+				CommandLineProject project = (CommandLineProject) commandLine;
+				CommandLineInstance instance = (CommandLineInstance) object;
+				final String commandText = CommandUIUtils.quoteArgument(project.executablePath.getPath()) + " "
+						+ instance.getExecutionText();
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
-					public void run() {
-						CommandLineProject project = (CommandLineProject) commandLine;
-						CommandLineInstance instance = (CommandLineInstance) object;
-						String commandText = CommandUIUtils.quoteArgument(project.executablePath.getPath()) + " "
-								+ instance.getExecutionText();
+					public void run() {						
 						CommandMonitoringDialog d = new CommandMonitoringDialog(null, commandText,
 								project.executionDir);
 						d.setVisible(true);

@@ -5,9 +5,9 @@
         <uniqueIdentifier>e2e51ad:16b95170bc6:-8000</uniqueIdentifier>
         <specificProperties/>
         <buttonBackgroundColor>
-            <blue>204</blue>
-            <green>204</green>
-            <red>204</red>
+            <blue>255</blue>
+            <green>240</green>
+            <red>234</red>
         </buttonBackgroundColor>
         <buttonBorderColor>
             <blue>255</blue>
@@ -15,19 +15,19 @@
             <red>255</red>
         </buttonBorderColor>
         <buttonForegroundColor>
-            <blue>51</blue>
+            <blue>0</blue>
             <green>0</green>
-            <red>204</red>
+            <red>0</red>
         </buttonForegroundColor>
         <mainBackgroundColor>
-            <blue>153</blue>
-            <green>153</green>
-            <red>153</red>
+            <blue>210</blue>
+            <green>186</green>
+            <red>154</red>
         </mainBackgroundColor>
         <mainBorderColor>
-            <blue>255</blue>
-            <green>255</green>
-            <red>255</red>
+            <blue>249</blue>
+            <green>233</green>
+            <red>213</red>
         </mainBorderColor>
         <mainForegroundColor>
             <blue>255</blue>
@@ -36,9 +36,9 @@
         </mainForegroundColor>
         <systemIntegrationCrossPlatform>true</systemIntegrationCrossPlatform>
         <titleBackgroundColor>
-            <blue>204</blue>
-            <green>204</green>
-            <red>204</red>
+            <blue>250</blue>
+            <green>227</green>
+            <red>221</red>
         </titleBackgroundColor>
         <titleForegroundColor>
             <blue>0</blue>
@@ -17695,6 +17695,82 @@
                 </typeCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
+        <fieldsCustomizations>
+            <uniqueIdentifier>5c523e2:16beb907bf5:7d71</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName>Settings - 0</fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>5c523e2:16beb907bf5:7d73</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>5c523e2:16beb907bf5:7d72</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>5c523e2:16beb907bf5:7d77</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>5c523e2:16beb907bf5:7d78</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>java.lang.String</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <fieldsCustomizations>
+            <uniqueIdentifier>5c523e2:16beb907bf5:7d74</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName>Settings - 2</fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>5c523e2:16beb907bf5:7d76</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>5c523e2:16beb907bf5:7d75</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>5c523e2:16beb907bf5:7d79</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>5c523e2:16beb907bf5:7d7a</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>java.lang.String</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>2a1267a8:16beb38ace0:-694f</uniqueIdentifier>
@@ -17708,7 +17784,7 @@
         <abstractForced>false</abstractForced>
         <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
         <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
-        <customTypeCaption>Command Line</customTypeCaption>
+        <customTypeCaption>Command</customTypeCaption>
         <fieldsCustomizations>
             <uniqueIdentifier>2a1267a8:16beb38ace0:-6945</uniqueIdentifier>
             <specificProperties/>
