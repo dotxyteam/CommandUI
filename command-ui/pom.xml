@@ -64,12 +64,22 @@
 						<configuration>
 							<tasks>
 								<copy file="${basedir}/commandLine.icu" tofile="${basedir}/target/commandLine.icu" />
-								<echo file="${basedir}/target/CommandUI.tmp" append="yes">
+								<echo file="${basedir}/target/CommandUI.tmp" append="yes">#!/bin/bash
 									#set -x
+									
 									cd `dirname $0`
+									
 									JVM_ARGS=""
 									JVM_ARGS="$$JVM_ARGS -Dxy.reflect.ui.infoCustomizationsToolsHidden=true"
-									$$JAVA_HOME/bin/java $$JVM_ARGS -jar $0
+									
+									$$JAVA_HOME/bin/java -version 2&gt;&amp;1 | grep version | grep &quot;1.8\|1.7\|1.6&quot;
+									if [ $? -ne 0 ]; then
+									    echo &quot;Java version 1.6 to 1.8 is required&quot;
+									    exit 1
+									fi
+									
+									
+									$$JAVA_HOME/bin/java $$JVM_ARGS -jar $0 $1 $2
 									exit $$?
 								</echo>
 								<fixcrlf srcdir="${basedir}/target" includes="CommandUI.tmp"

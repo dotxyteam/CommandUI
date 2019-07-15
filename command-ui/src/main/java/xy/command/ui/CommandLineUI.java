@@ -1,5 +1,7 @@
 package xy.command.ui;
 
+import java.io.File;
+
 import xy.command.instance.CommandLineInstance;
 import xy.command.model.CommandLineProject;
 import xy.reflect.ui.CustomizedUI;
@@ -16,9 +18,15 @@ public class CommandLineUI extends CustomizedUI {
 				+ MoreSystemProperties.HIDE_INFO_CUSTOMIZATIONS_TOOLS + "=true");
 
 		CommandLineProject object = new CommandLineProject();
-
+		if (args.length >= 1) {
+			object.loadFromFile(new File(args[0]));
+		}
 		CommandLineUI ui = new CommandLineUI();
-		ui.getRenderer().openObjectFrame(object);
+		if ((args.length >= 2) && (args[1].equals("--instanciate"))) {
+			ui.getRenderer().openObjectFrame(object.instanciate());
+		} else {
+			ui.getRenderer().openObjectFrame(object);
+		}
 	}
 
 	private SwingCustomizer renderer = new SwingCustomizer(this, "commandLine.icu");
