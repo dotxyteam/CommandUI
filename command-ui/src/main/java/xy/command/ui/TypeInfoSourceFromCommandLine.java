@@ -102,7 +102,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
 		@Override
 		public boolean supportsInstance(Object object) {
-			return object instanceof CommandLineInstance;
+			return (object instanceof CommandLineInstance) && (((CommandLineInstance) object).model == commandLine);
 		}
 
 		@Override
@@ -291,7 +291,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 						+ instance.getExecutionText();
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
-					public void run() {						
+					public void run() {
 						CommandMonitoringDialog d = new CommandMonitoringDialog(null, commandText,
 								project.executionDir);
 						d.setVisible(true);
@@ -303,7 +303,6 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 		};
 	}
 
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

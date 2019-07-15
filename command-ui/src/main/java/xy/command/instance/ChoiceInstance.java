@@ -13,7 +13,7 @@ public class ChoiceInstance extends AbstractCommandLinePartInstance {
 
 	@Override
 	public String getExecutionText() {
-		return null;
+		return chosenPartInstance.getExecutionText();
 	}
 
 	

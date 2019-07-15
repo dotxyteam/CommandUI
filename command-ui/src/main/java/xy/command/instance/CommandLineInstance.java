@@ -1,6 +1,5 @@
 package xy.command.instance;
 
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,13 +44,11 @@ public class CommandLineInstance extends AbstractCommandLinePartInstance {
 		try {
 			return getExecutionText();
 		} catch (Exception e1) {
-			StringWriter out = new StringWriter();
 			try {
-				model.writetUsageText(out);
+				return model.getUsageText();
 			} catch (Exception e2) {
 				return "";
 			}
-			return out.toString();
 		}
 	}
 

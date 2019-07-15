@@ -1,6 +1,7 @@
 package xy.command.model;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,22 @@ public class CommandLine extends AbstractCommandLinePart{
 
 	public AbstractCommandLinePartInstance instanciate() {
 		return new CommandLineInstance(this);
+	}
+
+	
+	public String getUsageText() {
+		StringWriter out = new StringWriter();
+		try {
+			writetUsageText(out);
+		} catch (Exception e2) {
+			return "";
+		}
+		return out.toString();
+	}
+	
+	@Override
+	public String toString() {
+		return getUsageText();
 	}
 
 }
