@@ -12,7 +12,7 @@ public class ArgumentPage implements Serializable {
 	protected static final long serialVersionUID = 1L;
 
 	// @OnlineHelp("This title will identify the current element")
-	public String title = "Settings";
+	public String title = "Options";
 
 	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
 

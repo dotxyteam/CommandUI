@@ -3,24 +3,14 @@
   <title>find</title>
   <arguments>
     <xy.command.model.ArgumentPage>
-      <title>General</title>
-      <parts>
-        <xy.command.model.InputArgument>
-          <description></description>
-          <title>Directory</title>
-          <defaultValue>.</defaultValue>
-        </xy.command.model.InputArgument>
-      </parts>
-    </xy.command.model.ArgumentPage>
-    <xy.command.model.ArgumentPage>
       <title>Options</title>
       <parts>
         <xy.command.model.OptionalPart>
           <description></description>
-          <title>-L</title>
+          <title>Follow symbolic links</title>
           <arguments>
             <xy.command.model.ArgumentPage>
-              <title></title>
+              <title>Options</title>
               <parts>
                 <xy.command.model.FixedArgument>
                   <description></description>
@@ -34,24 +24,34 @@
       </parts>
     </xy.command.model.ArgumentPage>
     <xy.command.model.ArgumentPage>
+      <title>General</title>
+      <parts>
+        <xy.command.model.InputArgument>
+          <description></description>
+          <title>Directory</title>
+          <defaultValue>.</defaultValue>
+        </xy.command.model.InputArgument>
+      </parts>
+    </xy.command.model.ArgumentPage>
+    <xy.command.model.ArgumentPage>
       <title>Tests</title>
       <parts>
         <xy.command.model.MultiplePart>
           <description></description>
-          <title></title>
+          <title>Mix multiple tests</title>
           <arguments>
             <xy.command.model.ArgumentPage>
-              <title></title>
+              <title>Options</title>
               <parts>
                 <xy.command.model.Choice>
                   <description></description>
                   <options>
                     <xy.command.model.CommandLine>
                       <description></description>
-                      <title>-name pattern</title>
+                      <title>Match the name pattern</title>
                       <arguments>
                         <xy.command.model.ArgumentPage>
-                          <title></title>
+                          <title>Options</title>
                           <parts>
                             <xy.command.model.FixedArgument>
                               <description></description>
@@ -68,10 +68,10 @@
                     </xy.command.model.CommandLine>
                     <xy.command.model.CommandLine>
                       <description></description>
-                      <title>-amin n</title>
+                      <title>File was last accessed n minutes ago</title>
                       <arguments>
                         <xy.command.model.ArgumentPage>
-                          <title></title>
+                          <title>Options</title>
                           <parts>
                             <xy.command.model.FixedArgument>
                               <description></description>
@@ -86,8 +86,59 @@
                         </xy.command.model.ArgumentPage>
                       </arguments>
                     </xy.command.model.CommandLine>
+                    <xy.command.model.CommandLine>
+                      <description></description>
+                      <title>File is of type c</title>
+                      <arguments>
+                        <xy.command.model.ArgumentPage>
+                          <title>Options</title>
+                          <parts>
+                            <xy.command.model.FixedArgument>
+                              <description></description>
+                              <value>-type</value>
+                            </xy.command.model.FixedArgument>
+                            <xy.command.model.Choice>
+                              <description></description>
+                              <options>
+                                <xy.command.model.CommandLine>
+                                  <description></description>
+                                  <title>Regular file</title>
+                                  <arguments>
+                                    <xy.command.model.ArgumentPage>
+                                      <title>Options</title>
+                                      <parts>
+                                        <xy.command.model.FixedArgument>
+                                          <description></description>
+                                          <value>f</value>
+                                        </xy.command.model.FixedArgument>
+                                      </parts>
+                                    </xy.command.model.ArgumentPage>
+                                  </arguments>
+                                </xy.command.model.CommandLine>
+                                <xy.command.model.CommandLine>
+                                  <description></description>
+                                  <title>Directory</title>
+                                  <arguments>
+                                    <xy.command.model.ArgumentPage>
+                                      <title>Options</title>
+                                      <parts>
+                                        <xy.command.model.FixedArgument>
+                                          <description></description>
+                                          <value>d</value>
+                                        </xy.command.model.FixedArgument>
+                                      </parts>
+                                    </xy.command.model.ArgumentPage>
+                                  </arguments>
+                                </xy.command.model.CommandLine>
+                              </options>
+                              <title>Choose between file types</title>
+                            </xy.command.model.Choice>
+                          </parts>
+                        </xy.command.model.ArgumentPage>
+                      </arguments>
+                    </xy.command.model.CommandLine>
                   </options>
-                  <title></title>
+                  <title>Choose between many kind of test</title>
                 </xy.command.model.Choice>
               </parts>
             </xy.command.model.ArgumentPage>
