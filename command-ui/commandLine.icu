@@ -58,6 +58,7 @@
         <customFieldsOrder>executablePath</customFieldsOrder>
         <customFieldsOrder>executionDir</customFieldsOrder>
         <customFieldsOrder>arguments</customFieldsOrder>
+        <customTypeCaption>Item</customTypeCaption>
         <fieldsCustomizations>
             <uniqueIdentifier>e2e51ad:16b95170bc6:6df7</uniqueIdentifier>
             <specificProperties/>
@@ -5248,6 +5249,7 @@
         <abstractForced>false</abstractForced>
         <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
         <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+        <customTypeCaption>Page</customTypeCaption>
         <fieldsCustomizations>
             <uniqueIdentifier>e2e51ad:16b95170bc6:6e38</uniqueIdentifier>
             <specificProperties/>
@@ -5390,6 +5392,9 @@
                 </listCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
+        <iconImagePath>
+            <specification>&lt;class-path-resource&gt; xy/command/ui/resource/ArgumentPage.gif</specification>
+        </iconImagePath>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>e2e51ad:16b95170bc6:6e35</uniqueIdentifier>
@@ -7700,6 +7705,9 @@
                 </listCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
+        <iconImagePath>
+            <specification>&lt;class-path-resource&gt; xy/command/ui/resource/Choice.gif</specification>
+        </iconImagePath>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7071</uniqueIdentifier>
@@ -7904,6 +7912,9 @@
                 </typeCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
+        <iconImagePath>
+            <specification>&lt;class-path-resource&gt; xy/command/ui/resource/FileArgument.gif</specification>
+        </iconImagePath>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7073</uniqueIdentifier>
@@ -8140,6 +8151,9 @@
                 </typeCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
+        <iconImagePath>
+            <specification>&lt;class-path-resource&gt; xy/command/ui/resource/DirectoryArgument.gif</specification>
+        </iconImagePath>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7075</uniqueIdentifier>
@@ -8337,6 +8351,9 @@
                 </typeCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
+        <iconImagePath>
+            <specification>&lt;class-path-resource&gt; xy/command/ui/resource/FixedArgument.gif</specification>
+        </iconImagePath>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7077</uniqueIdentifier>
@@ -8541,6 +8558,9 @@
                 </typeCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
+        <iconImagePath>
+            <specification>&lt;class-path-resource&gt; xy/command/ui/resource/InputArgument.gif</specification>
+        </iconImagePath>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7079</uniqueIdentifier>
@@ -8910,6 +8930,9 @@
                 </typeCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
+        <iconImagePath>
+            <specification>&lt;class-path-resource&gt; xy/command/ui/resource/MultiplePart.gif</specification>
+        </iconImagePath>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:707b</uniqueIdentifier>
@@ -9318,6 +9341,9 @@
                 </typeCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
+        <iconImagePath>
+            <specification>&lt;class-path-resource&gt; xy/command/ui/resource/OptionalPart.gif</specification>
+        </iconImagePath>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:707d</uniqueIdentifier>
@@ -15507,6 +15533,9 @@
                 </typeCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
+        <iconImagePath>
+            <specification>&lt;class-path-resource&gt; xy/command/ui/resource/CommandLine.gif</specification>
+        </iconImagePath>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b5cb88:7a6b</uniqueIdentifier>
@@ -16059,6 +16088,82 @@
                         <uniqueIdentifier>6242afd3:16be0b87a1b:-75dd</uniqueIdentifier>
                     </menuModel>
                     <typeName>page1 - 4 - type</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <fieldsCustomizations>
+            <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4aa9</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName>page2 - 0</fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4aab</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4aaa</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ab8</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ab9</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>page2 - 0 - type</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <fieldsCustomizations>
+            <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4aac</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName>page2 - 1</fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4aae</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4aad</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4acd</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ace</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>commandLineInstance - optional1</typeName>
                     <undoManagementHidden>false</undoManagementHidden>
                 </typeCustomizations>
             </specificTypeCustomizations>
@@ -18030,6 +18135,19 @@
                     <typeName>commandLineInstance - find</typeName>
                     <undoManagementHidden>false</undoManagementHidden>
                 </typeCustomizations>
+                <typeCustomizations>
+                    <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4aa7</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4aa8</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>commandLineInstance - liquibas UI</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
         <immutableForced>false</immutableForced>
@@ -18223,6 +18341,19 @@
                         <validating>false</validating>
                     </methodsCustomizations>
                     <typeName>commandLineInstance - Follow symbolic links</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+                <typeCustomizations>
+                    <uniqueIdentifier>6895448c:16bff01b750:4940</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>6895448c:16bff01b750:4941</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>commandLineInstance - ?</typeName>
                     <undoManagementHidden>false</undoManagementHidden>
                 </typeCustomizations>
             </specificTypeCustomizations>
@@ -19479,6 +19610,118 @@
             <uniqueIdentifier>f83c483:16bfb4c2ad4:4cd7</uniqueIdentifier>
         </menuModel>
         <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=Options - 0, containingType=commandLineInstance - Mix multiple tests], subContext=PolymorphicInstance, encapsulatedObjectType=commandLineInstance - Match the name pattern]], encapsulatedObjectType=commandLineInstance - Match the name pattern]</typeName>
+        <undoManagementHidden>false</undoManagementHidden>
+    </typeCustomizations>
+    <typeCustomizations>
+        <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4abc</uniqueIdentifier>
+        <specificProperties/>
+        <abstractForced>false</abstractForced>
+        <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+        <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+        <fieldsCustomizations>
+            <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ac0</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName></fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ac2</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ac1</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <enumerationCustomizations>
+                    <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ac7</uniqueIdentifier>
+                    <dynamicEnumerationForced>false</dynamicEnumerationForced>
+                    <enumerationTypeName>SubTypesEnumeration [polymorphicType=page2 - 0 - type]</enumerationTypeName>
+                    <itemCustomizations>
+                        <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4aca</uniqueIdentifier>
+                        <hidden>false</hidden>
+                        <itemName>commandLineInstance - c1</itemName>
+                    </itemCustomizations>
+                </enumerationCustomizations>
+                <typeCustomizations>
+                    <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ac5</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ac6</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>SubTypesEnumeration [polymorphicType=page2 - 0 - type]</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <immutableForced>false</immutableForced>
+        <menuModel>
+            <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4abd</uniqueIdentifier>
+        </menuModel>
+        <typeName>Encapsulation [context=FieldContext [fieldName=page2 - 0, containingType=commandLineInstance - liquibas UI], encapsulatedObjectType=SubTypesEnumeration [polymorphicType=page2 - 0 - type]]</typeName>
+        <undoManagementHidden>false</undoManagementHidden>
+    </typeCustomizations>
+    <typeCustomizations>
+        <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ad5</uniqueIdentifier>
+        <specificProperties/>
+        <abstractForced>false</abstractForced>
+        <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+        <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+        <fieldsCustomizations>
+            <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ad7</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName></fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ad9</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ad8</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4adc</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4add</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>commandLineInstance - c1</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <immutableForced>false</immutableForced>
+        <menuModel>
+            <uniqueIdentifier>-6a9d3a9e:16bff17bb7b:4ad6</uniqueIdentifier>
+        </menuModel>
+        <typeName>Encapsulation [context=FieldContext [fieldName=page2 - 0, containingType=commandLineInstance - liquibas UI], subContext=PolymorphicInstance, encapsulatedObjectType=commandLineInstance - c1]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
 </infoCustomizations>

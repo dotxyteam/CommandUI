@@ -1,0 +1,100 @@
+<xy.command.model.CommandLineProject>
+  <description>curl  is  a tool to transfer data from or to a server, using one of the
+       supported protocols (DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS,  IMAP,
+       IMAPS,  LDAP,  LDAPS,  POP3,  POP3S,  RTMP, RTSP, SCP, SFTP, SMB, SMBS,
+       SMTP, SMTPS, TELNET and TFTP). The command is designed to work  without
+       user interaction.</description>
+  <title>curl</title>
+  <arguments>
+    <xy.command.model.ArgumentPage>
+      <title>Options</title>
+      <parts>
+        <xy.command.model.OptionalPart>
+          <description></description>
+          <title>The result will be saved in the filename provided</title>
+          <arguments>
+            <xy.command.model.ArgumentPage>
+              <title>Options</title>
+              <parts>
+                <xy.command.model.FixedArgument>
+                  <description></description>
+                  <value>-o</value>
+                </xy.command.model.FixedArgument>
+                <xy.command.model.InputArgument>
+                  <description></description>
+                  <title>File path</title>
+                  <defaultValue></defaultValue>
+                </xy.command.model.InputArgument>
+              </parts>
+            </xy.command.model.ArgumentPage>
+          </arguments>
+          <activeByDefault>false</activeByDefault>
+        </xy.command.model.OptionalPart>
+        <xy.command.model.MultiplePart>
+          <description></description>
+          <title>Datas</title>
+          <arguments>
+            <xy.command.model.ArgumentPage>
+              <title>Options</title>
+              <parts>
+                <xy.command.model.Choice>
+                  <description></description>
+                  <options>
+                    <xy.command.model.CommandLine>
+                      <description></description>
+                      <title>Sends the specified data in a POST request to the HTTP server</title>
+                      <arguments>
+                        <xy.command.model.ArgumentPage>
+                          <title>Options</title>
+                          <parts>
+                            <xy.command.model.FixedArgument>
+                              <description></description>
+                              <value>--data</value>
+                            </xy.command.model.FixedArgument>
+                            <xy.command.model.InputArgument>
+                              <description></description>
+                              <title>The data (x=y)</title>
+                              <defaultValue></defaultValue>
+                            </xy.command.model.InputArgument>
+                          </parts>
+                        </xy.command.model.ArgumentPage>
+                      </arguments>
+                    </xy.command.model.CommandLine>
+                    <xy.command.model.CommandLine>
+                      <description></description>
+                      <title>This posts data, similar to the other --data options with the exception that this performs URL-encoding</title>
+                      <arguments>
+                        <xy.command.model.ArgumentPage>
+                          <title>Options</title>
+                          <parts>
+                            <xy.command.model.FixedArgument>
+                              <description></description>
+                              <value>--data-urlencode</value>
+                            </xy.command.model.FixedArgument>
+                            <xy.command.model.InputArgument>
+                              <description></description>
+                              <title>The data (x=y)</title>
+                              <defaultValue></defaultValue>
+                            </xy.command.model.InputArgument>
+                          </parts>
+                        </xy.command.model.ArgumentPage>
+                      </arguments>
+                    </xy.command.model.CommandLine>
+                  </options>
+                  <title></title>
+                </xy.command.model.Choice>
+              </parts>
+            </xy.command.model.ArgumentPage>
+          </arguments>
+        </xy.command.model.MultiplePart>
+        <xy.command.model.InputArgument>
+          <description></description>
+          <title>URL</title>
+          <defaultValue></defaultValue>
+        </xy.command.model.InputArgument>
+      </parts>
+    </xy.command.model.ArgumentPage>
+  </arguments>
+  <executablePath>curl</executablePath>
+  <executionDir>.</executionDir>
+</xy.command.model.CommandLineProject>

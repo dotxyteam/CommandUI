@@ -49,8 +49,4 @@ public class CommandLineProject extends CommandLine {
 		fileWriter.close();
 	}
 
-	@Override
-	public String toString() {
-		return title;
-	}
 }

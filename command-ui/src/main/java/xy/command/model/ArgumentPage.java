@@ -18,7 +18,7 @@ public class ArgumentPage implements Serializable {
 
 	@Override
 	public String toString() {
-		return title;
+		return "("+title+")";
 	}
 
 	// @Validating

@@ -26,7 +26,7 @@ public class MultiplePart extends CommandLine{
 
 	@Override
 	public String toString() {
-		return "<"+title+">";
+		return "("+title+")";
 	}
 
 }

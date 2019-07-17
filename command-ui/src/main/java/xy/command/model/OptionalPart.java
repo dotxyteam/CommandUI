@@ -28,7 +28,7 @@ public class OptionalPart extends CommandLine {
 
 	@Override
 	public String toString() {
-		return "<"+title+">";
+		return "("+title+")";
 	}
 
 }
