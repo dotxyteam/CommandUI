@@ -5538,8 +5538,12 @@
             <validating>false</validating>
         </methodsCustomizations>
         <javaClassBasedTypeInfoFinder>
-            <uniqueIdentifier>e2e51ad:16b95170bc6:70c0</uniqueIdentifier>
-            <className>xy.command.model.Choice</className>
+            <uniqueIdentifier>e2e51ad:16b95170bc6:70c3</uniqueIdentifier>
+            <className>xy.command.model.FixedArgument</className>
+        </javaClassBasedTypeInfoFinder>
+        <javaClassBasedTypeInfoFinder>
+            <uniqueIdentifier>e2e51ad:16b95170bc6:70c4</uniqueIdentifier>
+            <className>xy.command.model.InputArgument</className>
         </javaClassBasedTypeInfoFinder>
         <javaClassBasedTypeInfoFinder>
             <uniqueIdentifier>e2e51ad:16b95170bc6:70c1</uniqueIdentifier>
@@ -5550,20 +5554,16 @@
             <className>xy.command.model.DirectoryArgument</className>
         </javaClassBasedTypeInfoFinder>
         <javaClassBasedTypeInfoFinder>
-            <uniqueIdentifier>e2e51ad:16b95170bc6:70c3</uniqueIdentifier>
-            <className>xy.command.model.FixedArgument</className>
-        </javaClassBasedTypeInfoFinder>
-        <javaClassBasedTypeInfoFinder>
-            <uniqueIdentifier>e2e51ad:16b95170bc6:70c4</uniqueIdentifier>
-            <className>xy.command.model.InputArgument</className>
-        </javaClassBasedTypeInfoFinder>
-        <javaClassBasedTypeInfoFinder>
             <uniqueIdentifier>e2e51ad:16b95170bc6:70c5</uniqueIdentifier>
             <className>xy.command.model.MultiplePart</className>
         </javaClassBasedTypeInfoFinder>
         <javaClassBasedTypeInfoFinder>
             <uniqueIdentifier>e2e51ad:16b95170bc6:70c6</uniqueIdentifier>
             <className>xy.command.model.OptionalPart</className>
+        </javaClassBasedTypeInfoFinder>
+        <javaClassBasedTypeInfoFinder>
+            <uniqueIdentifier>e2e51ad:16b95170bc6:70c0</uniqueIdentifier>
+            <className>xy.command.model.Choice</className>
         </javaClassBasedTypeInfoFinder>
         <typeName>xy.command.model.AbstractCommandLinePart</typeName>
         <undoManagementHidden>false</undoManagementHidden>
@@ -8651,6 +8651,7 @@
         <customFieldsOrder>title</customFieldsOrder>
         <customFieldsOrder>description</customFieldsOrder>
         <customFieldsOrder>parts</customFieldsOrder>
+        <customTypeCaption>Multiple</customTypeCaption>
         <fieldsCustomizations>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7153</uniqueIdentifier>
             <specificProperties/>
@@ -9024,6 +9025,7 @@
         <customFieldsOrder>description</customFieldsOrder>
         <customFieldsOrder>activeByDefault</customFieldsOrder>
         <customFieldsOrder>parts</customFieldsOrder>
+        <customTypeCaption>Optional</customTypeCaption>
         <fieldsCustomizations>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7227</uniqueIdentifier>
             <specificProperties/>
@@ -15447,11 +15449,6 @@
                     </editOptions>
                     <fieldColumnsAdded>false</fieldColumnsAdded>
                     <fieldsExcludedFromItemDetails>
-                        <uniqueIdentifier>2a1267a8:16beb33f52d:7d63</uniqueIdentifier>
-                        <regularExpression>false</regularExpression>
-                        <value>parts</value>
-                    </fieldsExcludedFromItemDetails>
-                    <fieldsExcludedFromItemDetails>
                         <uniqueIdentifier>2a1267a8:16beb33f52d:7e3e</uniqueIdentifier>
                         <regularExpression>false</regularExpression>
                         <value>options</value>
@@ -15460,6 +15457,11 @@
                         <uniqueIdentifier>2a1267a8:16beb38ace0:-7e6c</uniqueIdentifier>
                         <regularExpression>false</regularExpression>
                         <value>arguments</value>
+                    </fieldsExcludedFromItemDetails>
+                    <fieldsExcludedFromItemDetails>
+                        <uniqueIdentifier>301d3ffb:16c04109d22:4b6a</uniqueIdentifier>
+                        <regularExpression>false</regularExpression>
+                        <value>parts</value>
                     </fieldsExcludedFromItemDetails>
                     <itemContructorSelectableforced>false</itemContructorSelectableforced>
                     <itemDetailsViewDisabled>false</itemDetailsViewDisabled>
