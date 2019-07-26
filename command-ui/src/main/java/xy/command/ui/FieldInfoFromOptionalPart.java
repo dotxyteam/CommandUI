@@ -10,6 +10,7 @@ import xy.command.model.AbstractCommandLinePart;
 import xy.command.model.ArgumentGroup;
 import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
+import xy.command.model.FixedArgument;
 import xy.command.model.OptionalPart;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.InfoCategory;
@@ -17,6 +18,7 @@ import xy.reflect.ui.info.ValueReturnMode;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.filter.IInfoFilter;
 import xy.reflect.ui.info.type.ITypeInfo;
+import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 import xy.reflect.ui.util.ReflectionUIError;
 
@@ -37,7 +39,6 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 		this.commandLineTypeInfo = commandLineTypeInfo;
 	}
 
-	
 	@Override
 	public String getName() {
 		return optionalPart.getClass().getName() + optionalPart.hashCode();
@@ -58,10 +59,33 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 		return Collections.emptyMap();
 	}
 
+	private boolean isBoolean() {
+		for (AbstractCommandLinePart childPart : optionalPart.parts) {
+			if (!(childPart instanceof FixedArgument)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	@Override
 	public ITypeInfo getType() {
-		return reflectionUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(optionalPart,
-				new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName())));
+		if (isBoolean()) {
+			return reflectionUI.getTypeInfo(new JavaTypeInfoSource(Boolean.class,
+					new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName())));
+		} else {
+			return reflectionUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(optionalPart,
+					new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName())));
+		}
+	}
+
+	@Override
+	public boolean isNullValueDistinct() {
+		if (isBoolean()) {
+			return false;
+		} else{
+			return true;
+		}
 	}
 
 	@Override
@@ -72,13 +96,21 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 			int indexInArgumentPage = argumentPage.parts.indexOf(optionalPart);
 			OptionalPartInstance optionalPartInstance = (OptionalPartInstance) commandLineInstance.argumentPageInstances
 					.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-			return optionalPartInstance.argumentGroupInstance;
+			if (isBoolean()) {
+				return (optionalPartInstance.argumentGroupInstance != null);
+			} else {
+				return optionalPartInstance.argumentGroupInstance;
+			}
 		} else if (containingPart instanceof ArgumentGroup) {
 			ArgumentGroupInstance argumentGroupInstance = (ArgumentGroupInstance) object;
 			int indexInArgumentGroup = ((ArgumentGroup) containingPart).parts.indexOf(optionalPart);
 			OptionalPartInstance optionalPartInstance = (OptionalPartInstance) argumentGroupInstance.partInstances
 					.get(indexInArgumentGroup);
-			return optionalPartInstance.argumentGroupInstance;
+			if (isBoolean()) {
+				return (optionalPartInstance.argumentGroupInstance != null);
+			} else {
+				return optionalPartInstance.argumentGroupInstance;
+			}
 		} else {
 			throw new ReflectionUIError();
 		}
@@ -92,13 +124,23 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 			int indexInArgumentPage = argumentPage.parts.indexOf(optionalPart);
 			OptionalPartInstance optionalPartInstance = (OptionalPartInstance) commandLineInstance.argumentPageInstances
 					.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-			optionalPartInstance.argumentGroupInstance = (ArgumentGroupInstance) value;
+			if (isBoolean()) {
+				optionalPartInstance.argumentGroupInstance = ((Boolean) value) ? new ArgumentGroupInstance(optionalPart)
+						: null;
+			} else {
+				optionalPartInstance.argumentGroupInstance = (ArgumentGroupInstance) value;
+			}
 		} else if (containingPart instanceof ArgumentGroup) {
 			ArgumentGroupInstance argumentGroupInstance = (ArgumentGroupInstance) object;
 			int indexInArgumentGroup = ((ArgumentGroup) containingPart).parts.indexOf(optionalPart);
 			OptionalPartInstance optionalPartInstance = (OptionalPartInstance) argumentGroupInstance.partInstances
 					.get(indexInArgumentGroup);
-			optionalPartInstance.argumentGroupInstance = (ArgumentGroupInstance) value;
+			if (isBoolean()) {
+				optionalPartInstance.argumentGroupInstance = ((Boolean) value) ? new ArgumentGroupInstance(optionalPart)
+						: null;
+			} else {
+				optionalPartInstance.argumentGroupInstance = (ArgumentGroupInstance) value;
+			}
 		} else {
 			throw new ReflectionUIError();
 		}
@@ -112,11 +154,6 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 	@Override
 	public Runnable getNextUpdateCustomUndoJob(Object object, Object newValue) {
 		return null;
-	}
-
-	@Override
-	public boolean isNullValueDistinct() {
-		return true;
 	}
 
 	@Override

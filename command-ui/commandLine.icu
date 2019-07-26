@@ -19926,6 +19926,1205 @@
                 </typeCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
+        <fieldsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49b1</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName>xy.command.model.OptionalPart29025567</fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49b3</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49b2</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49c1</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <fieldsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a5f</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <displayedAsSingletonList>false</displayedAsSingletonList>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <fieldName>xy.command.model.FileArgument27463287</fieldName>
+                        <formControlCreationForced>false</formControlCreationForced>
+                        <formControlEmbeddingForced>false</formControlEmbeddingForced>
+                        <getOnlyForced>false</getOnlyForced>
+                        <getterGenerated>false</getterGenerated>
+                        <nullReplacement>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a61</uniqueIdentifier>
+                        </nullReplacement>
+                        <nullStatusFieldExported>false</nullStatusFieldExported>
+                        <nullValueDistinctForced>false</nullValueDistinctForced>
+                        <setterGenerated>false</setterGenerated>
+                        <specificTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a60</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificTypeCustomizations>
+                    </fieldsCustomizations>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:49c2</uniqueIdentifier>
+                    </menuModel>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a62</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>void ()</methodSignature>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a63</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <typeName>commandLineInstance - Output to a file</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+                <typeCustomizations>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a6d</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <fieldsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a71</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <displayedAsSingletonList>false</displayedAsSingletonList>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <fieldName>FALSE</fieldName>
+                        <formControlCreationForced>false</formControlCreationForced>
+                        <formControlEmbeddingForced>false</formControlEmbeddingForced>
+                        <getOnlyForced>false</getOnlyForced>
+                        <getterGenerated>false</getterGenerated>
+                        <nullReplacement>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a73</uniqueIdentifier>
+                        </nullReplacement>
+                        <nullStatusFieldExported>false</nullStatusFieldExported>
+                        <nullValueDistinctForced>false</nullValueDistinctForced>
+                        <setterGenerated>false</setterGenerated>
+                        <specificTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a72</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificTypeCustomizations>
+                    </fieldsCustomizations>
+                    <fieldsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a74</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <displayedAsSingletonList>false</displayedAsSingletonList>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <fieldName>TRUE</fieldName>
+                        <formControlCreationForced>false</formControlCreationForced>
+                        <formControlEmbeddingForced>false</formControlEmbeddingForced>
+                        <getOnlyForced>false</getOnlyForced>
+                        <getterGenerated>false</getterGenerated>
+                        <nullReplacement>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a76</uniqueIdentifier>
+                        </nullReplacement>
+                        <nullStatusFieldExported>false</nullStatusFieldExported>
+                        <nullValueDistinctForced>false</nullValueDistinctForced>
+                        <setterGenerated>false</setterGenerated>
+                        <specificTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a75</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificTypeCustomizations>
+                    </fieldsCustomizations>
+                    <fieldsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a77</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <displayedAsSingletonList>false</displayedAsSingletonList>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <fieldName>TYPE</fieldName>
+                        <formControlCreationForced>false</formControlCreationForced>
+                        <formControlEmbeddingForced>false</formControlEmbeddingForced>
+                        <getOnlyForced>false</getOnlyForced>
+                        <getterGenerated>false</getterGenerated>
+                        <nullReplacement>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a79</uniqueIdentifier>
+                        </nullReplacement>
+                        <nullStatusFieldExported>false</nullStatusFieldExported>
+                        <nullValueDistinctForced>false</nullValueDistinctForced>
+                        <setterGenerated>false</setterGenerated>
+                        <specificTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a78</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificTypeCustomizations>
+                    </fieldsCustomizations>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a6e</uniqueIdentifier>
+                    </menuModel>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a7a</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>boolean booleanValue()</methodSignature>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a7b</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a7c</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>int hashCode(boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a92</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a93</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a7d</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a7e</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>java.lang.Boolean valueOf(boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a94</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a95</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a7f</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a80</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>java.lang.String toString(boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a96</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a97</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a81</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a82</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>boolean logicalAnd(boolean, boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a98</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a99</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean1</parameterName>
+                        </parametersCustomizations>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a9a</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a9b</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean2</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a83</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a84</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>boolean logicalOr(boolean, boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a9c</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a9d</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean1</parameterName>
+                        </parametersCustomizations>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a9e</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a9f</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean2</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a85</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a86</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>boolean logicalXor(boolean, boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4aa0</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4aa1</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean1</parameterName>
+                        </parametersCustomizations>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4aa2</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4aa3</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean2</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a87</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a88</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>int compare(boolean, boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4aa4</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4aa5</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean1</parameterName>
+                        </parametersCustomizations>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4aa6</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4aa7</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean2</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a89</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a8a</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>int compareTo(java.lang.Boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4aa8</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4aa9</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a8b</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a8c</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>boolean getBoolean(java.lang.String)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4aaa</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4aab</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>text</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a8d</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a8e</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>boolean parseBoolean(java.lang.String)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4aac</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4aad</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>text</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a8f</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a90</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>java.lang.Boolean valueOf(java.lang.String)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4aae</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4aaf</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>text</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a91</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ab0</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>java.lang.Boolean ()</methodSignature>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4ab1</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <typeName>java.lang.Boolean</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <fieldsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49b4</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName>xy.command.model.OptionalPart13285748</fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49b6</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49b5</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49c5</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <fieldsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a0c</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <displayedAsSingletonList>false</displayedAsSingletonList>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <fieldName>FALSE</fieldName>
+                        <formControlCreationForced>false</formControlCreationForced>
+                        <formControlEmbeddingForced>false</formControlEmbeddingForced>
+                        <getOnlyForced>false</getOnlyForced>
+                        <getterGenerated>false</getterGenerated>
+                        <nullReplacement>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a0e</uniqueIdentifier>
+                        </nullReplacement>
+                        <nullStatusFieldExported>false</nullStatusFieldExported>
+                        <nullValueDistinctForced>false</nullValueDistinctForced>
+                        <setterGenerated>false</setterGenerated>
+                        <specificTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a0d</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificTypeCustomizations>
+                    </fieldsCustomizations>
+                    <fieldsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a0f</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <displayedAsSingletonList>false</displayedAsSingletonList>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <fieldName>TRUE</fieldName>
+                        <formControlCreationForced>false</formControlCreationForced>
+                        <formControlEmbeddingForced>false</formControlEmbeddingForced>
+                        <getOnlyForced>false</getOnlyForced>
+                        <getterGenerated>false</getterGenerated>
+                        <nullReplacement>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a11</uniqueIdentifier>
+                        </nullReplacement>
+                        <nullStatusFieldExported>false</nullStatusFieldExported>
+                        <nullValueDistinctForced>false</nullValueDistinctForced>
+                        <setterGenerated>false</setterGenerated>
+                        <specificTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a10</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificTypeCustomizations>
+                    </fieldsCustomizations>
+                    <fieldsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a12</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <displayedAsSingletonList>false</displayedAsSingletonList>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <fieldName>TYPE</fieldName>
+                        <formControlCreationForced>false</formControlCreationForced>
+                        <formControlEmbeddingForced>false</formControlEmbeddingForced>
+                        <getOnlyForced>false</getOnlyForced>
+                        <getterGenerated>false</getterGenerated>
+                        <nullReplacement>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a14</uniqueIdentifier>
+                        </nullReplacement>
+                        <nullStatusFieldExported>false</nullStatusFieldExported>
+                        <nullValueDistinctForced>false</nullValueDistinctForced>
+                        <setterGenerated>false</setterGenerated>
+                        <specificTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a13</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificTypeCustomizations>
+                    </fieldsCustomizations>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:49c6</uniqueIdentifier>
+                    </menuModel>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a15</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>boolean booleanValue()</methodSignature>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a16</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a17</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>int hashCode(boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a2d</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a2e</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a18</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a19</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>java.lang.Boolean valueOf(boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a2f</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a30</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a1a</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a1b</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>java.lang.String toString(boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a31</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a32</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a1c</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a1d</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>boolean logicalAnd(boolean, boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a33</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a34</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean1</parameterName>
+                        </parametersCustomizations>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a35</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a36</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean2</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a1e</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a1f</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>boolean logicalOr(boolean, boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a37</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a38</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean1</parameterName>
+                        </parametersCustomizations>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a39</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a3a</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean2</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a20</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a21</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>boolean logicalXor(boolean, boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a3b</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a3c</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean1</parameterName>
+                        </parametersCustomizations>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a3d</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a3e</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean2</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a22</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a23</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>int compare(boolean, boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a3f</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a40</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean1</parameterName>
+                        </parametersCustomizations>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a41</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a42</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean2</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a24</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a25</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>int compareTo(java.lang.Boolean)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a43</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a44</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>boolean</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a26</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a27</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>boolean getBoolean(java.lang.String)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a45</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a46</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>text</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a28</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a29</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>boolean parseBoolean(java.lang.String)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a47</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a48</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>text</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a2a</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a2b</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>java.lang.Boolean valueOf(java.lang.String)</methodSignature>
+                        <parametersCustomizations>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a49</uniqueIdentifier>
+                            <specificProperties/>
+                            <defaultValue>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a4a</uniqueIdentifier>
+                            </defaultValue>
+                            <displayedAsField>false</displayedAsField>
+                            <hidden>false</hidden>
+                            <nullValueDistinctForced>false</nullValueDistinctForced>
+                            <parameterName>text</parameterName>
+                        </parametersCustomizations>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a2c</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a4b</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>java.lang.Boolean ()</methodSignature>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4a4c</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <typeName>java.lang.Boolean</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <fieldsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49ba</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName>xy.command.model.InputArgument16706229</fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49bc</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49bb</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a58</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a59</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>java.lang.String</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>-751ca2f8:16c2f49a261:4930</uniqueIdentifier>
@@ -20253,6 +21452,767 @@
             <uniqueIdentifier>-751ca2f8:16c2f49a261:49a9</uniqueIdentifier>
         </menuModel>
         <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=xy.command.model.OptionalPart24015731, containingType=commandLineInstance - curl], subContext=NullableInstance, encapsulatedObjectType=commandLineInstance - Verbose]], encapsulatedObjectType=commandLineInstance - Verbose]</typeName>
+        <undoManagementHidden>false</undoManagementHidden>
+    </typeCustomizations>
+    <typeCustomizations>
+        <uniqueIdentifier>1cb07ac1:16c2f8ca309:49c3</uniqueIdentifier>
+        <specificProperties/>
+        <abstractForced>false</abstractForced>
+        <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+        <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+        <immutableForced>false</immutableForced>
+        <menuModel>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49c4</uniqueIdentifier>
+        </menuModel>
+        <methodsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49d6</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <detachedReturnValueForced>false</detachedReturnValueForced>
+            <duplicateGenerated>false</duplicateGenerated>
+            <ignoredReturnValueForced>false</ignoredReturnValueForced>
+            <methodSignature>int hashCode(boolean)</methodSignature>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49ec</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49ed</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>boolean</parameterName>
+            </parametersCustomizations>
+            <readOnlyForced>false</readOnlyForced>
+            <returnValueFieldGenerated>false</returnValueFieldGenerated>
+            <runWhenObjectHidden>false</runWhenObjectHidden>
+            <runWhenObjectShown>false</runWhenObjectShown>
+            <specificReturnValueTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49d7</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+            </specificReturnValueTypeCustomizations>
+            <validating>false</validating>
+        </methodsCustomizations>
+        <methodsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49d8</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <detachedReturnValueForced>false</detachedReturnValueForced>
+            <duplicateGenerated>false</duplicateGenerated>
+            <ignoredReturnValueForced>false</ignoredReturnValueForced>
+            <methodSignature>java.lang.Boolean valueOf(boolean)</methodSignature>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49ee</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49ef</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>boolean</parameterName>
+            </parametersCustomizations>
+            <readOnlyForced>false</readOnlyForced>
+            <returnValueFieldGenerated>false</returnValueFieldGenerated>
+            <runWhenObjectHidden>false</runWhenObjectHidden>
+            <runWhenObjectShown>false</runWhenObjectShown>
+            <specificReturnValueTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49d9</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+            </specificReturnValueTypeCustomizations>
+            <validating>false</validating>
+        </methodsCustomizations>
+        <methodsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49da</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <detachedReturnValueForced>false</detachedReturnValueForced>
+            <duplicateGenerated>false</duplicateGenerated>
+            <ignoredReturnValueForced>false</ignoredReturnValueForced>
+            <methodSignature>java.lang.String toString(boolean)</methodSignature>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49f0</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49f1</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>boolean</parameterName>
+            </parametersCustomizations>
+            <readOnlyForced>false</readOnlyForced>
+            <returnValueFieldGenerated>false</returnValueFieldGenerated>
+            <runWhenObjectHidden>false</runWhenObjectHidden>
+            <runWhenObjectShown>false</runWhenObjectShown>
+            <specificReturnValueTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49db</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+            </specificReturnValueTypeCustomizations>
+            <validating>false</validating>
+        </methodsCustomizations>
+        <methodsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49dc</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <detachedReturnValueForced>false</detachedReturnValueForced>
+            <duplicateGenerated>false</duplicateGenerated>
+            <ignoredReturnValueForced>false</ignoredReturnValueForced>
+            <methodSignature>boolean logicalAnd(boolean, boolean)</methodSignature>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49f2</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49f3</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>boolean1</parameterName>
+            </parametersCustomizations>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49f4</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49f5</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>boolean2</parameterName>
+            </parametersCustomizations>
+            <readOnlyForced>false</readOnlyForced>
+            <returnValueFieldGenerated>false</returnValueFieldGenerated>
+            <runWhenObjectHidden>false</runWhenObjectHidden>
+            <runWhenObjectShown>false</runWhenObjectShown>
+            <specificReturnValueTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49dd</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+            </specificReturnValueTypeCustomizations>
+            <validating>false</validating>
+        </methodsCustomizations>
+        <methodsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49de</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <detachedReturnValueForced>false</detachedReturnValueForced>
+            <duplicateGenerated>false</duplicateGenerated>
+            <ignoredReturnValueForced>false</ignoredReturnValueForced>
+            <methodSignature>boolean logicalOr(boolean, boolean)</methodSignature>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49f6</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49f7</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>boolean1</parameterName>
+            </parametersCustomizations>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49f8</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49f9</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>boolean2</parameterName>
+            </parametersCustomizations>
+            <readOnlyForced>false</readOnlyForced>
+            <returnValueFieldGenerated>false</returnValueFieldGenerated>
+            <runWhenObjectHidden>false</runWhenObjectHidden>
+            <runWhenObjectShown>false</runWhenObjectShown>
+            <specificReturnValueTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49df</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+            </specificReturnValueTypeCustomizations>
+            <validating>false</validating>
+        </methodsCustomizations>
+        <methodsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49e0</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <detachedReturnValueForced>false</detachedReturnValueForced>
+            <duplicateGenerated>false</duplicateGenerated>
+            <ignoredReturnValueForced>false</ignoredReturnValueForced>
+            <methodSignature>boolean logicalXor(boolean, boolean)</methodSignature>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49fa</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49fb</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>boolean1</parameterName>
+            </parametersCustomizations>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49fc</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49fd</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>boolean2</parameterName>
+            </parametersCustomizations>
+            <readOnlyForced>false</readOnlyForced>
+            <returnValueFieldGenerated>false</returnValueFieldGenerated>
+            <runWhenObjectHidden>false</runWhenObjectHidden>
+            <runWhenObjectShown>false</runWhenObjectShown>
+            <specificReturnValueTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49e1</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+            </specificReturnValueTypeCustomizations>
+            <validating>false</validating>
+        </methodsCustomizations>
+        <methodsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49e2</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <detachedReturnValueForced>false</detachedReturnValueForced>
+            <duplicateGenerated>false</duplicateGenerated>
+            <ignoredReturnValueForced>false</ignoredReturnValueForced>
+            <methodSignature>int compare(boolean, boolean)</methodSignature>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:49fe</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49ff</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>boolean1</parameterName>
+            </parametersCustomizations>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a00</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a01</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>boolean2</parameterName>
+            </parametersCustomizations>
+            <readOnlyForced>false</readOnlyForced>
+            <returnValueFieldGenerated>false</returnValueFieldGenerated>
+            <runWhenObjectHidden>false</runWhenObjectHidden>
+            <runWhenObjectShown>false</runWhenObjectShown>
+            <specificReturnValueTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49e3</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+            </specificReturnValueTypeCustomizations>
+            <validating>false</validating>
+        </methodsCustomizations>
+        <methodsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49e4</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <detachedReturnValueForced>false</detachedReturnValueForced>
+            <duplicateGenerated>false</duplicateGenerated>
+            <ignoredReturnValueForced>false</ignoredReturnValueForced>
+            <methodSignature>int compareTo(java.lang.Boolean)</methodSignature>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a02</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a03</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>boolean</parameterName>
+            </parametersCustomizations>
+            <readOnlyForced>false</readOnlyForced>
+            <returnValueFieldGenerated>false</returnValueFieldGenerated>
+            <runWhenObjectHidden>false</runWhenObjectHidden>
+            <runWhenObjectShown>false</runWhenObjectShown>
+            <specificReturnValueTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49e5</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+            </specificReturnValueTypeCustomizations>
+            <validating>false</validating>
+        </methodsCustomizations>
+        <methodsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49e6</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <detachedReturnValueForced>false</detachedReturnValueForced>
+            <duplicateGenerated>false</duplicateGenerated>
+            <ignoredReturnValueForced>false</ignoredReturnValueForced>
+            <methodSignature>boolean getBoolean(java.lang.String)</methodSignature>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a04</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a05</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>text</parameterName>
+            </parametersCustomizations>
+            <readOnlyForced>false</readOnlyForced>
+            <returnValueFieldGenerated>false</returnValueFieldGenerated>
+            <runWhenObjectHidden>false</runWhenObjectHidden>
+            <runWhenObjectShown>false</runWhenObjectShown>
+            <specificReturnValueTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49e7</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+            </specificReturnValueTypeCustomizations>
+            <validating>false</validating>
+        </methodsCustomizations>
+        <methodsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49e8</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <detachedReturnValueForced>false</detachedReturnValueForced>
+            <duplicateGenerated>false</duplicateGenerated>
+            <ignoredReturnValueForced>false</ignoredReturnValueForced>
+            <methodSignature>boolean parseBoolean(java.lang.String)</methodSignature>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a06</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a07</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>text</parameterName>
+            </parametersCustomizations>
+            <readOnlyForced>false</readOnlyForced>
+            <returnValueFieldGenerated>false</returnValueFieldGenerated>
+            <runWhenObjectHidden>false</runWhenObjectHidden>
+            <runWhenObjectShown>false</runWhenObjectShown>
+            <specificReturnValueTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49e9</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+            </specificReturnValueTypeCustomizations>
+            <validating>false</validating>
+        </methodsCustomizations>
+        <methodsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49ea</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <detachedReturnValueForced>false</detachedReturnValueForced>
+            <duplicateGenerated>false</duplicateGenerated>
+            <ignoredReturnValueForced>false</ignoredReturnValueForced>
+            <methodSignature>java.lang.Boolean valueOf(java.lang.String)</methodSignature>
+            <parametersCustomizations>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a08</uniqueIdentifier>
+                <specificProperties/>
+                <defaultValue>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a09</uniqueIdentifier>
+                </defaultValue>
+                <displayedAsField>false</displayedAsField>
+                <hidden>false</hidden>
+                <nullValueDistinctForced>false</nullValueDistinctForced>
+                <parameterName>text</parameterName>
+            </parametersCustomizations>
+            <readOnlyForced>false</readOnlyForced>
+            <returnValueFieldGenerated>false</returnValueFieldGenerated>
+            <runWhenObjectHidden>false</runWhenObjectHidden>
+            <runWhenObjectShown>false</runWhenObjectShown>
+            <specificReturnValueTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:49eb</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+            </specificReturnValueTypeCustomizations>
+            <validating>false</validating>
+        </methodsCustomizations>
+        <typeName>java.lang.Boolean</typeName>
+        <undoManagementHidden>false</undoManagementHidden>
+    </typeCustomizations>
+    <typeCustomizations>
+        <uniqueIdentifier>1cb07ac1:16c2f8ca309:49c7</uniqueIdentifier>
+        <specificProperties/>
+        <abstractForced>false</abstractForced>
+        <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+        <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+        <fieldsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a4d</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName></fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a4f</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a4e</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a52</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a53</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>java.lang.Boolean</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <immutableForced>false</immutableForced>
+        <menuModel>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:49c8</uniqueIdentifier>
+        </menuModel>
+        <typeName>Encapsulation [context=FieldContext [fieldName=xy.command.model.OptionalPart13285748, containingType=commandLineInstance - curl], subContext=NullableInstance, encapsulatedObjectType=java.lang.Boolean]</typeName>
+        <undoManagementHidden>false</undoManagementHidden>
+    </typeCustomizations>
+    <typeCustomizations>
+        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a54</uniqueIdentifier>
+        <specificProperties/>
+        <abstractForced>false</abstractForced>
+        <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+        <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+        <fieldsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ac7</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName>xy.command.model.InputArgument15704922</fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ac9</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ac8</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ad3</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ad4</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>java.lang.String</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <immutableForced>false</immutableForced>
+        <menuModel>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a55</uniqueIdentifier>
+        </menuModel>
+        <typeName>commandLineInstance - Sends  the  specified datas in a POST request</typeName>
+        <undoManagementHidden>false</undoManagementHidden>
+    </typeCustomizations>
+    <typeCustomizations>
+        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a56</uniqueIdentifier>
+        <specificProperties/>
+        <abstractForced>false</abstractForced>
+        <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+        <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+        <fieldsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4acc</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName></fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ace</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4acd</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ad1</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ad2</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>commandLineInstance - Sends  the  specified datas in a POST request</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <immutableForced>false</immutableForced>
+        <menuModel>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a57</uniqueIdentifier>
+        </menuModel>
+        <typeName>Encapsulation [context=FieldContext [fieldName=xy.command.model.MultiplePart25842877, containingType=commandLineInstance - curl], subContext=ListItem, encapsulatedObjectType=commandLineInstance - Sends  the  specified datas in a POST request]</typeName>
+        <undoManagementHidden>false</undoManagementHidden>
+    </typeCustomizations>
+    <typeCustomizations>
+        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a64</uniqueIdentifier>
+        <specificProperties/>
+        <abstractForced>false</abstractForced>
+        <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+        <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+        <fieldsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a66</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName></fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a68</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a67</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a6b</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <fieldsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4abb</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <displayedAsSingletonList>false</displayedAsSingletonList>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <fieldName>xy.command.model.FileArgument27463287</fieldName>
+                        <formControlCreationForced>false</formControlCreationForced>
+                        <formControlEmbeddingForced>false</formControlEmbeddingForced>
+                        <getOnlyForced>false</getOnlyForced>
+                        <getterGenerated>false</getterGenerated>
+                        <nullReplacement>
+                            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4abd</uniqueIdentifier>
+                        </nullReplacement>
+                        <nullStatusFieldExported>false</nullStatusFieldExported>
+                        <nullValueDistinctForced>false</nullValueDistinctForced>
+                        <setterGenerated>false</setterGenerated>
+                        <specificTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4abc</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificTypeCustomizations>
+                    </fieldsCustomizations>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a6c</uniqueIdentifier>
+                    </menuModel>
+                    <methodsCustomizations>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4abe</uniqueIdentifier>
+                        <specificProperties/>
+                        <hidden>false</hidden>
+                        <detachedReturnValueForced>false</detachedReturnValueForced>
+                        <duplicateGenerated>false</duplicateGenerated>
+                        <ignoredReturnValueForced>false</ignoredReturnValueForced>
+                        <methodSignature>void ()</methodSignature>
+                        <readOnlyForced>false</readOnlyForced>
+                        <returnValueFieldGenerated>false</returnValueFieldGenerated>
+                        <runWhenObjectHidden>false</runWhenObjectHidden>
+                        <runWhenObjectShown>false</runWhenObjectShown>
+                        <specificReturnValueTypeCustomizations>
+                            <appplicationCustomization>
+<uniqueIdentifier>1cb07ac1:16c2f8ca309:4abf</uniqueIdentifier>
+<specificProperties/>
+<systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                            </appplicationCustomization>
+                        </specificReturnValueTypeCustomizations>
+                        <validating>false</validating>
+                    </methodsCustomizations>
+                    <typeName>commandLineInstance - Output to a file</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <immutableForced>false</immutableForced>
+        <menuModel>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a65</uniqueIdentifier>
+        </menuModel>
+        <typeName>Encapsulation [context=FieldContext [fieldName=xy.command.model.OptionalPart29025567, containingType=commandLineInstance - curl], subContext=NullableInstance, encapsulatedObjectType=commandLineInstance - Output to a file]</typeName>
+        <undoManagementHidden>false</undoManagementHidden>
+    </typeCustomizations>
+    <typeCustomizations>
+        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a6f</uniqueIdentifier>
+        <specificProperties/>
+        <abstractForced>false</abstractForced>
+        <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+        <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+        <fieldsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ab2</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName></fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ab4</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ab3</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ab7</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ab8</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>java.lang.Boolean</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <immutableForced>false</immutableForced>
+        <menuModel>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4a70</uniqueIdentifier>
+        </menuModel>
+        <typeName>Encapsulation [context=FieldContext [fieldName=xy.command.model.OptionalPart29025567, containingType=commandLineInstance - curl], subContext=NullableInstance, encapsulatedObjectType=java.lang.Boolean]</typeName>
+        <undoManagementHidden>false</undoManagementHidden>
+    </typeCustomizations>
+    <typeCustomizations>
+        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ab9</uniqueIdentifier>
+        <specificProperties/>
+        <abstractForced>false</abstractForced>
+        <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+        <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+        <fieldsCustomizations>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ac0</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <displayedAsSingletonList>false</displayedAsSingletonList>
+            <duplicateGenerated>false</duplicateGenerated>
+            <fieldName></fieldName>
+            <formControlCreationForced>false</formControlCreationForced>
+            <formControlEmbeddingForced>false</formControlEmbeddingForced>
+            <getOnlyForced>false</getOnlyForced>
+            <getterGenerated>false</getterGenerated>
+            <nullReplacement>
+                <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ac2</uniqueIdentifier>
+            </nullReplacement>
+            <nullStatusFieldExported>false</nullStatusFieldExported>
+            <nullValueDistinctForced>false</nullValueDistinctForced>
+            <setterGenerated>false</setterGenerated>
+            <specificTypeCustomizations>
+                <appplicationCustomization>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ac1</uniqueIdentifier>
+                    <specificProperties/>
+                    <systemIntegrationCrossPlatform>false</systemIntegrationCrossPlatform>
+                </appplicationCustomization>
+                <typeCustomizations>
+                    <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ac5</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>1cb07ac1:16c2f8ca309:4ac6</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>commandLineInstance - Output to a file</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
+            </specificTypeCustomizations>
+        </fieldsCustomizations>
+        <immutableForced>false</immutableForced>
+        <menuModel>
+            <uniqueIdentifier>1cb07ac1:16c2f8ca309:4aba</uniqueIdentifier>
+        </menuModel>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=xy.command.model.OptionalPart29025567, containingType=commandLineInstance - curl], subContext=NullableInstance, encapsulatedObjectType=commandLineInstance - Output to a file]], encapsulatedObjectType=commandLineInstance - Output to a file]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
 </infoCustomizations>
