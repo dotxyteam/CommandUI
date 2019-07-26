@@ -5,8 +5,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import xy.command.instance.ArgumentGroupInstance;
 import xy.command.instance.CommandLineInstance;
 import xy.command.instance.DirectoryArgumentInstance;
+import xy.command.model.AbstractCommandLinePart;
+import xy.command.model.ArgumentGroup;
 import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
 import xy.command.model.DirectoryArgument;
@@ -21,29 +24,29 @@ import xy.reflect.ui.info.type.DefaultTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
+import xy.reflect.ui.util.ReflectionUIError;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
 public class FieldInfoFromDirectoryArgument implements IFieldInfo {
 
 	private DirectoryArgument directoryArgument;
 	private ArgumentPage argumentPage;
-	private CommandLine commandLine;
+	private AbstractCommandLinePart containingPart;
 	private ReflectionUI reflectionUI;
 	private ITypeInfo commandLineTypeInfo;
 
 	public FieldInfoFromDirectoryArgument(ReflectionUI reflectionUI, DirectoryArgument directoryArgument,
-			ArgumentPage argumentPage, CommandLine commandLine, ITypeInfo commandLineTypeInfo) {
+			ArgumentPage argumentPage, AbstractCommandLinePart containingPart, ITypeInfo commandLineTypeInfo) {
 		this.reflectionUI = reflectionUI;
 		this.directoryArgument = directoryArgument;
 		this.argumentPage = argumentPage;
-		this.commandLine = commandLine;
+		this.containingPart = containingPart;
 		this.commandLineTypeInfo = commandLineTypeInfo;
 	}
 
 	@Override
 	public String getName() {
-		int indexInArgumentPage = argumentPage.parts.indexOf(directoryArgument);
-		return argumentPage.title + " - " + indexInArgumentPage;
+		return directoryArgument.getClass().getName() + directoryArgument.hashCode();
 	}
 
 	@Override
@@ -82,31 +85,57 @@ public class FieldInfoFromDirectoryArgument implements IFieldInfo {
 
 	@Override
 	public Object getValue(Object object) {
-		CommandLineInstance commandLineInstance = (CommandLineInstance) object;
-		CommandLine commandLine = commandLineInstance.model;
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
-		int indexInArgumentPage = argumentPage.parts.indexOf(directoryArgument);
-		DirectoryArgumentInstance directoryArgumentInstance = (DirectoryArgumentInstance) commandLineInstance.argumentPageInstances
-				.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-		if (directoryArgumentInstance.value == null) {
-			return null;
+		if (containingPart instanceof CommandLine) {
+			CommandLineInstance commandLineInstance = (CommandLineInstance) object;
+			int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
+			int indexInArgumentPage = argumentPage.parts.indexOf(directoryArgument);
+			DirectoryArgumentInstance directoryArgumentInstance = (DirectoryArgumentInstance) commandLineInstance.argumentPageInstances
+					.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
+			if (directoryArgumentInstance.value == null) {
+				return null;
+			} else {
+				return new File(directoryArgumentInstance.value);
+			}
+		} else if (containingPart instanceof ArgumentGroup) {
+			ArgumentGroupInstance argumentGroupInstance = (ArgumentGroupInstance) object;
+			int indexInArgumentGroup = ((ArgumentGroup) containingPart).parts.indexOf(directoryArgument);
+			DirectoryArgumentInstance directoryArgumentInstance = (DirectoryArgumentInstance) argumentGroupInstance.partInstances
+					.get(indexInArgumentGroup);
+			if (directoryArgumentInstance.value == null) {
+				return null;
+			} else {
+				return new File(directoryArgumentInstance.value);
+			}
 		} else {
-			return new File(directoryArgumentInstance.value);
+			throw new ReflectionUIError();
 		}
 	}
 
 	@Override
 	public void setValue(Object object, Object value) {
-		CommandLineInstance commandLineInstance = (CommandLineInstance) object;
-		CommandLine commandLine = commandLineInstance.model;
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
-		int indexInArgumentPage = argumentPage.parts.indexOf(directoryArgument);
-		DirectoryArgumentInstance directoryArgumentInstance = (DirectoryArgumentInstance) commandLineInstance.argumentPageInstances
-				.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-		if (value == null) {
-			directoryArgumentInstance.value = null;
+		if (containingPart instanceof CommandLine) {
+			CommandLineInstance commandLineInstance = (CommandLineInstance) object;
+			int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
+			int indexInArgumentPage = argumentPage.parts.indexOf(directoryArgument);
+			DirectoryArgumentInstance directoryArgumentInstance = (DirectoryArgumentInstance) commandLineInstance.argumentPageInstances
+					.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
+			if (value == null) {
+				directoryArgumentInstance.value = null;
+			} else {
+				directoryArgumentInstance.value = ((File) value).getPath();
+			}
+		} else if (containingPart instanceof ArgumentGroup) {
+			ArgumentGroupInstance argumentGroupInstance = (ArgumentGroupInstance) object;
+			int indexInArgumentGroup = ((ArgumentGroup) containingPart).parts.indexOf(directoryArgument);
+			DirectoryArgumentInstance directoryArgumentInstance = (DirectoryArgumentInstance) argumentGroupInstance.partInstances
+					.get(indexInArgumentGroup);
+			if (value == null) {
+				directoryArgumentInstance.value = null;
+			} else {
+				directoryArgumentInstance.value = ((File) value).getPath();
+			}
 		} else {
-			directoryArgumentInstance.value = ((File) value).getPath();
+			throw new ReflectionUIError();
 		}
 	}
 
@@ -142,7 +171,10 @@ public class FieldInfoFromDirectoryArgument implements IFieldInfo {
 
 	@Override
 	public InfoCategory getCategory() {
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
+		if (!(containingPart instanceof CommandLine)) {
+			return null;
+		}
+		int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
 		return new InfoCategory(argumentPage.title, argumentPageIndex);
 	}
 

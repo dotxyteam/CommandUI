@@ -1,11 +1,13 @@
 package xy.command.instance;
 
+import java.util.Arrays;
+
 import xy.command.model.MultiplePart;
 
 public class MultiplePartInstance extends AbstractCommandLinePartInstance {
 
 	public MultiplePart model;
-	public CommandLineInstance[] commandLineInstances = new CommandLineInstance[0];
+	public ArgumentGroupInstance[] argumentGroupInstances = new ArgumentGroupInstance[0];
 
 	public MultiplePartInstance(MultiplePart model) {
 		this.model = model;
@@ -15,7 +17,7 @@ public class MultiplePartInstance extends AbstractCommandLinePartInstance {
 	public String getExecutionText() {
 		StringBuilder result = new StringBuilder();
 		int i = 0;
-		for (CommandLineInstance instance : commandLineInstances) {
+		for (ArgumentGroupInstance instance : argumentGroupInstances) {
 			if (i > 0) {
 				result.append(" ");
 			}
@@ -25,4 +27,8 @@ public class MultiplePartInstance extends AbstractCommandLinePartInstance {
 		return result.toString();
 	}
 
+	@Override
+	public String toString() {
+		return model.title + "=" + Arrays.toString(argumentGroupInstances);
+	}
 }

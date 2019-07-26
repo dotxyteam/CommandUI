@@ -13,7 +13,7 @@ public class Choice extends AbstractCommandLinePart {
 
 	protected  static final long serialVersionUID = 1L;
 	
-	public List<CommandLine> options = new ArrayList<CommandLine>();
+	public List<ArgumentGroup> options = new ArrayList<ArgumentGroup>();
 	
 	// @OnlineHelp("This title will identify the current element")
 	public String title = "";
@@ -28,7 +28,7 @@ public class Choice extends AbstractCommandLinePart {
 	public void writetUsageText(Writer out) throws IOException {
 		out.append("(");
 		boolean first = true;
-		for(CommandLine optionEntry: options){
+		for(ArgumentGroup optionEntry: options){
 			if(!first){
 				out.append(" | ");
 			}

@@ -3,8 +3,11 @@ package xy.command.ui;
 import java.util.Collections;
 import java.util.Map;
 
+import xy.command.instance.ArgumentGroupInstance;
 import xy.command.instance.CommandLineInstance;
 import xy.command.instance.OptionalPartInstance;
+import xy.command.model.AbstractCommandLinePart;
+import xy.command.model.ArgumentGroup;
 import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
 import xy.command.model.OptionalPart;
@@ -15,28 +18,29 @@ import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.filter.IInfoFilter;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
+import xy.reflect.ui.util.ReflectionUIError;
 
 public class FieldInfoFromOptionalPart implements IFieldInfo {
 
 	private OptionalPart optionalPart;
 	private ArgumentPage argumentPage;
-	private CommandLine commandLine;
+	private AbstractCommandLinePart containingPart;
 	private ReflectionUI reflectionUI;
 	private ITypeInfo commandLineTypeInfo;
 
 	public FieldInfoFromOptionalPart(ReflectionUI reflectionUI, OptionalPart optionalPart, ArgumentPage argumentPage,
-			CommandLine commandLine, ITypeInfo commandLineTypeInfo) {
+			AbstractCommandLinePart containingPart, ITypeInfo commandLineTypeInfo) {
 		this.reflectionUI = reflectionUI;
 		this.optionalPart = optionalPart;
 		this.argumentPage = argumentPage;
-		this.commandLine = commandLine;
+		this.containingPart = containingPart;
 		this.commandLineTypeInfo = commandLineTypeInfo;
 	}
 
+	
 	@Override
 	public String getName() {
-		int indexInArgumentPage = argumentPage.parts.indexOf(optionalPart);
-		return argumentPage.title + " - " + indexInArgumentPage;
+		return optionalPart.getClass().getName() + optionalPart.hashCode();
 	}
 
 	@Override
@@ -56,30 +60,48 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 
 	@Override
 	public ITypeInfo getType() {
-		return reflectionUI.getTypeInfo(new TypeInfoSourceFromCommandLine(optionalPart,
+		return reflectionUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(optionalPart,
 				new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName())));
 	}
 
 	@Override
 	public Object getValue(Object object) {
-		CommandLineInstance commandLineInstance = (CommandLineInstance) object;
-		CommandLine commandLine = commandLineInstance.model;
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
-		int indexInArgumentPage = argumentPage.parts.indexOf(optionalPart);
-		OptionalPartInstance optionalPartInstance = (OptionalPartInstance) commandLineInstance.argumentPageInstances
-				.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-		return optionalPartInstance.commandLineInstance;
+		if (containingPart instanceof CommandLine) {
+			CommandLineInstance commandLineInstance = (CommandLineInstance) object;
+			int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
+			int indexInArgumentPage = argumentPage.parts.indexOf(optionalPart);
+			OptionalPartInstance optionalPartInstance = (OptionalPartInstance) commandLineInstance.argumentPageInstances
+					.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
+			return optionalPartInstance.argumentGroupInstance;
+		} else if (containingPart instanceof ArgumentGroup) {
+			ArgumentGroupInstance argumentGroupInstance = (ArgumentGroupInstance) object;
+			int indexInArgumentGroup = ((ArgumentGroup) containingPart).parts.indexOf(optionalPart);
+			OptionalPartInstance optionalPartInstance = (OptionalPartInstance) argumentGroupInstance.partInstances
+					.get(indexInArgumentGroup);
+			return optionalPartInstance.argumentGroupInstance;
+		} else {
+			throw new ReflectionUIError();
+		}
 	}
 
 	@Override
 	public void setValue(Object object, Object value) {
-		CommandLineInstance commandLineInstance = (CommandLineInstance) object;
-		CommandLine commandLine = commandLineInstance.model;
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
-		int indexInArgumentPage = argumentPage.parts.indexOf(optionalPart);
-		OptionalPartInstance optionalPartInstance = (OptionalPartInstance) commandLineInstance.argumentPageInstances
-				.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-		optionalPartInstance.commandLineInstance = (CommandLineInstance) value;
+		if (containingPart instanceof CommandLine) {
+			CommandLineInstance commandLineInstance = (CommandLineInstance) object;
+			int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
+			int indexInArgumentPage = argumentPage.parts.indexOf(optionalPart);
+			OptionalPartInstance optionalPartInstance = (OptionalPartInstance) commandLineInstance.argumentPageInstances
+					.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
+			optionalPartInstance.argumentGroupInstance = (ArgumentGroupInstance) value;
+		} else if (containingPart instanceof ArgumentGroup) {
+			ArgumentGroupInstance argumentGroupInstance = (ArgumentGroupInstance) object;
+			int indexInArgumentGroup = ((ArgumentGroup) containingPart).parts.indexOf(optionalPart);
+			OptionalPartInstance optionalPartInstance = (OptionalPartInstance) argumentGroupInstance.partInstances
+					.get(indexInArgumentGroup);
+			optionalPartInstance.argumentGroupInstance = (ArgumentGroupInstance) value;
+		} else {
+			throw new ReflectionUIError();
+		}
 	}
 
 	@Override
@@ -114,7 +136,10 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 
 	@Override
 	public InfoCategory getCategory() {
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
+		if (!(containingPart instanceof CommandLine)) {
+			return null;
+		}
+		int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
 		return new InfoCategory(argumentPage.title, argumentPageIndex);
 	}
 

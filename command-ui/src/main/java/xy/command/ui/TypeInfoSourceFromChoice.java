@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 import xy.command.instance.CommandLineInstance;
+import xy.command.model.ArgumentGroup;
 import xy.command.model.ArgumentPage;
 import xy.command.model.Choice;
-import xy.command.model.CommandLine;
 import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.ColorSpecification;
 import xy.reflect.ui.info.ResourcePath;
@@ -24,12 +24,12 @@ import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 
 public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 
-		private SpecificitiesIdentifier specificitiesIdentifier;
+	private SpecificitiesIdentifier specificitiesIdentifier;
 	private Choice choice;
 	private ArgumentPage argumentPage;
-	
-	public TypeInfoSourceFromChoice(SpecificitiesIdentifier specificitiesIdentifier,
-			Choice choice, ArgumentPage argumentPage) {
+
+	public TypeInfoSourceFromChoice(SpecificitiesIdentifier specificitiesIdentifier, Choice choice,
+			ArgumentPage argumentPage) {
 		this.specificitiesIdentifier = specificitiesIdentifier;
 		this.choice = choice;
 		this.argumentPage = argumentPage;
@@ -122,9 +122,8 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 			@Override
 			public List<ITypeInfo> getPolymorphicInstanceSubTypes() {
 				List<ITypeInfo> result = new ArrayList<ITypeInfo>();
-				for (CommandLine cl : choice.options) {
-					ITypeInfo type = reflectionUI
-							.getTypeInfo(new TypeInfoSourceFromCommandLine(cl, null));
+				for (ArgumentGroup argumentGroup : choice.options) {
+					ITypeInfo type = reflectionUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(argumentGroup, null));
 					result.add(type);
 				}
 				return result;

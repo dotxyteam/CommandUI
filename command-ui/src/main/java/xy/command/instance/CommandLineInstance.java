@@ -41,15 +41,21 @@ public class CommandLineInstance extends AbstractCommandLinePartInstance {
 
 	@Override
 	public String toString() {
-		try {
-			return getExecutionText();
-		} catch (Exception e1) {
-			try {
-				return model.getUsageText();
-			} catch (Exception e2) {
-				return "";
+		StringBuilder result = new StringBuilder();
+		int i = 0;
+		for (ArgumentPageInstance pageInstance : argumentPageInstances) {
+			for (AbstractCommandLinePartInstance partInstance : pageInstance.partInstances) {
+				if(partInstance instanceof FixedArgumentInstance) {
+					continue;
+				}
+				if (i > 0) {
+					result.append(", ");
+				}
+				result.append(partInstance.toString());
+				i++;
 			}
 		}
+		return result.toString();
 	}
 
 }

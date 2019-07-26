@@ -3,8 +3,11 @@ package xy.command.ui;
 import java.util.Collections;
 import java.util.Map;
 
+import xy.command.instance.ArgumentGroupInstance;
 import xy.command.instance.ChoiceInstance;
 import xy.command.instance.CommandLineInstance;
+import xy.command.model.AbstractCommandLinePart;
+import xy.command.model.ArgumentGroup;
 import xy.command.model.ArgumentPage;
 import xy.command.model.Choice;
 import xy.command.model.CommandLine;
@@ -15,28 +18,28 @@ import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.filter.IInfoFilter;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
+import xy.reflect.ui.util.ReflectionUIError;
 
 public class FieldInfoFromChoice implements IFieldInfo {
 
 	private Choice choice;
 	private ArgumentPage argumentPage;
-	private CommandLine commandLine;
+	private AbstractCommandLinePart containingPart;
 	private ReflectionUI reflectionUI;
 	private ITypeInfo commandLineTypeInfo;
 
 	public FieldInfoFromChoice(ReflectionUI reflectionUI, Choice choice, ArgumentPage argumentPage,
-			CommandLine commandLine, ITypeInfo commandLineTypeInfo) {
+			AbstractCommandLinePart containingPart, ITypeInfo commandLineTypeInfo) {
 		this.reflectionUI = reflectionUI;
 		this.choice = choice;
 		this.argumentPage = argumentPage;
-		this.commandLine = commandLine;
+		this.containingPart = containingPart;
 		this.commandLineTypeInfo = commandLineTypeInfo;
 	}
 
 	@Override
 	public String getName() {
-		int indexInArgumentPage = argumentPage.parts.indexOf(choice);
-		return argumentPage.title + " - " + indexInArgumentPage;
+		return choice.getClass().getName() + choice.hashCode();
 	}
 
 	@Override
@@ -62,24 +65,42 @@ public class FieldInfoFromChoice implements IFieldInfo {
 
 	@Override
 	public Object getValue(Object object) {
-		CommandLineInstance commandLineInstance = (CommandLineInstance) object;
-		CommandLine commandLine = commandLineInstance.model;
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
-		int indexInArgumentPage = argumentPage.parts.indexOf(choice);
-		ChoiceInstance choiceInstance = (ChoiceInstance) commandLineInstance.argumentPageInstances
-				.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-		return choiceInstance.chosenPartInstance;
+		if (containingPart instanceof CommandLine) {
+			CommandLineInstance commandLineInstance = (CommandLineInstance) object;
+			int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
+			int indexInArgumentPage = argumentPage.parts.indexOf(choice);
+			ChoiceInstance choiceInstance = (ChoiceInstance) commandLineInstance.argumentPageInstances
+					.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
+			return choiceInstance.chosenPartInstance;
+		} else if (containingPart instanceof ArgumentGroup) {
+			ArgumentGroupInstance argumentGroupInstance = (ArgumentGroupInstance) object;
+			int indexInArgumentGroup = ((ArgumentGroup) containingPart).parts.indexOf(choice);
+			ChoiceInstance choiceInstance = (ChoiceInstance) argumentGroupInstance.partInstances
+					.get(indexInArgumentGroup);
+			return choiceInstance.chosenPartInstance;
+		} else {
+			throw new ReflectionUIError();
+		}
 	}
 
 	@Override
 	public void setValue(Object object, Object value) {
-		CommandLineInstance commandLineInstance = (CommandLineInstance) object;
-		CommandLine commandLine = commandLineInstance.model;
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
-		int indexInArgumentPage = argumentPage.parts.indexOf(choice);
-		ChoiceInstance choiceInstance = (ChoiceInstance) commandLineInstance.argumentPageInstances
-				.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-		choiceInstance.chosenPartInstance = (CommandLineInstance) value;
+		if (containingPart instanceof CommandLine) {
+			CommandLineInstance commandLineInstance = (CommandLineInstance) object;
+			int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
+			int indexInArgumentPage = argumentPage.parts.indexOf(choice);
+			ChoiceInstance choiceInstance = (ChoiceInstance) commandLineInstance.argumentPageInstances
+					.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
+			choiceInstance.chosenPartInstance = (ArgumentGroupInstance) value;
+		} else if (containingPart instanceof ArgumentGroup) {
+			ArgumentGroupInstance argumentGroupInstance = (ArgumentGroupInstance) object;
+			int indexInArgumentGroup = ((ArgumentGroup) containingPart).parts.indexOf(choice);
+			ChoiceInstance choiceInstance = (ChoiceInstance) argumentGroupInstance.partInstances
+					.get(indexInArgumentGroup);
+			choiceInstance.chosenPartInstance = (ArgumentGroupInstance) value;
+		} else {
+			throw new ReflectionUIError();
+		}
 	}
 
 	@Override
@@ -114,7 +135,10 @@ public class FieldInfoFromChoice implements IFieldInfo {
 
 	@Override
 	public InfoCategory getCategory() {
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
+		if (!(containingPart instanceof CommandLine)) {
+			return null;
+		}
+		int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
 		return new InfoCategory(argumentPage.title, argumentPageIndex);
 	}
 

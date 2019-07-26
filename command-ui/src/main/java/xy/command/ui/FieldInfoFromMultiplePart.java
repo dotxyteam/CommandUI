@@ -7,8 +7,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import xy.command.instance.ArgumentGroupInstance;
 import xy.command.instance.CommandLineInstance;
 import xy.command.instance.MultiplePartInstance;
+import xy.command.model.AbstractCommandLinePart;
+import xy.command.model.ArgumentGroup;
 import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
 import xy.command.model.MultiplePart;
@@ -35,28 +38,28 @@ import xy.reflect.ui.info.type.source.PrecomputedTypeInfoSource;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 import xy.reflect.ui.undo.ListModificationFactory;
 import xy.reflect.ui.util.Mapper;
+import xy.reflect.ui.util.ReflectionUIError;
 
 public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 	private MultiplePart multiplePart;
 	private ArgumentPage argumentPage;
-	private CommandLine commandLine;
+	private AbstractCommandLinePart containingPart;
 	private ReflectionUI reflectionUI;
 	private ITypeInfo commandLineTypeInfo;
 
 	public FieldInfoFromMultiplePart(ReflectionUI reflectionUI, MultiplePart multiplePart, ArgumentPage argumentPage,
-			CommandLine commandLine, ITypeInfo commandLineTypeInfo) {
+			AbstractCommandLinePart containingPart, ITypeInfo commandLineTypeInfo) {
 		this.reflectionUI = reflectionUI;
 		this.multiplePart = multiplePart;
 		this.argumentPage = argumentPage;
-		this.commandLine = commandLine;
+		this.containingPart = containingPart;
 		this.commandLineTypeInfo = commandLineTypeInfo;
 	}
 
 	@Override
 	public String getName() {
-		int indexInArgumentPage = argumentPage.parts.indexOf(multiplePart);
-		return argumentPage.title + " - " + indexInArgumentPage;
+		return multiplePart.getClass().getName() + multiplePart.hashCode();
 	}
 
 	@Override
@@ -273,7 +276,7 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 			@Override
 			public ITypeInfo getItemType() {
-				return reflectionUI.getTypeInfo(new TypeInfoSourceFromCommandLine(multiplePart, null));
+				return reflectionUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(multiplePart, null));
 			}
 
 			@Override
@@ -300,16 +303,16 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 			@Override
 			public Object fromArray(Object[] array) {
-				CommandLineInstance[] result = new CommandLineInstance[array.length];
+				ArgumentGroupInstance[] result = new ArgumentGroupInstance[array.length];
 				for (int i = 0; i < array.length; i++) {
-					result[i] = (CommandLineInstance) array[i];
+					result[i] = (ArgumentGroupInstance) array[i];
 				}
 				return result;
 			}
 
 			@Override
 			public Object[] toArray(Object listValue) {
-				CommandLineInstance[] array = (CommandLineInstance[]) listValue;
+				ArgumentGroupInstance[] array = (ArgumentGroupInstance[]) listValue;
 				Object[] result = new Object[array.length];
 				for (int i = 0; i < array.length; i++) {
 					result[i] = array[i];
@@ -337,24 +340,42 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 	@Override
 	public Object getValue(Object object) {
-		CommandLineInstance commandLineInstance = (CommandLineInstance) object;
-		CommandLine commandLine = commandLineInstance.model;
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
-		int indexInArgumentPage = argumentPage.parts.indexOf(multiplePart);
-		MultiplePartInstance multiplePartInstance = (MultiplePartInstance) commandLineInstance.argumentPageInstances
-				.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-		return multiplePartInstance.commandLineInstances;
+		if (containingPart instanceof CommandLine) {
+			CommandLineInstance commandLineInstance = (CommandLineInstance) object;
+			int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
+			int indexInArgumentPage = argumentPage.parts.indexOf(multiplePart);
+			MultiplePartInstance multiplePartInstance = (MultiplePartInstance) commandLineInstance.argumentPageInstances
+					.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
+			return multiplePartInstance.argumentGroupInstances;
+		} else if (containingPart instanceof ArgumentGroup) {
+			ArgumentGroupInstance argumentGroupInstance = (ArgumentGroupInstance) object;
+			int indexInArgumentGroup = ((ArgumentGroup) containingPart).parts.indexOf(multiplePart);
+			MultiplePartInstance multiplePartInstance = (MultiplePartInstance) argumentGroupInstance.partInstances
+					.get(indexInArgumentGroup);
+			return multiplePartInstance.argumentGroupInstances;
+		} else {
+			throw new ReflectionUIError();
+		}
 	}
 
 	@Override
 	public void setValue(Object object, Object value) {
-		CommandLineInstance commandLineInstance = (CommandLineInstance) object;
-		CommandLine commandLine = commandLineInstance.model;
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
-		int indexInArgumentPage = argumentPage.parts.indexOf(multiplePart);
-		MultiplePartInstance multiplePartInstance = (MultiplePartInstance) commandLineInstance.argumentPageInstances
-				.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-		multiplePartInstance.commandLineInstances = (CommandLineInstance[]) value;
+		if (containingPart instanceof CommandLine) {
+			CommandLineInstance commandLineInstance = (CommandLineInstance) object;
+			int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
+			int indexInArgumentPage = argumentPage.parts.indexOf(multiplePart);
+			MultiplePartInstance multiplePartInstance = (MultiplePartInstance) commandLineInstance.argumentPageInstances
+					.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
+			multiplePartInstance.argumentGroupInstances = (ArgumentGroupInstance[]) value;
+		} else if (containingPart instanceof ArgumentGroup) {
+			ArgumentGroupInstance argumentGroupInstance = (ArgumentGroupInstance) object;
+			int indexInArgumentGroup = ((ArgumentGroup) containingPart).parts.indexOf(multiplePart);
+			MultiplePartInstance multiplePartInstance = (MultiplePartInstance) argumentGroupInstance.partInstances
+					.get(indexInArgumentGroup);
+			multiplePartInstance.argumentGroupInstances = (ArgumentGroupInstance[]) value;
+		} else {
+			throw new ReflectionUIError();
+		}
 	}
 
 	@Override
@@ -389,7 +410,10 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 	@Override
 	public InfoCategory getCategory() {
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
+		if (!(containingPart instanceof CommandLine)) {
+			return null;
+		}
+		int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
 		return new InfoCategory(argumentPage.title, argumentPageIndex);
 	}
 

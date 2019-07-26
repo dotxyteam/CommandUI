@@ -2,6 +2,7 @@ package xy.command.ui;
 
 import java.io.File;
 
+import xy.command.instance.ArgumentGroupInstance;
 import xy.command.instance.CommandLineInstance;
 import xy.command.model.CommandLineProject;
 import xy.reflect.ui.CustomizedUI;
@@ -39,6 +40,8 @@ public class CommandLineUI extends CustomizedUI {
 	public ITypeInfoSource getTypeInfoSource(Object object) {
 		if (object instanceof CommandLineInstance) {
 			return new TypeInfoSourceFromCommandLine(((CommandLineInstance) object).model, null);
+		} else if (object instanceof ArgumentGroupInstance) {
+			return new TypeInfoSourceFromArgumentGroup(((ArgumentGroupInstance) object).model, null);
 		} else {
 			return super.getTypeInfoSource(object);
 		}

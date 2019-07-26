@@ -15,4 +15,9 @@ public class FixedArgumentInstance extends AbstractCommandLinePartInstance {
 	public String getExecutionText() {
 		return CommandUIUtils.quoteArgument(model.value);
 	}
+	
+	@Override
+	public String toString() {
+		return model.value;
+	}
 }

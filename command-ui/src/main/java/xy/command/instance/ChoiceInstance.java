@@ -5,7 +5,7 @@ import xy.command.model.Choice;
 public class ChoiceInstance extends AbstractCommandLinePartInstance {
 
 	public Choice model;
-	public CommandLineInstance chosenPartInstance;
+	public ArgumentGroupInstance chosenPartInstance;
 
 	public ChoiceInstance(Choice model) {
 		this.model = model;
@@ -14,6 +14,11 @@ public class ChoiceInstance extends AbstractCommandLinePartInstance {
 	@Override
 	public String getExecutionText() {
 		return chosenPartInstance.getExecutionText();
+	}
+
+	@Override
+	public String toString() {
+		return model.title + "=" + chosenPartInstance;
 	}
 
 	

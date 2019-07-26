@@ -5,22 +5,26 @@ import xy.command.model.OptionalPart;
 public class OptionalPartInstance extends AbstractCommandLinePartInstance {
 
 	public OptionalPart model;
-	public CommandLineInstance commandLineInstance = null;
+	public ArgumentGroupInstance argumentGroupInstance = null;
 
 	public OptionalPartInstance(OptionalPart model) {
 		this.model = model;
-		if(model.activeByDefault) {
-			commandLineInstance = new CommandLineInstance(model);
+		if (model.activeByDefault) {
+			argumentGroupInstance = new ArgumentGroupInstance(model);
 		}
 	}
 
 	@Override
 	public String getExecutionText() {
-		if (commandLineInstance == null) {
+		if (argumentGroupInstance == null) {
 			return null;
-		}else {
-			return commandLineInstance.getExecutionText();
+		} else {
+			return argumentGroupInstance.getExecutionText();
 		}
 	}
 
+	@Override
+	public String toString() {
+		return model.title + "=" + argumentGroupInstance;
+	}
 }

@@ -3,8 +3,11 @@ package xy.command.ui;
 import java.util.Collections;
 import java.util.Map;
 
+import xy.command.instance.ArgumentGroupInstance;
 import xy.command.instance.CommandLineInstance;
 import xy.command.instance.InputArgumentInstance;
+import xy.command.model.AbstractCommandLinePart;
+import xy.command.model.ArgumentGroup;
 import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
 import xy.command.model.InputArgument;
@@ -16,28 +19,31 @@ import xy.reflect.ui.info.filter.IInfoFilter;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
+import xy.reflect.ui.util.ReflectionUIError;
 
 public class FieldInfoFromInputArgument implements IFieldInfo {
 
 	private InputArgument inputArgument;
 	private ArgumentPage argumentPage;
-	private CommandLine commandLine;
+	private AbstractCommandLinePart containingPart;
 	private ReflectionUI reflectionUI;
-	private ITypeInfo commandLineTypeInfo;
+	private ITypeInfo containingTypeInfo;
 
 	public FieldInfoFromInputArgument(ReflectionUI reflectionUI, InputArgument inputArgument, ArgumentPage argumentPage,
-			CommandLine commandLine, ITypeInfo commandLineTypeInfo) {
+			AbstractCommandLinePart containingPart, ITypeInfo containingTypeInfo) {
 		this.reflectionUI = reflectionUI;
 		this.inputArgument = inputArgument;
 		this.argumentPage = argumentPage;
-		this.commandLine = commandLine;
-		this.commandLineTypeInfo = commandLineTypeInfo;
+		this.containingPart = containingPart;
+		if (containingPart == null) {
+			System.out.println("debug");
+		}
+		this.containingTypeInfo = containingTypeInfo;
 	}
 
 	@Override
 	public String getName() {
-		int indexInArgumentPage = argumentPage.parts.indexOf(inputArgument);
-		return argumentPage.title + " - " + indexInArgumentPage;
+		return inputArgument.getClass().getName() + inputArgument.hashCode();
 	}
 
 	@Override
@@ -58,29 +64,47 @@ public class FieldInfoFromInputArgument implements IFieldInfo {
 	@Override
 	public ITypeInfo getType() {
 		return reflectionUI.getTypeInfo(new JavaTypeInfoSource(String.class,
-				new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName())));
+				new SpecificitiesIdentifier(containingTypeInfo.getName(), getName())));
 	}
 
 	@Override
 	public Object getValue(Object object) {
-		CommandLineInstance commandLineInstance = (CommandLineInstance) object;
-		CommandLine commandLine = commandLineInstance.model;
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
-		int indexInArgumentPage = argumentPage.parts.indexOf(inputArgument);
-		InputArgumentInstance inputArgumentInstance = (InputArgumentInstance) commandLineInstance.argumentPageInstances
-				.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-		return inputArgumentInstance.value;
+		if (containingPart instanceof CommandLine) {
+			CommandLineInstance commandLineInstance = (CommandLineInstance) object;
+			int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
+			int indexInArgumentPage = argumentPage.parts.indexOf(inputArgument);
+			InputArgumentInstance inputArgumentInstance = (InputArgumentInstance) commandLineInstance.argumentPageInstances
+					.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
+			return inputArgumentInstance.value;
+		} else if (containingPart instanceof ArgumentGroup) {
+			ArgumentGroupInstance argumentGroupInstance = (ArgumentGroupInstance) object;
+			int indexInArgumentGroup = ((ArgumentGroup) containingPart).parts.indexOf(inputArgument);
+			InputArgumentInstance inputArgumentInstance = (InputArgumentInstance) argumentGroupInstance.partInstances
+					.get(indexInArgumentGroup);
+			return inputArgumentInstance.value;
+		} else {
+			throw new ReflectionUIError();
+		}
 	}
 
 	@Override
 	public void setValue(Object object, Object value) {
-		CommandLineInstance commandLineInstance = (CommandLineInstance) object;
-		CommandLine commandLine = commandLineInstance.model;
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
-		int indexInArgumentPage = argumentPage.parts.indexOf(inputArgument);
-		InputArgumentInstance inputArgumentInstance = (InputArgumentInstance) commandLineInstance.argumentPageInstances
-				.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
-		inputArgumentInstance.value = (String) value;
+		if (containingPart instanceof CommandLine) {
+			CommandLineInstance commandLineInstance = (CommandLineInstance) object;
+			int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
+			int indexInArgumentPage = argumentPage.parts.indexOf(inputArgument);
+			InputArgumentInstance inputArgumentInstance = (InputArgumentInstance) commandLineInstance.argumentPageInstances
+					.get(argumentPageIndex).partInstances.get(indexInArgumentPage);
+			inputArgumentInstance.value = (String) value;
+		} else if (containingPart instanceof ArgumentGroup) {
+			ArgumentGroupInstance argumentGroupInstance = (ArgumentGroupInstance) object;
+			int indexInArgumentGroup = ((ArgumentGroup) containingPart).parts.indexOf(inputArgument);
+			InputArgumentInstance inputArgumentInstance = (InputArgumentInstance) argumentGroupInstance.partInstances
+					.get(indexInArgumentGroup);
+			inputArgumentInstance.value = (String) value;
+		} else {
+			throw new ReflectionUIError();
+		}
 	}
 
 	@Override
@@ -115,7 +139,10 @@ public class FieldInfoFromInputArgument implements IFieldInfo {
 
 	@Override
 	public InfoCategory getCategory() {
-		int argumentPageIndex = commandLine.arguments.indexOf(argumentPage);
+		if (!(containingPart instanceof CommandLine)) {
+			return null;
+		}
+		int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
 		return new InfoCategory(argumentPage.title, argumentPageIndex);
 	}
 

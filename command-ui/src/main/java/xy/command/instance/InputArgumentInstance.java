@@ -17,4 +17,9 @@ public class InputArgumentInstance extends AbstractCommandLinePartInstance {
 	public String getExecutionText() {
 		return CommandUIUtils.quoteArgument(value);
 	}
+
+	@Override
+	public String toString() {
+		return model.title + "=" + value;
+	}
 }
