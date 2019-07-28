@@ -60,7 +60,7 @@
         <xy.command.model.InputArgument>
           <description></description>
           <title>URL</title>
-          <defaultValue>http:\\www.google.com</defaultValue>
+          <defaultValue>http://\www.google.com</defaultValue>
         </xy.command.model.InputArgument>
       </parts>
     </xy.command.model.ArgumentPage>

@@ -81,7 +81,7 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 
 	@Override
 	public ITypeInfo getTypeInfo(ReflectionUI reflectionUI) {
-		return new TypeInfoFromCommandLine(reflectionUI);
+		return new TypeInfoFromArgumentGroup(reflectionUI);
 	}
 
 	protected IFieldInfo getFieldInfoFromCommandLinePart(ReflectionUI reflectionUI, AbstractCommandLinePart part,
@@ -110,11 +110,11 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 		}
 	}
 
-	private class TypeInfoFromCommandLine implements ITypeInfo {
+	public class TypeInfoFromArgumentGroup implements ITypeInfo {
 
 		private ReflectionUI reflectionUI;
 
-		public TypeInfoFromCommandLine(ReflectionUI reflectionUI) {
+		public TypeInfoFromArgumentGroup(ReflectionUI reflectionUI) {
 			this.reflectionUI = reflectionUI;
 		}
 
@@ -134,7 +134,7 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			TypeInfoFromCommandLine other = (TypeInfoFromCommandLine) obj;
+			TypeInfoFromArgumentGroup other = (TypeInfoFromArgumentGroup) obj;
 			if (!getOuterType().equals(other.getOuterType()))
 				return false;
 			return true;
@@ -152,7 +152,7 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 
 		@Override
 		public String getName() {
-			return "commandLineInstance - " + argumentGroup.title;
+			return argumentGroup.getClass().getName() + argumentGroup.hashCode();
 		}
 
 		@Override

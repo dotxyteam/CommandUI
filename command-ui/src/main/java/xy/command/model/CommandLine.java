@@ -62,7 +62,8 @@ public class CommandLine extends AbstractCommandLinePart{
 	
 	@Override
 	public String toString() {
-		return "("+title+")";
+		return  title;
 	}
+
 
 }

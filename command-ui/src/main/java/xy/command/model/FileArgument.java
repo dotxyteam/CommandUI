@@ -25,8 +25,9 @@ public class FileArgument extends AbstractCommandLinePart {
 
 	@Override
 	public String toString() {
-		return "<"+title+">";
+		return  title;
 	}
+
 
 
 	@Override

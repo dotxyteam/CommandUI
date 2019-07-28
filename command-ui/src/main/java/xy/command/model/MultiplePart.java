@@ -33,7 +33,8 @@ public class MultiplePart extends ArgumentGroup {
 
 	@Override
 	public String toString() {
-		return "(" + title + ")";
+		return  title;
 	}
+
 
 }

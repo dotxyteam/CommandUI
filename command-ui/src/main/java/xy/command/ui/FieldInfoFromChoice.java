@@ -60,7 +60,7 @@ public class FieldInfoFromChoice implements IFieldInfo {
 	@Override
 	public ITypeInfo getType() {
 		return reflectionUI.getTypeInfo(new TypeInfoSourceFromChoice(
-				new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName()), choice, argumentPage));
+				new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName()), choice));
 	}
 
 	@Override
@@ -149,7 +149,7 @@ public class FieldInfoFromChoice implements IFieldInfo {
 
 	@Override
 	public boolean isFormControlEmbedded() {
-		return false;
+		return true;
 	}
 
 	@Override

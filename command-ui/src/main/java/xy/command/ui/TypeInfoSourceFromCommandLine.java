@@ -41,7 +41,7 @@ import xy.reflect.ui.util.ReflectionUIUtils;
 
 public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
-	private class TypeInfoFromCommandLine implements ITypeInfo {
+	public class TypeInfoFromCommandLine implements ITypeInfo {
 
 		private ReflectionUI reflectionUI;
 
@@ -83,7 +83,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
 		@Override
 		public String getName() {
-			return "commandLineInstance - " + commandLine.title;
+			return commandLine.getClass().getName() + commandLine.hashCode();
 		}
 
 		@Override

@@ -20,8 +20,9 @@ public class InputArgument extends AbstractCommandLinePart {
 
 	@Override
 	public String toString() {
-		return "<" + title + ">";
+		return  title;
 	}
+
 
 	@Override
 	public void writetUsageText(Writer out) throws IOException {

@@ -12,14 +12,15 @@ public class ArgumentPage implements Serializable {
 	protected static final long serialVersionUID = 1L;
 
 	// @OnlineHelp("This title will identify the current element")
-	public String title = "Options";
+	public String title = "Settings";
 
 	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
 
 	@Override
 	public String toString() {
-		return "("+title+")";
+		return  title;
 	}
+
 
 	// @Validating
 	public void validate() throws Exception {
