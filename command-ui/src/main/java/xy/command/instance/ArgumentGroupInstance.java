@@ -45,9 +45,6 @@ public class ArgumentGroupInstance extends AbstractCommandLinePartInstance {
 		StringBuilder result = new StringBuilder();
 		int i = 0;
 		for (AbstractCommandLinePartInstance partInstance : partInstances) {
-			if(partInstance instanceof FixedArgumentInstance) {
-				continue;
-			}
 			if (i > 0) {
 				result.append(", ");
 			}

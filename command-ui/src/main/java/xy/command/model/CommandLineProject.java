@@ -3,6 +3,10 @@ package xy.command.model;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import javax.swing.SwingUtilities;
+
+import xy.command.ui.CommandMonitoringDialog;
 import xy.command.ui.util.ValidationError;
 
 import com.thoughtworks.xstream.XStream;
@@ -49,4 +53,15 @@ public class CommandLineProject extends CommandLine {
 		fileWriter.close();
 	}
 
+	public void openCommandMonitoringDialog() {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				CommandMonitoringDialog d = new CommandMonitoringDialog(null, null, new File("."));
+				d.setVisible(true);
+			}
+		});
+	}
+	
+	
 }

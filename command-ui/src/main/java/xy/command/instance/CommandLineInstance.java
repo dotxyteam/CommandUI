@@ -45,9 +45,6 @@ public class CommandLineInstance extends AbstractCommandLinePartInstance {
 		int i = 0;
 		for (ArgumentPageInstance pageInstance : argumentPageInstances) {
 			for (AbstractCommandLinePartInstance partInstance : pageInstance.partInstances) {
-				if(partInstance instanceof FixedArgumentInstance) {
-					continue;
-				}
 				if (i > 0) {
 					result.append(", ");
 				}

@@ -187,7 +187,7 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 
 	@Override
 	public boolean isFormControlEmbedded() {
-		return false;
+		return true;
 	}
 
 	@Override
