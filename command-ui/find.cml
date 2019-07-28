@@ -5,6 +5,11 @@
     <xy.command.model.ArgumentPage>
       <title>Global Options</title>
       <parts>
+        <xy.command.model.InputArgument>
+          <description></description>
+          <title>Directory</title>
+          <defaultValue>/</defaultValue>
+        </xy.command.model.InputArgument>
         <xy.command.model.OptionalPart>
           <description></description>
           <title>Follow symbolic links</title>
@@ -16,11 +21,6 @@
           </parts>
           <activeByDefault>false</activeByDefault>
         </xy.command.model.OptionalPart>
-        <xy.command.model.InputArgument>
-          <description></description>
-          <title>Directory</title>
-          <defaultValue>/</defaultValue>
-        </xy.command.model.InputArgument>
       </parts>
     </xy.command.model.ArgumentPage>
     <xy.command.model.ArgumentPage>

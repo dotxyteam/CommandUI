@@ -18090,7 +18090,7 @@
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
             <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
-            <readOnlyForced>false</readOnlyForced>
+            <readOnlyForced>true</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
             <runWhenObjectShown>false</runWhenObjectShown>
@@ -18112,7 +18112,7 @@
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
             <methodSignature>void openCommandMonitoringDialog()</methodSignature>
-            <readOnlyForced>false</readOnlyForced>
+            <readOnlyForced>true</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
             <runWhenObjectShown>false</runWhenObjectShown>
@@ -22651,7 +22651,7 @@
                 <nullValueDistinctForced>false</nullValueDistinctForced>
                 <parameterName>file</parameterName>
             </parametersCustomizations>
-            <readOnlyForced>false</readOnlyForced>
+            <readOnlyForced>true</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
             <runWhenObjectShown>false</runWhenObjectShown>
