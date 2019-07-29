@@ -6,7 +6,9 @@ import java.io.IOException;
 
 import javax.swing.SwingUtilities;
 
+import xy.command.ui.CommandLineUI;
 import xy.command.ui.CommandMonitoringDialog;
+import xy.command.ui.util.FileUtils;
 import xy.command.ui.util.ValidationError;
 
 import com.thoughtworks.xstream.XStream;
@@ -62,6 +64,23 @@ public class CommandLineProject extends CommandLine {
 			}
 		});
 	}
-	
-	
+
+	public void distribute(File targetDirectory) throws Exception {
+		if (CommandLineUI.DEFAULT_EXE_FILE_PATH == null) {
+			throw new UnsupportedOperationException("The default executable file is not known");
+		}
+
+		File exeFile = new File(CommandLineUI.DEFAULT_EXE_FILE_PATH);
+		File targetExeFile = new File(targetDirectory, title + "." + FileUtils.getFileNameExtension(exeFile.getName()));
+		FileUtils.copy(exeFile, targetExeFile);
+
+		File exeFileDirectory = exeFile.getAbsoluteFile().getParentFile();
+		File guiCustomizationsFile = new File(exeFileDirectory, CommandLineUI.GUI_CUSTOMIZATIONS_FILE_PATH);
+		File targetGuiCustomizationsFile = new File(targetDirectory, CommandLineUI.GUI_CUSTOMIZATIONS_FILE_PATH);
+		FileUtils.copy(guiCustomizationsFile, targetGuiCustomizationsFile);
+
+		File targetProjectFile = new File(targetExeFile.getPath() + "." + CommandLineUI.PROJECT_FILE_EXTENSION);
+		saveToFile(targetProjectFile);
+	}
+
 }

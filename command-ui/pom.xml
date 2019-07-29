@@ -71,6 +71,8 @@
 									
 									JVM_ARGS=""
 									JVM_ARGS="$$JVM_ARGS -Dxy.reflect.ui.infoCustomizationsToolsHidden=true"
+									JVM_ARGS="$$JVM_ARGS -Dxy.command.ui.exeFile=$$0"
+									JVM_ARGS="$$JVM_ARGS -Dxy.command.ui.defaultExeFile=CommandUI.sh"
 									
 									$$JAVA_HOME/bin/java -version 2&gt;&amp;1 | grep version | grep &quot;1.8\|1.7\|1.6&quot;
 									if [ $? -ne 0 ]; then
@@ -120,6 +122,8 @@
 								<minVersion>1.8.0</minVersion>
 								<opts>
 									<opt>-Dxy.reflect.ui.infoCustomizationsToolsHidden=true</opt>
+									<opt>-Dxy.command.ui.exeFile="%EXEFILE%"</opt>
+									<opt>-Dxy.command.ui.defaultExeFile=CommandUI.exe</opt>
 								</opts>
 							</jre>
 						</configuration>

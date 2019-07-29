@@ -10,19 +10,30 @@ import xy.reflect.ui.control.swing.customizer.SwingCustomizer;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.factory.InfoProxyFactory;
 import xy.reflect.ui.info.type.source.ITypeInfoSource;
-import xy.reflect.ui.util.MoreSystemProperties;
 
 public class CommandLineUI extends CustomizedUI {
 
-	public static void main(String[] args) {
-		System.out.println("Set the following system property to disable the design mode:\n-D"
-				+ MoreSystemProperties.HIDE_INFO_CUSTOMIZATIONS_TOOLS + "=true");
+	public static final String DEFAULT_EXE_FILE_PATH = System.getProperty("xy.command.ui.defaultExeFile");
+	public static final String EXE_FILE_PATH = System.getProperty("xy.command.ui.exeFile");
+	public static final String GUI_CUSTOMIZATIONS_FILE_PATH = "commandLine.icu";
+	public static final String PROJECT_FILE_EXTENSION = "cml";
 
+	public static void main(String[] args) throws Exception {
+		CommandLineUI ui = new CommandLineUI();
+		if ((EXE_FILE_PATH != null) && (DEFAULT_EXE_FILE_PATH != null)) {
+			File exeFile = new File(EXE_FILE_PATH);
+			File defaultExeFile = new File(DEFAULT_EXE_FILE_PATH);
+			if (!exeFile.getCanonicalPath().equals(defaultExeFile.getCanonicalPath())) {
+				CommandLineProject object = new CommandLineProject();
+				object.loadFromFile(new File(EXE_FILE_PATH + "." + PROJECT_FILE_EXTENSION));
+				ui.getRenderer().openObjectFrame(object.instanciate());
+				return;
+			}
+		}
 		CommandLineProject object = new CommandLineProject();
 		if (args.length >= 1) {
 			object.loadFromFile(new File(args[0]));
 		}
-		CommandLineUI ui = new CommandLineUI();
 		if ((args.length >= 2) && (args[1].equals("--instanciate"))) {
 			ui.getRenderer().openObjectFrame(object.instanciate());
 		} else {
@@ -30,7 +41,7 @@ public class CommandLineUI extends CustomizedUI {
 		}
 	}
 
-	private SwingCustomizer renderer = new SwingCustomizer(this, "commandLine.icu");
+	private SwingCustomizer renderer = new SwingCustomizer(this, GUI_CUSTOMIZATIONS_FILE_PATH);
 
 	public SwingCustomizer getRenderer() {
 		return renderer;
