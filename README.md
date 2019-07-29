@@ -8,7 +8,7 @@ Change log
 Usage
 - CommandUI.(exe|sh) [&lt;filePath&gt; [--instanciate]]
 - &lt;filePath&gt;: path to a command line specification file (*.cml)
-- --instanciate: will only show the instanciated command line specification
+- --instanciate: will only show the GUI generated from the &lt;filePath&gt; command line specification
 
 
 ![CommandLineEditor](/command-ui/misc/screenshots/CommandLineEditor.png?raw=true)
