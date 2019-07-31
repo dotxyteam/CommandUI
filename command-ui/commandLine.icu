@@ -4217,6 +4217,19 @@
                     <typeName>xy.command.model.CommandLineProject29702707</typeName>
                     <undoManagementHidden>false</undoManagementHidden>
                 </typeCustomizations>
+                <typeCustomizations>
+                    <uniqueIdentifier>1bc73554:16c43d87f97:5c87</uniqueIdentifier>
+                    <specificProperties/>
+                    <abstractForced>false</abstractForced>
+                    <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
+                    <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+                    <immutableForced>false</immutableForced>
+                    <menuModel>
+                        <uniqueIdentifier>1bc73554:16c43d87f97:5c88</uniqueIdentifier>
+                    </menuModel>
+                    <typeName>xy.command.model.CommandLineProject3551736</typeName>
+                    <undoManagementHidden>false</undoManagementHidden>
+                </typeCustomizations>
             </specificTypeCustomizations>
         </fieldsCustomizations>
         <immutableForced>false</immutableForced>
@@ -22724,6 +22737,10 @@
         <abstractForced>false</abstractForced>
         <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
         <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
+        <customFieldsOrder>title</customFieldsOrder>
+        <customFieldsOrder>description</customFieldsOrder>
+        <customFieldsOrder>executablePath</customFieldsOrder>
+        <customFieldsOrder>executionDir</customFieldsOrder>
         <fieldsCustomizations>
             <uniqueIdentifier>570e3941:16c38a456f1:4c90</uniqueIdentifier>
             <specificProperties/>
@@ -22851,6 +22868,7 @@
             <uniqueIdentifier>570e3941:16c38a456f1:4ca8</uniqueIdentifier>
             <specificProperties/>
             <hidden>false</hidden>
+            <customFieldCaption>Execution Directory</customFieldCaption>
             <displayedAsSingletonList>false</displayedAsSingletonList>
             <duplicateGenerated>false</duplicateGenerated>
             <fieldName>executionDir</fieldName>

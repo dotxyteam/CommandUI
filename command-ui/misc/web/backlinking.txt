@@ -1,0 +1,4 @@
+TO FOLLOW: https://stackoverflow.com/questions/52366395/how-to-create-a-gui-to-send-commands-and-args-to-a-command-line-application/57277773#57277773
+TO FOLLOW: https://askubuntu.com/questions/31172/need-an-interface-for-a-gui-shell-script-more-powerful-than-zenity/1162207#1162207
+TO FOLLOW: https://stackoverflow.com/questions/20842687/rapidly-develop-gui-for-command-line/57278142#57278142
+TO FOLLOW: https://stackoverflow.com/questions/2202434/should-i-create-a-java-gui-for-a-perl-command-line-program/57280407#57280407
