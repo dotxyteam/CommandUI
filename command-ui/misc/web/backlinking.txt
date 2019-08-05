@@ -2,3 +2,6 @@ TO FOLLOW: https://stackoverflow.com/questions/52366395/how-to-create-a-gui-to-s
 TO FOLLOW: https://askubuntu.com/questions/31172/need-an-interface-for-a-gui-shell-script-more-powerful-than-zenity/1162207#1162207
 TO FOLLOW: https://stackoverflow.com/questions/20842687/rapidly-develop-gui-for-command-line/57278142#57278142
 TO FOLLOW: https://stackoverflow.com/questions/2202434/should-i-create-a-java-gui-for-a-perl-command-line-program/57280407#57280407
+WAITING: https://github.com/akullpp/awesome-java
+TO FOLLOW: https://codecondo.com/10-useful-third-party-java-libraries/?unapproved=495429&moderation-hash=2ef0928b76cd2e470a19d6c7d3096225#comment-495429
+WAITING: https://javarevisited.blogspot.com/2018/01/top-20-libraries-and-apis-for-java-programmers.html
