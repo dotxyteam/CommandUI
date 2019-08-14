@@ -139,7 +139,7 @@ public class FieldInfoFromChoice implements IFieldInfo {
 			return null;
 		}
 		int argumentPageIndex = ((CommandLine) containingPart).arguments.indexOf(argumentPage);
-		return new InfoCategory(argumentPage.title, argumentPageIndex);
+		return new InfoCategory(argumentPage.title, argumentPageIndex, null);
 	}
 
 	@Override

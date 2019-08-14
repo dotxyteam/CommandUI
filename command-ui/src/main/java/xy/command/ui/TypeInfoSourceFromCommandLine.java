@@ -280,7 +280,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
 			@Override
 			public InfoCategory getCategory() {
-				return new InfoCategory("Finish", Integer.MAX_VALUE);
+				return new InfoCategory("Finish", Integer.MAX_VALUE, null);
 			}
 
 			@Override
