@@ -261,6 +261,51 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 		}
 
 		@Override
+		public ColorSpecification getFormBorderColor() {
+			return null;
+		}
+
+		@Override
+		public ColorSpecification getFormEditorsForegroundColor() {
+			return null;
+		}
+
+		@Override
+		public ColorSpecification getFormEditorsBackgroundColor() {
+			return null;
+		}
+
+		@Override
+		public ColorSpecification getFormButtonBackgroundColor() {
+			return null;
+		}
+
+		@Override
+		public ColorSpecification getFormButtonForegroundColor() {
+			return null;
+		}
+
+		@Override
+		public ResourcePath getFormButtonBackgroundImagePath() {
+			return null;
+		}
+
+		@Override
+		public ColorSpecification getFormButtonBorderColor() {
+			return null;
+		}
+
+		@Override
+		public ColorSpecification getCategoriesBackgroundColor() {
+			return null;
+		}
+
+		@Override
+		public ColorSpecification getCategoriesForegroundColor() {
+			return null;
+		}
+
+		@Override
 		public FieldsLayout getFieldsLayout() {
 			return FieldsLayout.VERTICAL_FLOW;
 		}
@@ -291,7 +336,7 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 
 		@Override
 		public CategoriesStyle getCategoriesStyle() {
-			return CategoriesStyle.CLASSIC;
+			return CategoriesStyle.MODERN;
 		}
 
 		@Override
