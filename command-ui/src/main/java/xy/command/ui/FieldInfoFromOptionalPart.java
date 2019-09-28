@@ -83,7 +83,7 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 	public boolean isNullValueDistinct() {
 		if (isBoolean()) {
 			return false;
-		} else{
+		} else {
 			return true;
 		}
 	}
@@ -158,6 +158,11 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 
 	@Override
 	public boolean isGetOnly() {
+		return false;
+	}
+
+	@Override
+	public boolean isTransient() {
 		return false;
 	}
 

@@ -124,6 +124,11 @@ public class FieldInfoFromChoice implements IFieldInfo {
 	}
 
 	@Override
+	public boolean isTransient() {
+		return false;
+	}
+
+	@Override
 	public String getNullValueLabel() {
 		return null;
 	}

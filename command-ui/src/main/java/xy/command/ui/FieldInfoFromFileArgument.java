@@ -160,6 +160,11 @@ public class FieldInfoFromFileArgument implements IFieldInfo {
 	}
 
 	@Override
+	public boolean isTransient() {
+		return false;
+	}
+
+	@Override
 	public String getNullValueLabel() {
 		return null;
 	}

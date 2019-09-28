@@ -444,6 +444,11 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 	}
 
 	@Override
+	public boolean isTransient() {
+		return false;
+	}
+
+	@Override
 	public String getNullValueLabel() {
 		return null;
 	}
