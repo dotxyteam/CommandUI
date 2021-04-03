@@ -2,28 +2,30 @@ package xy.command.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.Component;
 import java.awt.FlowLayout;
-import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.plaf.ComponentUI;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
@@ -32,10 +34,8 @@ import javax.swing.text.Element;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
-import xy.command.ui.component.DocumentOutputStream;
 import xy.command.ui.util.CommandUIUtils;
 import xy.reflect.ui.util.ReflectionUIError;
-import javax.swing.JTextField;
 
 public class CommandMonitoringDialog extends JDialog {
 
@@ -74,14 +74,14 @@ public class CommandMonitoringDialog extends JDialog {
 		setTitle("Command Execution");
 		setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB));
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setSize(400, 300);
+		setSize(640, 480);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
-			logTextControl = new JTextPane();
+			logTextControl = new NonWrappingTextPane();
 			logTextControl.setEditable(false);
 			contentPanel.add(new JScrollPane(logTextControl));
 		}
@@ -139,8 +139,21 @@ public class CommandMonitoringDialog extends JDialog {
 		limitLines();
 		if (command != null) {
 			commandTextControl.setText(command);
-			launchCommand();
+			SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					launchCommand();
+				}
+			});
 		}
+	}
+
+	@Override
+	public void dispose() {
+		if ((commandThread != null) && commandThread.isAlive()) {
+			kill();
+		}
+		super.dispose();
 	}
 
 	protected void onAutoScrollChange() {
@@ -184,20 +197,11 @@ public class CommandMonitoringDialog extends JDialog {
 					try {
 						document.remove(0, end);
 					} catch (BadLocationException ble) {
-						System.out.println(ble);
+						throw new AssertionError(ble);
 					}
 				}
 			}
 		});
-	}
-
-	@Override
-	public void dispose() {
-		if ((commandThread != null) && commandThread.isAlive()) {
-			kill();
-		}
-		super.dispose();
-
 	}
 
 	protected int getMaximumlineCount() {
@@ -213,16 +217,16 @@ public class CommandMonitoringDialog extends JDialog {
 			@Override
 			public void run() {
 				try {
-					CommandUIUtils.runCommand(commandTextControl.getText(), true,
-							new DocumentOutputStream(logTextControl.getDocument(), getTextAttributes(Color.BLACK)),
-							new DocumentOutputStream(logTextControl.getDocument(), getTextAttributes(Color.BLUE)),
-							workingDir);
+					int status = CommandUIUtils.runCommand(commandTextControl.getText(), true,
+							new LogOutputStream(getTextAttributes(Color.BLACK)),
+							new LogOutputStream(getTextAttributes(Color.RED)), workingDir);
 					if (!killed) {
-						write("\n<Terminated>\n", getTextAttributes(Color.GREEN.darker().darker()));
+						write("\n<Terminated> (status=" + status + ")\n",
+								getTextAttributes(Color.GREEN.darker().darker()));
 					}
 				} catch (final Throwable t) {
 					if (!killed) {
-						write("\n<An error occured>:\n" + new ReflectionUIError(t), getTextAttributes(Color.RED));
+						write("\n<An error occured>:\n" + new ReflectionUIError(t), getTextAttributes(Color.MAGENTA));
 					}
 				}
 				SwingUtilities.invokeLater(new Runnable() {
@@ -243,13 +247,9 @@ public class CommandMonitoringDialog extends JDialog {
 	}
 
 	protected AttributeSet getTextAttributes(Color color) {
-
 		SimpleAttributeSet attributes = new SimpleAttributeSet();
-
 		StyleConstants.setForeground(attributes, color);
-
 		return attributes;
-
 	}
 
 	protected void killOrClose() {
@@ -291,13 +291,47 @@ public class CommandMonitoringDialog extends JDialog {
 		}
 	}
 
-	protected void showError(String errorMsg) {
-		JTextArea textArea = new JTextArea(errorMsg);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		textArea.setPreferredSize(new Dimension(screenSize.width / 2, screenSize.height / 2));
-		textArea.setEditable(false);
-		JOptionPane.showMessageDialog(CommandMonitoringDialog.this, new JScrollPane(textArea), "An error Ocuured",
-				JOptionPane.ERROR_MESSAGE);
+	protected static class NonWrappingTextPane extends JTextPane {
+
+		private static final long serialVersionUID = 1L;
+
+		public NonWrappingTextPane() {
+			super();
+		}
+
+		// Override getScrollableTracksViewportWidth
+		// to preserve the full width of the text
+		public boolean getScrollableTracksViewportWidth() {
+			Component parent = getParent();
+			ComponentUI ui = getUI();
+			return parent != null ? (ui.getPreferredSize(this).width <= parent.getSize().width) : true;
+		}
+
+	}
+
+	protected class LogOutputStream extends OutputStream {
+
+		private AttributeSet textAttributes;
+
+		private final ByteArrayOutputStream buf = new ByteArrayOutputStream();
+
+		public LogOutputStream(AttributeSet textAttributes) {
+			this.textAttributes = textAttributes;
+		}
+
+		@Override
+		public void flush() throws IOException {
+			CommandMonitoringDialog.this.write(buf.toString("UTF-8"), textAttributes);
+			buf.reset();
+		}
+
+		@Override
+		public void write(int b) throws IOException {
+			buf.write(b);
+			if (buf.toString().endsWith(System.lineSeparator())) {
+				flush();
+			}
+		}
 	}
 
 }

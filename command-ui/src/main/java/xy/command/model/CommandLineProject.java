@@ -1,17 +1,21 @@
 package xy.command.model;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.swing.SwingUtilities;
+
+import com.thoughtworks.xstream.XStream;
 
 import xy.command.ui.CommandLineUI;
 import xy.command.ui.CommandMonitoringDialog;
 import xy.command.ui.util.FileUtils;
 import xy.command.ui.util.ValidationError;
-
-import com.thoughtworks.xstream.XStream;
 
 //@OnlineHelp("Here you can specify and generate a GUI wrapper for your command line tool")
 public class CommandLineProject extends CommandLine {
@@ -36,7 +40,34 @@ public class CommandLineProject extends CommandLine {
 	}
 
 	// @OnlineHelp("Loads a command line specification file")
-	public void loadFromFile(File input) {
+	public void loadFromFile(File input) throws IOException {
+		FileInputStream stream = new FileInputStream(input);
+		try {
+			loadFromStream(stream);
+		} finally {
+			try {
+				stream.close();
+			} catch (Exception ignore) {
+			}
+		}
+	}
+
+	// @OnlineHelp("Saves the current command line specification in a file")
+	public void saveToFile(File output) throws IOException {
+		ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
+		saveToStream(memoryStream);
+		FileOutputStream stream = new FileOutputStream(output);
+		try {
+			stream.write(memoryStream.toByteArray());
+		} finally {
+			try {
+				stream.close();
+			} catch (Exception ignore) {
+			}
+		}
+	}
+
+	public void loadFromStream(InputStream input) {
 		XStream xstream = new XStream();
 		CommandLineProject loaded = (CommandLineProject) xstream.fromXML(input);
 		title = loaded.title;
@@ -46,13 +77,9 @@ public class CommandLineProject extends CommandLine {
 		arguments = loaded.arguments;
 	}
 
-	// @OnlineHelp("Saves the current command line specification in a file")
-	public void saveToFile(File output) throws IOException {
+	public void saveToStream(OutputStream output) throws IOException {
 		XStream xstream = new XStream();
-		FileWriter fileWriter = new FileWriter(output);
-		xstream.toXML(this, fileWriter);
-		fileWriter.flush();
-		fileWriter.close();
+		xstream.toXML(this, output);
 	}
 
 	public void openCommandMonitoringDialog() {

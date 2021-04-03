@@ -7,8 +7,6 @@ import xy.command.instance.CommandLineInstance;
 import xy.command.model.CommandLineProject;
 import xy.reflect.ui.CustomizedUI;
 import xy.reflect.ui.control.swing.customizer.SwingCustomizer;
-import xy.reflect.ui.info.type.ITypeInfo;
-import xy.reflect.ui.info.type.factory.InfoProxyFactory;
 import xy.reflect.ui.info.type.source.ITypeInfoSource;
 
 public class CommandLineUI extends CustomizedUI {
@@ -56,13 +54,6 @@ public class CommandLineUI extends CustomizedUI {
 		} else {
 			return super.getTypeInfoSource(object);
 		}
-	}
-
-	@Override
-	protected ITypeInfo getTypeInfoBeforeCustomizations(ITypeInfo type) {
-		return new InfoProxyFactory() {
-
-		}.wrapTypeInfo(super.getTypeInfoBeforeCustomizations(type));
 	}
 
 }

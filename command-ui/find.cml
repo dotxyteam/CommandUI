@@ -16,11 +16,11 @@
           </parts>
           <activeByDefault>false</activeByDefault>
         </xy.command.model.OptionalPart>
-        <xy.command.model.InputArgument>
+        <xy.command.model.DirectoryArgument>
           <description></description>
           <title>Directory</title>
-          <defaultValue>/</defaultValue>
-        </xy.command.model.InputArgument>
+          <defaultValue>&lt;Choose&gt;</defaultValue>
+        </xy.command.model.DirectoryArgument>
       </parts>
     </xy.command.model.ArgumentPage>
     <xy.command.model.ArgumentPage>
@@ -28,7 +28,7 @@
       <parts>
         <xy.command.model.MultiplePart>
           <description></description>
-          <title></title>
+          <title>Test List</title>
           <parts>
             <xy.command.model.Choice>
               <description></description>
@@ -44,7 +44,7 @@
                     <xy.command.model.InputArgument>
                       <description></description>
                       <title>n</title>
-                      <defaultValue></defaultValue>
+                      <defaultValue>5</defaultValue>
                     </xy.command.model.InputArgument>
                   </parts>
                 </xy.command.model.ArgumentGroup>
@@ -85,7 +85,7 @@
                   </parts>
                 </xy.command.model.ArgumentGroup>
               </options>
-              <title></title>
+              <title>Test Type</title>
             </xy.command.model.Choice>
           </parts>
         </xy.command.model.MultiplePart>

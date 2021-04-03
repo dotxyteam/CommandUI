@@ -23,7 +23,6 @@ public class CommandUIUtils {
 		return result;
 	}
 
-
 	public static Component withLabel(Component c, String title) {
 		JPanel result = new JPanel();
 		result.setLayout(new BorderLayout());
@@ -32,30 +31,26 @@ public class CommandUIUtils {
 		return result;
 	}
 
-	public static int runCommand(final String command, boolean wait,
-			final OutputStream outReceiver, final OutputStream errReceiver,
-			File workingDir) {
+	public static int runCommand(final String command, boolean wait, final OutputStream outReceiver,
+			final OutputStream errReceiver, File workingDir) {
 		String[] args = splitArguments(command);
-		if(args.length == 0) {
+		if (args.length == 0) {
 			throw new RuntimeException("Executable file not specified");
 		}
 		final Process process;
 		try {
 			process = Runtime.getRuntime().exec(args, null, workingDir);
 		} catch (IOException e1) {
-			throw new AssertionError("Command execution error: "
-					+ e1.toString());
+			throw new AssertionError("Command execution error: " + e1.toString());
 		}
 
 		final Thread outputRedirector;
 		{
 			String reason = "Output Stream Consumption for command: " + command;
 			if (outReceiver != null) {
-				outputRedirector = redirectStream(process.getInputStream(),
-						outReceiver, reason);
+				outputRedirector = redirectStream(process.getInputStream(), outReceiver, reason);
 			} else {
-				outputRedirector = redirectStream(process.getInputStream(),
-						getNullOutputStream(), reason);
+				outputRedirector = redirectStream(process.getInputStream(), getNullOutputStream(), reason);
 			}
 		}
 
@@ -63,11 +58,9 @@ public class CommandUIUtils {
 		{
 			String reason = "Error Stream Consumption for command: " + command;
 			if (errReceiver != null) {
-				errorRedirector = redirectStream(process.getErrorStream(),
-						errReceiver, reason);
+				errorRedirector = redirectStream(process.getErrorStream(), errReceiver, reason);
 			} else {
-				errorRedirector = redirectStream(process.getErrorStream(),
-						getNullOutputStream(), reason);
+				errorRedirector = redirectStream(process.getErrorStream(), getNullOutputStream(), reason);
 			}
 		}
 
@@ -80,8 +73,7 @@ public class CommandUIUtils {
 					throw new AssertionError(e);
 				}
 				CommandUIUtils.sleep(1000);
-				for (Thread thread : new Thread[] { outputRedirector,
-						errorRedirector }) {
+				for (Thread thread : new Thread[] { outputRedirector, errorRedirector }) {
 					if (thread.isAlive()) {
 						thread.interrupt();
 						while (thread.isAlive()) {
@@ -134,8 +126,7 @@ public class CommandUIUtils {
 		};
 	}
 
-	public static OutputStream unifyOutputStreams(
-			final OutputStream[] outputStreams) {
+	public static OutputStream unifyOutputStreams(final OutputStream[] outputStreams) {
 		return new OutputStream() {
 
 			@Override
@@ -175,12 +166,10 @@ public class CommandUIUtils {
 		};
 	}
 
-	public static Thread redirectStream(final InputStream src,
-			final OutputStream dst, String reason) {
+	public static Thread redirectStream(final InputStream src, final OutputStream dst, String reason) {
 		Thread thread = new Thread("Stream Redirector (" + reason + ")") {
 			public void run() {
 				try {
-					boolean unstable = false;
 					while (true) {
 						if (src.available() > 0) {
 							int b = src.read();
@@ -190,13 +179,10 @@ public class CommandUIUtils {
 							try {
 								dst.write(b);
 							} catch (Throwable t) {
-								if (!unstable ) {
-									t.printStackTrace();
-									unstable = true;
-								}
+								throw new RuntimeException(t);
 							}
 						} else {
-							if (unstable || isInterrupted()) {
+							if (isInterrupted()) {
 								if (src.available() == 0) {
 									break;
 								}
@@ -206,6 +192,9 @@ public class CommandUIUtils {
 						}
 					}
 				} catch (IOException e) {
+					if (e.toString().toLowerCase().contains("stream closed")) {
+						return;
+					}
 					throw new AssertionError(e);
 				}
 			}
@@ -230,7 +219,6 @@ public class CommandUIUtils {
 		return result.toString();
 	}
 
-
 	public static String quoteArgument(String argument) {
 		String[] argumentSplitByQuotes = argument.split("\"");
 		if (argumentSplitByQuotes.length == 1) {
@@ -247,7 +235,6 @@ public class CommandUIUtils {
 			return result.toString();
 		}
 	}
-
 
 	public static String[] splitArguments(String s) {
 		if ((s == null) || (s.length() == 0)) {

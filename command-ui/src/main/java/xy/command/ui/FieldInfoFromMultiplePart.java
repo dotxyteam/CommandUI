@@ -296,7 +296,7 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 			@Override
 			public boolean isOrdered() {
-				return false;
+				return true;
 			}
 
 			@Override
