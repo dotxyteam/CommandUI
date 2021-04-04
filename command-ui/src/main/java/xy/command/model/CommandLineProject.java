@@ -98,7 +98,9 @@ public class CommandLineProject extends CommandLine {
 		}
 
 		File exeFile = new File(CommandLineUI.DEFAULT_EXE_FILE_PATH);
-		File targetExeFile = new File(targetDirectory, title + "." + FileUtils.getFileNameExtension(exeFile.getName()));
+		String fileExtension = FileUtils.getFileNameExtension(exeFile.getName());
+		String fileName = title + ((fileExtension.length() > 0) ? ("." + fileExtension) : "");
+		File targetExeFile = new File(targetDirectory, fileName);
 		FileUtils.copy(exeFile, targetExeFile);
 
 		File exeFileDirectory = exeFile.getAbsoluteFile().getParentFile();

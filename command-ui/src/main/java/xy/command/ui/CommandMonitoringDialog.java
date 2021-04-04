@@ -205,7 +205,7 @@ public class CommandMonitoringDialog extends JDialog {
 	}
 
 	protected int getMaximumlineCount() {
-		return 100;
+		return 10000;
 	}
 
 	protected void launchCommand() {
@@ -217,6 +217,7 @@ public class CommandMonitoringDialog extends JDialog {
 			@Override
 			public void run() {
 				try {
+					write("<Started>\n", getTextAttributes(Color.GREEN.darker().darker()));
 					int status = CommandUIUtils.runCommand(commandTextControl.getText(), true,
 							new LogOutputStream(getTextAttributes(Color.BLACK)),
 							new LogOutputStream(getTextAttributes(Color.RED)), workingDir);
@@ -261,7 +262,7 @@ public class CommandMonitoringDialog extends JDialog {
 	}
 
 	protected void kill() {
-		write("\n\n<Kill>\n\n", getTextAttributes(Color.RED));
+		write("\n\n<Killed>\n\n", getTextAttributes(Color.RED));
 		killed = true;
 		commandThread.interrupt();
 	}
