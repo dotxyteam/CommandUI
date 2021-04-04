@@ -6,7 +6,6 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
-import xy.command.instance.AbstractCommandLinePartInstance;
 import xy.command.instance.CommandLineInstance;
 import xy.command.ui.util.ValidationError;
 
@@ -45,7 +44,7 @@ public class CommandLine extends AbstractCommandLinePart{
 		}
 	}
 
-	public AbstractCommandLinePartInstance instanciate() {
+	public CommandLineInstance instanciate() {
 		return new CommandLineInstance(this);
 	}
 

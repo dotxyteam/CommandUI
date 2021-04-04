@@ -329,6 +329,11 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 			}
 
 			@Override
+			public boolean isReadOnly() {
+				return true;
+			}
+
+			@Override
 			public Object invoke(Object object, InvocationData invocationData) {
 				final CommandLineProject project = (CommandLineProject) commandLine;
 				final CommandLineInstance instance = (CommandLineInstance) object;
