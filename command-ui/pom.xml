@@ -82,6 +82,7 @@
 									    echo &quot;JAVA_EXE could not be set&quot;
 									    exit 1
 									fi
+									echo &quot;Using $$JAVA_EXE...&quot;
 																	
 
 									cd `dirname $0`
