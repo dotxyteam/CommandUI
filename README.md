@@ -6,7 +6,7 @@ Change log
 - In Beta stage
 
 Usage
-- CommandUI.(exe|sh) [&lt;filePath&gt; [--instanciate]]
+- CommandUI[.exe] [&lt;filePath&gt; [--instanciate]]
 - &lt;filePath&gt;: path to a command line specification file (*.cml)
 - --instanciate: will only show the GUI generated from the &lt;filePath&gt; command line specification
 
