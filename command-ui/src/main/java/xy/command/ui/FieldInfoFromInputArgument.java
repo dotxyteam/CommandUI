@@ -35,9 +35,6 @@ public class FieldInfoFromInputArgument implements IFieldInfo {
 		this.inputArgument = inputArgument;
 		this.argumentPage = argumentPage;
 		this.containingPart = containingPart;
-		if (containingPart == null) {
-			System.out.println("debug");
-		}
 		this.containingTypeInfo = containingTypeInfo;
 	}
 
