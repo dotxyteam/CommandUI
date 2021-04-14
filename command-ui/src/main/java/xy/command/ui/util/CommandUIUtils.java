@@ -220,7 +220,7 @@ public class CommandUIUtils {
 	}
 
 	public static String quoteArgument(String argument) {
-		String[] argumentSplitByQuotes = argument.split("\"");
+		String[] argumentSplitByQuotes = argument.split("\"", -1);
 		if (argumentSplitByQuotes.length == 1) {
 			return "\"" + argument + "\"";
 		} else {
