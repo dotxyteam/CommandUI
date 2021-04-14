@@ -209,6 +209,11 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 		}
 
 		@Override
+		public String getCaption() {
+			return commandLine.title + " - Settings";
+		}
+
+		@Override
 		public List<IMethodInfo> getMethods() {
 			return Collections.emptyList();
 		}
