@@ -122,13 +122,13 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 		}
 
 		@Override
+		public String getOnlineHelp() {
+			return commandLine.description;
+		}
+
+		@Override
 		public List<IMethodInfo> getMethods() {
-			List<IMethodInfo> result = new ArrayList<IMethodInfo>();
-			result.add(new ExecutionMethodInfo(reflectionUI));
-			if ((commandLine.description != null) && (commandLine.description.trim().length() > 0)) {
-				result.add(new HelpMethodInfo(reflectionUI));
-			}
-			return result;
+			return Collections.singletonList(new ExecutionMethodInfo(reflectionUI));
 		}
 
 		@Override
@@ -294,44 +294,5 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 		}
 	}
 
-	protected class HelpMethodInfo extends MethodInfoProxy {
-
-		protected ReflectionUI reflectionUI;
-
-		public HelpMethodInfo(ReflectionUI reflectionUI) {
-			super(IMethodInfo.NULL_METHOD_INFO);
-			this.reflectionUI = reflectionUI;
-		}
-
-		@Override
-		public String getName() {
-			return "showHelp";
-		}
-
-		@Override
-		public String getSignature() {
-			return ReflectionUIUtils.buildMethodSignature(this);
-		}
-
-		@Override
-		public String getCaption() {
-			return "Show Help";
-		}
-
-		@Override
-		public boolean isReadOnly() {
-			return true;
-		}
-
-		@Override
-		public ITypeInfo getReturnValueType() {
-			return reflectionUI.getTypeInfo(new JavaTypeInfoSource(String.class, null));
-		}
-
-		@Override
-		public Object invoke(Object object, InvocationData invocationData) {
-			return commandLine.description;
-		}
-	}
 
 }
