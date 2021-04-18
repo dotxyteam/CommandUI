@@ -305,8 +305,8 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
-			public boolean isItemConstructorSelectable() {
-				return false;
+			public InitialItemValueCreationOption getInitialItemValueCreationOption() {
+				return InitialItemValueCreationOption.CREATE_INITIAL_VALUE_ACCORDING_USER_PREFERENCES;
 			}
 
 			@Override
