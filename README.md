@@ -12,6 +12,6 @@ Usage
 
 
 ![CommandLineEditor](/command-ui/misc/screenshots/CommandLineEditor2.png?raw=true)
-![CommandLinePlayer](/command-ui/misc/screenshots/CommandLinePlayer.png?raw=true)
+![CommandLinePlayer](/command-ui/misc/screenshots/CommandLinePlayer2.png?raw=true)
 ![CommandRunner](/command-ui/misc/screenshots/CommandRunner.png?raw=true)
 
