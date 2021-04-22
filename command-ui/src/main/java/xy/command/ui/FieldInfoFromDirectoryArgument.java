@@ -27,6 +27,12 @@ import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 import xy.reflect.ui.util.ReflectionUIError;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
+/**
+ * Specifies how a {@link DirectoryArgument} should be displayed in a GUI.
+ * 
+ * @author olitank
+ *
+ */
 public class FieldInfoFromDirectoryArgument implements IFieldInfo {
 
 	private DirectoryArgument directoryArgument;

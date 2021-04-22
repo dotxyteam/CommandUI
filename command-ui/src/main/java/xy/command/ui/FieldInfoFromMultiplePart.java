@@ -40,6 +40,12 @@ import xy.reflect.ui.undo.ListModificationFactory;
 import xy.reflect.ui.util.Mapper;
 import xy.reflect.ui.util.ReflectionUIError;
 
+/**
+ * Specifies how a {@link MultiplePart} should be displayed in a GUI.
+ * 
+ * @author olitank
+ *
+ */
 public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 	private MultiplePart multiplePart;

@@ -9,6 +9,13 @@ import xy.reflect.ui.CustomizedUI;
 import xy.reflect.ui.control.swing.customizer.SwingCustomizer;
 import xy.reflect.ui.info.type.source.ITypeInfoSource;
 
+/**
+ * The class specifying how the command line project and instance GUIs should
+ * look and behave. The class is also responsible for generating the above GUIs.
+ * 
+ * @author olitank
+ *
+ */
 public class CommandLineUI extends CustomizedUI {
 
 	public static final String DEFAULT_EXE_FILE_PATH = System.getProperty("xy.command.ui.defaultExeFile");
@@ -41,6 +48,9 @@ public class CommandLineUI extends CustomizedUI {
 
 	private SwingCustomizer renderer = new SwingCustomizer(this, GUI_CUSTOMIZATIONS_FILE_PATH);
 
+	/**
+	 * @return The GUI renderer object.
+	 */
 	public SwingCustomizer getRenderer() {
 		return renderer;
 	}

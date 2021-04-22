@@ -8,11 +8,24 @@ import java.util.List;
 import xy.command.instance.AbstractCommandLinePartInstance;
 import xy.command.instance.ArgumentGroupInstance;
 
+/**
+ * A collection of command line model parts.
+ * 
+ * @author olitank
+ *
+ */
 public class ArgumentGroup extends AbstractCommandLinePart {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * The title of this command line model part.
+	 */
 	public String title = "";
+	
+	/**
+	 * The children command line model parts.
+	 */
 	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
 
 	@Override
@@ -38,7 +51,7 @@ public class ArgumentGroup extends AbstractCommandLinePart {
 
 	@Override
 	public String toString() {
-		return  title;
+		return title;
 	}
 
 }

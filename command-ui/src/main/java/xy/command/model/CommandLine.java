@@ -9,14 +9,25 @@ import java.util.List;
 import xy.command.instance.CommandLineInstance;
 import xy.command.ui.util.ValidationError;
 
-public class CommandLine extends AbstractCommandLinePart{
+/**
+ * The command line model class. Allows to specify the structure of the argument
+ * list of any command line program.
+ * 
+ * @author olitank
+ *
+ */
+public class CommandLine extends AbstractCommandLinePart {
 
 	private static final long serialVersionUID = 1L;
 
-	// @OnlineHelp("Title of the generated command line GUI")
+	/**
+	 * Title of the generated command line GUI.
+	 */
 	public String title = "";
 
-	// @OnlineHelp("The list of arguments of the command line")
+	/**
+	 * The list of argument pages.
+	 */
 	public List<ArgumentPage> arguments = new ArrayList<ArgumentPage>();
 
 	@Override
@@ -37,18 +48,29 @@ public class CommandLine extends AbstractCommandLinePart{
 		}
 	}
 
-	// @Validating
+	/**
+	 * Allows to validate the correctness of the properties of this command line
+	 * model.
+	 * 
+	 * @throws Exception If a property is not valid.
+	 */
 	public void validate() throws Exception {
 		if ((title == null) || (title.trim().length() == 0)) {
 			throw new ValidationError("Enter the title");
 		}
 	}
 
+	/**
+	 * @return An instance of this command line model.
+	 */
 	public CommandLineInstance instanciate() {
 		return new CommandLineInstance(this);
 	}
 
-	
+	/**
+	 * @return A description of this command line model in a syntax close to the
+	 *         POSIX Utility Argument Syntax.
+	 */
 	public String getUsageText() {
 		StringWriter out = new StringWriter();
 		try {
@@ -58,11 +80,10 @@ public class CommandLine extends AbstractCommandLinePart{
 		}
 		return out.toString();
 	}
-	
+
 	@Override
 	public String toString() {
-		return  title;
+		return title;
 	}
-
 
 }

@@ -32,6 +32,12 @@ import xy.reflect.ui.info.type.source.ITypeInfoSource;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 import xy.reflect.ui.util.ReflectionUIError;
 
+/**
+ * Specifies how an {@link ArgumentGroup} should be displayed in a GUI.
+ * 
+ * @author olitank
+ *
+ */
 public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 
 	private ArgumentGroup argumentGroup;

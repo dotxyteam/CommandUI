@@ -7,22 +7,30 @@ import xy.command.instance.AbstractCommandLinePartInstance;
 import xy.command.instance.InputArgumentInstance;
 import xy.command.ui.util.ValidationError;
 
+/**
+ * A text input command line model part.
+ * 
+ * @author olitank
+ *
+ */
 public class InputArgument extends AbstractCommandLinePart {
 
-	protected  static final long serialVersionUID = 1L;
+	protected static final long serialVersionUID = 1L;
 
-	// @OnlineHelp("This title will identify the current element")
+	/**
+	 * The title of this command line model part.
+	 */
 	public String title = "";
-	
-	// @OnlineHelp("This value will provided by default")
-	public String defaultValue = "";
 
+	/**
+	 * This value will provided by default.
+	 */
+	public String defaultValue = "";
 
 	@Override
 	public String toString() {
-		return  title;
+		return title;
 	}
-
 
 	@Override
 	public void writetUsageText(Writer out) throws IOException {
@@ -34,8 +42,7 @@ public class InputArgument extends AbstractCommandLinePart {
 		}
 		out.write(">");
 	}
-	
-	// @Validating
+
 	@Override
 	public void validate() throws Exception {
 		if ((title == null) || (title.trim().length() == 0)) {
@@ -47,6 +54,5 @@ public class InputArgument extends AbstractCommandLinePart {
 	public AbstractCommandLinePartInstance instanciate() {
 		return new InputArgumentInstance(this);
 	}
-
 
 }

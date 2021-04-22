@@ -20,6 +20,12 @@ import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 import xy.reflect.ui.util.ReflectionUIError;
 
+/**
+ * Specifies how a {@link Choice} should be displayed in a GUI.
+ * 
+ * @author olitank
+ *
+ */
 public class FieldInfoFromChoice implements IFieldInfo {
 
 	private Choice choice;

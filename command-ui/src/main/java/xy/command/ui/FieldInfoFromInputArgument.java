@@ -21,6 +21,12 @@ import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 import xy.reflect.ui.util.ReflectionUIError;
 
+/**
+ * Specifies how an {@link InputArgument} should be displayed in a GUI.
+ * 
+ * @author olitank
+ *
+ */
 public class FieldInfoFromInputArgument implements IFieldInfo {
 
 	private InputArgument inputArgument;

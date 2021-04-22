@@ -33,6 +33,12 @@ import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 import xy.reflect.ui.util.ReflectionUIError;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
+/**
+ * Specifies how a {@link CommandLine} should be displayed in a GUI.
+ * 
+ * @author olitank
+ *
+ */
 public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
 	private CommandLine commandLine;

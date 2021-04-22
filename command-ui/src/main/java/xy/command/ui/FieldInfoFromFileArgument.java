@@ -27,6 +27,12 @@ import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 import xy.reflect.ui.util.ReflectionUIError;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
+/**
+ * Specifies how a {@link FileArgument} should be displayed in a GUI.
+ * 
+ * @author olitank
+ *
+ */
 public class FieldInfoFromFileArgument implements IFieldInfo {
 
 	private FileArgument fileArgument;

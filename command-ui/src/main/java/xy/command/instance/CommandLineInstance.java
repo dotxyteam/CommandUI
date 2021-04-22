@@ -6,11 +6,22 @@ import java.util.List;
 import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
 
+/**
+ * The instance class of {@link CommandLine}.
+ * 
+ * @author olitank
+ *
+ */
 public class CommandLineInstance extends AbstractCommandLinePartInstance {
 
 	public CommandLine model;
 	public List<ArgumentPageInstance> argumentPageInstances = new ArrayList<ArgumentPageInstance>();
 
+	/**
+	 * The main constructor. Builds an instance from the given model object.
+	 * 
+	 * @param model The model object.
+	 */
 	public CommandLineInstance(CommandLine model) {
 		this.model = model;
 		for (ArgumentPage page : model.arguments) {

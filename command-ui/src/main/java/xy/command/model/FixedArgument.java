@@ -7,25 +7,31 @@ import xy.command.instance.AbstractCommandLinePartInstance;
 import xy.command.instance.FixedArgumentInstance;
 import xy.command.ui.util.ValidationError;
 
-public class FixedArgument extends AbstractCommandLinePart{
+/**
+ * A fixed command line model part.
+ * 
+ * @author olitank
+ *
+ */
+public class FixedArgument extends AbstractCommandLinePart {
 
-	protected  static final long serialVersionUID = 1L;
-	
-	// @OnlineHelp("This is the fixed argument value")
+	protected static final long serialVersionUID = 1L;
+
+	/**
+	 * This is the fixed argument value.
+	 */
 	public String value = "";
-
 
 	@Override
 	public String toString() {
 		return value;
 	}
-	
+
 	@Override
 	public void writetUsageText(Writer out) throws IOException {
 		out.write(value);
 	}
-	
-	// @Validating
+
 	@Override
 	public void validate() throws Exception {
 		if ((value == null) || (value.trim().length() == 0)) {
@@ -37,6 +43,5 @@ public class FixedArgument extends AbstractCommandLinePart{
 	public AbstractCommandLinePartInstance instanciate() {
 		return new FixedArgumentInstance(this);
 	}
-
 
 }

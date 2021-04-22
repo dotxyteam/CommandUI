@@ -21,6 +21,12 @@ import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.source.ITypeInfoSource;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 
+/**
+ * Specifies how a {@link Choice} children should be displayed in a GUI.
+ * 
+ * @author olitank
+ *
+ */
 public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 
 	public class TypeInfoFromChoice implements ITypeInfo {

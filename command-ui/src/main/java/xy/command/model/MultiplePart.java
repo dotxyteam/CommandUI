@@ -7,11 +7,17 @@ import xy.command.instance.AbstractCommandLinePartInstance;
 import xy.command.instance.MultiplePartInstance;
 import xy.command.ui.util.ValidationError;
 
+/**
+ * A collection of command line model parts that can be instanciated multiple
+ * times.
+ * 
+ * @author olitank
+ *
+ */
 public class MultiplePart extends ArgumentGroup {
 
 	protected static final long serialVersionUID = 1L;
 
-	// @Validating
 	@Override
 	public void validate() throws Exception {
 		if ((title == null) || (title.trim().length() == 0)) {
@@ -33,8 +39,7 @@ public class MultiplePart extends ArgumentGroup {
 
 	@Override
 	public String toString() {
-		return  title;
+		return title;
 	}
-
 
 }

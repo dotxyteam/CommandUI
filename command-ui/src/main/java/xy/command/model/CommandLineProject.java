@@ -17,18 +17,33 @@ import xy.command.ui.CommandMonitoringDialog;
 import xy.command.ui.util.FileUtils;
 import xy.command.ui.util.ValidationError;
 
-//@OnlineHelp("Here you can specify and generate a GUI wrapper for your command line tool")
+/**
+ * This class allows to specify the structure of a command and its arguments in
+ * order to generate GUI wrappers.
+ * 
+ * @author olitank
+ *
+ */
 public class CommandLineProject extends CommandLine {
 
 	private static final long serialVersionUID = 1L;
 
-	// @OnlineHelp("Relative or absolute path of the executable file")
+	/**
+	 * Relative or absolute path of the executable file.
+	 */
 	public File executablePath = new File("");
 
-	// @OnlineHelp("The directory from which the command will be executed")
+	/**
+	 * The directory from which the command will be executed.
+	 */
 	public File executionDir = new File(".");
 
-	// @Validating
+	/**
+	 * Allows to validate the correctness of the properties of this command line
+	 * project.
+	 * 
+	 * @throws Exception If a property is not valid.
+	 */
 	public void validate() throws Exception {
 		super.validate();
 		if ((executablePath == null) || (executablePath.getPath().trim().length() == 0)) {
@@ -39,7 +54,12 @@ public class CommandLineProject extends CommandLine {
 		}
 	}
 
-	// @OnlineHelp("Loads a command line specification file")
+	/**
+	 * Loads a command line project file.
+	 * 
+	 * @param input The input file.
+	 * @throws IOException If an error occurs during the loading process.
+	 */
 	public void loadFromFile(File input) throws IOException {
 		FileInputStream stream = new FileInputStream(input);
 		try {
@@ -52,7 +72,12 @@ public class CommandLineProject extends CommandLine {
 		}
 	}
 
-	// @OnlineHelp("Saves the current command line specification in a file")
+	/**
+	 * Saves the current command line project to a file.
+	 * 
+	 * @param output The output file.
+	 * @throws IOException If an error occurs during the saving process.
+	 */
 	public void saveToFile(File output) throws IOException {
 		ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
 		saveToStream(memoryStream);
@@ -67,6 +92,11 @@ public class CommandLineProject extends CommandLine {
 		}
 	}
 
+	/**
+	 * Loads the command line project from a stream.
+	 * 
+	 * @param input The input stream.
+	 */
 	public void loadFromStream(InputStream input) {
 		XStream xstream = new XStream();
 		CommandLineProject loaded = (CommandLineProject) xstream.fromXML(input);
@@ -77,11 +107,20 @@ public class CommandLineProject extends CommandLine {
 		arguments = loaded.arguments;
 	}
 
+	/**
+	 * Saves the current command line project to a stream.
+	 * 
+	 * @param output The output stream.
+	 * @throws IOException If an error occurs during the saving process.
+	 */
 	public void saveToStream(OutputStream output) throws IOException {
 		XStream xstream = new XStream();
 		xstream.toXML(this, output);
 	}
 
+	/**
+	 * Open a command dialog allowing to test any command.
+	 */
 	public void openCommandMonitoringDialog() {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -92,6 +131,13 @@ public class CommandLineProject extends CommandLine {
 		});
 	}
 
+	/**
+	 * Generates a set of files allowing to open the GUI specified by the current
+	 * project.
+	 * 
+	 * @param targetDirectory The directory in which the files will be generated.
+	 * @throws Exception If an error occurs during the process.
+	 */
 	public void distribute(File targetDirectory) throws Exception {
 		if (CommandLineUI.DEFAULT_EXE_FILE_PATH == null) {
 			throw new UnsupportedOperationException("The default executable file is not known");

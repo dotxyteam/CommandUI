@@ -37,6 +37,13 @@ import javax.swing.text.StyleConstants;
 import xy.command.ui.util.CommandUIUtils;
 import xy.reflect.ui.util.ReflectionUIError;
 
+/**
+ * A dialog allowing to execute and monitor (view text output, errors, return
+ * status, ...) commands.
+ * 
+ * @author olitank
+ *
+ */
 public class CommandMonitoringDialog extends JDialog {
 
 	protected static final long serialVersionUID = 1L;
@@ -64,7 +71,7 @@ public class CommandMonitoringDialog extends JDialog {
 
 	/**
 	 * 
-	 * Create the dialog.
+	 * Creates the dialog.
 	 */
 
 	public CommandMonitoringDialog(Window owner, String command, File workingDir) {

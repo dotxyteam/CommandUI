@@ -7,14 +7,21 @@ import xy.command.instance.AbstractCommandLinePartInstance;
 import xy.command.instance.OptionalPartInstance;
 import xy.command.ui.util.ValidationError;
 
+/**
+ * A collection of command line model parts that may not be instanciated.
+ * 
+ * @author olitank
+ *
+ */
 public class OptionalPart extends ArgumentGroup {
 
 	protected static final long serialVersionUID = 1L;
 
-	// @OnlineHelp("If true, the option will be selected by default")
+	/**
+	 * If true, the parts will be instanciated by default.
+	 */
 	public boolean activeByDefault = false;
 
-	// @Validating
 	@Override
 	public void validate() throws Exception {
 		if ((title == null) || (title.trim().length() == 0)) {
@@ -36,8 +43,7 @@ public class OptionalPart extends ArgumentGroup {
 
 	@Override
 	public String toString() {
-		return  title;
+		return title;
 	}
-
 
 }
