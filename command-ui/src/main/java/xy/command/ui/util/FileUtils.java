@@ -7,6 +7,12 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Various utilities for dealing with files.
+ * 
+ * @author olitank
+ *
+ */
 public class FileUtils {
 
 	public static String read(File file) throws Exception {
@@ -21,8 +27,7 @@ public class FileUtils {
 			byte[] bytes = new byte[(int) length];
 			int offset = 0;
 			int numRead = 0;
-			while (offset < bytes.length
-					&& (numRead = in.read(bytes, offset, bytes.length - offset)) >= 0) {
+			while (offset < bytes.length && (numRead = in.read(bytes, offset, bytes.length - offset)) >= 0) {
 				offset += numRead;
 			}
 			if (offset < bytes.length) {
@@ -31,8 +36,7 @@ public class FileUtils {
 			in.close();
 			return bytes;
 		} catch (IOException e) {
-			throw new Exception("Unable to read file : '"
-					+ file.getAbsolutePath() + "': " + e.getMessage(), e);
+			throw new Exception("Unable to read file : '" + file.getAbsolutePath() + "': " + e.getMessage(), e);
 		} finally {
 			if (in != null) {
 				try {
@@ -43,13 +47,11 @@ public class FileUtils {
 		}
 	}
 
-	public static void write(File file, String text, boolean append)
-			throws Exception {
+	public static void write(File file, String text, boolean append) throws Exception {
 		writeBinary(file, text.getBytes(), append);
 	}
 
-	public static void writeBinary(File file, byte[] bytes, boolean append)
-			throws Exception {
+	public static void writeBinary(File file, byte[] bytes, boolean append) throws Exception {
 		FileOutputStream out = null;
 		try {
 			out = new FileOutputStream(file);
@@ -57,8 +59,7 @@ public class FileUtils {
 			out.flush();
 			out.close();
 		} catch (IOException e) {
-			throw new Exception("Unable to write file : '"
-					+ file.getAbsolutePath() + "': " + e.getMessage(), e);
+			throw new Exception("Unable to write file : '" + file.getAbsolutePath() + "': " + e.getMessage(), e);
 		} finally {
 			if (out != null) {
 				try {
@@ -70,12 +71,10 @@ public class FileUtils {
 
 	}
 
-	
 	public static String removeFileNameExtension(String fileName) {
 		String extension = getFileNameExtension(fileName);
 		if (extension.length() > 0) {
-			return fileName.substring(0,
-					fileName.length() - ("." + extension).length());
+			return fileName.substring(0, fileName.length() - ("." + extension).length());
 		} else {
 			return fileName;
 		}
@@ -94,20 +93,17 @@ public class FileUtils {
 		copy(src, dst, true);
 	}
 
-	public static void copy(File src, File dst, boolean recusrsively)
-			throws Exception {
+	public static void copy(File src, File dst, boolean recusrsively) throws Exception {
 		copy(src, dst, recusrsively, null);
 	}
 
-	public static void copy(File src, File dst, boolean recusrsively,
-			FilenameFilter filenameFilter) throws Exception {
+	public static void copy(File src, File dst, boolean recusrsively, FilenameFilter filenameFilter) throws Exception {
 		try {
 			if (src.isDirectory()) {
 				mkDir(dst);
 				if (recusrsively) {
 					for (File srcChild : src.listFiles(filenameFilter)) {
-						copy(srcChild, new File(dst, srcChild.getName()),
-								recusrsively, filenameFilter);
+						copy(srcChild, new File(dst, srcChild.getName()), recusrsively, filenameFilter);
 					}
 				}
 			} else if (src.isFile()) {
@@ -116,8 +112,7 @@ public class FileUtils {
 				throw new Exception("File not found: '" + src + "'", null);
 			}
 		} catch (Exception e) {
-			throw new Exception("Unable to copy resource: '"
-					+ src.getAbsolutePath() + "' > '" + dst.getAbsolutePath()
+			throw new Exception("Unable to copy resource: '" + src.getAbsolutePath() + "' > '" + dst.getAbsolutePath()
 					+ "': " + e.getMessage(), e);
 		}
 	}
@@ -130,12 +125,10 @@ public class FileUtils {
 		try {
 			success = dir.mkdir();
 		} catch (Exception e) {
-			throw new Exception("Failed to create directory: '"
-					+ dir.getAbsolutePath() + "': " + e.getMessage(), e);
+			throw new Exception("Failed to create directory: '" + dir.getAbsolutePath() + "': " + e.getMessage(), e);
 		}
 		if (!success) {
-			throw new Exception("Unable to create directory: '"
-					+ dir.getAbsolutePath() + "'", null);
+			throw new Exception("Unable to create directory: '" + dir.getAbsolutePath() + "'", null);
 		}
 	}
 
@@ -144,8 +137,7 @@ public class FileUtils {
 			return null;
 		}
 		try {
-			return child.getCanonicalPath().substring(
-					ancestor.getCanonicalPath().length() + 1);
+			return child.getCanonicalPath().substring(ancestor.getCanonicalPath().length() + 1);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -171,16 +163,13 @@ public class FileUtils {
 		delete(file, null);
 	}
 
-	public static void delete(File file, final FilenameFilter filter)
-			throws Exception {
+	public static void delete(File file, final FilenameFilter filter) throws Exception {
 		if (file.isDirectory()) {
-			CountingFilenameFilter countingFilter = (filter != null) ? new CountingFilenameFilter(
-					filter) : null;
+			CountingFilenameFilter countingFilter = (filter != null) ? new CountingFilenameFilter(filter) : null;
 			for (File childFile : file.listFiles(countingFilter)) {
 				delete(childFile, countingFilter);
 			}
-			if ((countingFilter != null)
-					&& countingFilter.getFilteredCount() > 0) {
+			if ((countingFilter != null) && countingFilter.getFilteredCount() > 0) {
 				return;
 			}
 		}
@@ -188,21 +177,17 @@ public class FileUtils {
 		try {
 			success = file.delete();
 		} catch (Exception e) {
-			throw new Exception("Failed to delete resource: '"
-					+ file.getAbsolutePath() + "'" + e.getMessage(), e);
+			throw new Exception("Failed to delete resource: '" + file.getAbsolutePath() + "'" + e.getMessage(), e);
 		}
 		if (!success) {
-			throw new Exception("Unable to delete resource: '"
-					+ file.getAbsolutePath() + "'", null);
+			throw new Exception("Unable to delete resource: '" + file.getAbsolutePath() + "'", null);
 		}
 	}
 
 	public static void rename(File file, String destFileName) throws Exception {
 		try {
 			if (new File(destFileName).getParent() != null) {
-				throw new Exception(
-						"Destination file name is not is not a local name: '"
-								+ destFileName + "'");
+				throw new Exception("Destination file name is not is not a local name: '" + destFileName + "'");
 			}
 			File destFile = new File(file.getParent(), destFileName);
 			boolean success = file.renameTo(destFile);
@@ -210,17 +195,14 @@ public class FileUtils {
 				throw new Exception("System error");
 			}
 		} catch (Exception e) {
-			throw new Exception("Failed to rename resource: '"
-					+ file.getAbsolutePath() + "' to '" + destFileName + "': "
-					+ e.getMessage(), e);
+			throw new Exception("Failed to rename resource: '" + file.getAbsolutePath() + "' to '" + destFileName
+					+ "': " + e.getMessage(), e);
 		}
 	}
 
-	public static boolean hasFileNameExtension(String fileName,
-			String[] extensions) {
+	public static boolean hasFileNameExtension(String fileName, String[] extensions) {
 		for (String ext : extensions) {
-			if (ext.toLowerCase().equals(
-					getFileNameExtension(fileName).toLowerCase())) {
+			if (ext.toLowerCase().equals(getFileNameExtension(fileName).toLowerCase())) {
 				return true;
 			}
 		}
