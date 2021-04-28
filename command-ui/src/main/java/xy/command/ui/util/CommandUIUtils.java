@@ -14,6 +14,12 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+/**
+ * Various utilities needed by the classes of the library.
+ * 
+ * @author olitank
+ *
+ */
 public class CommandUIUtils {
 
 	public static Component flowInLayout(Component c, int flowLayoutAlignment) {
