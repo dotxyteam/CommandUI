@@ -1,4 +1,4 @@
-package xy.command.ui.component;
+package xy.command.ui.util;
 
 import java.io.OutputStream;
 
