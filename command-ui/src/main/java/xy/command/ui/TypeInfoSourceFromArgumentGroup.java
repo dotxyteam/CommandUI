@@ -337,6 +337,12 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 				public Object invoke(Object parentObject, InvocationData invocationData) {
 					return new ArgumentGroupInstance(argumentGroup);
 				}
+
+				@Override
+				public ITypeInfo getReturnValueType() {
+					return reflectionUI.getTypeInfo(TypeInfoSourceFromArgumentGroup.this);
+				}
+
 			});
 		}
 
