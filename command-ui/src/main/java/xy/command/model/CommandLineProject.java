@@ -139,21 +139,15 @@ public class CommandLineProject extends CommandLine {
 	 * @throws Exception If an error occurs during the process.
 	 */
 	public void distribute(File targetDirectory) throws Exception {
-		if (CommandLineUI.DEFAULT_EXE_FILE_PATH == null) {
+		if (CommandLineUI.NORMAL_EXE_FILE_PATH == null) {
 			throw new UnsupportedOperationException("The default executable file is not known");
 		}
 
-		File exeFile = new File(CommandLineUI.DEFAULT_EXE_FILE_PATH);
+		File exeFile = new File(CommandLineUI.NORMAL_EXE_FILE_PATH);
 		String fileExtension = FileUtils.getFileNameExtension(exeFile.getName());
 		String fileName = title + ((fileExtension.length() > 0) ? ("." + fileExtension) : "");
 		File targetExeFile = new File(targetDirectory, fileName);
 		FileUtils.copy(exeFile, targetExeFile);
-
-		File exeFileDirectory = exeFile.getAbsoluteFile().getParentFile();
-		File guiCustomizationsFile = new File(exeFileDirectory, CommandLineUI.GUI_CUSTOMIZATIONS_FILE_PATH);
-		File targetGuiCustomizationsFile = new File(targetDirectory, CommandLineUI.GUI_CUSTOMIZATIONS_FILE_PATH);
-		FileUtils.copy(guiCustomizationsFile, targetGuiCustomizationsFile);
-
 		File targetProjectFile = new File(targetExeFile.getPath() + "." + CommandLineUI.PROJECT_FILE_EXTENSION);
 		saveToFile(targetProjectFile);
 	}
