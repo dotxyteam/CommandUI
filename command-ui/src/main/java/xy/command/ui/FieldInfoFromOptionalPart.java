@@ -12,7 +12,6 @@ import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
 import xy.command.model.FixedArgument;
 import xy.command.model.OptionalPart;
-import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.ValueReturnMode;
 import xy.reflect.ui.info.field.IFieldInfo;
@@ -33,12 +32,12 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 	private OptionalPart optionalPart;
 	private ArgumentPage argumentPage;
 	private AbstractCommandLinePart containingPart;
-	private ReflectionUI reflectionUI;
+	private CommandLineUI commandLineUI;
 	private ITypeInfo commandLineTypeInfo;
 
-	public FieldInfoFromOptionalPart(ReflectionUI reflectionUI, OptionalPart optionalPart, ArgumentPage argumentPage,
+	public FieldInfoFromOptionalPart(CommandLineUI commandLineUI, OptionalPart optionalPart, ArgumentPage argumentPage,
 			AbstractCommandLinePart containingPart, ITypeInfo commandLineTypeInfo) {
-		this.reflectionUI = reflectionUI;
+		this.commandLineUI = commandLineUI;
 		this.optionalPart = optionalPart;
 		this.argumentPage = argumentPage;
 		this.containingPart = containingPart;
@@ -77,10 +76,10 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 	@Override
 	public ITypeInfo getType() {
 		if (isBoolean()) {
-			return reflectionUI.getTypeInfo(new JavaTypeInfoSource(Boolean.class,
+			return commandLineUI.getTypeInfo(new JavaTypeInfoSource(commandLineUI, Boolean.class,
 					new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName())));
 		} else {
-			return reflectionUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(optionalPart,
+			return commandLineUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(commandLineUI, optionalPart,
 					new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName())));
 		}
 	}

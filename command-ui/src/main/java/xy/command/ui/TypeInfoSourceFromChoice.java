@@ -11,7 +11,6 @@ import java.util.Map;
 import xy.command.instance.CommandLineInstance;
 import xy.command.model.ArgumentGroup;
 import xy.command.model.Choice;
-import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.ColorSpecification;
 import xy.reflect.ui.info.ResourcePath;
 import xy.reflect.ui.info.field.IFieldInfo;
@@ -30,10 +29,10 @@ import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 
 	public class TypeInfoFromChoice implements ITypeInfo {
-		private final ReflectionUI reflectionUI;
+		private final CommandLineUI commandLineUI;
 
-		private TypeInfoFromChoice(ReflectionUI reflectionUI) {
-			this.reflectionUI = reflectionUI;
+		private TypeInfoFromChoice(CommandLineUI commandLineUI) {
+			this.commandLineUI = commandLineUI;
 		}
 
 		@Override
@@ -114,7 +113,8 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 		public List<ITypeInfo> getPolymorphicInstanceSubTypes() {
 			List<ITypeInfo> result = new ArrayList<ITypeInfo>();
 			for (ArgumentGroup argumentGroup : choice.options) {
-				ITypeInfo type = reflectionUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(argumentGroup, null));
+				ITypeInfo type = commandLineUI
+						.getTypeInfo(new TypeInfoSourceFromArgumentGroup(commandLineUI, argumentGroup, null));
 				result.add(type);
 			}
 			return result;
@@ -241,10 +241,13 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 		}
 	}
 
+	private CommandLineUI commandLineUI;
 	private SpecificitiesIdentifier specificitiesIdentifier;
 	private Choice choice;
 
-	public TypeInfoSourceFromChoice(SpecificitiesIdentifier specificitiesIdentifier, Choice choice) {
+	public TypeInfoSourceFromChoice(CommandLineUI commandLineUI, SpecificitiesIdentifier specificitiesIdentifier,
+			Choice choice) {
+		this.commandLineUI = commandLineUI;
 		this.specificitiesIdentifier = specificitiesIdentifier;
 		this.choice = choice;
 	}
@@ -255,8 +258,8 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 	}
 
 	@Override
-	public ITypeInfo getTypeInfo(final ReflectionUI reflectionUI) {
-		return new TypeInfoFromChoice(reflectionUI);
+	public ITypeInfo getTypeInfo() {
+		return new TypeInfoFromChoice(commandLineUI);
 	}
 
 }

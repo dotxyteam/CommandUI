@@ -11,7 +11,6 @@ import xy.command.model.ArgumentGroup;
 import xy.command.model.ArgumentPage;
 import xy.command.model.Choice;
 import xy.command.model.CommandLine;
-import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.ValueReturnMode;
 import xy.reflect.ui.info.field.IFieldInfo;
@@ -31,12 +30,12 @@ public class FieldInfoFromChoice implements IFieldInfo {
 	private Choice choice;
 	private ArgumentPage argumentPage;
 	private AbstractCommandLinePart containingPart;
-	private ReflectionUI reflectionUI;
+	private CommandLineUI commandLineUI;
 	private ITypeInfo commandLineTypeInfo;
 
-	public FieldInfoFromChoice(ReflectionUI reflectionUI, Choice choice, ArgumentPage argumentPage,
+	public FieldInfoFromChoice(CommandLineUI commandLineUI, Choice choice, ArgumentPage argumentPage,
 			AbstractCommandLinePart containingPart, ITypeInfo commandLineTypeInfo) {
-		this.reflectionUI = reflectionUI;
+		this.commandLineUI = commandLineUI;
 		this.choice = choice;
 		this.argumentPage = argumentPage;
 		this.containingPart = containingPart;
@@ -65,7 +64,7 @@ public class FieldInfoFromChoice implements IFieldInfo {
 
 	@Override
 	public ITypeInfo getType() {
-		return reflectionUI.getTypeInfo(new TypeInfoSourceFromChoice(
+		return commandLineUI.getTypeInfo(new TypeInfoSourceFromChoice(commandLineUI,
 				new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName()), choice));
 	}
 

@@ -72,7 +72,7 @@ public class FieldInfoFromFileArgument implements IFieldInfo {
 
 	@Override
 	public ITypeInfo getType() {
-		return new DefaultTypeInfo(reflectionUI, new JavaTypeInfoSource(File.class,
+		return new DefaultTypeInfo(reflectionUI, new JavaTypeInfoSource(reflectionUI, File.class,
 				new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName()))) {
 
 			@Override

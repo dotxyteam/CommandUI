@@ -3,6 +3,8 @@ package xy.command.ui;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.SwingUtilities;
+
 import xy.command.instance.ArgumentGroupInstance;
 import xy.command.instance.CommandLineInstance;
 import xy.command.model.CommandLineProject;
@@ -20,7 +22,7 @@ import xy.reflect.ui.info.type.source.ITypeInfoSource;
 public class CommandLineUI extends CustomizedUI {
 
 	public static void main(String[] args) throws Exception {
-		CommandLineUI ui = new CommandLineUI();
+		final CommandLineUI ui = new CommandLineUI();
 		if ((CURRENT_EXE_FILE_PATH != null) && (NORMAL_EXE_FILE_PATH != null)) {
 			File currentExeFile = new File(CURRENT_EXE_FILE_PATH);
 			File normalExeFile = new File(NORMAL_EXE_FILE_PATH);
@@ -28,7 +30,12 @@ public class CommandLineUI extends CustomizedUI {
 			if (executingDistribution) {
 				CommandLineProject object = new CommandLineProject();
 				object.loadFromFile(new File(CURRENT_EXE_FILE_PATH + "." + PROJECT_FILE_EXTENSION));
-				ui.getRenderer().openObjectFrame(object.instanciate());
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						ui.getRenderer().openObjectFrame(object.instanciate());
+					}
+				});
 				return;
 			}
 		}
@@ -36,11 +43,16 @@ public class CommandLineUI extends CustomizedUI {
 		if (args.length >= 1) {
 			object.loadFromFile(new File(args[0]));
 		}
-		if ((args.length >= 2) && (args[1].equals("--instanciate"))) {
-			ui.getRenderer().openObjectFrame(object.instanciate());
-		} else {
-			ui.getRenderer().openObjectFrame(object);
-		}
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				if ((args.length >= 2) && (args[1].equals("--instanciate"))) {
+					ui.getRenderer().openObjectFrame(object.instanciate());
+				} else {
+					ui.getRenderer().openObjectFrame(object);
+				}
+			}
+		});
 	}
 
 	public static final String NORMAL_EXE_FILE_PATH = System.getProperty("xy.command.ui.defaultExeFile");
@@ -81,9 +93,9 @@ public class CommandLineUI extends CustomizedUI {
 	@Override
 	public ITypeInfoSource getTypeInfoSource(Object object) {
 		if (object instanceof CommandLineInstance) {
-			return new TypeInfoSourceFromCommandLine(((CommandLineInstance) object).model, null);
+			return new TypeInfoSourceFromCommandLine(this, ((CommandLineInstance) object).model, null);
 		} else if (object instanceof ArgumentGroupInstance) {
-			return new TypeInfoSourceFromArgumentGroup(((ArgumentGroupInstance) object).model, null);
+			return new TypeInfoSourceFromArgumentGroup(this, ((ArgumentGroupInstance) object).model, null);
 		} else {
 			return super.getTypeInfoSource(object);
 		}

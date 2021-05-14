@@ -19,7 +19,6 @@ import xy.command.model.FixedArgument;
 import xy.command.model.InputArgument;
 import xy.command.model.MultiplePart;
 import xy.command.model.OptionalPart;
-import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.ColorSpecification;
 import xy.reflect.ui.info.ResourcePath;
 import xy.reflect.ui.info.field.IFieldInfo;
@@ -40,11 +39,13 @@ import xy.reflect.ui.util.ReflectionUIError;
  */
 public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 
+	private CommandLineUI commandLineUI;
 	private ArgumentGroup argumentGroup;
 	private SpecificitiesIdentifier specificitiesIdentifier;
 
-	public TypeInfoSourceFromArgumentGroup(ArgumentGroup argumentGroup,
+	public TypeInfoSourceFromArgumentGroup(CommandLineUI commandLineUI, ArgumentGroup argumentGroup,
 			SpecificitiesIdentifier specificitiesIdentifier) {
+		this.commandLineUI = commandLineUI;
 		this.argumentGroup = argumentGroup;
 		this.specificitiesIdentifier = specificitiesIdentifier;
 	}
@@ -86,30 +87,30 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 	}
 
 	@Override
-	public ITypeInfo getTypeInfo(ReflectionUI reflectionUI) {
-		return new TypeInfoFromArgumentGroup(reflectionUI);
+	public ITypeInfo getTypeInfo() {
+		return new TypeInfoFromArgumentGroup(commandLineUI);
 	}
 
-	protected IFieldInfo getFieldInfoFromCommandLinePart(ReflectionUI reflectionUI, AbstractCommandLinePart part,
+	protected IFieldInfo getFieldInfoFromCommandLinePart(CommandLineUI commandLineUI, AbstractCommandLinePart part,
 			ArgumentPage argumentPage, ITypeInfo commandLineTypeInfo) {
 		if (part instanceof FixedArgument) {
 			return null;
 		} else if (part instanceof InputArgument) {
-			return new FieldInfoFromInputArgument(reflectionUI, (InputArgument) part, null, argumentGroup,
+			return new FieldInfoFromInputArgument(commandLineUI, (InputArgument) part, null, argumentGroup,
 					commandLineTypeInfo);
 		} else if (part instanceof DirectoryArgument) {
-			return new FieldInfoFromDirectoryArgument(reflectionUI, (DirectoryArgument) part, null, argumentGroup,
+			return new FieldInfoFromDirectoryArgument(commandLineUI, (DirectoryArgument) part, null, argumentGroup,
 					commandLineTypeInfo);
 		} else if (part instanceof FileArgument) {
-			return new FieldInfoFromFileArgument(reflectionUI, (FileArgument) part, null, argumentGroup,
+			return new FieldInfoFromFileArgument(commandLineUI, (FileArgument) part, null, argumentGroup,
 					commandLineTypeInfo);
 		} else if (part instanceof Choice) {
-			return new FieldInfoFromChoice(reflectionUI, (Choice) part, null, argumentGroup, commandLineTypeInfo);
+			return new FieldInfoFromChoice(commandLineUI, (Choice) part, null, argumentGroup, commandLineTypeInfo);
 		} else if (part instanceof OptionalPart) {
-			return new FieldInfoFromOptionalPart(reflectionUI, (OptionalPart) part, null, argumentGroup,
+			return new FieldInfoFromOptionalPart(commandLineUI, (OptionalPart) part, null, argumentGroup,
 					commandLineTypeInfo);
 		} else if (part instanceof MultiplePart) {
-			return new FieldInfoFromMultiplePart(reflectionUI, (MultiplePart) part, null, argumentGroup,
+			return new FieldInfoFromMultiplePart(commandLineUI, (MultiplePart) part, null, argumentGroup,
 					commandLineTypeInfo);
 		} else {
 			throw new ReflectionUIError();
@@ -118,10 +119,10 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 
 	public class TypeInfoFromArgumentGroup implements ITypeInfo {
 
-		private ReflectionUI reflectionUI;
+		private CommandLineUI commandLineUI;
 
-		public TypeInfoFromArgumentGroup(ReflectionUI reflectionUI) {
-			this.reflectionUI = reflectionUI;
+		public TypeInfoFromArgumentGroup(CommandLineUI commandLineUI) {
+			this.commandLineUI = commandLineUI;
 		}
 
 		@Override
@@ -320,7 +321,7 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 		public List<IFieldInfo> getFields() {
 			List<IFieldInfo> result = new ArrayList<IFieldInfo>();
 			for (AbstractCommandLinePart part : argumentGroup.parts) {
-				IFieldInfo field = getFieldInfoFromCommandLinePart(reflectionUI, part, null, this);
+				IFieldInfo field = getFieldInfoFromCommandLinePart(commandLineUI, part, null, this);
 				if (field == null) {
 					continue;
 				}
@@ -340,7 +341,7 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 
 				@Override
 				public ITypeInfo getReturnValueType() {
-					return reflectionUI.getTypeInfo(TypeInfoSourceFromArgumentGroup.this);
+					return commandLineUI.getTypeInfo(TypeInfoSourceFromArgumentGroup.this);
 				}
 
 			});

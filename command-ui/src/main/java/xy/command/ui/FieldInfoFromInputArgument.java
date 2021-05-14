@@ -66,7 +66,7 @@ public class FieldInfoFromInputArgument implements IFieldInfo {
 
 	@Override
 	public ITypeInfo getType() {
-		return reflectionUI.getTypeInfo(new JavaTypeInfoSource(String.class,
+		return reflectionUI.getTypeInfo(new JavaTypeInfoSource(reflectionUI, String.class,
 				new SpecificitiesIdentifier(containingTypeInfo.getName(), getName())));
 	}
 

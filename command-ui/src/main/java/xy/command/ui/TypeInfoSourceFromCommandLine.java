@@ -30,6 +30,7 @@ import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.source.ITypeInfoSource;
 import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
+import xy.reflect.ui.util.PrecomputedTypeInstanceWrapper;
 import xy.reflect.ui.util.ReflectionUIError;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
@@ -41,10 +42,13 @@ import xy.reflect.ui.util.ReflectionUIUtils;
  */
 public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
+	private CommandLineUI commandLineUI;
 	private CommandLine commandLine;
 	private SpecificitiesIdentifier specificitiesIdentifier;
 
-	public TypeInfoSourceFromCommandLine(CommandLine commandLine, SpecificitiesIdentifier specificitiesIdentifier) {
+	public TypeInfoSourceFromCommandLine(CommandLineUI commandLineUI, CommandLine commandLine,
+			SpecificitiesIdentifier specificitiesIdentifier) {
+		this.commandLineUI = commandLineUI;
 		this.commandLine = commandLine;
 		this.specificitiesIdentifier = specificitiesIdentifier;
 	}
@@ -86,30 +90,31 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 	}
 
 	@Override
-	public ITypeInfo getTypeInfo(ReflectionUI reflectionUI) {
-		return new TypeInfo(reflectionUI);
+	public ITypeInfo getTypeInfo() {
+		return new TypeInfo(commandLineUI);
 	}
 
-	protected IFieldInfo getFieldInfoFromCommandLinePart(ReflectionUI reflectionUI, AbstractCommandLinePart part,
+	protected IFieldInfo getFieldInfoFromCommandLinePart(CommandLineUI commandLineUI, AbstractCommandLinePart part,
 			ArgumentPage argumentPage, ITypeInfo commandLineTypeInfo) {
 		if (part instanceof FixedArgument) {
 			return null;
 		} else if (part instanceof InputArgument) {
-			return new FieldInfoFromInputArgument(reflectionUI, (InputArgument) part, argumentPage, commandLine,
+			return new FieldInfoFromInputArgument(commandLineUI, (InputArgument) part, argumentPage, commandLine,
 					commandLineTypeInfo);
 		} else if (part instanceof DirectoryArgument) {
-			return new FieldInfoFromDirectoryArgument(reflectionUI, (DirectoryArgument) part, argumentPage, commandLine,
-					commandLineTypeInfo);
+			return new FieldInfoFromDirectoryArgument(commandLineUI, (DirectoryArgument) part, argumentPage,
+					commandLine, commandLineTypeInfo);
 		} else if (part instanceof FileArgument) {
-			return new FieldInfoFromFileArgument(reflectionUI, (FileArgument) part, argumentPage, commandLine,
+			return new FieldInfoFromFileArgument(commandLineUI, (FileArgument) part, argumentPage, commandLine,
 					commandLineTypeInfo);
 		} else if (part instanceof Choice) {
-			return new FieldInfoFromChoice(reflectionUI, (Choice) part, argumentPage, commandLine, commandLineTypeInfo);
+			return new FieldInfoFromChoice(commandLineUI, (Choice) part, argumentPage, commandLine,
+					commandLineTypeInfo);
 		} else if (part instanceof OptionalPart) {
-			return new FieldInfoFromOptionalPart(reflectionUI, (OptionalPart) part, argumentPage, commandLine,
+			return new FieldInfoFromOptionalPart(commandLineUI, (OptionalPart) part, argumentPage, commandLine,
 					commandLineTypeInfo);
 		} else if (part instanceof MultiplePart) {
-			return new FieldInfoFromMultiplePart(reflectionUI, (MultiplePart) part, argumentPage, commandLine,
+			return new FieldInfoFromMultiplePart(commandLineUI, (MultiplePart) part, argumentPage, commandLine,
 					commandLineTypeInfo);
 		} else {
 			throw new ReflectionUIError();
@@ -119,7 +124,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 	protected class TypeInfo extends DefaultTypeInfo {
 
 		public TypeInfo(ReflectionUI reflectionUI) {
-			super(reflectionUI, new JavaTypeInfoSource(CommandLineInstance.class, null));
+			super(reflectionUI, new JavaTypeInfoSource(reflectionUI, CommandLineInstance.class, null));
 		}
 
 		@Override
@@ -195,14 +200,14 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
 		@Override
 		public Object getValue(Object object) {
-			Capsule result = new Capsule((CommandLineInstance) object);
-			reflectionUI.registerPrecomputedTypeInfoObject(result, new CapsuleTypeInfo(reflectionUI));
-			return result;
+			return new PrecomputedTypeInstanceWrapper(new Capsule((CommandLineInstance) object),
+					new CapsuleTypeInfo(reflectionUI));
 		}
 
 		@Override
 		public ITypeInfo getType() {
-			return new CapsuleTypeInfo(reflectionUI);
+			return reflectionUI
+					.getTypeInfo(new PrecomputedTypeInstanceWrapper.TypeInfoSource(new CapsuleTypeInfo(reflectionUI)));
 		}
 
 	}
@@ -210,7 +215,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 	protected class CapsuleTypeInfo extends DefaultTypeInfo {
 
 		public CapsuleTypeInfo(ReflectionUI reflectionUI) {
-			super(reflectionUI, new JavaTypeInfoSource(Capsule.class, new SpecificitiesIdentifier(
+			super(reflectionUI, new JavaTypeInfoSource(reflectionUI, Capsule.class, new SpecificitiesIdentifier(
 					new TypeInfo(reflectionUI).getName(), new CapsuleFieldInfo(reflectionUI).getName())));
 		}
 
@@ -229,7 +234,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 			List<IFieldInfo> result = new ArrayList<IFieldInfo>();
 			for (ArgumentPage argumentPage : commandLine.arguments) {
 				for (AbstractCommandLinePart part : argumentPage.parts) {
-					IFieldInfo field = getFieldInfoFromCommandLinePart(reflectionUI, part, argumentPage, this);
+					IFieldInfo field = getFieldInfoFromCommandLinePart(commandLineUI, part, argumentPage, this);
 					if (field == null) {
 						continue;
 					}
@@ -299,6 +304,5 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 			return null;
 		}
 	}
-
 
 }

@@ -15,7 +15,6 @@ import xy.command.model.ArgumentGroup;
 import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
 import xy.command.model.MultiplePart;
-import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.ColorSpecification;
 import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.ResourcePath;
@@ -51,12 +50,12 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 	private MultiplePart multiplePart;
 	private ArgumentPage argumentPage;
 	private AbstractCommandLinePart containingPart;
-	private ReflectionUI reflectionUI;
+	private CommandLineUI commandLineUI;
 	private ITypeInfo commandLineTypeInfo;
 
-	public FieldInfoFromMultiplePart(ReflectionUI reflectionUI, MultiplePart multiplePart, ArgumentPage argumentPage,
+	public FieldInfoFromMultiplePart(CommandLineUI commandLineUI, MultiplePart multiplePart, ArgumentPage argumentPage,
 			AbstractCommandLinePart containingPart, ITypeInfo commandLineTypeInfo) {
-		this.reflectionUI = reflectionUI;
+		this.commandLineUI = commandLineUI;
 		this.multiplePart = multiplePart;
 		this.argumentPage = argumentPage;
 		this.containingPart = containingPart;
@@ -322,12 +321,13 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 			@Override
 			public IListStructuralInfo getStructuralInfo() {
-				return new DefaultListStructuralInfo(reflectionUI);
+				return new DefaultListStructuralInfo(commandLineUI);
 			}
 
 			@Override
 			public ITypeInfo getItemType() {
-				return reflectionUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(multiplePart, null));
+				return commandLineUI
+						.getTypeInfo(new TypeInfoSourceFromArgumentGroup(commandLineUI, multiplePart, null));
 			}
 
 			@Override
