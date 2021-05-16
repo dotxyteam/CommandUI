@@ -305,7 +305,7 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
-			public boolean isItemNullValueDistinct() {
+			public boolean isItemNullValueSupported() {
 				return false;
 			}
 
