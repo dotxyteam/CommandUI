@@ -3,6 +3,7 @@ package xy.command.ui;
 import java.io.File;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import xy.command.instance.ArgumentGroupInstance;
@@ -20,6 +21,7 @@ import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.ValueReturnMode;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.filter.IInfoFilter;
+import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.type.DefaultTypeInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
 import xy.reflect.ui.info.type.source.JavaTypeInfoSource;
@@ -68,6 +70,16 @@ public class FieldInfoFromFileArgument implements IFieldInfo {
 	@Override
 	public Map<String, Object> getSpecificProperties() {
 		return Collections.emptyMap();
+	}
+
+	@Override
+	public List<IMethodInfo> getAlternativeConstructors(Object object) {
+		return null;
+	}
+
+	@Override
+	public List<IMethodInfo> getAlternativeListItemConstructors(Object object) {
+		return null;
 	}
 
 	@Override

@@ -83,6 +83,16 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 	}
 
 	@Override
+	public List<IMethodInfo> getAlternativeConstructors(Object object) {
+		return null;
+	}
+
+	@Override
+	public List<IMethodInfo> getAlternativeListItemConstructors(Object object) {
+		return null;
+	}
+
+	@Override
 	public ITypeInfo getType() {
 		return new IListTypeInfo() {
 
