@@ -124,7 +124,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 	protected class TypeInfo extends DefaultTypeInfo {
 
 		public TypeInfo(ReflectionUI reflectionUI) {
-			super(reflectionUI, new JavaTypeInfoSource(reflectionUI, CommandLineInstance.class, null));
+			super(new JavaTypeInfoSource(reflectionUI, CommandLineInstance.class, null));
 		}
 
 		@Override
@@ -215,7 +215,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 	protected class CapsuleTypeInfo extends DefaultTypeInfo {
 
 		public CapsuleTypeInfo(ReflectionUI reflectionUI) {
-			super(reflectionUI, new JavaTypeInfoSource(reflectionUI, Capsule.class, new SpecificitiesIdentifier(
+			super(new JavaTypeInfoSource(reflectionUI, Capsule.class, new SpecificitiesIdentifier(
 					new TypeInfo(reflectionUI).getName(), new CapsuleFieldInfo(reflectionUI).getName())));
 		}
 
