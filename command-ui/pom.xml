@@ -9,7 +9,7 @@
 		<dependency>
 			<groupId>com.github.dotxyteam</groupId>
 			<artifactId>custom-ui</artifactId>
-			<version>4.9.92</version>
+			<version>5.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
