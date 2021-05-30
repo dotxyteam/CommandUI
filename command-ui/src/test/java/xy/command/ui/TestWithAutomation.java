@@ -44,7 +44,7 @@ public class TestWithAutomation {
 		}
 		try {
 			TestingUtils.assertSuccessfulReplay(tester, new File(
-					System.getProperty("command-ui-tests.project.directory", "./") + "test-specifications/test.stt"));
+					System.getProperty("command-ui.project.directory", "./") + "test-specifications/test.stt"));
 		} finally {
 			Files.delete(comanndLineSpecFile.toPath());
 		}
