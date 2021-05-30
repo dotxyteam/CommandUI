@@ -1,0 +1,106 @@
+<xy.command.model.CommandLineProject>
+  <description>just a test</description>
+  <title>test</title>
+  <arguments>
+    <xy.command.model.ArgumentPage>
+      <title>page1</title>
+      <parts>
+        <xy.command.model.InputArgument>
+          <description>the 1rst input</description>
+          <title>input1</title>
+          <defaultValue></defaultValue>
+        </xy.command.model.InputArgument>
+        <xy.command.model.InputArgument>
+          <description>the 2nd input</description>
+          <title>inputWithDefaultValue</title>
+          <defaultValue>input default value example</defaultValue>
+        </xy.command.model.InputArgument>
+        <xy.command.model.FileArgument>
+          <description>the 1rst file argument</description>
+          <title>file1</title>
+          <defaultValue></defaultValue>
+        </xy.command.model.FileArgument>
+        <xy.command.model.DirectoryArgument>
+          <description>the 1st directory argument</description>
+          <title>dir1</title>
+          <defaultValue></defaultValue>
+        </xy.command.model.DirectoryArgument>
+        <xy.command.model.FixedArgument>
+          <description>a fixed argument example</description>
+          <value>--fixed-option</value>
+        </xy.command.model.FixedArgument>
+      </parts>
+    </xy.command.model.ArgumentPage>
+    <xy.command.model.ArgumentPage>
+      <title>page2</title>
+      <parts>
+        <xy.command.model.MultiplePart>
+          <description>an example of multiple arguments</description>
+          <title>a list</title>
+          <parts>
+            <xy.command.model.InputArgument>
+              <description></description>
+              <title>sub-input</title>
+              <defaultValue></defaultValue>
+            </xy.command.model.InputArgument>
+            <xy.command.model.FileArgument>
+              <description></description>
+              <title>sub-file</title>
+              <defaultValue></defaultValue>
+            </xy.command.model.FileArgument>
+          </parts>
+        </xy.command.model.MultiplePart>
+      </parts>
+    </xy.command.model.ArgumentPage>
+    <xy.command.model.ArgumentPage>
+      <title>page3</title>
+      <parts>
+        <xy.command.model.OptionalPart>
+          <description>an optional list of arguments</description>
+          <title>may-be</title>
+          <parts>
+            <xy.command.model.DirectoryArgument>
+              <description></description>
+              <title>sub-dir</title>
+              <defaultValue></defaultValue>
+            </xy.command.model.DirectoryArgument>
+            <xy.command.model.FixedArgument>
+              <description></description>
+              <value>--sub-option</value>
+            </xy.command.model.FixedArgument>
+          </parts>
+          <activeByDefault>false</activeByDefault>
+        </xy.command.model.OptionalPart>
+        <xy.command.model.Choice>
+          <description></description>
+          <options>
+            <xy.command.model.ArgumentGroup>
+              <description>1st choosable option</description>
+              <title>choice1</title>
+              <parts>
+                <xy.command.model.InputArgument>
+                  <description></description>
+                  <title>input-of-choice1</title>
+                  <defaultValue></defaultValue>
+                </xy.command.model.InputArgument>
+              </parts>
+            </xy.command.model.ArgumentGroup>
+            <xy.command.model.ArgumentGroup>
+              <description></description>
+              <title>choice2</title>
+              <parts>
+                <xy.command.model.FixedArgument>
+                  <description></description>
+                  <value>--invisible-option-of-choice2</value>
+                </xy.command.model.FixedArgument>
+              </parts>
+            </xy.command.model.ArgumentGroup>
+          </options>
+          <title>select</title>
+        </xy.command.model.Choice>
+      </parts>
+    </xy.command.model.ArgumentPage>
+  </arguments>
+  <executablePath>dummy.exe</executablePath>
+  <executionDir>.</executionDir>
+</xy.command.model.CommandLineProject>

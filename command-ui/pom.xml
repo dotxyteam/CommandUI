@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>xy</groupId>
@@ -15,6 +16,12 @@
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
 			<version>1.4.7</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.dotxyteam</groupId>
+			<artifactId>swing-testing-toolkit</artifactId>
+			<version>1.8.2</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -65,51 +72,55 @@
 							<tasks>
 								<echo file="${basedir}/target/CommandUI.tmp" append="yes">#!/bin/bash
 									#set -x
-									
-									
+
+
 									JAVA_EXE=`which java`
 									if [ "$$JAVA_EXE" == "" ]; then
-									    echo &quot;java command not found in the path&quot;
-										echo &quot;searching for JAVA_HOME...&quot;
-										if [ "$$JAVA_HOME" != "" ]; then
-											JAVA_EXE=$$JAVA_HOME/bin/java
-										else
-										    echo &quot;JAVA_HOME environment variable is not set&quot;
-										fi
+									echo &quot;java command not found in the path&quot;
+									echo &quot;searching for JAVA_HOME...&quot;
+									if [ "$$JAVA_HOME" != "" ]; then
+									JAVA_EXE=$$JAVA_HOME/bin/java
+									else
+									echo &quot;JAVA_HOME environment variable is not set&quot;
+									fi
 									fi
 									if [ "$$JAVA_EXE" == "" ]; then
-									    echo &quot;JAVA_EXE could not be set&quot;
-									    exit 1
+									echo &quot;JAVA_EXE could not be set&quot;
+									exit 1
 									fi
 									echo &quot;Using $$JAVA_EXE...&quot;
-																	
+
 
 									cd `dirname $0`
-									
+
 									JVM_ARGS=""
-									JVM_ARGS="$$JVM_ARGS -Dxy.reflect.ui.infoCustomizationsToolsHidden=true"
+									JVM_ARGS="$$JVM_ARGS
+									-Dxy.reflect.ui.infoCustomizationsToolsHidden=true"
 									JVM_ARGS="$$JVM_ARGS -Dxy.command.ui.exeFile=$$0"
 									JVM_ARGS="$$JVM_ARGS -Dxy.command.ui.defaultExeFile=CommandUI"
-									
-									$$JAVA_EXE -version 2&gt;&amp;1 | grep version | grep &quot;1.8\|1.7\|1.6&quot;
+
+									$$JAVA_EXE -version 2&gt;&amp;1 | grep version | grep
+									&quot;1.8\|1.7\|1.6&quot;
 									if [ $? -ne 0 ]; then
-									    echo &quot;Java version 1.6 to 1.8 is required&quot;
-									    exit 1
+									echo &quot;Java version 1.6 to 1.8 is required&quot;
+									exit 1
 									fi
-									
-									
+
+
 									$$JAVA_EXE $$JVM_ARGS -jar $0 $1 $2
 									exit $$?
 								</echo>
-								<fixcrlf srcdir="${basedir}/target" includes="CommandUI.tmp"
-									eol="lf" eof="remove" />
-								<concat destfile="${basedir}/target/CommandUI" binary="true">
+								<fixcrlf srcdir="${basedir}/target"
+									includes="CommandUI.tmp" eol="lf" eof="remove" />
+								<concat destfile="${basedir}/target/CommandUI"
+									binary="true">
 									<filelist>
 										<file name="${basedir}/target/CommandUI.tmp" />
-										<file name="${basedir}/target/command-ui-${version}-jar-with-dependencies.jar" />
+										<file
+											name="${basedir}/target/command-ui-${version}-jar-with-dependencies.jar" />
 									</filelist>
 								</concat>
-								<delete file="${basedir}/target/CommandUI.tmp"/>								
+								<delete file="${basedir}/target/CommandUI.tmp" />
 							</tasks>
 						</configuration>
 					</execution>
