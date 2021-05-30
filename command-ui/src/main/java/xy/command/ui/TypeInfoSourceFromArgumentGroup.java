@@ -353,13 +353,13 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 		}
 
 		@Override
-		public Object copy(Object object) {
-			throw new UnsupportedOperationException();
+		public boolean canPersist() {
+			return false;
 		}
 
 		@Override
-		public boolean canPersist() {
-			return false;
+		public Object copy(Object object) {
+			throw new UnsupportedOperationException();
 		}
 
 		@Override

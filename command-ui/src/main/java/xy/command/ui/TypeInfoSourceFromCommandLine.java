@@ -147,6 +147,11 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 			return Collections.singletonList(new CapsuleFieldInfo(reflectionUI));
 		}
 
+		@Override
+		public ITypeInfoSource getSource() {
+			return TypeInfoSourceFromCommandLine.this;
+		}
+
 	}
 
 	protected class Capsule {

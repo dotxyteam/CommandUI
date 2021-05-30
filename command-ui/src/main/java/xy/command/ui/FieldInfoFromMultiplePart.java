@@ -38,6 +38,7 @@ import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 import xy.reflect.ui.undo.ListModificationFactory;
 import xy.reflect.ui.util.Mapper;
 import xy.reflect.ui.util.ReflectionUIError;
+import xy.reflect.ui.util.ReflectionUIUtils;
 
 /**
  * Specifies how a {@link MultiplePart} should be displayed in a GUI.
@@ -108,7 +109,7 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 			@Override
 			public String getName() {
-				return FieldInfoFromMultiplePart.this.getName() + " - type";
+				return FieldInfoFromMultiplePart.this.getName() + "-type";
 			}
 
 			@Override
@@ -337,7 +338,26 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			@Override
 			public ITypeInfo getItemType() {
 				return commandLineUI
-						.getTypeInfo(new TypeInfoSourceFromArgumentGroup(commandLineUI, multiplePart, null));
+						.getTypeInfo(new TypeInfoSourceFromArgumentGroup(commandLineUI, multiplePart, null) {
+
+							@Override
+							public ITypeInfo getTypeInfo() {
+								return new TypeInfoFromArgumentGroup(commandLineUI) {
+
+									@Override
+									public String getName() {
+										return super.getName() + "-item";
+									}
+
+									@Override
+									public String getCaption() {
+										return ReflectionUIUtils.composeMessage(super.getCaption(), "Item");
+									}
+
+								};
+							}
+
+						});
 			}
 
 			@Override
