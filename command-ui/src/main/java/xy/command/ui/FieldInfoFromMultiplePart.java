@@ -302,10 +302,6 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
-			public void onSelection(List<? extends ItemPosition> newSelection) {
-			}
-
-			@Override
 			public boolean isRemovalAllowed() {
 				return true;
 			}
