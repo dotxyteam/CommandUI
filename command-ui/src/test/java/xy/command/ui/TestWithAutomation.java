@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import xy.reflect.ui.control.swing.menu.AbstractFileMenuItem;
+import xy.reflect.ui.undo.ModificationStack;
 import xy.reflect.ui.util.MiscUtils;
 import xy.reflect.ui.util.MoreSystemProperties;
 import xy.ui.testing.Tester;
@@ -44,6 +45,7 @@ public class TestWithAutomation {
 		if (comanndLineSpecFile.exists()) {
 			Files.delete(comanndLineSpecFile.toPath());
 		}
+		System.setProperty(ModificationStack.DEFAULT_CAPACITY_PROPERTY_KEY, "100");
 		try {
 			TestingUtils.assertSuccessfulReplay(tester, new File(
 					System.getProperty("command-ui.project.directory", "./") + "test-specifications/test.stt"));
