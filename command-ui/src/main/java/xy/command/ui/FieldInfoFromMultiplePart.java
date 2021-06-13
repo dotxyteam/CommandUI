@@ -3,6 +3,7 @@ package xy.command.ui;
 import java.awt.Dimension;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
 import xy.command.model.MultiplePart;
 import xy.reflect.ui.info.ColorSpecification;
+import xy.reflect.ui.info.ITransactionInfo;
 import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.ResourcePath;
 import xy.reflect.ui.info.ValueReturnMode;
@@ -37,6 +39,7 @@ import xy.reflect.ui.info.type.source.PrecomputedTypeInfoSource;
 import xy.reflect.ui.info.type.source.SpecificitiesIdentifier;
 import xy.reflect.ui.undo.ListModificationFactory;
 import xy.reflect.ui.util.Mapper;
+import xy.reflect.ui.util.MiscUtils;
 import xy.reflect.ui.util.ReflectionUIError;
 import xy.reflect.ui.util.ReflectionUIUtils;
 
@@ -103,6 +106,11 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
+			public ITransactionInfo getTransaction(Object object) {
+				return null;
+			}
+
+			@Override
 			public String getOnlineHelp() {
 				return null;
 			}
@@ -123,11 +131,15 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 			@Override
 			public String toString(Object object) {
-				return object.toString();
+				List<String> result = new ArrayList<String>();
+				for (Object item : toArray(object)) {
+					result.add(ReflectionUIUtils.toString(commandLineUI, item));
+				}
+				return MiscUtils.stringJoin(result, ", ");
 			}
 
 			@Override
-			public boolean supportsInstance(Object object) {
+			public boolean supports(Object object) {
 				return object instanceof CommandLineInstance[];
 			}
 
@@ -200,6 +212,11 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			@Override
 			public Dimension getFormPreferredSize() {
 				return null;
+			}
+
+			@Override
+			public int getFormSpacing() {
+				return ITypeInfo.DEFAULT_FORM_SPACING;
 			}
 
 			@Override

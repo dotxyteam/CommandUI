@@ -61,7 +61,7 @@ public class CommandLineUI extends CustomizedUI {
 
 	private static final String GUI_CUSTOMIZATIONS_RESOURCE_NAME = "commandLine.icu";
 	private static final String GUI_CUSTOMIZATIONS_RESOURCE_DIRECTORY = System
-			.getProperty("xy.command.ui.alternateUICustomizationsFileDirectory");;
+			.getProperty("xy.command.ui.alternateUICustomizationsFileDirectory");
 
 	private SwingCustomizer renderer;
 

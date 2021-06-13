@@ -20,6 +20,7 @@ import xy.command.model.InputArgument;
 import xy.command.model.MultiplePart;
 import xy.command.model.OptionalPart;
 import xy.reflect.ui.info.ColorSpecification;
+import xy.reflect.ui.info.ITransactionInfo;
 import xy.reflect.ui.info.ResourcePath;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.menu.MenuModel;
@@ -148,6 +149,11 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 		}
 
 		@Override
+		public ITransactionInfo getTransaction(Object object) {
+			return null;
+		}
+
+		@Override
 		public Map<String, Object> getSpecificProperties() {
 			return Collections.emptyMap();
 		}
@@ -177,7 +183,7 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 		}
 
 		@Override
-		public boolean supportsInstance(Object object) {
+		public boolean supports(Object object) {
 			return (object instanceof ArgumentGroupInstance)
 					&& (((ArgumentGroupInstance) object).model == argumentGroup);
 		}
@@ -250,6 +256,11 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 		@Override
 		public Dimension getFormPreferredSize() {
 			return null;
+		}
+
+		@Override
+		public int getFormSpacing() {
+			return ITypeInfo.DEFAULT_FORM_SPACING;
 		}
 
 		@Override
