@@ -12,6 +12,7 @@ import xy.command.instance.CommandLineInstance;
 import xy.command.model.ArgumentGroup;
 import xy.command.model.Choice;
 import xy.reflect.ui.info.ColorSpecification;
+import xy.reflect.ui.info.ITransactionInfo;
 import xy.reflect.ui.info.ResourcePath;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.menu.MenuModel;
@@ -33,6 +34,11 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 
 		private TypeInfoFromChoice(CommandLineUI commandLineUI) {
 			this.commandLineUI = commandLineUI;
+		}
+
+		@Override
+		public ITransactionInfo getTransaction(Object object) {
+			return null;
 		}
 
 		@Override

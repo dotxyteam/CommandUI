@@ -16,6 +16,7 @@ import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
 import xy.command.model.MultiplePart;
 import xy.reflect.ui.info.ColorSpecification;
+import xy.reflect.ui.info.ITransactionInfo;
 import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.ResourcePath;
 import xy.reflect.ui.info.ValueReturnMode;
@@ -100,6 +101,11 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			@Override
 			public Map<String, Object> getSpecificProperties() {
 				return Collections.emptyMap();
+			}
+
+			@Override
+			public ITransactionInfo getTransaction(Object object) {
+				return null;
 			}
 
 			@Override

@@ -20,6 +20,7 @@ import xy.command.model.InputArgument;
 import xy.command.model.MultiplePart;
 import xy.command.model.OptionalPart;
 import xy.reflect.ui.info.ColorSpecification;
+import xy.reflect.ui.info.ITransactionInfo;
 import xy.reflect.ui.info.ResourcePath;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.menu.MenuModel;
@@ -145,6 +146,11 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 			if (!getOuterType().equals(other.getOuterType()))
 				return false;
 			return true;
+		}
+
+		@Override
+		public ITransactionInfo getTransaction(Object object) {
+			return null;
 		}
 
 		@Override
