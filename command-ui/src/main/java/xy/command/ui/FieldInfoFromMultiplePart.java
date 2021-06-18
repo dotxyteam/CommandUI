@@ -351,7 +351,7 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			@Override
 			public ITypeInfo getItemType() {
 				return commandLineUI
-						.getTypeInfo(new TypeInfoSourceFromArgumentGroup(commandLineUI, multiplePart, null) {
+						.buildTypeInfo(new TypeInfoSourceFromArgumentGroup(commandLineUI, multiplePart, null) {
 
 							@Override
 							public ITypeInfo getTypeInfo() {

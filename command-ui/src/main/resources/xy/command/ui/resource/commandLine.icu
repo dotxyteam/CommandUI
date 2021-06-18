@@ -5,13 +5,10 @@
         <uniqueIdentifier>e2e51ad:16b95170bc6:-8000</uniqueIdentifier>
         <specificProperties/>
         <buttonBackgroundColor>
-            <blue>255</blue>
-            <green>240</green>
-            <red>234</red>
+            <blue>238</blue>
+            <green>219</green>
+            <red>205</red>
         </buttonBackgroundColor>
-        <buttonBackgroundImagePath>
-            <specification>&lt;class-path-resource&gt; xy/command/ui/resource/buttonBackground.png</specification>
-        </buttonBackgroundImagePath>
         <buttonBorderColor>
             <blue>255</blue>
             <green>255</green>
@@ -33,13 +30,10 @@
             <red>213</red>
         </mainBorderColor>
         <mainButtonBackgroundColor>
-            <blue>255</blue>
-            <green>240</green>
-            <red>234</red>
+            <blue>238</blue>
+            <green>219</green>
+            <red>205</red>
         </mainButtonBackgroundColor>
-        <mainButtonBackgroundImagePath>
-            <specification>&lt;class-path-resource&gt; xy/command/ui/resource/buttonBackground.png</specification>
-        </mainButtonBackgroundImagePath>
         <mainButtonBorderColor>
             <blue>255</blue>
             <green>255</green>
@@ -8241,13 +8235,17 @@
                     <uniqueIdentifier>715c3c1a:16c8f6a711e:5ac3</uniqueIdentifier>
                     <conversionMethodFinder>
                         <uniqueIdentifier>715c3c1a:16c8f6a711e:5ac4</uniqueIdentifier>
+                        <chosenParameterPosition>-1</chosenParameterPosition>
                         <conversionClassName>xy.reflect.ui.util.ImageIcon</conversionClassName>
                         <conversionMethodSignature>xy.reflect.ui.util.ImageIcon (java.awt.Image)</conversionMethodSignature>
+                        <otherParameterValueStorages/>
                     </conversionMethodFinder>
                     <reverseConversionMethodFinder>
                         <uniqueIdentifier>715c3c1a:16c8f6a711e:5ac5</uniqueIdentifier>
+                        <chosenParameterPosition>-1</chosenParameterPosition>
                         <conversionClassName>xy.reflect.ui.util.ImageIcon</conversionClassName>
                         <conversionMethodSignature>java.awt.Image getImage()</conversionMethodSignature>
+                        <otherParameterValueStorages/>
                     </reverseConversionMethodFinder>
                 </preConversion>
             </nullReplacement>
@@ -10650,6 +10648,7 @@
             <uniqueIdentifier>-7b2ec4fe:178986f98d7:-4356</uniqueIdentifier>
             <specificProperties/>
             <hidden>false</hidden>
+            <customFieldCaption></customFieldCaption>
             <displayedAsSingletonList>false</displayedAsSingletonList>
             <duplicateGenerated>false</duplicateGenerated>
             <fieldName>Command GUI</fieldName>
@@ -11000,6 +10999,7 @@
             </specificTypeCustomizations>
             <transientForced>false</transientForced>
         </fieldsCustomizations>
+        <formSpacing>5</formSpacing>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>570e3941:16c38a456f1:4c8f</uniqueIdentifier>
@@ -11069,6 +11069,7 @@
             <transientForced>false</transientForced>
         </fieldsCustomizations>
         <fieldsLayout>HORIZONTAL_FLOW</fieldsLayout>
+        <formSpacing>0</formSpacing>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>570e3941:16c38a456f1:4cb4</uniqueIdentifier>

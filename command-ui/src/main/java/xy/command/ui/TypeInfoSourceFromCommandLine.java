@@ -212,7 +212,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 		@Override
 		public ITypeInfo getType() {
 			return reflectionUI
-					.getTypeInfo(new PrecomputedTypeInstanceWrapper.TypeInfoSource(new CapsuleTypeInfo(reflectionUI)));
+					.buildTypeInfo(new PrecomputedTypeInstanceWrapper.TypeInfoSource(new CapsuleTypeInfo(reflectionUI)));
 		}
 
 	}

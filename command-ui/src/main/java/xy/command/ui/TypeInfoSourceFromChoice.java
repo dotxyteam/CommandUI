@@ -120,7 +120,7 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 			List<ITypeInfo> result = new ArrayList<ITypeInfo>();
 			for (ArgumentGroup argumentGroup : choice.options) {
 				ITypeInfo type = commandLineUI
-						.getTypeInfo(new TypeInfoSourceFromArgumentGroup(commandLineUI, argumentGroup, null));
+						.buildTypeInfo(new TypeInfoSourceFromArgumentGroup(commandLineUI, argumentGroup, null));
 				result.add(type);
 			}
 			return result;

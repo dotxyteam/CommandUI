@@ -352,7 +352,7 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 
 				@Override
 				public ITypeInfo getReturnValueType() {
-					return commandLineUI.getTypeInfo(TypeInfoSourceFromArgumentGroup.this);
+					return commandLineUI.buildTypeInfo(TypeInfoSourceFromArgumentGroup.this);
 				}
 
 			});

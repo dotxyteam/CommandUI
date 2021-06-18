@@ -76,7 +76,7 @@ public class FieldInfoFromChoice implements IFieldInfo {
 
 	@Override
 	public ITypeInfo getType() {
-		return commandLineUI.getTypeInfo(new TypeInfoSourceFromChoice(commandLineUI,
+		return commandLineUI.buildTypeInfo(new TypeInfoSourceFromChoice(commandLineUI,
 				new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName()), choice));
 	}
 
