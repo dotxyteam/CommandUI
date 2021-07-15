@@ -234,7 +234,7 @@ public class CommandMonitoringDialog extends JDialog {
 					}
 				} catch (final Throwable t) {
 					if (!killed) {
-						write("\n<An error occured>:\n" + new ReflectionUIError(t), getTextAttributes(Color.MAGENTA));
+						write("\n<An error occurred>:\n" + new ReflectionUIError(t), getTextAttributes(Color.MAGENTA));
 					}
 				}
 				SwingUtilities.invokeLater(new Runnable() {
