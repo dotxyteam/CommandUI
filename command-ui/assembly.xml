@@ -8,6 +8,15 @@
 	</formats>
 	<fileSets>
 		<fileSet>
+			<directory>${project.basedir}</directory>
+			<includes>
+				<include>LICENSE</include>
+			</includes>
+			<excludes>
+				<exclude>.*</exclude>
+			</excludes>
+		</fileSet>
+		<fileSet>
 			<directory>${project.basedir}/src</directory>
 			<excludes>
 				<exclude>.*</exclude>
