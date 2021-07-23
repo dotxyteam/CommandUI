@@ -23,6 +23,12 @@
 			</excludes>
 		</fileSet>
 		<fileSet>
+			<directory>${project.basedir}/test-specifications</directory>
+			<excludes>
+				<exclude>.*</exclude>
+			</excludes>
+		</fileSet>
+		<fileSet>
 			<directory>${project.build.directory}</directory>
 			<includes>
 				<include>CommandUI</include>

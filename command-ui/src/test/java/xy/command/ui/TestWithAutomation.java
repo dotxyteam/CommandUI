@@ -6,7 +6,6 @@ import java.nio.file.Files;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import xy.reflect.ui.control.swing.menu.AbstractFileMenuItem;
 import xy.reflect.ui.undo.ModificationStack;
 import xy.reflect.ui.util.MiscUtils;
 import xy.reflect.ui.util.MoreSystemProperties;
@@ -40,7 +39,6 @@ public class TestWithAutomation {
 
 	@Test
 	public void test() throws Exception {
-		AbstractFileMenuItem.getLastFileByForm();
 		File comanndLineSpecFile = new File("test.cml");
 		if (comanndLineSpecFile.exists()) {
 			Files.delete(comanndLineSpecFile.toPath());
