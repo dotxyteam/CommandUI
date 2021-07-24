@@ -1810,6 +1810,7 @@
         <string>may-be</string>
         <string>select</string>
         <string>choice1</string>
+        <string>&lt;HTML&gt;choice1&lt;/HTML&gt;</string>
         <string>input-of-choice1: </string>
       </visibleStrings>
     </xy.ui.testing.action.component.CheckVisibleStringsAction>
@@ -1902,6 +1903,7 @@
         <string>&lt;HTML&gt;an optional list of arguments&lt;/HTML&gt;</string>
         <string>select</string>
         <string>choice2</string>
+        <string>&lt;HTML&gt;choice2&lt;/HTML&gt;</string>
       </visibleStrings>
     </xy.ui.testing.action.component.CheckVisibleStringsAction>
     <xy.ui.testing.action.component.ClickAction>
@@ -1935,6 +1937,7 @@
         <string>&lt;HTML&gt;an optional list of arguments&lt;/HTML&gt;</string>
         <string>select</string>
         <string>choice1</string>
+        <string>&lt;HTML&gt;choice1&lt;/HTML&gt;</string>
         <string>input-of-choice1: </string>
         <string>input-of-choice-1 value</string>
       </visibleStrings>
@@ -1970,6 +1973,7 @@
         <string>&lt;HTML&gt;an optional list of arguments&lt;/HTML&gt;</string>
         <string>select</string>
         <string>choice2</string>
+        <string>&lt;HTML&gt;choice2&lt;/HTML&gt;</string>
       </visibleStrings>
     </xy.ui.testing.action.component.CheckVisibleStringsAction>
     <xy.ui.testing.action.component.ClickAction>
@@ -2008,7 +2012,7 @@
       </componentFinder>
       <disabled>false</disabled>
       <propertyName>Text</propertyName>
-      <propertyValueExpected>.*An error occured.*</propertyValueExpected>
+      <propertyValueExpected>.*An error occurred.*</propertyValueExpected>
       <regularExpressionExpected>true</regularExpressionExpected>
     </xy.ui.testing.action.component.property.CheckComponentPropertyAction>
     <xy.ui.testing.action.component.ClickAction>
@@ -2292,8 +2296,7 @@
       <negated>false</negated>
       <orderChecked>false</orderChecked>
       <visibleStrings>
-        <string>Unsupported Operation Error: The default executable file is not known
-</string>
+        <string>Unsupported Operation Error: The default executable file is not known</string>
       </visibleStrings>
     </xy.ui.testing.action.component.CheckVisibleStringsAction>
     <xy.ui.testing.action.component.ClickAction>
@@ -2313,7 +2316,7 @@
       <button>LEFT_BUTTON</button>
       <componentFinder class="xy.ui.testing.finder.DisplayedStringComponentFinder">
         <occurrencesToSkip>0</occurrencesToSkip>
-        <visibleString>Open Command Execution Dialog</visibleString>
+        <visibleString>Command Execution Dialog...</visibleString>
         <visibleStringInTree>false</visibleStringInTree>
         <windowIndex>0</windowIndex>
       </componentFinder>

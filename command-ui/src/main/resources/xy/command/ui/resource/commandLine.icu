@@ -7999,8 +7999,8 @@
                     <itemTypeName>xy.command.model.ArgumentPage</itemTypeName>
                     <length>
                         <uniqueIdentifier>-7bd1b503:16be1db837a:7d4d</uniqueIdentifier>
-                        <unit>PIXELS</unit>
-                        <value>200</value>
+                        <unit>SCREEN_PERCENT</unit>
+                        <value>35</value>
                     </length>
                     <listSorted>false</listSorted>
                     <listTypeName>java.util.List</listTypeName>
@@ -8420,6 +8420,7 @@
             <customMethodCaption>Open Command Execution Dialog</customMethodCaption>
             <detachedReturnValueForced>false</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
+            <encapsulationFieldName>topRight</encapsulationFieldName>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
             <methodName>openCommandMonitoringDialog</methodName>
             <methodSignature>void openCommandMonitoringDialog()</methodSignature>
@@ -10828,6 +10829,23 @@
             <runWhenObjectShown>false</runWhenObjectShown>
             <validating>false</validating>
         </methodsCustomizations>
+        <methodsCustomizations>
+            <uniqueIdentifier>-5636ca6b:17ad6ae8314:7091</uniqueIdentifier>
+            <specificProperties/>
+            <hidden>false</hidden>
+            <onlineHelp>Allows to test commands</onlineHelp>
+            <customMethodCaption>Command Execution Dialog...</customMethodCaption>
+            <detachedReturnValueForced>false</detachedReturnValueForced>
+            <duplicateGenerated>false</duplicateGenerated>
+            <ignoredReturnValueForced>false</ignoredReturnValueForced>
+            <methodName>openCommandMonitoringDialog</methodName>
+            <methodSignature>void openCommandMonitoringDialog()</methodSignature>
+            <readOnlyForced>true</readOnlyForced>
+            <returnValueFieldGenerated>false</returnValueFieldGenerated>
+            <runWhenObjectHidden>false</runWhenObjectHidden>
+            <runWhenObjectShown>false</runWhenObjectShown>
+            <validating>false</validating>
+        </methodsCustomizations>
         <methodsLayout>VERTICAL_FLOW</methodsLayout>
         <typeName>CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
@@ -11345,8 +11363,8 @@
         <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
         <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
         <copyForbidden>false</copyForbidden>
-        <customMethodsOrder>distribute</customMethodsOrder>
         <customMethodsOrder>instanciate</customMethodsOrder>
+        <customMethodsOrder>distribute</customMethodsOrder>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>-7b2ec4fe:178986f98d7:-4352</uniqueIdentifier>
