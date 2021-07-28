@@ -23,6 +23,12 @@
 			<version>1.8.2</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -70,46 +76,49 @@
 						</goals>
 						<configuration>
 							<tasks>
-								<echo file="${basedir}/target/CommandUI.tmp" append="yes">#!/bin/bash
-									#set -x
+								<echo file="${basedir}/target/CommandUI.tmp" append="yes"><![CDATA[#!/bin/bash
+#set -x
 
 
-									JAVA_EXE=`which java`
-									if [ "$$JAVA_EXE" == "" ]; then
-									echo &quot;java command not found in the path&quot;
-									echo &quot;searching for JAVA_HOME...&quot;
-									if [ "$$JAVA_HOME" != "" ]; then
-									JAVA_EXE=$$JAVA_HOME/bin/java
-									else
-									echo &quot;JAVA_HOME environment variable is not set&quot;
-									fi
-									fi
-									if [ "$$JAVA_EXE" == "" ]; then
-									echo &quot;JAVA_EXE could not be set&quot;
-									exit 1
-									fi
-									echo &quot;Using $$JAVA_EXE...&quot;
+JAVA_EXE=`which java`
+if [ "$$JAVA_EXE" == "" ]; then
+echo "java command not found in the path"
+echo
+"searching for JAVA_HOME..."
+if [ "$$JAVA_HOME" != ""
+]; then
+JAVA_EXE=$$JAVA_HOME/bin/java
+else
+echo "JAVA_HOME
+environment variable is not set"
+fi
+fi
+if [ "$$JAVA_EXE" ==
+"" ]; then
+echo "JAVA_EXE could not be set"
+exit 1
+fi
+echo "Using $$JAVA_EXE..."
 
 
-									cd `dirname $0`
+cd `dirname $0`
 
-									JVM_ARGS=""
-									JVM_ARGS="$$JVM_ARGS
-									-Dxy.reflect.ui.infoCustomizationsToolsHidden=true"
-									JVM_ARGS="$$JVM_ARGS -Dxy.command.ui.exeFile=$$0"
-									JVM_ARGS="$$JVM_ARGS -Dxy.command.ui.defaultExeFile=CommandUI"
+JVM_ARGS=""
+JVM_ARGS="$$JVM_ARGS
+-Dxy.reflect.ui.infoCustomizationsToolsHidden=true"
+JVM_ARGS="$$JVM_ARGS -Dxy.command.ui.exeFile=$$0"
+JVM_ARGS="$$JVM_ARGS -Dxy.command.ui.defaultExeFile=CommandUI"
 
-									$$JAVA_EXE -version 2&gt;&amp;1 | grep version | grep
-									&quot;1.8\|1.7\|1.6&quot;
-									if [ $? -ne 0 ]; then
-									echo &quot;Java version 1.6 to 1.8 is required&quot;
-									exit 1
-									fi
+$$JAVA_EXE -version 2>&1 | grep version | grep "1.8"
+if [ $? -ne 0 ]; then
+echo "Java version 1.8
+is required"
+exit 1
+fi
 
 
-									$$JAVA_EXE $$JVM_ARGS -jar $0 $1 $2
-									exit $$?
-								</echo>
+$$JAVA_EXE $$JVM_ARGS -jar $0 $1 $2
+exit $$?]]></echo>
 								<fixcrlf srcdir="${basedir}/target"
 									includes="CommandUI.tmp" eol="lf" eof="remove" />
 								<concat destfile="${basedir}/target/CommandUI"
@@ -146,8 +155,8 @@
 								<mainClass>xy.command.ui.CommandLineUI</mainClass>
 							</classPath>
 							<jre>
-								<minVersion>1.6.0</minVersion>
 								<minVersion>1.8.0</minVersion>
+								<maxVersion>1.8.9</maxVersion>
 								<opts>
 									<opt>-Dxy.reflect.ui.infoCustomizationsToolsHidden=true</opt>
 									<opt>-Dxy.command.ui.exeFile="%EXEFILE%"</opt>

@@ -1,6 +1,6 @@
 <xy.command.model.CommandLineProject>
   <description>search for files in a directory hierarchy</description>
-  <title>find</title>
+  <title>find-ui</title>
   <arguments>
     <xy.command.model.ArgumentPage>
       <title>Global Options</title>

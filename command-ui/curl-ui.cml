@@ -1,6 +1,6 @@
 <xy.command.model.CommandLineProject>
   <description>curl  is  a tool to transfer data from or to a server</description>
-  <title>curl</title>
+  <title>curl-ui</title>
   <arguments>
     <xy.command.model.ArgumentPage>
       <title>Global</title>

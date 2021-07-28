@@ -1,6 +1,6 @@
 <xy.command.model.CommandLineProject>
   <description>send ICMP ECHO_REQUEST to network hosts</description>
-  <title>ping</title>
+  <title>ping-ui</title>
   <arguments>
     <xy.command.model.ArgumentPage>
       <title>Settings</title>
