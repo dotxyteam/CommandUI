@@ -2,8 +2,11 @@ CommandUI
 =========
 
 Change log
-- In ALPHA stage.
-- In Beta stage
+- cross-platform jar added in the distribution
+- junit test added
+- javadoc added
+- in ALPHA stage
+- in Beta stage
 
 Usage
 - CommandUI[.exe] [&lt;filePath&gt; [--instanciate]]
