@@ -39,4 +39,11 @@
 			</excludes>
 		</fileSet>
 	</fileSets>
+	<files>
+		<file>
+			<source>${project.build.directory}/command-ui-${project.version}-jar-with-dependencies.jar</source>
+			<outputDirectory>.</outputDirectory>
+			<destName>${project.build.directory}/command-ui-crossPlatform.jar</destName>
+		</file>
+	</files>
 </assembly>
