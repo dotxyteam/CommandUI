@@ -1459,10 +1459,10 @@
         <string>...</string>
         <string>&lt;HTML&gt;the 1st directory argument&lt;/HTML&gt;</string>
         <string>Execute</string>
+        <string>&lt;HTML&gt;just a test&lt;/HTML&gt;</string>
         <string>Undo</string>
         <string>Redo</string>
         <string>Reset</string>
-        <string>&lt;HTML&gt;just a test&lt;/HTML&gt;</string>
       </visibleStrings>
       <windowIndex>1</windowIndex>
     </xy.ui.testing.action.window.CheckWindowVisibleStringsAction>
