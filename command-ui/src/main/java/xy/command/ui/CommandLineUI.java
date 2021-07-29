@@ -1,7 +1,10 @@
 package xy.command.ui;
 
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import javax.swing.SwingUtilities;
 
@@ -62,6 +65,33 @@ public class CommandLineUI extends CustomizedUI {
 	private static final String GUI_CUSTOMIZATIONS_RESOURCE_NAME = "commandLine.icu";
 	private static final String GUI_CUSTOMIZATIONS_RESOURCE_DIRECTORY = System
 			.getProperty("xy.command.ui.alternateUICustomizationsFileDirectory");
+
+	/*
+	 * Look & feel (fonts) enhancement:
+	 */
+	static {
+		Font baseFont;
+		try {
+			baseFont = Font.createFont(Font.TRUETYPE_FONT,
+					xy.command.ui.resource.ClassInPackage.class.getResourceAsStream("baseFont.ttf"));
+		} catch (Exception e) {
+			throw new AssertionError(e);
+		}
+		GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(baseFont);
+		int fontSizeAdjustment = 0;
+		for (Map.Entry<Object, Object> entry : javax.swing.UIManager.getDefaults().entrySet()) {
+			Object key = entry.getKey();
+			Object value = javax.swing.UIManager.get(key);
+			if (value != null && value instanceof javax.swing.plaf.FontUIResource) {
+				javax.swing.plaf.FontUIResource oldFont = (javax.swing.plaf.FontUIResource) value;
+				javax.swing.plaf.FontUIResource newFont = new javax.swing.plaf.FontUIResource(baseFont.getFamily(),
+						oldFont.getStyle(), oldFont.getSize() + fontSizeAdjustment);
+				javax.swing.UIManager.put(key, newFont);
+			}
+		}
+		System.setProperty("awt.useSystemAAFontSettings", "on");
+		System.setProperty("swing.aatext", "true");
+	}
 
 	private SwingCustomizer renderer;
 

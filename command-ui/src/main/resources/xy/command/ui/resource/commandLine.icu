@@ -10712,6 +10712,7 @@
             </specificTypeCustomizations>
             <transientForced>false</transientForced>
         </fieldsCustomizations>
+        <formSpacing>0</formSpacing>
         <immutableForced>false</immutableForced>
         <menuModel>
             <uniqueIdentifier>570e3941:16c38a456f1:4bde</uniqueIdentifier>
