@@ -4,21 +4,11 @@
     <appplicationCustomization>
         <uniqueIdentifier>e2e51ad:16b95170bc6:-8000</uniqueIdentifier>
         <specificProperties/>
-        <buttonBackgroundColor>
-            <blue>238</blue>
-            <green>219</green>
-            <red>205</red>
-        </buttonBackgroundColor>
         <buttonBorderColor>
             <blue>255</blue>
             <green>255</green>
             <red>255</red>
         </buttonBorderColor>
-        <buttonForegroundColor>
-            <blue>0</blue>
-            <green>0</green>
-            <red>0</red>
-        </buttonForegroundColor>
         <mainBackgroundColor>
             <blue>178</blue>
             <green>158</green>
@@ -29,21 +19,11 @@
             <green>233</green>
             <red>213</red>
         </mainBorderColor>
-        <mainButtonBackgroundColor>
-            <blue>238</blue>
-            <green>219</green>
-            <red>205</red>
-        </mainButtonBackgroundColor>
         <mainButtonBorderColor>
             <blue>255</blue>
             <green>255</green>
             <red>255</red>
         </mainButtonBorderColor>
-        <mainButtonForegroundColor>
-            <blue>0</blue>
-            <green>0</green>
-            <red>0</red>
-        </mainButtonForegroundColor>
         <mainForegroundColor>
             <blue>255</blue>
             <green>255</green>
@@ -5165,8 +5145,8 @@
                         <itemMoveEnabled>true</itemMoveEnabled>
                     </editOptions>
                     <fieldColumnsAdded>false</fieldColumnsAdded>
-                    <initialItemValueCreationOption>CREATE_INITIAL_VALUE_AUTOMATICALLY</initialItemValueCreationOption>
-                    <itemContructorSelectableforced>false</itemContructorSelectableforced>
+                    <initialItemValueCreationOption>CREATE_INITIAL_VALUE_ACCORDING_USER_PREFERENCES</initialItemValueCreationOption>
+                    <itemContructorSelectableforced>true</itemContructorSelectableforced>
                     <itemDetailsViewDisabled>false</itemDetailsViewDisabled>
                     <itemNullValueAllowed>false</itemNullValueAllowed>
                     <itemTypeColumnAdded>false</itemTypeColumnAdded>
@@ -5379,8 +5359,8 @@
                         <itemMoveEnabled>true</itemMoveEnabled>
                     </editOptions>
                     <fieldColumnsAdded>false</fieldColumnsAdded>
-                    <initialItemValueCreationOption>CREATE_INITIAL_VALUE_AUTOMATICALLY</initialItemValueCreationOption>
-                    <itemContructorSelectableforced>false</itemContructorSelectableforced>
+                    <initialItemValueCreationOption>CREATE_INITIAL_VALUE_ACCORDING_USER_PREFERENCES</initialItemValueCreationOption>
+                    <itemContructorSelectableforced>true</itemContructorSelectableforced>
                     <itemDetailsViewDisabled>false</itemDetailsViewDisabled>
                     <itemNullValueAllowed>false</itemNullValueAllowed>
                     <itemTypeColumnAdded>false</itemTypeColumnAdded>
@@ -8978,8 +8958,8 @@
                         <itemMoveEnabled>true</itemMoveEnabled>
                     </editOptions>
                     <fieldColumnsAdded>false</fieldColumnsAdded>
-                    <initialItemValueCreationOption>CREATE_INITIAL_VALUE_AUTOMATICALLY</initialItemValueCreationOption>
-                    <itemContructorSelectableforced>false</itemContructorSelectableforced>
+                    <initialItemValueCreationOption>CREATE_INITIAL_VALUE_ACCORDING_USER_PREFERENCES</initialItemValueCreationOption>
+                    <itemContructorSelectableforced>true</itemContructorSelectableforced>
                     <itemDetailsViewDisabled>false</itemDetailsViewDisabled>
                     <itemNullValueAllowed>false</itemNullValueAllowed>
                     <itemTypeColumnAdded>false</itemTypeColumnAdded>
@@ -9225,8 +9205,8 @@
                         <itemMoveEnabled>true</itemMoveEnabled>
                     </editOptions>
                     <fieldColumnsAdded>false</fieldColumnsAdded>
-                    <initialItemValueCreationOption>CREATE_INITIAL_VALUE_AUTOMATICALLY</initialItemValueCreationOption>
-                    <itemContructorSelectableforced>false</itemContructorSelectableforced>
+                    <initialItemValueCreationOption>CREATE_INITIAL_VALUE_ACCORDING_USER_PREFERENCES</initialItemValueCreationOption>
+                    <itemContructorSelectableforced>true</itemContructorSelectableforced>
                     <itemDetailsViewDisabled>false</itemDetailsViewDisabled>
                     <itemNullValueAllowed>false</itemNullValueAllowed>
                     <itemTypeColumnAdded>false</itemTypeColumnAdded>
