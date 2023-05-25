@@ -14,7 +14,7 @@ Usage
 - --instanciate: will only show the GUI generated from the &lt;filePath&gt; command line specification
 
 
-![CommandLineEditor](/command-ui/misc/screenshots/CommandLineEditor2.png?raw=true)
-![CommandLinePlayer](/command-ui/misc/screenshots/CommandLinePlayer2.png?raw=true)
+![CommandLineEditor](/command-ui/misc/screenshots/CommandLineEditor3.png?raw=true)
+![CommandLinePlayer](/command-ui/misc/screenshots/CommandLinePlayer3.png?raw=true)
 ![CommandRunner](/command-ui/misc/screenshots/CommandRunner.png?raw=true)
 
