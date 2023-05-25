@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>xy</groupId>
 	<artifactId>command-ui</artifactId>
-	<version>2.6.5</version>
+	<version>2.6.7</version>
 	<name>Command UI</name>
 	<dependencies>
 		<dependency>
 			<groupId>com.github.dotxyteam</groupId>
 			<artifactId>custom-ui</artifactId>
-			<version>5.0.2</version>
+			<version>5.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>com.github.dotxyteam</groupId>
 			<artifactId>swing-testing-toolkit</artifactId>
-			<version>1.8.2</version>
+			<version>1.8.6</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -99,13 +99,6 @@ echo "Using $$JAVA_EXE..."
 
 cd `dirname $0`
 
-$$JAVA_EXE -version 2>&1 | grep version | grep "1.8"
-if [ $? -ne 0 ]; then
-	echo "Java version 1.8 is required"
-	exit 1
-fi
-
-
 $$JAVA_EXE \
 "-Dxy.reflect.ui.infoCustomizationsToolsHidden=true" \
 "-Dxy.command.ui.exeFile=$$0" \
@@ -132,6 +125,7 @@ exit $$?]]></echo>
 			<plugin>
 				<groupId>com.akathist.maven.plugins.launch4j</groupId>
 				<artifactId>launch4j-maven-plugin</artifactId>
+				<version>2.1.0</version>
 				<executions>
 					<execution>
 						<id>l4j-gui</id>
@@ -150,7 +144,7 @@ exit $$?]]></echo>
 							</classPath>
 							<jre>
 								<minVersion>1.8.0</minVersion>
-								<maxVersion>1.8.9</maxVersion>
+								<maxVersion>1.17.9</maxVersion>
 								<opts>
 									<opt>-Dxy.reflect.ui.infoCustomizationsToolsHidden=true</opt>
 									<opt>-Dxy.command.ui.exeFile="%EXEFILE%"</opt>
