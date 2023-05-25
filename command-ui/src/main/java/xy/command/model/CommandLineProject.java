@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import javax.swing.SwingUtilities;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.security.AnyTypePermission;
 
 import xy.command.ui.CommandLineUI;
 import xy.command.ui.CommandMonitoringDialog;
@@ -99,6 +100,7 @@ public class CommandLineProject extends CommandLine {
 	 */
 	public void loadFromStream(InputStream input) {
 		XStream xstream = new XStream();
+		xstream.addPermission(AnyTypePermission.ANY);
 		CommandLineProject loaded = (CommandLineProject) xstream.fromXML(input);
 		title = loaded.title;
 		description = loaded.description;
@@ -115,6 +117,7 @@ public class CommandLineProject extends CommandLine {
 	 */
 	public void saveToStream(OutputStream output) throws IOException {
 		XStream xstream = new XStream();
+		xstream.addPermission(AnyTypePermission.ANY);
 		xstream.toXML(this, output);
 	}
 

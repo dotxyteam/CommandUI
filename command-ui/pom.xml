@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>xy</groupId>
 	<artifactId>command-ui</artifactId>
-	<version>2.6.7</version>
+	<version>2.7.0</version>
 	<name>Command UI</name>
 	<dependencies>
 		<dependency>
@@ -15,7 +15,7 @@
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
-			<version>1.4.7</version>
+			<version>1.4.20</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.dotxyteam</groupId>
