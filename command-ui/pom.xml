@@ -10,7 +10,7 @@
 		<dependency>
 			<groupId>com.github.dotxyteam</groupId>
 			<artifactId>custom-ui</artifactId>
-			<version>5.2.1</version>
+			<version>5.2.5</version>
 		</dependency>
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>com.github.dotxyteam</groupId>
 			<artifactId>swing-testing-toolkit</artifactId>
-			<version>1.8.6</version>
+			<version>1.8.8</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
