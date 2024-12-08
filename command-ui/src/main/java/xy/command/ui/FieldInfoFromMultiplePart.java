@@ -101,6 +101,11 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 		return new IListTypeInfo() {
 
 			@Override
+			public boolean isValidationRequired() {
+				return false;
+			}
+
+			@Override
 			public Map<String, Object> getSpecificProperties() {
 				return Collections.emptyMap();
 			}

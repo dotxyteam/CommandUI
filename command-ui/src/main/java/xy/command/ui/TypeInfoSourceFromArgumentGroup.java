@@ -149,6 +149,11 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 		}
 
 		@Override
+		public boolean isValidationRequired() {
+			return false;
+		}
+
+		@Override
 		public ITransactionInfo getTransaction(Object object) {
 			return null;
 		}
