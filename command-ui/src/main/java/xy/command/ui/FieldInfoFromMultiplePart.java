@@ -106,6 +106,11 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
+			public IFieldInfo getSelectionTargetField(ITypeInfo containingType) {
+				return null;
+			}
+
+			@Override
 			public Map<String, Object> getSpecificProperties() {
 				return Collections.emptyMap();
 			}
@@ -329,8 +334,13 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
-			public boolean isOrdered() {
+			public boolean isMoveAllowed() {
 				return true;
+			}
+
+			@Override
+			public boolean areItemsAutomaticallyPositioned() {
+				return false;
 			}
 
 			@Override
@@ -339,8 +349,8 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
-			public InitialItemValueCreationOption getInitialItemValueCreationOption() {
-				return InitialItemValueCreationOption.CREATE_INITIAL_VALUE_ACCORDING_USER_PREFERENCES;
+			public ItemCreationMode getItemCreationMode() {
+				return ItemCreationMode.DEFAULT;
 			}
 
 			@Override
