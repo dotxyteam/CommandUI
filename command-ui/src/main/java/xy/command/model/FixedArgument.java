@@ -40,7 +40,7 @@ public class FixedArgument extends AbstractCommandLinePart {
 	}
 
 	@Override
-	public AbstractCommandLinePartInstance instanciate() {
+	public AbstractCommandLinePartInstance instantiate() {
 		return new FixedArgumentInstance(this);
 	}
 

@@ -29,7 +29,7 @@ public class ArgumentGroup extends AbstractCommandLinePart {
 	public List<AbstractCommandLinePart> parts = new ArrayList<AbstractCommandLinePart>();
 
 	@Override
-	public AbstractCommandLinePartInstance instanciate() {
+	public AbstractCommandLinePartInstance instantiate() {
 		return new ArgumentGroupInstance(this);
 	}
 

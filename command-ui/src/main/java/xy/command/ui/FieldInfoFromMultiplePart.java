@@ -350,7 +350,7 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 			@Override
 			public ItemCreationMode getItemCreationMode() {
-				return ItemCreationMode.DEFAULT;
+				return ItemCreationMode.UNDEFINED;
 			}
 
 			@Override
@@ -440,7 +440,7 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
-			public boolean canInstanciateFromArray() {
+			public boolean canInstantiateFromArray() {
 				return true;
 			}
 		};

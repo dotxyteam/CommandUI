@@ -56,7 +56,7 @@ public class Choice extends AbstractCommandLinePart {
 	}
 
 	@Override
-	public AbstractCommandLinePartInstance instanciate() {
+	public AbstractCommandLinePartInstance instantiate() {
 		return new ChoiceInstance(this);
 	}
 

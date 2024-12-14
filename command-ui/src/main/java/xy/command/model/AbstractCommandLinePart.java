@@ -19,7 +19,7 @@ public abstract class AbstractCommandLinePart implements Serializable {
 	/**
 	 * @return An instance of this command line model part.
 	 */
-	public abstract AbstractCommandLinePartInstance instanciate();
+	public abstract AbstractCommandLinePartInstance instantiate();
 
 	/**
 	 * The description of this command line model part.

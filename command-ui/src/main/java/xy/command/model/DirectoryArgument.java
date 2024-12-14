@@ -62,7 +62,7 @@ public class DirectoryArgument extends AbstractCommandLinePart {
 	}
 
 	@Override
-	public AbstractCommandLinePartInstance instanciate() {
+	public AbstractCommandLinePartInstance instantiate() {
 		return new DirectoryArgumentInstance(this);
 	}
 

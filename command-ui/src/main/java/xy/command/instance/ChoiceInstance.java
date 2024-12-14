@@ -21,7 +21,7 @@ public class ChoiceInstance extends AbstractCommandLinePartInstance {
 	public ChoiceInstance(Choice model) {
 		this.model = model;
 		if (model.options.size() > 0) {
-			chosenPartInstance = (ArgumentGroupInstance) model.options.get(0).instanciate();
+			chosenPartInstance = (ArgumentGroupInstance) model.options.get(0).instantiate();
 		}
 	}
 

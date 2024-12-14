@@ -8,7 +8,7 @@ import xy.command.instance.MultiplePartInstance;
 import xy.command.ui.util.ValidationError;
 
 /**
- * A collection of command line model parts that can be instanciated multiple
+ * A collection of command line model parts that can be instantiated multiple
  * times.
  * 
  * @author olitank
@@ -33,7 +33,7 @@ public class MultiplePart extends ArgumentGroup {
 	}
 
 	@Override
-	public AbstractCommandLinePartInstance instanciate() {
+	public AbstractCommandLinePartInstance instantiate() {
 		return new MultiplePartInstance(this);
 	}
 

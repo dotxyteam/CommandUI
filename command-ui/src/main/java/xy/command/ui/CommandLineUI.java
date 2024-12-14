@@ -32,7 +32,7 @@ public class CommandLineUI extends CustomizedUI {
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
 					public void run() {
-						ui.getRenderer().openObjectFrame(object.instanciate());
+						ui.getRenderer().openObjectFrame(object.instantiate());
 					}
 				});
 				return;
@@ -45,8 +45,8 @@ public class CommandLineUI extends CustomizedUI {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				if ((args.length >= 2) && (args[1].equals("--instanciate"))) {
-					ui.getRenderer().openObjectFrame(object.instanciate());
+				if ((args.length >= 2) && (args[1].equals("--instantiate"))) {
+					ui.getRenderer().openObjectFrame(object.instantiate());
 				} else {
 					ui.getRenderer().openObjectFrame(object);
 				}

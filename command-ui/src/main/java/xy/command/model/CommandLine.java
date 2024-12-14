@@ -63,7 +63,7 @@ public class CommandLine extends AbstractCommandLinePart {
 	/**
 	 * @return An instance of this command line model.
 	 */
-	public CommandLineInstance instanciate() {
+	public CommandLineInstance instantiate() {
 		return new CommandLineInstance(this);
 	}
 

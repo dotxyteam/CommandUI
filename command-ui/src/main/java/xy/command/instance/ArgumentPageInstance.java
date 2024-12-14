@@ -25,7 +25,7 @@ public class ArgumentPageInstance {
 	public ArgumentPageInstance(ArgumentPage model) {
 		this.model = model;
 		for (AbstractCommandLinePart part : model.parts) {
-			AbstractCommandLinePartInstance instance = part.instanciate();
+			AbstractCommandLinePartInstance instance = part.instantiate();
 			if (instance == null) {
 				continue;
 			}

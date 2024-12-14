@@ -8,7 +8,7 @@ import xy.command.instance.OptionalPartInstance;
 import xy.command.ui.util.ValidationError;
 
 /**
- * A collection of command line model parts that may not be instanciated.
+ * A collection of command line model parts that may not be instantiated.
  * 
  * @author olitank
  *
@@ -18,7 +18,7 @@ public class OptionalPart extends ArgumentGroup {
 	protected static final long serialVersionUID = 1L;
 
 	/**
-	 * If true, the parts will be instanciated by default.
+	 * If true, the parts will be instantiated by default.
 	 */
 	public boolean activeByDefault = false;
 
@@ -37,7 +37,7 @@ public class OptionalPart extends ArgumentGroup {
 	}
 
 	@Override
-	public AbstractCommandLinePartInstance instanciate() {
+	public AbstractCommandLinePartInstance instantiate() {
 		return new OptionalPartInstance(this);
 	}
 

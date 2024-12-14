@@ -998,7 +998,7 @@
             <runWhenObjectShown>false</runWhenObjectShown>
             <validating>false</validating>
         </methodsCustomizations>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=MethodContext [methodSignature=java.util.List instanciate(), containingType=xy.command.model.CommandLine], subContext=MethodResult, encapsulatedObjectType=java.util.List]], subContext=ListItem, encapsulatedObjectType=xy.command.instance.ArgumentPageInstance]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=MethodContext [methodSignature=java.util.List instantiate(), containingType=xy.command.model.CommandLine], subContext=MethodResult, encapsulatedObjectType=java.util.List]], subContext=ListItem, encapsulatedObjectType=xy.command.instance.ArgumentPageInstance]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -1337,7 +1337,7 @@
         <menuModel>
             <uniqueIdentifier>39e6c71f:16ba3c81533:7ce4</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=MethodContext [methodSignature=java.util.List instanciate(), containingType=xy.command.model.CommandLine], subContext=MethodResult, encapsulatedObjectType=java.util.List]</typeName>
+        <typeName>Encapsulation [context=MethodContext [methodSignature=java.util.List instantiate(), containingType=xy.command.model.CommandLine], subContext=MethodResult, encapsulatedObjectType=java.util.List]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -1352,7 +1352,7 @@
         <menuModel>
             <uniqueIdentifier>2a1267a8:16beb38ace0:-694b</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.instance.AbstractCommandLinePartInstance instanciate(), containingType=xy.command.model.CommandLineProject], subContext=MethodResult, encapsulatedObjectType=xy.command.instance.AbstractCommandLinePartInstance]</typeName>
+        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.instance.AbstractCommandLinePartInstance instantiate(), containingType=xy.command.model.CommandLineProject], subContext=MethodResult, encapsulatedObjectType=xy.command.instance.AbstractCommandLinePartInstance]</typeName>
         <undoManagementHidden>true</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -1392,7 +1392,7 @@
             <runWhenObjectShown>false</runWhenObjectShown>
             <validating>false</validating>
         </methodsCustomizations>
-        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.instance.CommandLineInstance instanciate(), containingType=xy.command.model.CommandLineProject], subContext=MethodResult, encapsulatedObjectType=xy.command.instance.CommandLineInstance]</typeName>
+        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.instance.CommandLineInstance instantiate(), containingType=xy.command.model.CommandLineProject], subContext=MethodResult, encapsulatedObjectType=xy.command.instance.CommandLineInstance]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -5308,8 +5308,8 @@
             <detachedReturnValueForced>false</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -5438,8 +5438,8 @@
             <detachedReturnValueForced>false</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.ArgumentPageInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.ArgumentPageInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -5651,8 +5651,8 @@
             <detachedReturnValueForced>false</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -7773,8 +7773,8 @@
             <detachedReturnValueForced>false</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -7797,7 +7797,7 @@
         <customFieldsOrder>executionDir</customFieldsOrder>
         <customFieldsOrder>arguments</customFieldsOrder>
         <customFieldsOrder>usageText</customFieldsOrder>
-        <customMethodsOrder>instanciate</customMethodsOrder>
+        <customMethodsOrder>instantiate</customMethodsOrder>
         <customMethodsOrder>distribute</customMethodsOrder>
         <customMethodsOrder>openCommandMonitoringDialog</customMethodsOrder>
         <customMethodsOrder>validate</customMethodsOrder>
@@ -8356,8 +8356,8 @@
             <duplicateGenerated>false</duplicateGenerated>
             <encapsulationFieldName>topRight</encapsulationFieldName>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -8539,8 +8539,8 @@
             <duplicateGenerated>false</duplicateGenerated>
             <encapsulationFieldName>topRight</encapsulationFieldName>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.CommandLineInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.CommandLineInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -8610,8 +8610,8 @@
             <detachedReturnValueForced>false</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -8712,8 +8712,8 @@
             <detachedReturnValueForced>false</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -8787,8 +8787,8 @@
             <detachedReturnValueForced>false</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -8863,8 +8863,8 @@
             <detachedReturnValueForced>false</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -9109,8 +9109,8 @@
             <detachedReturnValueForced>false</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -9356,8 +9356,8 @@
             <detachedReturnValueForced>false</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -10759,8 +10759,8 @@
             <duplicateGenerated>false</duplicateGenerated>
             <encapsulationFieldName>Command GUI</encapsulationFieldName>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -10802,8 +10802,8 @@
             <duplicateGenerated>false</duplicateGenerated>
             <encapsulationFieldName>Command GUI</encapsulationFieldName>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.CommandLineInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.CommandLineInstance instantiate()</methodSignature>
             <readOnlyForced>false</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -11344,7 +11344,7 @@
         <anyDefaultObjectMemberIncluded>false</anyDefaultObjectMemberIncluded>
         <anyPersistenceMemberIncluded>false</anyPersistenceMemberIncluded>
         <copyForbidden>false</copyForbidden>
-        <customMethodsOrder>instanciate</customMethodsOrder>
+        <customMethodsOrder>instantiate</customMethodsOrder>
         <customMethodsOrder>distribute</customMethodsOrder>
         <immutableForced>false</immutableForced>
         <menuModel>
@@ -11387,8 +11387,8 @@
             <detachedReturnValueForced>true</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.AbstractCommandLinePartInstance instantiate()</methodSignature>
             <readOnlyForced>true</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -11404,8 +11404,8 @@
             <detachedReturnValueForced>true</detachedReturnValueForced>
             <duplicateGenerated>false</duplicateGenerated>
             <ignoredReturnValueForced>false</ignoredReturnValueForced>
-            <methodName>instanciate</methodName>
-            <methodSignature>xy.command.instance.CommandLineInstance instanciate()</methodSignature>
+            <methodName>instantiate</methodName>
+            <methodSignature>xy.command.instance.CommandLineInstance instantiate()</methodSignature>
             <readOnlyForced>true</readOnlyForced>
             <returnValueFieldGenerated>false</returnValueFieldGenerated>
             <runWhenObjectHidden>false</runWhenObjectHidden>
@@ -11644,7 +11644,7 @@
             <runWhenObjectShown>false</runWhenObjectShown>
             <validating>false</validating>
         </methodsCustomizations>
-        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.instance.CommandLineInstance instanciate(), containingType=CapsuleFieldType [context=EncapsulationContext [containingType=CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Command GUI]], subContext=MethodResult, encapsulatedObjectType=xy.command.instance.CommandLineInstance]</typeName>
+        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.instance.CommandLineInstance instantiate(), containingType=CapsuleFieldType [context=EncapsulationContext [containingType=CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Command GUI]], subContext=MethodResult, encapsulatedObjectType=xy.command.instance.CommandLineInstance]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>

@@ -62,7 +62,7 @@ public class FileArgument extends AbstractCommandLinePart {
 	}
 
 	@Override
-	public AbstractCommandLinePartInstance instanciate() {
+	public AbstractCommandLinePartInstance instantiate() {
 		return new FileArgumentInstance(this);
 	}
 

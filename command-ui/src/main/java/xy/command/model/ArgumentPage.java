@@ -47,7 +47,7 @@ public class ArgumentPage implements Serializable {
 	/**
 	 * @return An instance of this command line model page.
 	 */
-	public ArgumentPageInstance instanciate() {
+	public ArgumentPageInstance instantiate() {
 		return new ArgumentPageInstance(this);
 	}
 }

@@ -25,7 +25,7 @@ public class CommandLineInstance extends AbstractCommandLinePartInstance {
 	public CommandLineInstance(CommandLine model) {
 		this.model = model;
 		for (ArgumentPage page : model.arguments) {
-			ArgumentPageInstance instance = page.instanciate();
+			ArgumentPageInstance instance = page.instantiate();
 			argumentPageInstances.add(instance);
 		}
 	}
