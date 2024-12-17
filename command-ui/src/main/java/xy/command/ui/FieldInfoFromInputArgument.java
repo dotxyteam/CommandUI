@@ -35,15 +35,15 @@ public class FieldInfoFromInputArgument implements IFieldInfo {
 	private ArgumentPage argumentPage;
 	private AbstractCommandLinePart containingPart;
 	private ReflectionUI reflectionUI;
-	private ITypeInfo containingTypeInfo;
+	private ITypeInfo objectTypeInfo;
 
 	public FieldInfoFromInputArgument(ReflectionUI reflectionUI, InputArgument inputArgument, ArgumentPage argumentPage,
-			AbstractCommandLinePart containingPart, ITypeInfo containingTypeInfo) {
+			AbstractCommandLinePart containingPart, ITypeInfo objectTypeInfo) {
 		this.reflectionUI = reflectionUI;
 		this.inputArgument = inputArgument;
 		this.argumentPage = argumentPage;
 		this.containingPart = containingPart;
-		this.containingTypeInfo = containingTypeInfo;
+		this.objectTypeInfo = objectTypeInfo;
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class FieldInfoFromInputArgument implements IFieldInfo {
 	@Override
 	public ITypeInfo getType() {
 		return reflectionUI.getTypeInfo(new JavaTypeInfoSource(reflectionUI, String.class,
-				new SpecificitiesIdentifier(containingTypeInfo.getName(), getName())));
+				new SpecificitiesIdentifier(objectTypeInfo.getName(), getName())));
 	}
 
 	@Override

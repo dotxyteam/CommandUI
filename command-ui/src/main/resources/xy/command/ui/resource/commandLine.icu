@@ -78,7 +78,7 @@
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b87a1b:-72bc</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.Choice]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.Choice]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -118,7 +118,7 @@
         <menuModel>
             <uniqueIdentifier>ae21f4b:16be0fb4e13:7ce1</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.DirectoryArgument]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.DirectoryArgument]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -158,7 +158,7 @@
         <menuModel>
             <uniqueIdentifier>ae21f4b:16be0fb4e13:7cc0</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.FileArgument]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.FileArgument]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -198,7 +198,7 @@
         <menuModel>
             <uniqueIdentifier>ae21f4b:16be0fb4e13:7cea</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.FixedArgument]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.FixedArgument]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -238,7 +238,7 @@
         <menuModel>
             <uniqueIdentifier>ae21f4b:16be0fb4e13:7cf3</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.InputArgument]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.InputArgument]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -278,7 +278,7 @@
         <menuModel>
             <uniqueIdentifier>ae21f4b:16be0fb4e13:7d05</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.MultiplePart]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.MultiplePart]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -358,7 +358,7 @@
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b87a1b:-72ab</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.OptionalPart]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.OptionalPart]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -398,7 +398,7 @@
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7068</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.ArgumentGroup]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.ArgumentGroup]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -438,7 +438,7 @@
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:70b2</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.Choice]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.Choice]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -478,7 +478,7 @@
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7106</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.DirectoryArgument]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.DirectoryArgument]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -518,7 +518,7 @@
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:70e0</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.FileArgument]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.FileArgument]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -558,7 +558,7 @@
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7125</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.FixedArgument]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.FixedArgument]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -598,7 +598,7 @@
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7145</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.InputArgument]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.InputArgument]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -638,7 +638,7 @@
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7214</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.MultiplePart]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.MultiplePart]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -678,7 +678,7 @@
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7240</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.OptionalPart]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.OptionalPart]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -718,7 +718,7 @@
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b87a1b:-7269</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=parts, containingType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.Choice]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=parts, objectType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.Choice]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -758,7 +758,7 @@
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b87a1b:-7235</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=parts, containingType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.DirectoryArgument]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=parts, objectType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.DirectoryArgument]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -798,7 +798,7 @@
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b87a1b:-723e</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=parts, containingType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.FileArgument]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=parts, objectType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.FileArgument]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -838,7 +838,7 @@
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b87a1b:-722c</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=parts, containingType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.FixedArgument]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=parts, objectType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.FixedArgument]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -878,7 +878,7 @@
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b87a1b:-7260</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=parts, containingType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.InputArgument]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=parts, objectType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.InputArgument]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -918,7 +918,7 @@
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b87a1b:-721d</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=parts, containingType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.MultiplePart]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=parts, objectType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.MultiplePart]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -958,7 +958,7 @@
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b87a1b:-7212</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=FieldContext [fieldName=parts, containingType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.OptionalPart]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=FieldContext [fieldName=parts, objectType=xy.command.model.OptionalPart], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]], subContext=PolymorphicInstance, encapsulatedObjectType=xy.command.model.OptionalPart]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -998,7 +998,7 @@
             <runWhenObjectShown>false</runWhenObjectShown>
             <validating>false</validating>
         </methodsCustomizations>
-        <typeName>Encapsulation [context=FieldContext [fieldName=, containingType=Encapsulation [context=MethodContext [methodSignature=java.util.List instantiate(), containingType=xy.command.model.CommandLine], subContext=MethodResult, encapsulatedObjectType=java.util.List]], subContext=ListItem, encapsulatedObjectType=xy.command.instance.ArgumentPageInstance]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=, objectType=Encapsulation [context=MethodContext [methodSignature=java.util.List instantiate(), objectType=xy.command.model.CommandLine], subContext=MethodResult, encapsulatedObjectType=java.util.List]], subContext=ListItem, encapsulatedObjectType=xy.command.instance.ArgumentPageInstance]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -1013,7 +1013,7 @@
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b5cb88:7d73</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLineProject], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -1093,7 +1093,7 @@
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:702b</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=FieldContext [fieldName=arguments, containingType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=arguments, objectType=xy.command.model.CommandLine], subContext=ListItem, encapsulatedObjectType=xy.command.model.AbstractCommandLinePart]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -1233,7 +1233,7 @@
             <runWhenObjectShown>false</runWhenObjectShown>
             <validating>false</validating>
         </methodsCustomizations>
-        <typeName>Encapsulation [context=FieldContext [fieldName=executablePath, containingType=xy.command.model.CommandLine], encapsulatedObjectType=java.io.File]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=executablePath, objectType=xy.command.model.CommandLine], encapsulatedObjectType=java.io.File]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -1273,7 +1273,7 @@
             <runWhenObjectShown>false</runWhenObjectShown>
             <validating>false</validating>
         </methodsCustomizations>
-        <typeName>Encapsulation [context=FieldContext [fieldName=partInstanceChoices, containingType=xy.command.instance.ChoiceInstance], subContext=ListItem, encapsulatedObjectType=xy.command.instance.ArgumentGroupInstance]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=partInstanceChoices, objectType=xy.command.instance.ChoiceInstance], subContext=ListItem, encapsulatedObjectType=xy.command.instance.ArgumentGroupInstance]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -1337,7 +1337,7 @@
         <menuModel>
             <uniqueIdentifier>39e6c71f:16ba3c81533:7ce4</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=MethodContext [methodSignature=java.util.List instantiate(), containingType=xy.command.model.CommandLine], subContext=MethodResult, encapsulatedObjectType=java.util.List]</typeName>
+        <typeName>Encapsulation [context=MethodContext [methodSignature=java.util.List instantiate(), objectType=xy.command.model.CommandLine], subContext=MethodResult, encapsulatedObjectType=java.util.List]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -1352,7 +1352,7 @@
         <menuModel>
             <uniqueIdentifier>2a1267a8:16beb38ace0:-694b</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.instance.AbstractCommandLinePartInstance instantiate(), containingType=xy.command.model.CommandLineProject], subContext=MethodResult, encapsulatedObjectType=xy.command.instance.AbstractCommandLinePartInstance]</typeName>
+        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.instance.AbstractCommandLinePartInstance instantiate(), objectType=xy.command.model.CommandLineProject], subContext=MethodResult, encapsulatedObjectType=xy.command.instance.AbstractCommandLinePartInstance]</typeName>
         <undoManagementHidden>true</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -1392,7 +1392,7 @@
             <runWhenObjectShown>false</runWhenObjectShown>
             <validating>false</validating>
         </methodsCustomizations>
-        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.instance.CommandLineInstance instantiate(), containingType=xy.command.model.CommandLineProject], subContext=MethodResult, encapsulatedObjectType=xy.command.instance.CommandLineInstance]</typeName>
+        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.instance.CommandLineInstance instantiate(), objectType=xy.command.model.CommandLineProject], subContext=MethodResult, encapsulatedObjectType=xy.command.instance.CommandLineInstance]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -1432,7 +1432,7 @@
             <runWhenObjectShown>false</runWhenObjectShown>
             <validating>false</validating>
         </methodsCustomizations>
-        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.model.instance.CommandLineInstance createInstance(), containingType=xy.command.model.CommandLine], subContext=MethodResult, encapsulatedObjectType=xy.command.model.instance.CommandLineInstance]</typeName>
+        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.model.instance.CommandLineInstance createInstance(), objectType=xy.command.model.CommandLine], subContext=MethodResult, encapsulatedObjectType=xy.command.model.instance.CommandLineInstance]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -1737,7 +1737,7 @@
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b87a1b:-7dea</uniqueIdentifier>
         </menuModel>
-        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void loadFromFile(java.io.File), containingType=xy.command.model.CommandLineProject]]</typeName>
+        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void loadFromFile(java.io.File), objectType=xy.command.model.CommandLineProject]]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -2356,7 +2356,7 @@
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:7728</uniqueIdentifier>
         </menuModel>
-        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void loadFromFile(java.io.File), containingType=xy.command.model.CommandLine]]</typeName>
+        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void loadFromFile(java.io.File), objectType=xy.command.model.CommandLine]]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -2419,7 +2419,7 @@
         <menuModel>
             <uniqueIdentifier>6242afd3:16be0b87a1b:-7db2</uniqueIdentifier>
         </menuModel>
-        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void saveToFile(java.io.File), containingType=xy.command.model.CommandLineProject]]</typeName>
+        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void saveToFile(java.io.File), objectType=xy.command.model.CommandLineProject]]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -3038,7 +3038,7 @@
         <menuModel>
             <uniqueIdentifier>-71ee75f4:16b9557c991:758e</uniqueIdentifier>
         </menuModel>
-        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void saveToFile(java.io.File), containingType=xy.command.model.CommandLine]]</typeName>
+        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void saveToFile(java.io.File), objectType=xy.command.model.CommandLine]]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -8136,7 +8136,7 @@
                         <runWhenObjectShown>false</runWhenObjectShown>
                         <validating>false</validating>
                     </methodsCustomizations>
-                    <typeName>CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]</typeName>
+                    <typeName>CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=topRight]</typeName>
                     <undoManagementHidden>false</undoManagementHidden>
                 </typeCustomizations>
             </specificTypeCustomizations>
@@ -10686,7 +10686,7 @@
                         <runWhenObjectShown>false</runWhenObjectShown>
                         <validating>false</validating>
                     </methodsCustomizations>
-                    <typeName>CapsuleFieldType [context=EncapsulationContext [containingType=CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Command GUI]</typeName>
+                    <typeName>CapsuleFieldType [context=EncapsulationContext [objectType=CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Command GUI]</typeName>
                     <undoManagementHidden>false</undoManagementHidden>
                 </typeCustomizations>
             </specificTypeCustomizations>
@@ -10828,7 +10828,7 @@
             <validating>false</validating>
         </methodsCustomizations>
         <methodsLayout>VERTICAL_FLOW</methodsLayout>
-        <typeName>CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]</typeName>
+        <typeName>CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=topRight]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -11003,7 +11003,7 @@
         <menuModel>
             <uniqueIdentifier>570e3941:16c38a456f1:4c8f</uniqueIdentifier>
         </menuModel>
-        <typeName>CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topLeft]</typeName>
+        <typeName>CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=topLeft]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -11073,7 +11073,7 @@
         <menuModel>
             <uniqueIdentifier>570e3941:16c38a456f1:4cb4</uniqueIdentifier>
         </menuModel>
-        <typeName>CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=top]</typeName>
+        <typeName>CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=top]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -11136,7 +11136,7 @@
         <menuModel>
             <uniqueIdentifier>7de08ec9:16c38a79d70:4c00</uniqueIdentifier>
         </menuModel>
-        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void loadFromFile(java.io.File), containingType=CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]]]</typeName>
+        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void loadFromFile(java.io.File), objectType=CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=topRight]]]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -11199,7 +11199,7 @@
         <menuModel>
             <uniqueIdentifier>-7832ae9b:16c38adce13:4c65</uniqueIdentifier>
         </menuModel>
-        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void saveToFile(java.io.File), containingType=CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]]]</typeName>
+        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void saveToFile(java.io.File), objectType=CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=topRight]]]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -11263,7 +11263,7 @@
         <menuModel>
             <uniqueIdentifier>3d1a79b9:16c3a693d65:4cc6</uniqueIdentifier>
         </menuModel>
-        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void distribute(java.io.File), containingType=xy.command.model.CommandLineProject]]</typeName>
+        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void distribute(java.io.File), objectType=xy.command.model.CommandLineProject]]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -11334,7 +11334,7 @@
             <validating>false</validating>
         </methodsCustomizations>
         <methodsLayout>VERTICAL_FLOW</methodsLayout>
-        <typeName>CapsuleFieldType [context=EncapsulationContext [containingType=CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Project]</typeName>
+        <typeName>CapsuleFieldType [context=EncapsulationContext [objectType=CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Project]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -11413,7 +11413,7 @@
             <validating>false</validating>
         </methodsCustomizations>
         <methodsLayout>VERTICAL_FLOW</methodsLayout>
-        <typeName>CapsuleFieldType [context=EncapsulationContext [containingType=CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Command GUI]</typeName>
+        <typeName>CapsuleFieldType [context=EncapsulationContext [objectType=CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Command GUI]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -11476,7 +11476,7 @@
         <menuModel>
             <uniqueIdentifier>-3837a2a6:1789877856e:-3f29</uniqueIdentifier>
         </menuModel>
-        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void loadFromFile(java.io.File), containingType=CapsuleFieldType [context=EncapsulationContext [containingType=CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Project]]]</typeName>
+        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void loadFromFile(java.io.File), objectType=CapsuleFieldType [context=EncapsulationContext [objectType=CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Project]]]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -11539,7 +11539,7 @@
         <menuModel>
             <uniqueIdentifier>-3837a2a6:1789877856e:-3ef9</uniqueIdentifier>
         </menuModel>
-        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void saveToFile(java.io.File), containingType=CapsuleFieldType [context=EncapsulationContext [containingType=CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Project]]]</typeName>
+        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void saveToFile(java.io.File), objectType=CapsuleFieldType [context=EncapsulationContext [objectType=CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Project]]]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -11603,7 +11603,7 @@
         <menuModel>
             <uniqueIdentifier>-3837a2a6:1789877856e:-2b36</uniqueIdentifier>
         </menuModel>
-        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void distribute(java.io.File), containingType=CapsuleFieldType [context=EncapsulationContext [containingType=CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Command GUI]]]</typeName>
+        <typeName>MethodSetupObject [context=MethodContext [methodSignature=void distribute(java.io.File), objectType=CapsuleFieldType [context=EncapsulationContext [objectType=CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Command GUI]]]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -11644,7 +11644,7 @@
             <runWhenObjectShown>false</runWhenObjectShown>
             <validating>false</validating>
         </methodsCustomizations>
-        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.instance.CommandLineInstance instantiate(), containingType=CapsuleFieldType [context=EncapsulationContext [containingType=CapsuleFieldType [context=EncapsulationContext [containingType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Command GUI]], subContext=MethodResult, encapsulatedObjectType=xy.command.instance.CommandLineInstance]</typeName>
+        <typeName>Encapsulation [context=MethodContext [methodSignature=xy.command.instance.CommandLineInstance instantiate(), objectType=CapsuleFieldType [context=EncapsulationContext [objectType=CapsuleFieldType [context=EncapsulationContext [objectType=xy.command.model.CommandLineProject], fieldName=topRight]], fieldName=Command GUI]], subContext=MethodResult, encapsulatedObjectType=xy.command.instance.CommandLineInstance]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -13582,7 +13582,7 @@
         <menuModel>
             <uniqueIdentifier>-7d2fce01:178d1758c04:49a4</uniqueIdentifier>
         </menuModel>
-        <typeName>Encapsulation [context=MethodContext [methodSignature=java.lang.String showHelp(), containingType=xy.command.instance.CommandLineInstance], subContext=MethodResult, encapsulatedObjectType=java.lang.String]</typeName>
+        <typeName>Encapsulation [context=MethodContext [methodSignature=java.lang.String showHelp(), objectType=xy.command.instance.CommandLineInstance], subContext=MethodResult, encapsulatedObjectType=java.lang.String]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -13660,7 +13660,7 @@
         <menuModel>
             <uniqueIdentifier>74db3c00:178d1aa38e1:5ce9</uniqueIdentifier>
         </menuModel>
-        <typeName>CapsuleFieldType [context=EncapsulationContext [containingType=Encapsulation [context=MethodContext [methodSignature=java.lang.String showHelp(), containingType=xy.command.instance.CommandLineInstance], subContext=MethodResult, encapsulatedObjectType=java.lang.String]], fieldName=textContainer]</typeName>
+        <typeName>CapsuleFieldType [context=EncapsulationContext [objectType=Encapsulation [context=MethodContext [methodSignature=java.lang.String showHelp(), objectType=xy.command.instance.CommandLineInstance], subContext=MethodResult, encapsulatedObjectType=java.lang.String]], fieldName=textContainer]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
