@@ -1,6 +1,5 @@
 package xy.command.ui;
 
-import java.awt.Dimension;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -220,8 +219,13 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
-			public Dimension getFormPreferredSize() {
-				return null;
+			public int getFormPreferredWidth() {
+				return -1;
+			}
+
+			@Override
+			public int getFormPreferredHeight() {
+				return -1;
 			}
 
 			@Override
