@@ -146,7 +146,7 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 		}
 
 		@Override
-		public ResourcePath getIconImagePath() {
+		public ResourcePath getIconImagePath(Object object) {
 			return null;
 		}
 

@@ -214,7 +214,7 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
-			public ResourcePath getIconImagePath() {
+			public ResourcePath getIconImagePath(Object object) {
 				return null;
 			}
 

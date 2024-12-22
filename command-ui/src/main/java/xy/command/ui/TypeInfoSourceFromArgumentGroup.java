@@ -253,7 +253,7 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 		}
 
 		@Override
-		public ResourcePath getIconImagePath() {
+		public ResourcePath getIconImagePath(Object object) {
 			return null;
 		}
 
