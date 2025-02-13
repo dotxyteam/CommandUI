@@ -1273,7 +1273,7 @@
             <runWhenObjectShown>false</runWhenObjectShown>
             <validating>false</validating>
         </methodsCustomizations>
-        <typeName>Encapsulation [context=FieldContext [fieldName=partInstanceChoices, objectType=xy.command.instance.ChoiceInstance], subContext=ListItem, encapsulatedObjectType=xy.command.instance.ArgumentGroupInstance]</typeName>
+        <typeName>Encapsulation [context=FieldContext [fieldName=partInstanceOptions, objectType=xy.command.instance.ChoiceInstance], subContext=ListItem, encapsulatedObjectType=xy.command.instance.ArgumentGroupInstance]</typeName>
         <undoManagementHidden>false</undoManagementHidden>
     </typeCustomizations>
     <typeCustomizations>
@@ -4521,7 +4521,7 @@
                 </appplicationCustomization>
             </specificTypeCustomizations>
             <transientForced>false</transientForced>
-            <valueOptionsFieldName>partInstanceChoices</valueOptionsFieldName>
+            <valueOptionsFieldName>partInstanceOptions</valueOptionsFieldName>
         </fieldsCustomizations>
         <fieldsCustomizations>
             <uniqueIdentifier>34b70469:16ba486ada8:7a68</uniqueIdentifier>
@@ -4530,7 +4530,7 @@
             <customFieldCaption></customFieldCaption>
             <displayedAsSingletonList>false</displayedAsSingletonList>
             <duplicateGenerated>false</duplicateGenerated>
-            <fieldName>partInstanceChoices</fieldName>
+            <fieldName>partInstanceOptions</fieldName>
             <formControlCreationForced>false</formControlCreationForced>
             <formControlEmbeddingForced>false</formControlEmbeddingForced>
             <getOnlyForced>false</getOnlyForced>
