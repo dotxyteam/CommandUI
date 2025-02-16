@@ -138,6 +138,11 @@ public class FieldInfoFromInputArgument implements IFieldInfo {
 	}
 
 	@Override
+	public Runnable getPreviousUpdateCustomRedoJob(Object object, Object newValue) {
+		return null;
+	}
+
+	@Override
 	public boolean isNullValueDistinct() {
 		return false;
 	}

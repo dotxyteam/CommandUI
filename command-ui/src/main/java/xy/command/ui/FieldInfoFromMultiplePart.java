@@ -16,7 +16,7 @@ import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
 import xy.command.model.MultiplePart;
 import xy.reflect.ui.info.ColorSpecification;
-import xy.reflect.ui.info.ITransactionInfo;
+import xy.reflect.ui.info.ITransaction;
 import xy.reflect.ui.info.InfoCategory;
 import xy.reflect.ui.info.ResourcePath;
 import xy.reflect.ui.info.ValueReturnMode;
@@ -115,8 +115,12 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
-			public ITransactionInfo getTransaction(Object object) {
+			public ITransaction createTransaction(Object object) {
 				return null;
+			}
+
+			@Override
+			public void beforeModification(Object object) {
 			}
 
 			@Override
@@ -503,6 +507,11 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 	@Override
 	public Runnable getNextUpdateCustomUndoJob(Object object, Object newValue) {
+		return null;
+	}
+
+	@Override
+	public Runnable getPreviousUpdateCustomRedoJob(Object object, Object newValue) {
 		return null;
 	}
 

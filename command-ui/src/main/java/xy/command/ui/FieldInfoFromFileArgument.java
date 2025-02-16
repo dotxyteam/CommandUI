@@ -173,6 +173,11 @@ public class FieldInfoFromFileArgument implements IFieldInfo {
 	}
 
 	@Override
+	public Runnable getPreviousUpdateCustomRedoJob(Object object, Object newValue) {
+		return null;
+	}
+
+	@Override
 	public boolean isNullValueDistinct() {
 		return false;
 	}
