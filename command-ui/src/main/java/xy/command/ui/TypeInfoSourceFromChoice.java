@@ -46,7 +46,12 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 		}
 
 		@Override
-		public void beforeModification(Object object) {
+		public void onFormRefresh(Object object) {
+		}
+
+		@Override
+		public Runnable getLastFormRefreshStateRestorationJob(Object object) {
+			return null;
 		}
 
 		@Override
