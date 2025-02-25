@@ -10,6 +10,7 @@ import java.util.Map;
 import xy.command.instance.CommandLineInstance;
 import xy.command.model.ArgumentGroup;
 import xy.command.model.Choice;
+import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.ColorSpecification;
 import xy.reflect.ui.info.ITransaction;
 import xy.reflect.ui.info.ResourcePath;
@@ -133,7 +134,7 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 			List<ITypeInfo> result = new ArrayList<ITypeInfo>();
 			for (ArgumentGroup argumentGroup : choice.options) {
 				ITypeInfo type = commandLineUI
-						.getTypeInfo(new TypeInfoSourceFromArgumentGroup(commandLineUI, argumentGroup, null));
+						.getTypeInfo(new TypeInfoSourceFromArgumentGroup(argumentGroup, null));
 				result.add(type);
 			}
 			return result;
@@ -287,7 +288,7 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 	}
 
 	@Override
-	public ITypeInfo buildTypeInfo() {
+	public ITypeInfo buildTypeInfo(ReflectionUI reflectionUI) {
 		return new TypeInfoFromChoice(commandLineUI);
 	}
 

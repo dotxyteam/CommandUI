@@ -88,10 +88,10 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 	@Override
 	public ITypeInfo getType() {
 		if (isBoolean()) {
-			return commandLineUI.getTypeInfo(new JavaTypeInfoSource(commandLineUI, Boolean.class,
+			return commandLineUI.getTypeInfo(new JavaTypeInfoSource(Boolean.class,
 					new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName())));
 		} else {
-			return commandLineUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(commandLineUI, optionalPart,
+			return commandLineUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(optionalPart,
 					new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName())));
 		}
 	}

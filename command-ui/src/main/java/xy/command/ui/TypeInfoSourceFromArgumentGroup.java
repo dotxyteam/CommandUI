@@ -18,6 +18,7 @@ import xy.command.model.FixedArgument;
 import xy.command.model.InputArgument;
 import xy.command.model.MultiplePart;
 import xy.command.model.OptionalPart;
+import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.ColorSpecification;
 import xy.reflect.ui.info.ITransaction;
 import xy.reflect.ui.info.ResourcePath;
@@ -39,13 +40,11 @@ import xy.reflect.ui.util.ReflectionUIError;
  */
 public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 
-	private CommandLineUI commandLineUI;
 	private ArgumentGroup argumentGroup;
 	private SpecificitiesIdentifier specificitiesIdentifier;
 
-	public TypeInfoSourceFromArgumentGroup(CommandLineUI commandLineUI, ArgumentGroup argumentGroup,
+	public TypeInfoSourceFromArgumentGroup(ArgumentGroup argumentGroup,
 			SpecificitiesIdentifier specificitiesIdentifier) {
-		this.commandLineUI = commandLineUI;
 		this.argumentGroup = argumentGroup;
 		this.specificitiesIdentifier = specificitiesIdentifier;
 	}
@@ -87,8 +86,8 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 	}
 
 	@Override
-	public ITypeInfo buildTypeInfo() {
-		return new TypeInfoFromArgumentGroup(commandLineUI);
+	public ITypeInfo buildTypeInfo(ReflectionUI reflectionUI) {
+		return new TypeInfoFromArgumentGroup((CommandLineUI) reflectionUI);
 	}
 
 	protected IFieldInfo getFieldInfoFromCommandLinePart(CommandLineUI commandLineUI, AbstractCommandLinePart part,

@@ -92,9 +92,9 @@ public class CommandLineUI extends CustomizedUI {
 	@Override
 	public ITypeInfoSource getTypeInfoSource(Object object) {
 		if (object instanceof CommandLineInstance) {
-			return new TypeInfoSourceFromCommandLine(this, ((CommandLineInstance) object).model, null);
+			return new TypeInfoSourceFromCommandLine(((CommandLineInstance) object).model, null);
 		} else if (object instanceof ArgumentGroupInstance) {
-			return new TypeInfoSourceFromArgumentGroup(this, ((ArgumentGroupInstance) object).model, null);
+			return new TypeInfoSourceFromArgumentGroup(((ArgumentGroupInstance) object).model, null);
 		} else {
 			return super.getTypeInfoSource(object);
 		}

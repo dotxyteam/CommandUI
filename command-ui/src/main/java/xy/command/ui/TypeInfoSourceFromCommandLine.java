@@ -42,13 +42,11 @@ import xy.reflect.ui.util.ReflectionUIUtils;
  */
 public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 
-	private CommandLineUI commandLineUI;
 	private CommandLine commandLine;
 	private SpecificitiesIdentifier specificitiesIdentifier;
 
-	public TypeInfoSourceFromCommandLine(CommandLineUI commandLineUI, CommandLine commandLine,
+	public TypeInfoSourceFromCommandLine(CommandLine commandLine,
 			SpecificitiesIdentifier specificitiesIdentifier) {
-		this.commandLineUI = commandLineUI;
 		this.commandLine = commandLine;
 		this.specificitiesIdentifier = specificitiesIdentifier;
 	}
@@ -90,8 +88,8 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 	}
 
 	@Override
-	public ITypeInfo buildTypeInfo() {
-		return new TypeInfo(commandLineUI);
+	public ITypeInfo buildTypeInfo(ReflectionUI reflectionUI) {
+		return new TypeInfo(reflectionUI);
 	}
 
 	protected IFieldInfo getFieldInfoFromCommandLinePart(CommandLineUI commandLineUI, AbstractCommandLinePart part,
@@ -124,7 +122,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 	protected class TypeInfo extends DefaultTypeInfo {
 
 		public TypeInfo(ReflectionUI reflectionUI) {
-			super(new JavaTypeInfoSource(reflectionUI, CommandLineInstance.class, null));
+			super(reflectionUI, new JavaTypeInfoSource(CommandLineInstance.class, null));
 		}
 
 		@Override
@@ -220,7 +218,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 	protected class CapsuleTypeInfo extends DefaultTypeInfo {
 
 		public CapsuleTypeInfo(ReflectionUI reflectionUI) {
-			super(new JavaTypeInfoSource(reflectionUI, Capsule.class, new SpecificitiesIdentifier(
+			super(reflectionUI, new JavaTypeInfoSource(Capsule.class, new SpecificitiesIdentifier(
 					new TypeInfo(reflectionUI).getName(), new CapsuleFieldInfo(reflectionUI).getName())));
 		}
 
@@ -239,7 +237,7 @@ public class TypeInfoSourceFromCommandLine implements ITypeInfoSource {
 			List<IFieldInfo> result = new ArrayList<IFieldInfo>();
 			for (ArgumentPage argumentPage : commandLine.arguments) {
 				for (AbstractCommandLinePart part : argumentPage.parts) {
-					IFieldInfo field = getFieldInfoFromCommandLinePart(commandLineUI, part, argumentPage, this);
+					IFieldInfo field = getFieldInfoFromCommandLinePart((CommandLineUI) reflectionUI, part, argumentPage, this);
 					if (field == null) {
 						continue;
 					}

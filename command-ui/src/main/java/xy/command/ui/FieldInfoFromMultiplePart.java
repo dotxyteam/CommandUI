@@ -15,6 +15,7 @@ import xy.command.model.ArgumentGroup;
 import xy.command.model.ArgumentPage;
 import xy.command.model.CommandLine;
 import xy.command.model.MultiplePart;
+import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.ColorSpecification;
 import xy.reflect.ui.info.ITransaction;
 import xy.reflect.ui.info.InfoCategory;
@@ -379,10 +380,10 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			@Override
 			public ITypeInfo getItemType() {
 				return commandLineUI
-						.getTypeInfo(new TypeInfoSourceFromArgumentGroup(commandLineUI, multiplePart, null) {
+						.getTypeInfo(new TypeInfoSourceFromArgumentGroup(multiplePart, null) {
 
 							@Override
-							public ITypeInfo buildTypeInfo() {
+							public ITypeInfo buildTypeInfo(ReflectionUI reflectionUI) {
 								return new TypeInfoFromArgumentGroup(commandLineUI) {
 
 									@Override
