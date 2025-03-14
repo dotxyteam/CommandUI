@@ -239,6 +239,11 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
+			public boolean isFormScrollable() {
+				return false;
+			}
+
+			@Override
 			public int getFormSpacing() {
 				return ITypeInfo.DEFAULT_FORM_SPACING;
 			}
@@ -379,27 +384,26 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 			@Override
 			public ITypeInfo getItemType() {
-				return commandLineUI
-						.getTypeInfo(new TypeInfoSourceFromArgumentGroup(multiplePart, null) {
+				return commandLineUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(multiplePart, null) {
+
+					@Override
+					public ITypeInfo buildTypeInfo(ReflectionUI reflectionUI) {
+						return new TypeInfoFromArgumentGroup(commandLineUI) {
 
 							@Override
-							public ITypeInfo buildTypeInfo(ReflectionUI reflectionUI) {
-								return new TypeInfoFromArgumentGroup(commandLineUI) {
-
-									@Override
-									public String getName() {
-										return super.getName() + "-item";
-									}
-
-									@Override
-									public String getCaption() {
-										return ReflectionUIUtils.composeMessage(super.getCaption(), "Item");
-									}
-
-								};
+							public String getName() {
+								return super.getName() + "-item";
 							}
 
-						});
+							@Override
+							public String getCaption() {
+								return ReflectionUIUtils.composeMessage(super.getCaption(), "Item");
+							}
+
+						};
+					}
+
+				});
 			}
 
 			@Override

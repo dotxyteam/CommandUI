@@ -133,8 +133,7 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 		public List<ITypeInfo> getPolymorphicInstanceSubTypes() {
 			List<ITypeInfo> result = new ArrayList<ITypeInfo>();
 			for (ArgumentGroup argumentGroup : choice.options) {
-				ITypeInfo type = commandLineUI
-						.getTypeInfo(new TypeInfoSourceFromArgumentGroup(argumentGroup, null));
+				ITypeInfo type = commandLineUI.getTypeInfo(new TypeInfoSourceFromArgumentGroup(argumentGroup, null));
 				result.add(type);
 			}
 			return result;
@@ -168,6 +167,11 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 		@Override
 		public int getFormPreferredHeight() {
 			return -1;
+		}
+
+		@Override
+		public boolean isFormScrollable() {
+			return false;
 		}
 
 		@Override
