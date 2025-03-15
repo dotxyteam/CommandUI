@@ -239,11 +239,6 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
-			public boolean isFormScrollable() {
-				return false;
-			}
-
-			@Override
 			public int getFormSpacing() {
 				return ITypeInfo.DEFAULT_FORM_SPACING;
 			}
