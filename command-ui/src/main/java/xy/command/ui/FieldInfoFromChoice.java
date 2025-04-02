@@ -201,12 +201,22 @@ public class FieldInfoFromChoice implements IFieldInfo {
 
 	@Override
 	public double getDisplayAreaHorizontalWeight() {
-		return 0;
+		return 1;
 	}
 
 	@Override
 	public double getDisplayAreaVerticalWeight() {
 		return 0;
+	}
+
+	@Override
+	public boolean isDisplayAreaHorizontallyFilled() {
+		return true;
+	}
+
+	@Override
+	public boolean isDisplayAreaVerticallyFilled() {
+		return false;
 	}
 
 	@Override
