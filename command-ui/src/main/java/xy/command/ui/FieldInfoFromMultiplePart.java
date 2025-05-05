@@ -101,6 +101,11 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 		return new IListTypeInfo() {
 
 			@Override
+			public boolean isItemNodeValidityDetectionEnabled(ItemPosition itemPosition) {
+				return false;
+			}
+
+			@Override
 			public boolean isValidationRequired() {
 				return false;
 			}
