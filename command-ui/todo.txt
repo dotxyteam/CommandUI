@@ -1,8 +1,8 @@
-- get new exe icon
+- get new exe icon 
 - set part types icons
 - Allow to parse command syntax???
 	. Into clipboard??? In a new argument group??? Allow to choose
-- “fixed args only” optionalArg must be represented by a simple checkbox
+- ï¿½fixed args onlyï¿½ optionalArg must be represented by a simple checkbox
 - Save/load settings option for instances
 - Display successful validation
 - Validation error for
@@ -11,7 +11,7 @@
 For reflectionUI
 - List copy problem: modification of original modifies the copy and vice-versa
 - Undo tooltip empty
-- ListControl “Paste” must be before “Paste Before/After”
+- ListControl ï¿½Pasteï¿½ must be before ï¿½Paste Before/Afterï¿½
 
 
 - check parameter values not empty
