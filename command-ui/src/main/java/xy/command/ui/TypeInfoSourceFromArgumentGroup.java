@@ -22,6 +22,7 @@ import xy.reflect.ui.ReflectionUI;
 import xy.reflect.ui.info.ColorSpecification;
 import xy.reflect.ui.info.ITransaction;
 import xy.reflect.ui.info.ResourcePath;
+import xy.reflect.ui.info.ValidationSession;
 import xy.reflect.ui.info.field.IFieldInfo;
 import xy.reflect.ui.info.menu.MenuModel;
 import xy.reflect.ui.info.method.AbstractConstructorInfo;
@@ -186,7 +187,7 @@ public class TypeInfoSourceFromArgumentGroup implements ITypeInfoSource {
 		}
 
 		@Override
-		public void validate(Object object) throws Exception {
+		public void validate(Object object, ValidationSession session) throws Exception {
 		}
 
 		@Override
