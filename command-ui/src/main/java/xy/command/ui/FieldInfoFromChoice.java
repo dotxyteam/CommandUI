@@ -195,6 +195,11 @@ public class FieldInfoFromChoice implements IFieldInfo {
 	}
 
 	@Override
+	public boolean isValueValidityDetectionEnabled() {
+		return true;
+	}
+
+	@Override
 	public boolean isHidden() {
 		return false;
 	}

@@ -260,4 +260,8 @@ public class FieldInfoFromDirectoryArgument implements IFieldInfo {
 	public void onControlVisibilityChange(Object object, boolean visible) {
 	}
 
+	@Override
+	public boolean isValueValidityDetectionEnabled() {
+		return true;
+	}
 }
