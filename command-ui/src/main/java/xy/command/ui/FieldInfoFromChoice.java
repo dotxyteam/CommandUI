@@ -196,7 +196,7 @@ public class FieldInfoFromChoice implements IFieldInfo {
 
 	@Override
 	public boolean isValueValidityDetectionEnabled() {
-		return true;
+		return false;
 	}
 
 	@Override

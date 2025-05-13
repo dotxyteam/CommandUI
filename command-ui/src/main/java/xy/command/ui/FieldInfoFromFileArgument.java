@@ -262,6 +262,6 @@ public class FieldInfoFromFileArgument implements IFieldInfo {
 
 	@Override
 	public boolean isValueValidityDetectionEnabled() {
-		return true;
+		return false;
 	}
 }

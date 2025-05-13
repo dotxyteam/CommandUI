@@ -611,6 +611,6 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 	@Override
 	public boolean isValueValidityDetectionEnabled() {
-		return true;
+		return false;
 	}
 }
