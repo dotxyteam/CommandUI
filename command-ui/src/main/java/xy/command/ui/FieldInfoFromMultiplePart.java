@@ -374,6 +374,11 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 			}
 
 			@Override
+			public ToolsLocation getToolsLocation() {
+				return ToolsLocation.EAST;
+			}
+
+			@Override
 			public boolean isInsertionAllowed() {
 				return true;
 			}
