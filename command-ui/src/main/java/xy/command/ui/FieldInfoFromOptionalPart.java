@@ -238,6 +238,11 @@ public class FieldInfoFromOptionalPart implements IFieldInfo {
 	}
 
 	@Override
+	public boolean isRelevant(Object object) {
+		return true;
+	}
+
+	@Override
 	public double getDisplayAreaHorizontalWeight() {
 		return 1;
 	}
