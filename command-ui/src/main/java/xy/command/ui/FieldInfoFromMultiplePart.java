@@ -414,7 +414,7 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 			@Override
 			public ValueReturnMode getItemReturnMode() {
-				return ValueReturnMode.DIRECT_OR_PROXY;
+				return ValueReturnMode.DIRECT;
 			}
 
 			@Override
