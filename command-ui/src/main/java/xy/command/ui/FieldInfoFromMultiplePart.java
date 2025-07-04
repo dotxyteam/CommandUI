@@ -103,7 +103,7 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 			@Override
 			public boolean isItemNodeValidityDetectionEnabled(ItemPosition itemPosition) {
-				return false;
+				return true;
 			}
 
 			@Override
