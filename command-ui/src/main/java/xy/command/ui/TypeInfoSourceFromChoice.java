@@ -1,7 +1,6 @@
 package xy.command.ui;
 
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -91,17 +90,17 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 		}
 
 		@Override
-		public void save(Object object, OutputStream out) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
 		public boolean onFormVisibilityChange(Object object, boolean visible) {
 			return false;
 		}
 
 		@Override
-		public void load(Object object, InputStream in) {
+		public void save(Object object, File outputFile) {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public void load(Object object, File inputFile) {
 			throw new UnsupportedOperationException();
 		}
 
