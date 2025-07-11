@@ -26,6 +26,7 @@ import xy.reflect.ui.info.filter.IInfoFilter;
 import xy.reflect.ui.info.menu.MenuModel;
 import xy.reflect.ui.info.method.IMethodInfo;
 import xy.reflect.ui.info.type.ITypeInfo;
+import xy.reflect.ui.info.type.ITypeInfo.IValidationJob;
 import xy.reflect.ui.info.type.iterable.IListTypeInfo;
 import xy.reflect.ui.info.type.iterable.item.DetachedItemDetailsAccessMode;
 import xy.reflect.ui.info.type.iterable.item.IListItemDetailsAccessMode;
@@ -99,6 +100,11 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 	@Override
 	public ITypeInfo getType() {
 		return new IListTypeInfo() {
+
+			@Override
+			public IValidationJob getListItemAbstractFormValidationJob(ItemPosition itemPosition) {
+				return null;
+			}
 
 			@Override
 			public boolean isItemNodeValidityDetectionEnabled(ItemPosition itemPosition) {
@@ -621,5 +627,10 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 	@Override
 	public boolean isValueValidityDetectionEnabled() {
 		return false;
+	}
+
+	@Override
+	public IValidationJob getValueAbstractFormValidationJob(Object object) {
+		return null;
 	}
 }
