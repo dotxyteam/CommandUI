@@ -625,7 +625,7 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 	}
 
 	@Override
-	public boolean isValueValidityDetectionEnabled() {
+	public boolean isControlValueValiditionEnabled() {
 		return false;
 	}
 
