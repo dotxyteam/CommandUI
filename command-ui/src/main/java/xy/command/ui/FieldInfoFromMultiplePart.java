@@ -100,6 +100,10 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 	@Override
 	public ITypeInfo getType() {
 		return new IListTypeInfo() {
+			@Override
+			public ITypeInfo getParent() {
+				return null;
+			}
 
 			@Override
 			public IValidationJob getListItemAbstractFormValidationJob(ItemPosition itemPosition) {
