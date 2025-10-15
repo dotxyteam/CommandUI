@@ -148,6 +148,11 @@ public class TypeInfoSourceFromChoice implements ITypeInfoSource {
 		}
 
 		@Override
+		public boolean isPolymorphicInstanceAbstractTypeOptionAllowed() {
+			return false;
+		}
+
+		@Override
 		public MethodsLayout getMethodsLayout() {
 			return MethodsLayout.HORIZONTAL_FLOW;
 		}
