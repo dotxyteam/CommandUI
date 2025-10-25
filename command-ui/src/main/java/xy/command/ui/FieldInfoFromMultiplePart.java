@@ -217,8 +217,8 @@ public class FieldInfoFromMultiplePart implements IFieldInfo {
 
 			@Override
 			public ITypeInfoSource getSource() {
-				return new PrecomputedTypeInfoSource(this,
-						new SpecificitiesIdentifier(commandLineTypeInfo.getName(), getName()));
+				return new PrecomputedTypeInfoSource(this, new SpecificitiesIdentifier(commandLineTypeInfo.getName(),
+						FieldInfoFromMultiplePart.this.getName()));
 			}
 
 			@Override
