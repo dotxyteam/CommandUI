@@ -59,7 +59,7 @@
 						<id>assembly-jar-with-dependencies</id>
 						<phase>package</phase>
 						<goals>
-							<goal>attached</goal>
+							<goal>single</goal>
 						</goals>
 						<configuration>
 							<descriptorRefs>
@@ -84,7 +84,7 @@
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<tasks>
+							<target>
 								<echo file="${basedir}/target/CommandUI.tmp" append="yes"><![CDATA[#!/bin/bash
 #set -x
 
@@ -126,7 +126,7 @@ exit $$?]]></echo>
 									</filelist>
 								</concat>
 								<delete file="${basedir}/target/CommandUI.tmp" />
-							</tasks>
+							</target>
 						</configuration>
 					</execution>
 				</executions>
