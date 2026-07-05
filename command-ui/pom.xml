@@ -42,6 +42,32 @@
 	</dependencies>
 
 	<build>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.3</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.6</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<plugin>
+					<groupId>com.akathist.maven.plugins.launch4j</groupId>
+					<artifactId>launch4j-maven-plugin</artifactId>
+					<version>2.5.3</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -84,7 +110,7 @@
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target>
+							<tasks>
 								<echo file="${basedir}/target/CommandUI.tmp" append="yes"><![CDATA[#!/bin/bash
 #set -x
 
@@ -125,8 +151,9 @@ exit $$?]]></echo>
 											name="${basedir}/target/command-ui-${version}-jar-with-dependencies.jar" />
 									</filelist>
 								</concat>
+								<chmod file="${basedir}/target/CommandUI" perm="+x" />
 								<delete file="${basedir}/target/CommandUI.tmp" />
-							</target>
+							</tasks>
 						</configuration>
 					</execution>
 				</executions>
@@ -134,7 +161,6 @@ exit $$?]]></echo>
 			<plugin>
 				<groupId>com.akathist.maven.plugins.launch4j</groupId>
 				<artifactId>launch4j-maven-plugin</artifactId>
-				<version>2.1.0</version>
 				<executions>
 					<execution>
 						<id>l4j-gui</id>
